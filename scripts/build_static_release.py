@@ -58,11 +58,13 @@ def main() -> None:
 
     index = (WEB / "index.html").read_text(encoding="utf-8")
     index = re.sub(r'href="/static/styles\.css(\?[^"]*)?"', r'href="static/styles.css\1"', index)
+    index = re.sub(r'href="/static/round73\.css(\?[^"]*)?"', r'href="static/round73.css\1"', index)
     index = index.replace('href="/manifest.webmanifest"', 'href="manifest.webmanifest"')
     icon_svg = (WEB / "static" / "icons" / "medpath-icon.svg").read_text(encoding="utf-8")
     icon_data_url = "data:image/svg+xml," + quote(icon_svg)
     index = index.replace('href="/static/icons/medpath-icon.svg"', f'href="{icon_data_url}"')
     index = re.sub(r'src="/static/app\.js(\?[^"]*)?"', r'src="static/app.js\1"', index)
+    index = re.sub(r'src="/static/round73\.js(\?[^"]*)?"', r'src="static/round73.js\1"', index)
     config = """
     <script>
       window.MEDPATH_STATIC_MODE = true;
