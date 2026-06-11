@@ -1,0 +1,12 @@
+{
+  "title": "DLBC TCGA PanCancer Atlas: selected-gene mutation type distribution",
+  "zh_title": "弥漫大B细胞淋巴瘤TCGA PanCancer Atlas",
+  "source": "cBioPortal public REST API",
+  "study_id": "dlbc_tcga_pan_can_atlas_2018",
+  "molecular_profile_id": "dlbc_tcga_pan_can_atlas_2018_mutations",
+  "sample_list_id": "dlbc_tcga_pan_can_atlas_2018_all",
+  "source_url": "https://www.cbioportal.org/study/summary?id=dlbc_tcga_pan_can_atlas_2018",
+  "genes": ["TP53", "MYD88", "CD79B", "BCL2", "PIM1", "EZH2"],
+  "safety_boundary": "Public API summary data teaching re-plot only; not a clinical diagnostic result.",
+  "generated_at": "2026-06-11 07:13:54 CST"
+}

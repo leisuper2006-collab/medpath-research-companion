@@ -1,0 +1,12 @@
+{
+  "title": "BRCA TCGA PanCancer Atlas selected-gene mutation type distribution",
+  "source": "cBioPortal public REST API",
+  "study_id": "brca_tcga_pan_can_atlas_2018",
+  "molecular_profile_id": "brca_tcga_pan_can_atlas_2018_mutations",
+  "sample_list_id": "brca_tcga_pan_can_atlas_2018_all",
+  "source_url": "https://www.cbioportal.org/study/summary?id=brca_tcga_pan_can_atlas_2018",
+  "api_reference": "https://docs.cbioportal.org/web-api-and-clients/",
+  "genes": ["TP53", "PIK3CA", "GATA3", "CDH1", "MAP3K1", "PTEN", "AKT1", "ERBB2", "BRCA1", "BRCA2"],
+  "safety_boundary": "Only public API summary data are used. The figure is a teaching re-plot and must not be treated as a clinical diagnostic result.",
+  "generated_at": "2026-06-11 06:04:19 CST"
+}

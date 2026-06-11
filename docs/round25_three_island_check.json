@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "width": 688,
+  "height": 620,
+  "mode": "",
+  "panelText": "当前任务\n桌宠工作台\n\n任务八：让桌宠把下一步讲清楚\n\n适合看到复杂页面后不知道该点哪里、该准备什么材料、该如何避免犯错的新手。\n\n解决的问题\n用轻量对话把复杂平台拆成下一步行动\n新手提示\n迷路时不要继续刷页面，先把目标改写成一句任务。\n1\n\n点击右下角桌宠，读取当前页面上下文提示。\n\n2\n\n选择一个快速入口：方法、绘图、文章、数据审查或小岛。\n\n3\n\n把桌宠提示转化为一个可完成的小任务，并进入对应页面。\n\n调用链\nteacher-skill-maker\nai-ethics-governor\n要留下的证据\n当前页面提示、选择的入口、下一步任务描述。\n示例需求\n\n我不知道从哪里开始，请根据当前页面帮我选择一个最小可完成任务。\n\n获得“下一步提示”徽章，并解锁更多上下文对话。\n\n桌宠只做学习导航，不替代教师、导师或伦理审核。\n\n进入：桌宠工作台\n重新定位建筑",
+  "hudText": "任务进度\n3/10\n当前建筑\n桌宠工作台\n奖励\n获得“下一步提示”徽章，并解锁更多上下文对话。",
+  "dialogueText": "科研小向导\n\n你正在手动移动科研小向导。靠近建筑会自动打开对应任务；每一步都要留下输入、输出、风险边界和教师复核证据。",
+  "nonBlank": 15552,
+  "uniqueColors": 225,
+  "hasThreeMode": true,
+  "interactionUpdatedPanel": true,
+  "keyboardMovedGuide": true,
+  "url": "http://127.0.0.1:3000/island-3d",
+  "screenshot": "C:\\Users\\HONOR\\Desktop\\AI skill\\medpath-research-education-skills-studio-real\\docs\\round25_three_island_verified.png",
+  "console_errors": []
+}

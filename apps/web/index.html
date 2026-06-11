@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MedPath Research & Education Skills Studio</title>
+    <meta name="theme-color" content="#0f766e" />
+    <meta name="description" content="面向科研新手的医学研究方法、文章流程、科研绘图、公开数据与Skill工作流学习平台。" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/static/icons/medpath-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/styles.css?v=round71" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="/static/app.js?v=round71"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        const swUrl = window.MEDPATH_STATIC_MODE ? "sw.js?v=round71" : "/sw.js?v=round71";
+        navigator.serviceWorker.register(swUrl).catch(() => {});
+      }
+    </script>
+  </body>
+</html>

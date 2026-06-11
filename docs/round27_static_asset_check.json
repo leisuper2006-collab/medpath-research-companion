@@ -1,0 +1,39 @@
+{
+  "url": "http://127.0.0.1:4173/",
+  "state": {
+    "url": "http://127.0.0.1:4173/#/method-universe/method-001",
+    "title": "MedPath Research & Education Skills Studio",
+    "h1": "基因敲除入门流程 · M001：判断问题、材料和证据能否对上",
+    "hasMethodPage": true,
+    "hasSource": true,
+    "images": [
+      {
+        "src": "http://127.0.0.1:4173/outputs/round11_method_plots/method-001.svg",
+        "complete": true,
+        "width": 920,
+        "height": 560,
+        "alt": "基因敲除入门流程：新手路线示例"
+      },
+      {
+        "src": "http://127.0.0.1:4173/outputs/round11_method_plots/method-001.svg",
+        "complete": true,
+        "width": 920,
+        "height": 560,
+        "alt": "基因敲除入门流程：新手路线示例"
+      },
+      {
+        "src": "http://127.0.0.1:4173/outputs/round11_method_plots/method-001.svg",
+        "complete": true,
+        "width": 920,
+        "height": 560,
+        "alt": "基因敲除入门流程：新手路线示例"
+      }
+    ]
+  },
+  "relevant_image_count": 3,
+  "broken_images": [],
+  "console_errors": [],
+  "http_errors": [],
+  "screenshot": "C:\\Users\\HONOR\\Desktop\\AI skill\\medpath-research-education-skills-studio-real\\docs\\round27_static_asset_verified.png",
+  "failures": []
+}

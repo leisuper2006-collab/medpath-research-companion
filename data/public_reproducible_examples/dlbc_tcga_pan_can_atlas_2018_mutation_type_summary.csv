@@ -1,0 +1,15 @@
+"gene","mutationType","mutation_records","total_records","fraction"
+"PIM1","Missense_Mutation",40,45,0.888888888888889
+"PIM1","Nonsense_Mutation",2,45,0.0444444444444444
+"PIM1","Splice_Site",2,45,0.0444444444444444
+"PIM1","In_Frame_Ins",1,45,0.0222222222222222
+"CD79B","Missense_Mutation",5,7,0.714285714285714
+"CD79B","In_Frame_Del",1,7,0.142857142857143
+"CD79B","Splice_Region",1,7,0.142857142857143
+"MYD88","Missense_Mutation",7,7,1
+"TP53","Missense_Mutation",3,5,0.6
+"TP53","Nonsense_Mutation",1,5,0.2
+"TP53","Splice_Site",1,5,0.2
+"BCL2","Missense_Mutation",2,3,0.666666666666667
+"BCL2","Splice_Region",1,3,0.333333333333333
+"EZH2","Missense_Mutation",1,1,1

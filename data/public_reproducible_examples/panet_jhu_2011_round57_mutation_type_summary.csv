@@ -1,0 +1,12 @@
+"gene","mutationType","mutation_records","total_records","fraction"
+"MEN1","Frame_Shift_Del",3,5,0.6
+"MEN1","Missense_Mutation",1,5,0.2
+"MEN1","Nonsense_Mutation",1,5,0.2
+"PTEN","Frame_Shift_Del",1,2,0.5
+"PTEN","Missense_Mutation",1,2,0.5
+"TSC2","Missense_Mutation",1,2,0.5
+"TSC2","Nonsense_Mutation",1,2,0.5
+"ALK","Frame_Shift_Del",1,1,1
+"ATRX","Nonsense_Mutation",1,1,1
+"NF1","Missense_Mutation",1,1,1
+"PIK3CA","Missense_Mutation",1,1,1

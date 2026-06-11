@@ -1,0 +1,13 @@
+"gene","mutationType","mutation_records","total_records","fraction"
+"TP53","Missense_Mutation",12,17,0.705882352941177
+"TP53","Nonsense_Mutation",4,17,0.235294117647059
+"TP53","Splice_Site",1,17,0.0588235294117647
+"KRAS","Missense_Mutation",8,8,1
+"KEAP1","Missense_Mutation",5,6,0.833333333333333
+"KEAP1","Nonsense_Mutation",1,6,0.166666666666667
+"STK11","Missense_Mutation",2,5,0.4
+"STK11","Nonsense_Mutation",2,5,0.4
+"STK11","Splice_Site",1,5,0.2
+"ALK","Missense_Mutation",3,3,1
+"EGFR","Missense_Mutation",3,3,1
+"BRAF","Missense_Mutation",2,2,1

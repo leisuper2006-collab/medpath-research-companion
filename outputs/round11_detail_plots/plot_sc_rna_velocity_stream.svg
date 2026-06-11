@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='760' height='500' viewBox='0 0 760 500'>
+<rect width='760' height='500' rx='26' fill='#fffdf8'/>
+<rect x='34' y='34' width='692' height='412' rx='20' fill='#ffffff' stroke='#d8c7a2' stroke-width='1.4'/>
+<text x='62' y='78' font-family='Arial, sans-serif' font-size='24' font-weight='700' fill='#132237'>RNA velocity流线图</text>
+<text x='62' y='106' font-family='Arial, sans-serif' font-size='13' fill='#667085'>单细胞 / RNA velocity stream plot</text>
+<line x1='90' y1='380' x2='690' y2='380' stroke='#344054'/><line x1='90' y1='380' x2='90' y2='135' stroke='#344054'/><path d='M105 155 H169 V167 H233 V183 H297 V196 H361 V211 H425 V227 H489 V240 H553 V261 H617 V280' fill='none' stroke='#0f766e' stroke-width='4'/><path d='M105 164 H169 V183 H233 V205 H297 V217 H361 V244 H425 V262 H489 V273 H553 V292 H617 V314' fill='none' stroke='#2563eb' stroke-width='4'/><path d='M105 173 H169 V197 H233 V222 H297 V243 H361 V260 H425 V288 H489 V306 H553 V336 H617 V356' fill='none' stroke='#b45309' stroke-width='4'/>
+<text x='380' y='476' text-anchor='middle' font-family='Arial, sans-serif' font-size='12' fill='#8a6d3b'>Synthetic teaching visual; replace with audited user data for real research.</text>
+</svg>

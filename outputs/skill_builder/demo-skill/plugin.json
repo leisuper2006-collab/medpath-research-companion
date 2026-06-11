@@ -1,0 +1,7 @@
+{
+  "id": "demo-skill",
+  "zh_name": "示例Skill",
+  "description": "生成教学反馈",
+  "status": "generated-preview",
+  "safety": "仅用于教学与科研训练，不替代临床诊断"
+}

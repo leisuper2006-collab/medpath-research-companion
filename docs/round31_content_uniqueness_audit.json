@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "failures": [],
+  "datasets": {
+    "methods": {
+      "items": 674,
+      "missing_visual": [],
+      "missing_visual_count": 0,
+      "missing_source": [],
+      "missing_source_count": 0,
+      "bad_marker_items": [],
+      "bad_marker_count": 0,
+      "exact_duplicate_count": 0,
+      "exact_duplicates": [],
+      "high_similarity_pair_count": 0,
+      "high_similarity_pairs": []
+    },
+    "plots": {
+      "items": 100,
+      "missing_visual": [],
+      "missing_visual_count": 0,
+      "missing_source": [],
+      "missing_source_count": 0,
+      "bad_marker_items": [],
+      "bad_marker_count": 0,
+      "exact_duplicate_count": 0,
+      "exact_duplicates": [],
+      "high_similarity_pair_count": 0,
+      "high_similarity_pairs": []
+    },
+    "articles": {
+      "items": 28,
+      "missing_visual": [],
+      "missing_visual_count": 0,
+      "missing_source": [],
+      "missing_source_count": 0,
+      "bad_marker_items": [],
+      "bad_marker_count": 0,
+      "exact_duplicate_count": 0,
+      "exact_duplicates": [],
+      "high_similarity_pair_count": 0,
+      "high_similarity_pairs": []
+    },
+    "tools": {
+      "items": 83,
+      "missing_visual": [],
+      "missing_visual_count": 0,
+      "missing_source": [],
+      "missing_source_count": 0,
+      "bad_marker_items": [],
+      "bad_marker_count": 0,
+      "exact_duplicate_count": 0,
+      "exact_duplicates": [],
+      "high_similarity_pair_count": 0,
+      "high_similarity_pairs": []
+    }
+  }
+}

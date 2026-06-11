@@ -1,0 +1,202 @@
+[
+  {
+    "id": "library",
+    "name": "方法图书馆",
+    "role": "把模糊研究想法翻译成可执行的方法家族",
+    "interaction": "先输入研究问题、样本类型和预期终点，系统按实验、统计、组学、机器学习和机制验证推荐方法入口。",
+    "route": "/method-universe",
+    "quest_title": "任务一：把“我想研究某个基因”拆成方法路线",
+    "quest_summary": "适合不知道从敲除、敲低、过表达、药物抑制、单细胞分析还是公开数据库验证开始的新手。",
+    "quest_steps": [
+      "写下研究对象、疾病背景、可获得样本和你想证明的关系。",
+      "进入方法宇宙，比较至少三种可行方法的输入、输出、成本和失败风险。",
+      "生成导师讨论清单：为什么选这个方法，为什么暂不选其他方法。"
+    ],
+    "skill_chain": ["research-copilot", "medical-kg-rag-builder", "ai-ethics-governor"],
+    "evidence_to_collect": "方法选择矩阵、关键参数、对照设计、不可回答的问题清单。",
+    "starter_prompt": "我想研究某基因在胃癌侵袭中的作用，已有细胞系和公开表达数据，请帮我选择3条入门方法路线。",
+    "reward": "获得“方法路线图”徽章，并解锁数据门诊的字段审查任务。",
+    "beginner_tip": "先判断问题是机制验证、关联发现还是预测建模，不要直接从工具名开始。",
+    "safety_boundary": "方法建议仅用于科研训练和方案讨论，不得替代导师判断、伦理审批或真实实验验证。"
+  },
+  {
+    "id": "plot-lab",
+    "name": "科研绘图室",
+    "role": "把数据问题变成能支撑论文论点的图形方案",
+    "interaction": "选择图形类型或研究问题，查看适用数据结构、示例图、审稿关注点和R/ggplot2优先实现路径。",
+    "route": "/plot-gallery",
+    "quest_title": "任务二：从一张表生成一组论文级图表计划",
+    "quest_summary": "适合有表达矩阵、临床表、模型评分或实验结果，但不知道应该画火山图、森林图、桑基图还是校准曲线的新手。",
+    "quest_steps": [
+      "先说明数据列名、分组变量、结局变量和研究问题。",
+      "进入科研绘图室，选择图形家族并查看示例数据字段要求。",
+      "导出图表方案：主图、补充图、source data和统计说明。"
+    ],
+    "skill_chain": ["skill-eval-harness", "research-copilot", "teacher-skill-maker"],
+    "evidence_to_collect": "图题、图注、统计方法、数据字段映射、可复现代码入口。",
+    "starter_prompt": "我有肿瘤组和正常组的基因表达矩阵，以及生存信息，请帮我规划3张主图和2张补充图。",
+    "reward": "获得“图表审稿眼”徽章，并进入文章工坊生成图文对应表。",
+    "beginner_tip": "每张图必须回答一个问题，不能只因为好看就加入论文。",
+    "safety_boundary": "示例图只说明绘图形式，不代表真实研究结论，不得替代真实数据审查和统计复核。"
+  },
+  {
+    "id": "article-workshop",
+    "name": "文章工坊",
+    "role": "把研究想法组织成不同文章类型的全流程写作路线",
+    "interaction": "选择Meta分析、机制研究、机器学习、教育改革、病例教学等文章类型，生成从0开始的材料清单和Skill调用链。",
+    "route": "/article-workshop",
+    "quest_title": "任务三：把一个选题变成可执行的写作工程",
+    "quest_summary": "适合想写论文但不知道注册、纳排、图表、统计、方法学规范和投稿材料如何衔接的新手。",
+    "quest_steps": [
+      "选择文章类型，并写下研究问题、数据来源和目标期刊层级。",
+      "查看该类型文章的标准流程、必备图表、常见失败点和伦理边界。",
+      "生成写作工作包：任务分工、资料清单、图表清单和导师复核节点。"
+    ],
+    "skill_chain": ["research-copilot", "innovation-incubator", "ai-ethics-governor"],
+    "evidence_to_collect": "文章流程图、规范清单、图表清单、引用核验清单、投稿前风险清单。",
+    "starter_prompt": "我想从公开数据库做一个肿瘤预后模型文章，请帮我从0搭建研究和写作流程。",
+    "reward": "获得“写作路线师”徽章，并解锁模型驿站的多模型审校任务。",
+    "beginner_tip": "先选文章类型，再选统计和作图；不同文章类型的证据链完全不同。",
+    "safety_boundary": "写作框架不得替代真实数据分析、伦理审批、导师审阅或期刊规范核查。"
+  },
+  {
+    "id": "case-lab",
+    "name": "模拟案例温室",
+    "role": "生成可教学、可复核、不可冒充真实病例的合成案例",
+    "interaction": "选择病种、器官系统、难度和生成级别，生成PBL问题、报告训练、科研拓展和伦理审计记录。",
+    "route": "/simulate/new",
+    "quest_title": "任务四：生成一份病理PBL合成教学案例",
+    "quest_summary": "适合教师或学生训练病理思维：从临床背景、镜下特征、免疫组化到报告表达，但不使用真实患者信息。",
+    "quest_steps": [
+      "选择疾病系统、适用课程、学生层级和案例难度。",
+      "生成合成案例，并查看PBL问题链、报告训练提示和教师复核表。",
+      "进入伦理门岗审查隐私、临床误导和虚构来源风险。"
+    ],
+    "skill_chain": ["case-simulation-generator", "pathology-case-builder", "pathology-report-coach", "ai-ethics-governor"],
+    "evidence_to_collect": "合成案例JSON、PBL问题、教师复核清单、伦理审计结果。",
+    "starter_prompt": "生成一个胃腺癌本科病理PBL合成案例，难度中等，需要包含免疫组化和报告训练。",
+    "reward": "获得“案例园丁”徽章，并解锁病理报告训练反馈任务。",
+    "beginner_tip": "案例越像教学推理链越好，不要追求像真实患者资料。",
+    "safety_boundary": "所有案例均为合成教学案例，不是真实患者，不用于临床诊断。"
+  },
+  {
+    "id": "ethics-gate",
+    "name": "伦理门岗",
+    "role": "在AI输出进入教学前先拦截隐私、幻觉、临床误导和学术不端风险",
+    "interaction": "粘贴AI输出、引用列表或案例草稿，系统按风险规则生成可人工复核的审计清单。",
+    "route": "/governance",
+    "quest_title": "任务五：给一段AI输出做风险过门检查",
+    "quest_summary": "适合判断一段模型生成内容能不能进入课堂、作业、项目书或论文草稿。",
+    "quest_steps": [
+      "粘贴需要审查的AI输出，并标注用途：教学、写作、案例或评价。",
+      "运行隐私、虚假引用、临床误导和学术诚信四类检查。",
+      "根据风险级别生成处理建议：退回、修改、教师复核或允许进入教学。"
+    ],
+    "skill_chain": ["ai-ethics-governor", "citation_checker", "hallucination-risk-auditor"],
+    "evidence_to_collect": "风险触发项、处理建议、教师复核记录、版本号。",
+    "starter_prompt": "请审查这段病理案例反馈是否包含临床误导、虚假引用或过度诊断风险。",
+    "reward": "获得“安全守门员”徽章，并解锁D10评价映射任务。",
+    "beginner_tip": "如果输出像诊断建议，就要改成教学反馈。",
+    "safety_boundary": "审计结果是风险提示，不得替代伦理审批、教师复核或最终质量证明。"
+  },
+  {
+    "id": "hpc-dock",
+    "name": "计算码头",
+    "role": "把机制模拟、批量评测和计算任务转成HPC dry-run脚本",
+    "interaction": "选择GROMACS、LAMMPS、批量评测或图像预处理模板，生成SLURM脚本草案和费用估计，不自动提交真实作业。",
+    "route": "/runtime",
+    "quest_title": "任务六：为机制教学案例生成HPC任务草案",
+    "quest_summary": "适合把分子机制、蛋白互作、批量案例评测等计算环节做成可审查的教学任务模板。",
+    "quest_steps": [
+      "选择任务模板、队列类型、输入文件占位和预计运行时间。",
+      "生成SLURM脚本dry-run版本，并检查是否包含收费或真实提交动作。",
+      "把脚本、费用估计和安全边界归档到案例或科研训练任务。"
+    ],
+    "skill_chain": ["hpc-job-runner", "model-router", "ai-ethics-governor"],
+    "evidence_to_collect": "SLURM脚本、dry-run记录、费用估计、人工确认状态。",
+    "starter_prompt": "为一个蛋白-药物相互作用教学案例生成GROMACS dry-run任务模板，不真实提交。",
+    "reward": "获得“计算航海员”徽章，并解锁L3模拟增强案例模板。",
+    "beginner_tip": "HPC是批处理计算资源，不是网页长期运行服务器。",
+    "safety_boundary": "默认dry-run；真实提交、计费和HPC登录必须人工确认。"
+  },
+  {
+    "id": "mentor-house",
+    "name": "导师小屋",
+    "role": "把新手需求安排成一周到四周的学习路径",
+    "interaction": "输入当前阶段和目标，生成每天要完成的阅读、方法、作图、写作和复核任务。",
+    "route": "/researcher",
+    "quest_title": "任务七：定制一条科研新手学习路径",
+    "quest_summary": "适合刚加入课题组、第一次做数据库分析、第一次写综述或第一次做教学案例的学生。",
+    "quest_steps": [
+      "说明你的基础、可用时间、目标产出和最担心的环节。",
+      "生成分阶段学习路径，并为每个阶段绑定方法、图表和文章Skill。",
+      "每完成一个节点，记录证据：笔记、草图、代码、导师反馈。"
+    ],
+    "skill_chain": ["teacher-skill-maker", "research-copilot", "skill-eval-harness"],
+    "evidence_to_collect": "学习路径、阶段产出、导师反馈表、下一步调整建议。",
+    "starter_prompt": "我是一名科研新手，想用4周完成一个公开数据库肿瘤选题入门，请给我学习路径。",
+    "reward": "获得“路线规划师”徽章，并在桌宠工作台解锁每日提醒。",
+    "beginner_tip": "先做小闭环：一个问题、一张图、一段方法说明。",
+    "safety_boundary": "学习路径是训练计划，不替代导师安排和正式课程要求。"
+  },
+  {
+    "id": "pet-desk",
+    "name": "桌宠工作台",
+    "role": "用轻量对话把复杂平台拆成下一步行动",
+    "interaction": "点击桌宠获得当前页面的新手提示，也可一键跳转到方法、图表、文章或伦理入口。",
+    "route": "/researcher",
+    "quest_title": "任务八：让桌宠把下一步讲清楚",
+    "quest_summary": "适合看到复杂页面后不知道该点哪里、该准备什么材料、该如何避免犯错的新手。",
+    "quest_steps": [
+      "点击右下角桌宠，读取当前页面上下文提示。",
+      "选择一个快速入口：方法、绘图、文章、数据审查或小岛。",
+      "把桌宠提示转化为一个可完成的小任务，并进入对应页面。"
+    ],
+    "skill_chain": ["teacher-skill-maker", "ai-ethics-governor"],
+    "evidence_to_collect": "当前页面提示、选择的入口、下一步任务描述。",
+    "starter_prompt": "我不知道从哪里开始，请根据当前页面帮我选择一个最小可完成任务。",
+    "reward": "获得“下一步提示”徽章，并解锁更多上下文对话。",
+    "beginner_tip": "迷路时不要继续刷页面，先把目标改写成一句任务。",
+    "safety_boundary": "桌宠只做学习导航，不替代教师、导师或伦理审核。"
+  },
+  {
+    "id": "data-clinic",
+    "name": "数据门诊",
+    "role": "在分析前检查字段、分组、结局、缺失值和隐私风险",
+    "interaction": "粘贴字段名或上传字段说明，系统指出缺失、命名、单位、分组和伦理边界问题。",
+    "route": "/data-audit",
+    "quest_title": "任务九：先审数据，再选择方法和作图",
+    "quest_summary": "适合已经有Excel、表达矩阵、临床变量表或模型结果，但不确定字段是否能支撑分析的新手。",
+    "quest_steps": [
+      "提供字段名、样本分组、结局变量和数据来源边界。",
+      "运行字段完整性、单位一致性、隐私风险和方法适配检查。",
+      "导出清洗建议，再回到方法图书馆或科研绘图室。"
+    ],
+    "skill_chain": ["skill-eval-harness", "ai-ethics-governor", "research-copilot"],
+    "evidence_to_collect": "字段审查报告、缺失值处理建议、隐私风险提示、方法适配建议。",
+    "starter_prompt": "这是我的临床数据字段列表，请检查是否适合做生存分析和预后模型。",
+    "reward": "获得“数据体检员”徽章，并解锁绘图室的字段映射建议。",
+    "beginner_tip": "数据字段不规范时，不要先跑模型；先把样本、分组和结局定义清楚。",
+    "safety_boundary": "不得上传真实可识别患者信息；字段审查不能替代统计专家复核。"
+  },
+  {
+    "id": "model-gate",
+    "name": "模型驿站",
+    "role": "管理多模型API、mock模式和交叉审校任务",
+    "interaction": "查看Provider配置、密钥是否已设置、任务类型推荐模型、mock输出和安全日志。",
+    "route": "/model-gateway",
+    "quest_title": "任务十：用模型前先设置边界和审校角色",
+    "quest_summary": "适合需要接入自己的API，但不知道生成模型、审校模型、伦理模型和引用核验如何分工的用户。",
+    "quest_steps": [
+      "检查Provider、base_url、模型名和密钥配置状态；页面不显示密钥明文。",
+      "为案例生成、引用核验、伦理审计和评价总结选择不同任务角色。",
+      "先用mock模式跑通流程，再由用户自行配置真实API。"
+    ],
+    "skill_chain": ["model-router", "ai-ethics-governor", "skill-eval-harness"],
+    "evidence_to_collect": "模型配置状态、mock调用记录、安全日志、任务类型与模型角色映射。",
+    "starter_prompt": "我想接入自己的模型API做案例生成和伦理审查，请帮我规划Provider和任务角色。",
+    "reward": "获得“模型调度员”徽章，并解锁多模型交叉审校演示。",
+    "beginner_tip": "密钥永远只放环境变量，页面最多显示是否已配置。",
+    "safety_boundary": "平台不保存API Key；真实模型输出仍需教师或专家复核。"
+  }
+]

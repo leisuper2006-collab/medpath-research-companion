@@ -1,0 +1,10 @@
+"gene","mutationType","mutation_records","total_records","fraction"
+"TP53","Missense_Mutation",166,237,0.70042194092827
+"TP53","Nonsense_Mutation",42,237,0.177215189873418
+"TP53","Frame_Shift_Del",14,237,0.0590717299578059
+"TP53","Frame_Shift_Ins",6,237,0.0253164556962025
+"TP53","Splice_Site",5,237,0.0210970464135021
+"TP53","In_Frame_Del",2,237,0.00843881856540084
+"TP53","Splice_Region",2,237,0.00843881856540084
+"PIK3CA","Missense_Mutation",98,99,0.98989898989899
+"PIK3CA","Splice_Region",1,99,0.0101010101010101

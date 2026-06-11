@@ -1,0 +1,14 @@
+{
+  "name": "medpath-studio-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SPA shell served by FastAPI in the V0.1 fallback runtime.",
+  "scripts": {
+    "dev": "cd ../api && python -m uvicorn app.main:app --host 127.0.0.1 --port 3000",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0"
+  }
+}
+

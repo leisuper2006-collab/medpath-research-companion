@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pydantic
+httpx
+pytest
+playwright
+python-multipart
+pytest
+requests

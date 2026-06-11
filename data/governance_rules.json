@@ -1,0 +1,142 @@
+[
+  {
+    "id": "rule-01",
+    "risk_type": "隐私风险",
+    "trigger": "隐私风险触发规则示例1",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "medium"
+  },
+  {
+    "id": "rule-02",
+    "risk_type": "模型幻觉",
+    "trigger": "模型幻觉触发规则示例2",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "high"
+  },
+  {
+    "id": "rule-03",
+    "risk_type": "临床误导",
+    "trigger": "临床误导触发规则示例3",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "low"
+  },
+  {
+    "id": "rule-04",
+    "risk_type": "伪造引用",
+    "trigger": "伪造引用触发规则示例4",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "medium"
+  },
+  {
+    "id": "rule-05",
+    "risk_type": "学术诚信",
+    "trigger": "学术诚信触发规则示例5",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "high"
+  },
+  {
+    "id": "rule-06",
+    "risk_type": "隐私风险",
+    "trigger": "隐私风险触发规则示例6",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "low"
+  },
+  {
+    "id": "rule-07",
+    "risk_type": "模型幻觉",
+    "trigger": "模型幻觉触发规则示例7",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "medium"
+  },
+  {
+    "id": "rule-08",
+    "risk_type": "临床误导",
+    "trigger": "临床误导触发规则示例8",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "high"
+  },
+  {
+    "id": "rule-09",
+    "risk_type": "伪造引用",
+    "trigger": "伪造引用触发规则示例9",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "low"
+  },
+  {
+    "id": "rule-10",
+    "risk_type": "学术诚信",
+    "trigger": "学术诚信触发规则示例10",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "medium"
+  },
+  {
+    "id": "rule-11",
+    "risk_type": "隐私风险",
+    "trigger": "隐私风险触发规则示例11",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "high"
+  },
+  {
+    "id": "rule-12",
+    "risk_type": "模型幻觉",
+    "trigger": "模型幻觉触发规则示例12",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "low"
+  },
+  {
+    "id": "rule-13",
+    "risk_type": "临床误导",
+    "trigger": "临床误导触发规则示例13",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "medium"
+  },
+  {
+    "id": "rule-14",
+    "risk_type": "伪造引用",
+    "trigger": "伪造引用触发规则示例14",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "high"
+  },
+  {
+    "id": "rule-15",
+    "risk_type": "学术诚信",
+    "trigger": "学术诚信触发规则示例15",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "low"
+  },
+  {
+    "id": "rule-16",
+    "risk_type": "隐私风险",
+    "trigger": "隐私风险触发规则示例16",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "medium"
+  },
+  {
+    "id": "rule-17",
+    "risk_type": "模型幻觉",
+    "trigger": "模型幻觉触发规则示例17",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "high"
+  },
+  {
+    "id": "rule-18",
+    "risk_type": "临床误导",
+    "trigger": "临床误导触发规则示例18",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "low"
+  },
+  {
+    "id": "rule-19",
+    "risk_type": "伪造引用",
+    "trigger": "伪造引用触发规则示例19",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "medium"
+  },
+  {
+    "id": "rule-20",
+    "risk_type": "学术诚信",
+    "trigger": "学术诚信触发规则示例20",
+    "action": "阻断、标注、要求教师复核或转为教学边界说明。",
+    "severity": "high"
+  }
+]

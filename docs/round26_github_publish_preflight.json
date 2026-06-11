@@ -1,0 +1,36 @@
+{
+  "git_available": {
+    "code": 0,
+    "stdout": "git version 2.54.0.windows.1",
+    "stderr": ""
+  },
+  "inside_git_repo": {
+    "code": 0,
+    "stdout": "true",
+    "stderr": ""
+  },
+  "git_remote": {
+    "code": 2,
+    "stdout": "",
+    "stderr": "error: No such remote 'origin'"
+  },
+  "git_head": {
+    "code": 128,
+    "stdout": "",
+    "stderr": "fatal: your current branch 'main' does not have any commits yet"
+  },
+  "gh_available": {
+    "code": -1,
+    "stdout": "",
+    "stderr": "[WinError 2] 系统找不到指定的文件。"
+  },
+  "dist_missing": [],
+  "secret_findings": [],
+  "can_publish_now": false,
+  "next_steps": [
+    "如需真实发布，请提供GitHub远程仓库URL或安装并登录gh。",
+    "首次公开发布前需要创建commit并推送到main分支。",
+    "发布前再次运行本脚本，确认没有明文密钥和静态包缺失。",
+    "医学AI输出仅用于教学与科研训练，不替代临床诊断。"
+  ]
+}

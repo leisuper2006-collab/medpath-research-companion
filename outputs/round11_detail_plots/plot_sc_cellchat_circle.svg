@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='760' height='500' viewBox='0 0 760 500'>
+<rect width='760' height='500' rx='26' fill='#fffdf8'/>
+<rect x='34' y='34' width='692' height='412' rx='20' fill='#ffffff' stroke='#d8c7a2' stroke-width='1.4'/>
+<text x='62' y='78' font-family='Arial, sans-serif' font-size='24' font-weight='700' fill='#132237'>细胞通讯环图</text>
+<text x='62' y='106' font-family='Arial, sans-serif' font-size='13' fill='#667085'>单细胞 / Cell-cell communication circle plot</text>
+<line x1='210' y1='190' x2='330' y2='150' stroke='#b6c2cf' stroke-width='2'/><line x1='330' y1='150' x2='470' y2='190' stroke='#b6c2cf' stroke-width='2'/><line x1='210' y1='190' x2='260' y2='300' stroke='#b6c2cf' stroke-width='2'/><line x1='260' y1='300' x2='420' y2='310' stroke='#b6c2cf' stroke-width='2'/><line x1='470' y1='190' x2='420' y2='310' stroke='#b6c2cf' stroke-width='2'/><line x1='470' y1='190' x2='560' y2='270' stroke='#b6c2cf' stroke-width='2'/><line x1='560' y1='270' x2='600' y2='160' stroke='#b6c2cf' stroke-width='2'/><line x1='330' y1='150' x2='600' y2='160' stroke='#b6c2cf' stroke-width='2'/><circle cx='210' cy='190' r='22' fill='#0f766e' opacity='.84'/><circle cx='330' cy='150' r='19' fill='#2563eb' opacity='.84'/><circle cx='470' cy='190' r='21' fill='#b45309' opacity='.84'/><circle cx='260' cy='300' r='21' fill='#0f766e' opacity='.84'/><circle cx='420' cy='310' r='26' fill='#2563eb' opacity='.84'/><circle cx='560' cy='270' r='22' fill='#b45309' opacity='.84'/><circle cx='600' cy='160' r='20' fill='#0f766e' opacity='.84'/>
+<text x='380' y='476' text-anchor='middle' font-family='Arial, sans-serif' font-size='12' fill='#8a6d3b'>Synthetic teaching visual; replace with audited user data for real research.</text>
+</svg>

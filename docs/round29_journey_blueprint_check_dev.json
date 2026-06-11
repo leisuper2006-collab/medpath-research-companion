@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:3000/journey-builder",
+  "initial": {
+    "h1": "一句话生成科研学习路径：方法、工具、图谱、文章和审查一步串起来",
+    "blueprint": 1,
+    "days": 7,
+    "routeLinks": [
+      "打开首选方法",
+      "打开推荐图谱",
+      "打开文章流程",
+      "打开工具详情",
+      "进入数据审查"
+    ],
+    "hasApiPrompt": true,
+    "hasSevenDay": true,
+    "hasSafety": true,
+    "hasUnknownMarkers": false
+  },
+  "generated": {
+    "resultTextHasSingleCell": true,
+    "blueprint": 1,
+    "days": 7,
+    "hasTeacherReview": true,
+    "hasDataAudit": true,
+    "routeHrefs": [
+      "/method-universe/method-027",
+      "/plot-gallery/pca_loadings_plot",
+      "/article-workshop/article-15",
+      "/open-source/scanpy",
+      "/data-audit"
+    ]
+  },
+  "console_errors_or_warnings": [],
+  "screenshot": "C:\\Users\\HONOR\\Desktop\\AI skill\\medpath-research-education-skills-studio-real\\docs\\round29_journey_blueprint_verified_dev.png",
+  "failures": []
+}

@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Node / frontend tooling
+node_modules/
+dist/
+build/
+.next/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# Local logs and caches
+*.log
+logs/
+tmp/
+temp/
+.cache/
+
+# Local browser/test artifacts that may contain machine paths
+playwright-report/
+test-results/
+
+# Sensitive or user-provided data
+private_data/
+patient_data/
+raw_patient_data/
+real_course_records/
+real_hpc_outputs/
+
+# OS files
+Thumbs.db
+.DS_Store

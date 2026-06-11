@@ -1,0 +1,17 @@
+"gene","mutationType","mutation_records","total_records","fraction"
+"SF3B1","Missense_Mutation",10,10,1
+"ATM","Missense_Mutation",2,4,0.5
+"ATM","Splice_Site",2,4,0.5
+"ARID1A","Missense_Mutation",1,2,0.5
+"ARID1A","Nonsense_Mutation",1,2,0.5
+"BRAF","Missense_Mutation",2,2,1
+"EGFR","Missense_Mutation",2,2,1
+"FGFR2","Missense_Mutation",2,2,1
+"MYD88","Missense_Mutation",2,2,1
+"NF1","Missense_Mutation",2,2,1
+"ALK","Missense_Mutation",1,1,1
+"EP300","Missense_Mutation",1,1,1
+"FAT1","Missense_Mutation",1,1,1
+"KIT","Missense_Mutation",1,1,1
+"TET2","Missense_Mutation",1,1,1
+"TP53","Splice_Site",1,1,1

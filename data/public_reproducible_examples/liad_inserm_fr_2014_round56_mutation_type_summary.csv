@@ -1,0 +1,12 @@
+"gene","mutationType","mutation_records","total_records","fraction"
+"CTNNB1","Missense_Mutation",16,21,0.761904761904762
+"CTNNB1","Splice_Site",3,21,0.142857142857143
+"CTNNB1","In_Frame_Del",2,21,0.0952380952380952
+"ALK","Missense_Mutation",2,2,1
+"BAP1","Nonsense_Mutation",1,1,1
+"BRCA2","Missense_Mutation",1,1,1
+"CDKN2A","Nonsense_Mutation",1,1,1
+"MAP3K1","Frame_Shift_Del",1,1,1
+"NOTCH1","Splice_Site",1,1,1
+"SF3B1","Missense_Mutation",1,1,1
+"WT1","Missense_Mutation",1,1,1

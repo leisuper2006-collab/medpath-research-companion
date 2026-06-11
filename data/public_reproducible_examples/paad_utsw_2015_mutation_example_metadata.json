@@ -1,0 +1,12 @@
+{
+  "title": "PAAD UTSW Nat Commun 2015: selected-gene mutation type distribution",
+  "zh_title": "胰腺癌UTSW Nature Communications 2015",
+  "source": "cBioPortal public REST API",
+  "study_id": "paad_utsw_2015",
+  "molecular_profile_id": "paad_utsw_2015_mutations",
+  "sample_list_id": "paad_utsw_2015_all",
+  "source_url": "https://www.cbioportal.org/study/summary?id=paad_utsw_2015",
+  "genes": ["TP53", "KRAS", "SMAD4", "CDKN2A", "RNF43", "GNAS"],
+  "safety_boundary": "Public API summary data teaching re-plot only; not a clinical diagnostic result.",
+  "generated_at": "2026-06-11 07:14:01 CST"
+}

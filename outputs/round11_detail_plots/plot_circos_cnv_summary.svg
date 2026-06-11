@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='760' height='500' viewBox='0 0 760 500'>
+<rect width='760' height='500' rx='26' fill='#fffdf8'/>
+<rect x='34' y='34' width='692' height='412' rx='20' fill='#ffffff' stroke='#d8c7a2' stroke-width='1.4'/>
+<text x='62' y='78' font-family='Arial, sans-serif' font-size='24' font-weight='700' fill='#132237'>CNV环形摘要图</text>
+<text x='62' y='106' font-family='Arial, sans-serif' font-size='13' fill='#667085'>网络 / Circos-style CNV summary</text>
+<line x1='90' y1='380' x2='690' y2='380' stroke='#344054'/><line x1='90' y1='380' x2='90' y2='135' stroke='#344054'/><rect x='128' y='275' width='42' height='105' rx='7' fill='#2563eb' opacity='.78'/><rect x='194' y='238' width='42' height='142' rx='7' fill='#2563eb' opacity='.78'/><rect x='260' y='270' width='42' height='110' rx='7' fill='#0f766e' opacity='.78'/><rect x='326' y='189' width='42' height='191' rx='7' fill='#2563eb' opacity='.78'/><rect x='392' y='188' width='42' height='192' rx='7' fill='#0f766e' opacity='.78'/><rect x='458' y='202' width='42' height='178' rx='7' fill='#0f766e' opacity='.78'/><rect x='524' y='250' width='42' height='130' rx='7' fill='#b45309' opacity='.78'/><rect x='590' y='236' width='42' height='144' rx='7' fill='#0f766e' opacity='.78'/>
+<text x='380' y='476' text-anchor='middle' font-family='Arial, sans-serif' font-size='12' fill='#8a6d3b'>Synthetic teaching visual; replace with audited user data for real research.</text>
+</svg>

@@ -1,0 +1,1172 @@
+[
+  {
+    "id": "ccle_broad_2025_round57_mutation_type_distribution",
+    "source_ids": [
+      "ccle_broad_2025"
+    ],
+    "source_study_id": "ccle_broad_2025",
+    "title": "Cancer Cell Line Encyclopedia (Broad, Nat Rev Cancer 2025)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Cancer Cell Line Encyclopedia (Broad, Nat Rev Cancer 2025)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=ccle_broad_2025",
+    "citation": "Arafeh, Rand et al. Nature Reviews 2025",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "mixed",
+    "figure_question": "在 Cancer Cell Line Encyclopedia (Broad, Nat Rev Cancer 2025) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/ccle_broad_2025_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/ccle_broad_2025_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/ccle_broad_2025_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/ccle_broad_2025_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "pan_origimed_2020_round57_mutation_type_distribution",
+    "source_ids": [
+      "pan_origimed_2020"
+    ],
+    "source_study_id": "pan_origimed_2020",
+    "title": "China Pan-cancer (OrigiMed, Nature 2022)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "China Pan-cancer (OrigiMed, Nature 2022)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=pan_origimed_2020",
+    "citation": "Wu, Liqun et al. Nature 2022",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "mixed",
+    "figure_question": "在 China Pan-cancer (OrigiMed, Nature 2022) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/pan_origimed_2020_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/pan_origimed_2020_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/pan_origimed_2020_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/pan_origimed_2020_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "cll_broad_2015_round57_mutation_type_distribution",
+    "source_ids": [
+      "cll_broad_2015"
+    ],
+    "source_study_id": "cll_broad_2015",
+    "title": "Chronic Lymphocytic Leukemia (Broad, Nature 2015)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Chronic Lymphocytic Leukemia (Broad, Nature 2015)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=cll_broad_2015",
+    "citation": "Landau et al. Nature 2015",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "cllsll",
+    "figure_question": "在 Chronic Lymphocytic Leukemia (Broad, Nature 2015) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/cll_broad_2015_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/cll_broad_2015_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/cll_broad_2015_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/cll_broad_2015_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "cll_broad_2022_round57_mutation_type_distribution",
+    "source_ids": [
+      "cll_broad_2022"
+    ],
+    "source_study_id": "cll_broad_2022",
+    "title": "Chronic Lymphocytic Leukemia (Broad, Nature Genetics 2022)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Chronic Lymphocytic Leukemia (Broad, Nature Genetics 2022)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=cll_broad_2022",
+    "citation": "Knisbacher et al. Nature 2022",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "cllsll",
+    "figure_question": "在 Chronic Lymphocytic Leukemia (Broad, Nature Genetics 2022) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/cll_broad_2022_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/cll_broad_2022_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/cll_broad_2022_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/cll_broad_2022_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "cll_iuopa_2015_round57_mutation_type_distribution",
+    "source_ids": [
+      "cll_iuopa_2015"
+    ],
+    "source_study_id": "cll_iuopa_2015",
+    "title": "Chronic Lymphocytic Leukemia (IUOPA, Nature 2015)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Chronic Lymphocytic Leukemia (IUOPA, Nature 2015)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=cll_iuopa_2015",
+    "citation": "Puente et al. Nature 2015",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "cllsll",
+    "figure_question": "在 Chronic Lymphocytic Leukemia (IUOPA, Nature 2015) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/cll_iuopa_2015_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/cll_iuopa_2015_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/cll_iuopa_2015_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/cll_iuopa_2015_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "cllsll_icgc_2011_round57_mutation_type_distribution",
+    "source_ids": [
+      "cllsll_icgc_2011"
+    ],
+    "source_study_id": "cllsll_icgc_2011",
+    "title": "Chronic lymphocytic leukemia (ICGC, Nature Genetics 2011)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Chronic lymphocytic leukemia (ICGC, Nature Genetics 2011)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=cllsll_icgc_2011",
+    "citation": "Quesada et al. Nature Genetics 2011",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "cllsll",
+    "figure_question": "在 Chronic lymphocytic leukemia (ICGC, Nature Genetics 2011) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/cllsll_icgc_2011_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/cllsll_icgc_2011_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/cllsll_icgc_2011_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/cllsll_icgc_2011_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "bowel_colitis_msk_2022_round57_mutation_type_distribution",
+    "source_ids": [
+      "bowel_colitis_msk_2022"
+    ],
+    "source_study_id": "bowel_colitis_msk_2022",
+    "title": "Colorectal Adenocarcinoma (MSK, Nat Commun 2022)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Colorectal Adenocarcinoma (MSK, Nat Commun 2022)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=bowel_colitis_msk_2022",
+    "citation": "Walid K et al. Nat Commun. 2022",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "bowel",
+    "figure_question": "在 Colorectal Adenocarcinoma (MSK, Nat Commun 2022) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/bowel_colitis_msk_2022_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/bowel_colitis_msk_2022_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/bowel_colitis_msk_2022_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/bowel_colitis_msk_2022_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "crc_hta8_htan_2024_round57_mutation_type_distribution",
+    "source_ids": [
+      "crc_hta8_htan_2024"
+    ],
+    "source_study_id": "crc_hta8_htan_2024",
+    "title": "Colorectal Cancer (HTAN MSK, Nature 2025)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Colorectal Cancer (HTAN MSK, Nature 2025)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=crc_hta8_htan_2024",
+    "citation": "Moorman et al. Nature 2025",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "coadread",
+    "figure_question": "在 Colorectal Cancer (HTAN MSK, Nature 2025) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/crc_hta8_htan_2024_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/crc_hta8_htan_2024_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/crc_hta8_htan_2024_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/crc_hta8_htan_2024_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "crc_sysucc_2022_round57_mutation_type_distribution",
+    "source_ids": [
+      "crc_sysucc_2022"
+    ],
+    "source_study_id": "crc_sysucc_2022",
+    "title": "Colorectal Cancer- ChangKang Project (SYSUCC, Nat Commun 2022)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Colorectal Cancer- ChangKang Project (SYSUCC, Nat Commun 2022)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=crc_sysucc_2022",
+    "citation": "Qi et al. Nat Commun 2022",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "coadread",
+    "figure_question": "在 Colorectal Cancer- ChangKang Project (SYSUCC, Nat Commun 2022) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/crc_sysucc_2022_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/crc_sysucc_2022_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/crc_sysucc_2022_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/crc_sysucc_2022_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "difg_glass_2019_round57_mutation_type_distribution",
+    "source_ids": [
+      "difg_glass_2019"
+    ],
+    "source_study_id": "difg_glass_2019",
+    "title": "Diffuse Glioma (GLASS Consortium, Nature 2019)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Diffuse Glioma (GLASS Consortium, Nature 2019)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=difg_glass_2019",
+    "citation": "Barthel & Johnson et al. Nature 2019",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "difg",
+    "figure_question": "在 Diffuse Glioma (GLASS Consortium, Nature 2019) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/difg_glass_2019_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/difg_glass_2019_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/difg_glass_2019_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/difg_glass_2019_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "ucec_msk_2024_round57_mutation_type_distribution",
+    "source_ids": [
+      "ucec_msk_2024"
+    ],
+    "source_study_id": "ucec_msk_2024",
+    "title": "Endometrial and Ovarian Cancer (MSK, Nature Medicine 2024)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Endometrial and Ovarian Cancer (MSK, Nature Medicine 2024)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=ucec_msk_2024",
+    "citation": "Friedman, Claire F et al. Nature Medicine 2024",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "mixed",
+    "figure_question": "在 Endometrial and Ovarian Cancer (MSK, Nature Medicine 2024) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/ucec_msk_2024_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/ucec_msk_2024_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/ucec_msk_2024_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/ucec_msk_2024_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "hcc_meric_2021_round57_mutation_type_distribution",
+    "source_ids": [
+      "hcc_meric_2021"
+    ],
+    "source_study_id": "hcc_meric_2021",
+    "title": "Hepatocellular Carcinoma (MERiC/Basel, Nat Commun. 2022)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Hepatocellular Carcinoma (MERiC/Basel, Nat Commun. 2022)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=hcc_meric_2021",
+    "citation": "Charlotte Ng et al. Nat Commun. 2022",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "hcc",
+    "figure_question": "在 Hepatocellular Carcinoma (MERiC/Basel, Nat Commun. 2022) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/hcc_meric_2021_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/hcc_meric_2021_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/hcc_meric_2021_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/hcc_meric_2021_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "panet_shanghai_2013_round57_mutation_type_distribution",
+    "source_ids": [
+      "panet_shanghai_2013"
+    ],
+    "source_study_id": "panet_shanghai_2013",
+    "title": "Insulinoma (Shanghai, Nat Commun 2013)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Insulinoma (Shanghai, Nat Commun 2013)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=panet_shanghai_2013",
+    "citation": "Cao et al. Nat Commun 2013",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "panet",
+    "figure_question": "在 Insulinoma (Shanghai, Nat Commun 2013) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/panet_shanghai_2013_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/panet_shanghai_2013_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/panet_shanghai_2013_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/panet_shanghai_2013_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "ihch_smmu_2014_round57_mutation_type_distribution",
+    "source_ids": [
+      "ihch_smmu_2014"
+    ],
+    "source_study_id": "ihch_smmu_2014",
+    "title": "Intrahepatic Cholangiocarcinoma (Shanghai, Nat Commun 2014)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Intrahepatic Cholangiocarcinoma (Shanghai, Nat Commun 2014)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=ihch_smmu_2014",
+    "citation": "Shanshan et al. Nat Commun 2014",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "ihch",
+    "figure_question": "在 Intrahepatic Cholangiocarcinoma (Shanghai, Nat Commun 2014) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/ihch_smmu_2014_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/ihch_smmu_2014_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/ihch_smmu_2014_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/ihch_smmu_2014_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "brca_mapk_hp_msk_2021_round57_mutation_type_distribution",
+    "source_ids": [
+      "brca_mapk_hp_msk_2021"
+    ],
+    "source_study_id": "brca_mapk_hp_msk_2021",
+    "title": "MAPK on resistance to anti-HER2 therapy for breast cancer (MSK, Nat Commun. 2022)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "MAPK on resistance to anti-HER2 therapy for breast cancer (MSK, Nat Commun. 2022)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=brca_mapk_hp_msk_2021",
+    "citation": "Alison E et al.  Nat Commun 2022",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "brca",
+    "figure_question": "在 MAPK on resistance to anti-HER2 therapy for breast cancer (MSK, Nat Commun. 2022) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/brca_mapk_hp_msk_2021_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/brca_mapk_hp_msk_2021_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/brca_mapk_hp_msk_2021_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/brca_mapk_hp_msk_2021_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "msk_access_2021_round57_mutation_type_distribution",
+    "source_ids": [
+      "msk_access_2021"
+    ],
+    "source_study_id": "msk_access_2021",
+    "title": "MSK-IMPACT and MSK-ACCESS Mixed Cohort (MSK, Nat Commun 2021)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "MSK-IMPACT and MSK-ACCESS Mixed Cohort (MSK, Nat Commun 2021)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=msk_access_2021",
+    "citation": "Brannon et al. Nat Commun 2021",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "mixed",
+    "figure_question": "在 MSK-IMPACT and MSK-ACCESS Mixed Cohort (MSK, Nat Commun 2021) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/msk_access_2021_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/msk_access_2021_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/msk_access_2021_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/msk_access_2021_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "mixed_selpercatinib_2020_round57_mutation_type_distribution",
+    "source_ids": [
+      "mixed_selpercatinib_2020"
+    ],
+    "source_study_id": "mixed_selpercatinib_2020",
+    "title": "Mixed Tumors Selpercatinib RET Trial (MSK, Nat Commun. 2022)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Mixed Tumors Selpercatinib RET Trial (MSK, Nat Commun. 2022)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=mixed_selpercatinib_2020",
+    "citation": "Ezra Y et al. Nat Commun 2022",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "mixed",
+    "figure_question": "在 Mixed Tumors Selpercatinib RET Trial (MSK, Nat Commun. 2022) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/mixed_selpercatinib_2020_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/mixed_selpercatinib_2020_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/mixed_selpercatinib_2020_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/mixed_selpercatinib_2020_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "mixed_kunga_msk_2022_round57_mutation_type_distribution",
+    "source_ids": [
+      "mixed_kunga_msk_2022"
+    ],
+    "source_study_id": "mixed_kunga_msk_2022",
+    "title": "Pediatric Pancan Tumors (MSK,Nat Commun. 2022)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Pediatric Pancan Tumors (MSK,Nat Commun. 2022)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=mixed_kunga_msk_2022",
+    "citation": "Shukla,N et al. Nat Commun 2022",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "mixed",
+    "figure_question": "在 Pediatric Pancan Tumors (MSK,Nat Commun. 2022) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/mixed_kunga_msk_2022_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/mixed_kunga_msk_2022_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/mixed_kunga_msk_2022_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/mixed_kunga_msk_2022_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "pancan_pdx_uthsa_2023_round57_mutation_type_distribution",
+    "source_ids": [
+      "pancan_pdx_uthsa_2023"
+    ],
+    "source_study_id": "pancan_pdx_uthsa_2023",
+    "title": "Pediatric solid tumor PDXs (UTHSA, Nat Commun 2023)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Pediatric solid tumor PDXs (UTHSA, Nat Commun 2023)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=pancan_pdx_uthsa_2023",
+    "citation": "Funan et al. Nat Commun 2023",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "mixed",
+    "figure_question": "在 Pediatric solid tumor PDXs (UTHSA, Nat Commun 2023) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/pancan_pdx_uthsa_2023_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/pancan_pdx_uthsa_2023_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/pancan_pdx_uthsa_2023_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/pancan_pdx_uthsa_2023_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "prostate_pcbm_swiss_2019_round57_mutation_type_distribution",
+    "source_ids": [
+      "prostate_pcbm_swiss_2019"
+    ],
+    "source_study_id": "prostate_pcbm_swiss_2019",
+    "title": "Prostate Cancer Brain Metastases (Bern, Nat Commun. 2022)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Prostate Cancer Brain Metastases (Bern, Nat Commun. 2022)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=prostate_pcbm_swiss_2019",
+    "citation": "Rodriguez-Calero et al. Nat Commun. 2022",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "prostate",
+    "figure_question": "在 Prostate Cancer Brain Metastases (Bern, Nat Commun. 2022) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/prostate_pcbm_swiss_2019_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/prostate_pcbm_swiss_2019_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/prostate_pcbm_swiss_2019_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/prostate_pcbm_swiss_2019_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "sft_sysucc_2023_round57_mutation_type_distribution",
+    "source_ids": [
+      "sft_sysucc_2023"
+    ],
+    "source_study_id": "sft_sysucc_2023",
+    "title": "Solitary Fibrous Tumors (SYSUCC, Nat Commun 2023)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Solitary Fibrous Tumors (SYSUCC, Nat Commun 2023)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=sft_sysucc_2023",
+    "citation": "Zhang et al. Nat Commun 2023",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "mixed",
+    "figure_question": "在 Solitary Fibrous Tumors (SYSUCC, Nat Commun 2023) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/sft_sysucc_2023_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/sft_sysucc_2023_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/sft_sysucc_2023_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/sft_sysucc_2023_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "lung_pdx_msk_2021_round57_mutation_type_distribution",
+    "source_ids": [
+      "lung_pdx_msk_2021"
+    ],
+    "source_study_id": "lung_pdx_msk_2021",
+    "title": "Thoracic Cancer (MSK, Nat Commun 2021)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Thoracic Cancer (MSK, Nat Commun 2021)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=lung_pdx_msk_2021",
+    "citation": "Rebecca et al. Nat Commun. 2022",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "lung",
+    "figure_question": "在 Thoracic Cancer (MSK, Nat Commun 2021) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/lung_pdx_msk_2021_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/lung_pdx_msk_2021_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/lung_pdx_msk_2021_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/lung_pdx_msk_2021_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "utuc_cornell_baylor_mdacc_2019_round57_mutation_type_distribution",
+    "source_ids": [
+      "utuc_cornell_baylor_mdacc_2019"
+    ],
+    "source_study_id": "utuc_cornell_baylor_mdacc_2019",
+    "title": "Upper Tract Urothelial Carcinoma (Cornell/Baylor/MDACC, Nat Commun 2019)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Upper Tract Urothelial Carcinoma (Cornell/Baylor/MDACC, Nat Commun 2019)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=utuc_cornell_baylor_mdacc_2019",
+    "citation": "Robinson et al. Nat Commun 2019",
+    "tier": "Nature/Nature Communications公开研究来源",
+    "disease_area": "utuc",
+    "figure_question": "在 Upper Tract Urothelial Carcinoma (Cornell/Baylor/MDACC, Nat Commun 2019) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/utuc_cornell_baylor_mdacc_2019_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/utuc_cornell_baylor_mdacc_2019_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/utuc_cornell_baylor_mdacc_2019_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/utuc_cornell_baylor_mdacc_2019_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "panet_jhu_2011_round57_mutation_type_distribution",
+    "source_ids": [
+      "panet_jhu_2011"
+    ],
+    "source_study_id": "panet_jhu_2011",
+    "title": "Pancreatic Neuroendocrine Tumors (Johns Hopkins University, Science 2011)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Pancreatic Neuroendocrine Tumors (Johns Hopkins University, Science 2011)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=panet_jhu_2011",
+    "citation": "Jiao et al. Science 2011",
+    "tier": "Science公开研究来源",
+    "disease_area": "panet",
+    "figure_question": "在 Pancreatic Neuroendocrine Tumors (Johns Hopkins University, Science 2011) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/panet_jhu_2011_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/panet_jhu_2011_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/panet_jhu_2011_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/panet_jhu_2011_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "prad_organoids_msk_2022_round57_mutation_type_distribution",
+    "source_ids": [
+      "prad_organoids_msk_2022"
+    ],
+    "source_study_id": "prad_organoids_msk_2022",
+    "title": "Prostate Cancer (MSK, Science 2022)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Prostate Cancer (MSK, Science 2022)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=prad_organoids_msk_2022",
+    "citation": "Tang et al. Science 2022",
+    "tier": "Science公开研究来源",
+    "disease_area": "prad",
+    "figure_question": "在 Prostate Cancer (MSK, Science 2022) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/prad_organoids_msk_2022_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/prad_organoids_msk_2022_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/prad_organoids_msk_2022_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/prad_organoids_msk_2022_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "aml_tcga_gdc_round57_mutation_type_distribution",
+    "source_ids": [
+      "aml_tcga_gdc"
+    ],
+    "source_study_id": "aml_tcga_gdc",
+    "title": "Acute Myeloid Leukemia (TCGA GDC, 2025)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Acute Myeloid Leukemia (TCGA GDC, 2025)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=aml_tcga_gdc",
+    "citation": "待核对正式引用",
+    "tier": "公开高水平研究来源",
+    "disease_area": "aml",
+    "figure_question": "在 Acute Myeloid Leukemia (TCGA GDC, 2025) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/aml_tcga_gdc_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/aml_tcga_gdc_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/aml_tcga_gdc_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/aml_tcga_gdc_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "asclc_msk_2024_round57_mutation_type_distribution",
+    "source_ids": [
+      "asclc_msk_2024"
+    ],
+    "source_study_id": "asclc_msk_2024",
+    "title": "Atypical Small Cell Lung Cancer (MSK, Cancer Discov 2024)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Atypical Small Cell Lung Cancer (MSK, Cancer Discov 2024)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=asclc_msk_2024",
+    "citation": "Rekhtman N et al. Cancer Discov 2024",
+    "tier": "公开高水平研究来源",
+    "disease_area": "lung",
+    "figure_question": "在 Atypical Small Cell Lung Cancer (MSK, Cancer Discov 2024) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/asclc_msk_2024_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/asclc_msk_2024_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/asclc_msk_2024_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/asclc_msk_2024_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "bcc_unige_2016_round57_mutation_type_distribution",
+    "source_ids": [
+      "bcc_unige_2016"
+    ],
+    "source_study_id": "bcc_unige_2016",
+    "title": "Basal Cell Carcinoma (UNIGE, Nat Genet 2016)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Basal Cell Carcinoma (UNIGE, Nat Genet 2016)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=bcc_unige_2016",
+    "citation": "Bonilla et al. Nat Genet 2016",
+    "tier": "公开高水平研究来源",
+    "disease_area": "bcc",
+    "figure_question": "在 Basal Cell Carcinoma (UNIGE, Nat Genet 2016) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/bcc_unige_2016_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/bcc_unige_2016_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/bcc_unige_2016_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/bcc_unige_2016_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "blca_msk_tcga_2020_round57_mutation_type_distribution",
+    "source_ids": [
+      "blca_msk_tcga_2020"
+    ],
+    "source_study_id": "blca_msk_tcga_2020",
+    "title": "Bladder Cancer (MSK/TCGA, Eur Urol 2020)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Bladder Cancer (MSK/TCGA, Eur Urol 2020)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=blca_msk_tcga_2020",
+    "citation": "Pietzak et al. Eur Urol 2019",
+    "tier": "公开高水平研究来源",
+    "disease_area": "blca",
+    "figure_question": "在 Bladder Cancer (MSK/TCGA, Eur Urol 2020) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/blca_msk_tcga_2020_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/blca_msk_tcga_2020_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/blca_msk_tcga_2020_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/blca_msk_tcga_2020_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "blca_tcga_gdc_round57_mutation_type_distribution",
+    "source_ids": [
+      "blca_tcga_gdc"
+    ],
+    "source_study_id": "blca_tcga_gdc",
+    "title": "Bladder Urothelial Carcinoma (TCGA GDC, 2025)：常见基因突变类型分布教学重绘图",
+    "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+    "source_platform": "cBioPortal public API",
+    "public_source_title": "Bladder Urothelial Carcinoma (TCGA GDC, 2025)",
+    "public_source_url": "https://www.cbioportal.org/study/summary?id=blca_tcga_gdc",
+    "citation": "待核对正式引用",
+    "tier": "公开高水平研究来源",
+    "disease_area": "blca",
+    "figure_question": "在 Bladder Urothelial Carcinoma (TCGA GDC, 2025) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+    "teaching_use": [
+      "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+      "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+      "作为方法页、图谱页和文章流程页中的公开来源示例。"
+    ],
+    "recommended_methods": [
+      "突变谱摘要",
+      "公开队列入门",
+      "图注审查",
+      "数据来源核验"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "突变类型分布图",
+      "队列证据卡"
+    ],
+    "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+    "source_data": "data/public_reproducible_examples/blca_tcga_gdc_round57_mutation_type_summary.csv",
+    "metadata": "data/public_reproducible_examples/blca_tcga_gdc_round57_mutation_example_metadata.json",
+    "visual_url": "outputs/public_reproducible_examples/blca_tcga_gdc_round57_mutation_type_distribution.svg",
+    "png_url": "outputs/public_reproducible_examples/blca_tcga_gdc_round57_mutation_type_distribution.png",
+    "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  }
+]

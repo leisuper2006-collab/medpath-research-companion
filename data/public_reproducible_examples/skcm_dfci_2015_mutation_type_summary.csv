@@ -1,0 +1,17 @@
+"gene","mutationType","mutation_records","total_records","fraction"
+"NRAS","Missense_Mutation",37,45,0.822222222222222
+"NRAS","Nonsense_Mutation",5,45,0.111111111111111
+"NRAS","Translation_Start_Site",2,45,0.0444444444444444
+"NRAS","Splice_Site",1,45,0.0222222222222222
+"BRAF","Missense_Mutation",41,42,0.976190476190476
+"BRAF","Nonsense_Mutation",1,42,0.0238095238095238
+"NF1","Missense_Mutation",13,26,0.5
+"NF1","Nonsense_Mutation",8,26,0.307692307692308
+"NF1","Splice_Site",5,26,0.192307692307692
+"TP53","Missense_Mutation",10,15,0.666666666666667
+"TP53","Nonsense_Mutation",4,15,0.266666666666667
+"TP53","Splice_Site",1,15,0.0666666666666667
+"PTEN","Missense_Mutation",7,9,0.777777777777778
+"PTEN","Nonsense_Mutation",1,9,0.111111111111111
+"PTEN","Splice_Site",1,9,0.111111111111111
+"KIT","Missense_Mutation",3,3,1

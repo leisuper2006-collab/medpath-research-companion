@@ -1,0 +1,10 @@
+{
+  "url": "http://127.0.0.1:3000/mobile-app",
+  "title": "MedPath Research & Education Skills Studio",
+  "manifest": "/manifest.webmanifest",
+  "icon": "/static/icons/medpath-icon.svg",
+  "hasSW": true,
+  "registrationCount": 1,
+  "bodyText": "本地原型\nMock模型可用\n不处理真实患者数据\nMobile App Blueprint · 手机端设计路线\n把科研新手的每一步，做成手机里能跟着走的学习路径\n\n手机端不是把网页缩小，而是把“我现在不知道下一步做什么”转化为一张随身任务卡：先理解问题，再选择方法，再准备数据，最后完成写作、绘图和伦理审查。\n\n使用场景\n按科研时刻进入\n手机原型\n三屏产品样机\n学习路径\n从0到交付\n设计交付\nFigma与开发说明\nResearch Companion in Pocket\n科研小白打开手机后，看到的不是按钮堆叠，而是下一步行动。\n\n页面会根据“想做什么”自动推荐方法族、文章类型、图形方案、数据审查和Skill调用链。每个任务都配有示例图、来源说明、常见错误和教师复核提示。\n\n入口\n新手问题\n\n用自然语言描述需求，不要求先知道方法名。\n\n路径\n任务分解\n\n把大目标拆成可执行步骤和可复核证据。\n\n输出\nSkill规范\n\n接入自己的模型API后按统一格式生成材料。\n\n审计\n风险边界\n\n临床、隐私、引用和学术诚信风险先拦截。\n\nMedPath\n09:20\n方法导航\n我想做基因敲除\n\n先选目的：验证功",
+  "console_errors": []
+}

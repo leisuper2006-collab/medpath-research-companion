@@ -1,0 +1,39 @@
+{
+  "id": "ccle_broad_2025_round57_mutation_type_distribution",
+  "source_ids": [
+    "ccle_broad_2025"
+  ],
+  "source_study_id": "ccle_broad_2025",
+  "title": "Cancer Cell Line Encyclopedia (Broad, Nat Rev Cancer 2025)：常见基因突变类型分布教学重绘图",
+  "subtitle": "公开 cBioPortal API 数据教学化重绘，不复制论文原图",
+  "source_platform": "cBioPortal public API",
+  "public_source_title": "Cancer Cell Line Encyclopedia (Broad, Nat Rev Cancer 2025)",
+  "public_source_url": "https://www.cbioportal.org/study/summary?id=ccle_broad_2025",
+  "citation": "Arafeh, Rand et al. Nature Reviews 2025",
+  "tier": "Nature/Nature Communications公开研究来源",
+  "disease_area": "mixed",
+  "figure_question": "在 Cancer Cell Line Encyclopedia (Broad, Nat Rev Cancer 2025) 中，常见教学基因的突变记录和突变类型如何被整理成新手可读的图？",
+  "teaching_use": [
+    "训练新手理解公开队列、基因、突变类型和图注边界之间的关系。",
+    "演示如何从公开 API 记录生成可复核的教学图，而不是复制论文原图。",
+    "作为方法页、图谱页和文章流程页中的公开来源示例。"
+  ],
+  "recommended_methods": [
+    "突变谱摘要",
+    "公开队列入门",
+    "图注审查",
+    "数据来源核验"
+  ],
+  "recommended_plots": [
+    "堆叠条形图",
+    "突变类型分布图",
+    "队列证据卡"
+  ],
+  "script": "scripts/round57_reproduce_cbioportal_remaining_public_plots.R",
+  "source_data": "data/public_reproducible_examples/ccle_broad_2025_round57_mutation_type_summary.csv",
+  "metadata": "data/public_reproducible_examples/ccle_broad_2025_round57_mutation_example_metadata.json",
+  "visual_url": "outputs/public_reproducible_examples/ccle_broad_2025_round57_mutation_type_distribution.svg",
+  "png_url": "outputs/public_reproducible_examples/ccle_broad_2025_round57_mutation_type_distribution.png",
+  "reuse_boundary": "仅作为公开数据教学重绘图和来源学习示例；正式科研写作需回到 cBioPortal、原论文和许可条款核验。",
+  "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+}

@@ -1,0 +1,12 @@
+{
+  "title": "COADREAD TCGA Nature 2012: selected-gene mutation type distribution",
+  "zh_title": "结直肠腺癌TCGA Nature 2012",
+  "source": "cBioPortal public REST API",
+  "study_id": "coadread_tcga_pub",
+  "molecular_profile_id": "coadread_tcga_pub_mutations",
+  "sample_list_id": "coadread_tcga_pub_all",
+  "source_url": "https://www.cbioportal.org/study/summary?id=coadread_tcga_pub",
+  "genes": ["TP53", "KRAS", "BRAF", "PIK3CA", "APC", "SMAD4"],
+  "safety_boundary": "Public API summary data teaching re-plot only; not a clinical diagnostic result.",
+  "generated_at": "2026-06-11 07:13:55 CST"
+}

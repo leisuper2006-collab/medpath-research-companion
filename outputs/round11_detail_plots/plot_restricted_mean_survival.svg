@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='760' height='500' viewBox='0 0 760 500'>
+<rect width='760' height='500' rx='26' fill='#fffdf8'/>
+<rect x='34' y='34' width='692' height='412' rx='20' fill='#ffffff' stroke='#d8c7a2' stroke-width='1.4'/>
+<text x='62' y='78' font-family='Arial, sans-serif' font-size='24' font-weight='700' fill='#132237'>限制平均生存时间图</text>
+<text x='62' y='106' font-family='Arial, sans-serif' font-size='13' fill='#667085'>生存分析 / Restricted mean survival time plot</text>
+<line x1='90' y1='380' x2='690' y2='380' stroke='#344054'/><line x1='90' y1='380' x2='90' y2='135' stroke='#344054'/><path d='M105 155 H169 V175 H233 V181 H297 V195 H361 V217 H425 V234 H489 V243 H553 V261 H617 V280' fill='none' stroke='#0f766e' stroke-width='4'/><path d='M105 164 H169 V188 H233 V204 H297 V216 H361 V236 H425 V261 H489 V279 H553 V292 H617 V315' fill='none' stroke='#2563eb' stroke-width='4'/><path d='M105 173 H169 V198 H233 V220 H297 V243 H361 V265 H425 V285 H489 V309 H553 V331 H617 V352' fill='none' stroke='#b45309' stroke-width='4'/>
+<text x='380' y='476' text-anchor='middle' font-family='Arial, sans-serif' font-size='12' fill='#8a6d3b'>Synthetic teaching visual; replace with audited user data for real research.</text>
+</svg>

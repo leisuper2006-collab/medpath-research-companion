@@ -1,0 +1,74 @@
+[
+  {
+    "id": "teaching",
+    "name": "MedPath Teaching Skills Plugin",
+    "zh_name": "医学教育核心插件",
+    "description": "面向课程设计、病理PBL案例、超微病理导学、病理报告训练反馈与教学评价。",
+    "skills": [
+      "medpath-course-designer",
+      "pathology-case-builder",
+      "em-pathology-tutor",
+      "pathology-report-coach",
+      "ai-ethics-governor",
+      "skill-eval-harness"
+    ],
+    "enabled": true,
+    "safety_tags": [
+      "教学训练",
+      "教师复核",
+      "不替代诊断"
+    ],
+    "starter_prompts": [
+      "为本科三年级病理学课程生成胃腺癌PBL案例",
+      "根据学生报告草稿生成教学反馈"
+    ]
+  },
+  {
+    "id": "research",
+    "name": "MedPath Research Skills Plugin",
+    "zh_name": "科研工作站插件",
+    "description": "面向科研训练、RAG/知识图谱、开源工具导航、科研绘图和方法运行。",
+    "skills": [
+      "medical-kg-rag-builder",
+      "research-copilot",
+      "innovation-incubator",
+      "open-source-navigator-curator",
+      "plot-studio-runner",
+      "method-runner",
+      "case-simulation-generator"
+    ],
+    "enabled": false,
+    "safety_tags": [
+      "科研训练",
+      "示例数据",
+      "License核对"
+    ],
+    "starter_prompts": [
+      "检索虚拟扰动相关开源工具",
+      "生成科研图表审计清单"
+    ]
+  },
+  {
+    "id": "governance",
+    "name": "MedPath Governance & Evaluation Plugin",
+    "zh_name": "治理评价插件",
+    "description": "面向医学AI伦理治理、质量评价、教师共创、模型路由和私有运行环境。",
+    "skills": [
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker",
+      "model-router",
+      "local-runtime-runner"
+    ],
+    "enabled": true,
+    "safety_tags": [
+      "隐私审计",
+      "红队样例",
+      "D10字段"
+    ],
+    "starter_prompts": [
+      "审计一段AI输出是否存在临床误导",
+      "生成D10评价字段模板"
+    ]
+  }
+]

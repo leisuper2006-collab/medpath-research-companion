@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="560" viewBox="0 0 920 560">
+  <style>
+    .bg{fill:#fbfaf6}
+    .panel{fill:#ffffff;stroke:#d9e4df;stroke-width:1.2}
+    .title{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;font-size:27px;font-weight:700;fill:#10233f}
+    .body{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;font-size:18px;fill:#546271}
+    .tag{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;font-size:16px;font-weight:700;fill:#0f766e}
+    .small{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;font-size:14px;fill:#6b7280}
+  </style>
+  <rect class="bg" width="920" height="560" rx="26"/>
+  <rect x="28" y="28" width="864" height="504" rx="24" class="panel"/>
+  <circle cx="806" cy="96" r="54" fill="#7c3aed" opacity=".18"/>
+  <circle cx="778" cy="155" r="24" fill="#7c3aed" opacity=".35"/>
+  <path d="M52 424 C188 345, 284 481, 422 392 S681 355, 836 424" fill="none" stroke="#7c3aed" stroke-width="8" stroke-linecap="round" opacity=".75"/>
+  <path d="M110 388 L185 328 L270 365 L348 270 L462 315 L565 230 L680 286 L790 214" fill="none" stroke="#23395d" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#7c3aed" stroke="#fff" stroke-width="3">
+    <circle cx="110" cy="388" r="10"/><circle cx="185" cy="328" r="10"/><circle cx="270" cy="365" r="10"/>
+    <circle cx="348" cy="270" r="10"/><circle cx="462" cy="315" r="10"/><circle cx="565" cy="230" r="10"/>
+    <circle cx="680" cy="286" r="10"/><circle cx="790" cy="214" r="10"/>
+  </g>
+  <rect x="42" y="40" width="220" height="28" rx="14" fill="#e8f6f1"/>
+  <text x="58" y="60" class="tag">Method · 病理与影像</text>
+  <text x="42" y="72" class="title">免疫组化评分进阶设计：新手路线示例</text>
+  <text x="42" y="194" class="body">解读免疫组化评分进阶设计输出时，先看它是否解决免疫组化评分在进阶设计</text><text x="42" y="219" class="body">阶段的关键问题，再看推荐的单细胞UMAP图或工具输出是否能够支撑“从</text><text x="42" y="244" class="body">图像材料到可复核形态证据”下的证据判断。</text>
+  <text x="42" y="500" class="small">公开来源线索或合成教学图：仅用于学习路径和字段审查，不代表真实研究结果。</text>
+</svg>

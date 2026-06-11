@@ -1,0 +1,12 @@
+{
+  "title": "ACC TCGA PanCancer Atlas: selected-gene mutation type distribution",
+  "zh_title": "肾上腺皮质癌TCGA PanCancer Atlas",
+  "source": "cBioPortal public REST API",
+  "study_id": "acc_tcga_pan_can_atlas_2018",
+  "molecular_profile_id": "acc_tcga_pan_can_atlas_2018_mutations",
+  "sample_list_id": "acc_tcga_pan_can_atlas_2018_all",
+  "source_url": "https://www.cbioportal.org/study/summary?id=acc_tcga_pan_can_atlas_2018",
+  "genes": ["TP53", "CTNNB1", "MEN1", "PRKAR1A", "ZNRF3"],
+  "safety_boundary": "Public API summary data teaching re-plot only; not a clinical diagnostic result.",
+  "generated_at": "2026-06-11 07:13:50 CST"
+}

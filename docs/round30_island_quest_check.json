@@ -1,0 +1,18 @@
+{
+  "canvasFound": true,
+  "nonBlank": 15533,
+  "uniqueColors": 230,
+  "passportFound": true,
+  "passportHasProgress": true,
+  "routeCards": 10,
+  "badgeCards": 10,
+  "routeCardsHaveEvidence": true,
+  "panelHasFocus": true,
+  "panelHasActions": true,
+  "safetyBoundary": true,
+  "textSample": "MedPath Studio\n基础医学与数智病理科研教育平台\n开始\n平台首页\n总览与任务入口\n科研新手导航\n按问题找方法\n研究路径生成器\n一句话搭流程\n方法宇宙\n650+方法卡\n基因敲除家族\n24种扰动路线\n文章工坊\n28类文章流程\n方法理解器\n输入-流程-输出\n手机端App\n随身科研路线\n教学与训练\n教师工作台\n课程/PBL/评价\n学生训练台\n报告反馈\n模拟案例实验室\n合成案例\n插件与工具\n插件中心\n三类能力插件\n开源工具库\nGitHub工具导航\n科研绘图室\n图形选择与导出\n图谱宇宙\n100种科研图\n数据审查室\n先审数据再分析\nSkill共创工坊\n生成Skill草稿\n运行与治理\n对照实验室\n三组对照\n证据画廊\n待实测证据链\n运行环境\n本地/服务器说明\n模型网关\nProvider配置\nAPI规范化\n请求包与审查\n伦理审计\n风险与复核\n科研小岛\n交互式学习地图\n3D科研小岛\n任务岛屿原型\n设置\n安全边界\n本地原型\nMock模型可用\n不处理真实患者数据\nResearch Island 3D Prototype · 新手任务岛\n把“科研小白入门”做成可走、可点、可对话的任务小岛\n\n这是一个本地等距视角原型：每座建筑都是一个真实工作流入口。你可以点击建筑移动角色，查看它解决什么问题、三步怎么完成、会调用哪些Skill、最终要留下哪些可复核证据。\n\n进入小岛\n点击建筑移动角色\n学习进度\n查看已访问任务\n建筑路线\n进入真实功能页\nQuest Passport · 科研护照\n今天不需要逛完整座岛，只要完成一个能留下证据的小任务。\n\n科研新手最容易卡住的地方，是不知道“下一步产出是什么”。这张护照把每座建筑转成一个可完成动作：准备输入、运行Skill、检查边界、留下复核证据。\n\n2/10\n已访问建筑\n20%\n学习护照进度\n推荐下一站\n科研绘图室\n\n任务二：从一张表生成一组论文级图表计划\n\n让小向导带我去\n01\n起步\n\n读懂方法、文章和图表的入口\n\n02\n运行\n\n能生成一个小型任务草案\n\n03\n审计\n\n知道哪些输出必须退回或复核\n\n04\n归档\n\n留下输入、输出、风险和教师反馈\n\n当前聚焦\n导师小屋\n\n先做小闭环：一个问题、一张图、一段方法说明。\n\n任务进度\n2/10\n当前建筑\n导师小屋\n奖励\n获得“路线规划师”徽章，并在桌宠工作台解锁每日提醒。\n科研小向导\n\n导师小屋已解锁：先做小闭环：一个问题、一张图、一段方法说明。\n\n点击建筑移动角色，也可用 W/A/S/D 或方向键手动探索；靠近建筑会自动打开任务。当前为本地教学原型，不连接真实患者数据，不替代导师或教师复核。\n当前任务\n导师小屋\n\n任务七：定制一条科研新手学习路径\n\n适合刚加入课题组、第一次做数据库分析、第一次写综述或第一次做教学案例的学生。\n\n解决的问题\n把新手需求安排成一周到四周的学习路径\n新手提示\n先做小闭环：一",
+  "url": "http://127.0.0.1:4173",
+  "screenshot": "C:\\Users\\HONOR\\Desktop\\AI skill\\medpath-research-education-skills-studio-real\\docs\\round30_island_quest_verified.png",
+  "console_errors": [],
+  "bad_markers": []
+}

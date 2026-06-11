@@ -1,0 +1,12 @@
+{
+  "title": "SKCM DFCI Science 2015: selected-gene mutation type distribution",
+  "zh_title": "转移性黑色素瘤DFCI Science 2015",
+  "source": "cBioPortal public REST API",
+  "study_id": "skcm_dfci_2015",
+  "molecular_profile_id": "skcm_dfci_2015_mutations",
+  "sample_list_id": "skcm_dfci_2015_all",
+  "source_url": "https://www.cbioportal.org/study/summary?id=skcm_dfci_2015",
+  "genes": ["TP53", "BRAF", "PTEN", "NF1", "NRAS", "KIT"],
+  "safety_boundary": "Public API summary data teaching re-plot only; not a clinical diagnostic result.",
+  "generated_at": "2026-06-11 07:13:59 CST"
+}

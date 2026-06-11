@@ -1,0 +1,12 @@
+{
+  "title": "CCLE Broad 2019: selected-gene mutation type distribution",
+  "zh_title": "癌症细胞系百科CCLE Broad 2019",
+  "source": "cBioPortal public REST API",
+  "study_id": "ccle_broad_2019",
+  "molecular_profile_id": "ccle_broad_2019_mutations",
+  "sample_list_id": "ccle_broad_2019_all",
+  "source_url": "https://www.cbioportal.org/study/summary?id=ccle_broad_2019",
+  "genes": ["TP53", "KRAS", "BRAF", "PIK3CA", "EGFR", "ALK", "PTEN"],
+  "safety_boundary": "Public API summary data teaching re-plot only; not a clinical diagnostic result.",
+  "generated_at": "2026-06-11 07:14:03 CST"
+}

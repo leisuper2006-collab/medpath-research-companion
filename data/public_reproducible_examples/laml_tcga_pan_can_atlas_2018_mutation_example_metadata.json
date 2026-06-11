@@ -1,0 +1,11 @@
+{
+  "title": "AML TCGA PanCancer Atlas: selected-gene mutation type distribution",
+  "source": "cBioPortal public REST API",
+  "study_id": "laml_tcga_pan_can_atlas_2018",
+  "molecular_profile_id": "laml_tcga_pan_can_atlas_2018_mutations",
+  "sample_list_id": "laml_tcga_pan_can_atlas_2018_all",
+  "source_url": "https://www.cbioportal.org/study/summary?id=laml_tcga_pan_can_atlas_2018",
+  "genes": ["TP53", "IDH1", "NPM1", "DNMT3A", "FLT3", "TET2"],
+  "safety_boundary": "Public API summary data teaching re-plot only; not a clinical diagnostic result.",
+  "generated_at": "2026-06-11 06:15:19 CST"
+}

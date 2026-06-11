@@ -1,0 +1,60 @@
+{
+  "home": {
+    "url": "http://127.0.0.1:4173/?fresh=round58#/",
+    "title": "MedPath Research & Education Skills Studio",
+    "h1": "把科研新手的一句话，变成可复核的研究任务包",
+    "body_has_mojibake": false,
+    "hero_count": 1,
+    "atlas_stage_count": 1,
+    "pet_bubble_count": 1,
+    "product_story_count": 0,
+    "source_hero_count": 0,
+    "source_visual_count": 0
+  },
+  "source": {
+    "url": "http://127.0.0.1:4173/?fresh=round58#/source-library/ccle_broad_2025",
+    "title": "MedPath Research & Education Skills Studio",
+    "h1": "Cancer Cell Line Encyclopedia (Broad, Nat Rev Cancer 2025)",
+    "body_has_mojibake": false,
+    "hero_count": 0,
+    "atlas_stage_count": 0,
+    "pet_bubble_count": 1,
+    "product_story_count": 1,
+    "source_hero_count": 1,
+    "source_visual_count": 2
+  },
+  "mobile": {
+    "url": "http://127.0.0.1:4173/?fresh=round58#/",
+    "title": "MedPath Research & Education Skills Studio",
+    "h1": "把科研新手的一句话，变成可复核的研究任务包",
+    "body_has_mojibake": false,
+    "hero_count": 1,
+    "atlas_stage_count": 1,
+    "pet_bubble_count": 1,
+    "product_story_count": 0,
+    "source_hero_count": 0,
+    "source_visual_count": 0
+  },
+  "large_source_visuals": [
+    {
+      "src": "http://127.0.0.1:4173/outputs/public_reproducible_examples/ccle_broad_2025_round57_mutation_type_distribution.png",
+      "complete": true,
+      "width": 2160,
+      "height": 1320,
+      "alt": "Cancer Cell Line Encyclopedia (Broad, Nat Rev Cancer 2025)：常见基因突变类型分布教学重绘图"
+    },
+    {
+      "src": "http://127.0.0.1:4173/outputs/public_reproducible_examples/ccle_broad_2025_round57_mutation_type_distribution.png",
+      "complete": true,
+      "width": 2160,
+      "height": 1320,
+      "alt": "Cancer Cell Line Encyclopedia (Broad, Nat Rev Cancer 2025)：常见基因突变类型分布教学重绘图"
+    }
+  ],
+  "screenshots": {
+    "home": "C:\\Users\\HONOR\\Desktop\\AI skill\\medpath-research-education-skills-studio-real\\docs\\round58_home_visual_polish.png",
+    "source": "C:\\Users\\HONOR\\Desktop\\AI skill\\medpath-research-education-skills-studio-real\\docs\\round58_source_detail_visual_polish.png",
+    "mobile": "C:\\Users\\HONOR\\Desktop\\AI skill\\medpath-research-education-skills-studio-real\\docs\\round58_mobile_home_visual_polish.png"
+  },
+  "failures": []
+}

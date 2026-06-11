@@ -1,0 +1,138 @@
+[
+  {
+    "id": "laml_tcga_pan_can_atlas_2018_mutation_type_distribution",
+    "source_ids": ["laml_tcga_pan_can_atlas_2018", "laml_tcga_pub", "laml_tcga"],
+    "title": "AML TCGA PanCancer Atlas：常见基因突变类型分布教学重绘图",
+    "subtitle": "cBioPortal public REST API + R/ggplot2 reproducible teaching re-plot",
+    "visual_url": "/outputs/public_reproducible_examples/laml_tcga_pan_can_atlas_2018_mutation_type_distribution.svg",
+    "png_url": "/outputs/public_reproducible_examples/laml_tcga_pan_can_atlas_2018_mutation_type_distribution.png",
+    "source_data": "data/public_reproducible_examples/laml_tcga_pan_can_atlas_2018_mutation_type_summary.csv",
+    "script": "scripts/round39_reproduce_cbioportal_multistudy_plots.R",
+    "source_platform": "cBioPortal public REST API",
+    "study_id": "laml_tcga_pan_can_atlas_2018",
+    "citation": "cBioPortal public API metadata; formal citation and original publication must be verified before manuscript use",
+    "figure_question": "公开急性髓系白血病队列中，教学常用突变基因的突变记录与突变类型如何分布？",
+    "teaching_use": [
+      "帮助新手把血液肿瘤突变基因表转化为队列描述图，并区分教学总结与临床分型。",
+      "训练科研新手把公共API结果转成tidy表格和可复核图注。",
+      "提醒读者区分mutation records、sample counts、队列描述和临床结论。",
+      "用于连接方法选择、图谱解释、文章图表计划和教师复核清单。"
+    ],
+    "recommended_methods": [
+      "公开癌症基因组队列描述",
+      "突变频谱/突变景观教学分析",
+      "R/ggplot2可复现实训",
+      "图注边界和来源核验训练"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "Oncoplot/突变瀑布图",
+      "基因-突变类型热图",
+      "队列摘要图"
+    ],
+    "reuse_boundary": "本图为公开API教学重绘示例，不复制论文原图，不下载受控数据，不代表真实临床结论；正式研究需核对cBioPortal、TCGA/GDC和原论文许可。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "blca_tcga_pan_can_atlas_2018_mutation_type_distribution",
+    "source_ids": ["blca_tcga_pan_can_atlas_2018", "blca_tcga_pub_2017", "blca_tcga_pub"],
+    "title": "BLCA TCGA PanCancer Atlas：常见基因突变类型分布教学重绘图",
+    "subtitle": "cBioPortal public REST API + R/ggplot2 reproducible teaching re-plot",
+    "visual_url": "/outputs/public_reproducible_examples/blca_tcga_pan_can_atlas_2018_mutation_type_distribution.svg",
+    "png_url": "/outputs/public_reproducible_examples/blca_tcga_pan_can_atlas_2018_mutation_type_distribution.png",
+    "source_data": "data/public_reproducible_examples/blca_tcga_pan_can_atlas_2018_mutation_type_summary.csv",
+    "script": "scripts/round39_reproduce_cbioportal_multistudy_plots.R",
+    "source_platform": "cBioPortal public REST API",
+    "study_id": "blca_tcga_pan_can_atlas_2018",
+    "citation": "cBioPortal public API metadata; formal citation and original publication must be verified before manuscript use",
+    "figure_question": "公开膀胱癌队列中，常见驱动基因的突变类型构成是否呈现不同教学重点？",
+    "teaching_use": [
+      "用于训练学生阅读突变景观摘要、图注边界和公开数据复现流程。",
+      "训练科研新手把公共API结果转成tidy表格和可复核图注。",
+      "提醒读者区分mutation records、sample counts、队列描述和临床结论。",
+      "用于连接方法选择、图谱解释、文章图表计划和教师复核清单。"
+    ],
+    "recommended_methods": [
+      "公开癌症基因组队列描述",
+      "突变频谱/突变景观教学分析",
+      "R/ggplot2可复现实训",
+      "图注边界和来源核验训练"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "Oncoplot/突变瀑布图",
+      "基因-突变类型热图",
+      "队列摘要图"
+    ],
+    "reuse_boundary": "本图为公开API教学重绘示例，不复制论文原图，不下载受控数据，不代表真实临床结论；正式研究需核对cBioPortal、TCGA/GDC和原论文许可。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "hnsc_tcga_pan_can_atlas_2018_mutation_type_distribution",
+    "source_ids": ["hnsc_tcga_pan_can_atlas_2018", "hnsc_broad", "hnsc_jhu"],
+    "title": "HNSC TCGA PanCancer Atlas：常见基因突变类型分布教学重绘图",
+    "subtitle": "cBioPortal public REST API + R/ggplot2 reproducible teaching re-plot",
+    "visual_url": "/outputs/public_reproducible_examples/hnsc_tcga_pan_can_atlas_2018_mutation_type_distribution.svg",
+    "png_url": "/outputs/public_reproducible_examples/hnsc_tcga_pan_can_atlas_2018_mutation_type_distribution.png",
+    "source_data": "data/public_reproducible_examples/hnsc_tcga_pan_can_atlas_2018_mutation_type_summary.csv",
+    "script": "scripts/round39_reproduce_cbioportal_multistudy_plots.R",
+    "source_platform": "cBioPortal public REST API",
+    "study_id": "hnsc_tcga_pan_can_atlas_2018",
+    "citation": "cBioPortal public API metadata; formal citation and original publication must be verified before manuscript use",
+    "figure_question": "公开头颈鳞癌队列中，形态学教学常关联基因的突变记录如何组织为可复核图形？",
+    "teaching_use": [
+      "用于连接病理形态、分子机制导学和公开队列图表训练。",
+      "训练科研新手把公共API结果转成tidy表格和可复核图注。",
+      "提醒读者区分mutation records、sample counts、队列描述和临床结论。",
+      "用于连接方法选择、图谱解释、文章图表计划和教师复核清单。"
+    ],
+    "recommended_methods": [
+      "公开癌症基因组队列描述",
+      "突变频谱/突变景观教学分析",
+      "R/ggplot2可复现实训",
+      "图注边界和来源核验训练"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "Oncoplot/突变瀑布图",
+      "基因-突变类型热图",
+      "队列摘要图"
+    ],
+    "reuse_boundary": "本图为公开API教学重绘示例，不复制论文原图，不下载受控数据，不代表真实临床结论；正式研究需核对cBioPortal、TCGA/GDC和原论文许可。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  },
+  {
+    "id": "lgg_tcga_pan_can_atlas_2018_mutation_type_distribution",
+    "source_ids": ["lgg_tcga_pan_can_atlas_2018", "lgg_ucsf_2014"],
+    "title": "LGG TCGA PanCancer Atlas：常见基因突变类型分布教学重绘图",
+    "subtitle": "cBioPortal public REST API + R/ggplot2 reproducible teaching re-plot",
+    "visual_url": "/outputs/public_reproducible_examples/lgg_tcga_pan_can_atlas_2018_mutation_type_distribution.svg",
+    "png_url": "/outputs/public_reproducible_examples/lgg_tcga_pan_can_atlas_2018_mutation_type_distribution.png",
+    "source_data": "data/public_reproducible_examples/lgg_tcga_pan_can_atlas_2018_mutation_type_summary.csv",
+    "script": "scripts/round39_reproduce_cbioportal_multistudy_plots.R",
+    "source_platform": "cBioPortal public REST API",
+    "study_id": "lgg_tcga_pan_can_atlas_2018",
+    "citation": "cBioPortal public API metadata; formal citation and original publication must be verified before manuscript use",
+    "figure_question": "公开低级别胶质瘤队列中，分子病理教学相关基因的突变类型如何分布？",
+    "teaching_use": [
+      "用于展示分子病理课程中从基因事件到图表证据的训练路径。",
+      "训练科研新手把公共API结果转成tidy表格和可复核图注。",
+      "提醒读者区分mutation records、sample counts、队列描述和临床结论。",
+      "用于连接方法选择、图谱解释、文章图表计划和教师复核清单。"
+    ],
+    "recommended_methods": [
+      "公开癌症基因组队列描述",
+      "突变频谱/突变景观教学分析",
+      "R/ggplot2可复现实训",
+      "图注边界和来源核验训练"
+    ],
+    "recommended_plots": [
+      "堆叠条形图",
+      "Oncoplot/突变瀑布图",
+      "基因-突变类型热图",
+      "队列摘要图"
+    ],
+    "reuse_boundary": "本图为公开API教学重绘示例，不复制论文原图，不下载受控数据，不代表真实临床结论；正式研究需核对cBioPortal、TCGA/GDC和原论文许可。",
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。"
+  }
+]

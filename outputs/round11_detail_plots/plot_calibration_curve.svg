@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='760' height='500' viewBox='0 0 760 500'>
+<rect width='760' height='500' rx='26' fill='#fffdf8'/>
+<rect x='34' y='34' width='692' height='412' rx='20' fill='#ffffff' stroke='#d8c7a2' stroke-width='1.4'/>
+<text x='62' y='78' font-family='Arial, sans-serif' font-size='24' font-weight='700' fill='#132237'>校准曲线</text>
+<text x='62' y='106' font-family='Arial, sans-serif' font-size='13' fill='#667085'>机器学习 / Calibration curve</text>
+<line x1='90' y1='380' x2='690' y2='380' stroke='#344054'/><line x1='90' y1='380' x2='90' y2='135' stroke='#344054'/><line x1='90' y1='380' x2='690' y2='135' stroke='#cbd5e1' stroke-dasharray='5 5'/><path d='M90 380 C210 330, 380 190, 690 140' fill='none' stroke='#0f766e' stroke-width='4'/><path d='M90 380 C235 302, 396 172, 690 150' fill='none' stroke='#2563eb' stroke-width='4'/><path d='M90 380 C260 274, 412 154, 690 160' fill='none' stroke='#d06b48' stroke-width='4'/>
+<text x='380' y='476' text-anchor='middle' font-family='Arial, sans-serif' font-size='12' fill='#8a6d3b'>Synthetic teaching visual; replace with audited user data for real research.</text>
+</svg>

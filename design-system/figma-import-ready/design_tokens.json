@@ -1,0 +1,57 @@
+{
+  "name": "MedPath Research Companion Design Tokens",
+  "version": "round14",
+  "color": {
+    "background": "#F4F7FB",
+    "surface": "#FFFFFF",
+    "ink": "#102033",
+    "muted": "#607086",
+    "line": "#D8E2EE",
+    "soft": "#E6EEF7",
+    "teal": "#14756F",
+    "blue": "#2A63C7",
+    "green": "#227A54",
+    "violet": "#7251B5",
+    "amber": "#B46A16",
+    "red": "#B03A48"
+  },
+  "type": {
+    "fontFamily": "Microsoft YaHei, PingFang SC, Segoe UI, Arial, sans-serif",
+    "hero": { "size": 43, "lineHeight": 1.16, "weight": 800 },
+    "h1": { "size": 34, "lineHeight": 1.22, "weight": 800 },
+    "h2": { "size": 24, "lineHeight": 1.32, "weight": 800 },
+    "h3": { "size": 18, "lineHeight": 1.4, "weight": 800 },
+    "body": { "size": 15, "lineHeight": 1.82, "weight": 400 },
+    "label": { "size": 13, "lineHeight": 1.4, "weight": 800 }
+  },
+  "radius": {
+    "control": 7,
+    "panel": 8,
+    "media": 8,
+    "pill": 999
+  },
+  "spacing": {
+    "xs": 6,
+    "sm": 10,
+    "md": 18,
+    "lg": 30,
+    "xl": 44,
+    "section": 58
+  },
+  "shadow": {
+    "panel": "0 14px 42px rgba(17, 35, 58, 0.08)",
+    "focus": "0 0 0 3px rgba(20, 117, 111, 0.18)"
+  },
+  "motion": {
+    "quick": "140ms ease",
+    "standard": "220ms ease",
+    "slow": "420ms cubic-bezier(.22,.61,.36,1)"
+  },
+  "rules": [
+    "页面使用中文优先，英文术语首次出现需要中文释义。",
+    "卡片半径不超过8px，除非是徽标/胶囊标签。",
+    "详情页必须包含公开来源线索、示例图、使用边界和人工复核提醒。",
+    "示例图不得写成真实研究结果。",
+    "医学AI输出仅用于教学与科研训练，不替代临床诊断。"
+  ]
+}

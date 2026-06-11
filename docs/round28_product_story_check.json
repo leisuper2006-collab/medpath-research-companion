@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "routes": [
+    {
+      "route": "/method-universe/method-001",
+      "heading": "基因敲除入门流程 · M001：判断问题、材料和证据能否对上",
+      "productStories": 1,
+      "storyChapters": 4,
+      "oldStorySections": 0,
+      "storyImages": [
+        {
+          "src": "http://127.0.0.1:8000/outputs/round11_method_plots/method-001.svg",
+          "complete": true,
+          "width": 920,
+          "height": 560
+        }
+      ],
+      "hasUnknownMarkers": false,
+      "hasSourceProof": 2,
+      "hasDemandOrPrompt": true
+    },
+    {
+      "route": "/article-workshop/article-01",
+      "heading": "28类文章从0到1：先搭流程，再接入自己的模型API生成草稿",
+      "productStories": 1,
+      "storyChapters": 4,
+      "oldStorySections": 0,
+      "storyImages": [
+        {
+          "src": "http://127.0.0.1:8000/outputs/round20_article_visuals/article-01.svg",
+          "complete": true,
+          "width": 920,
+          "height": 560
+        }
+      ],
+      "hasUnknownMarkers": false,
+      "hasSourceProof": 2,
+      "hasDemandOrPrompt": true
+    },
+    {
+      "route": "/plot-gallery/volcano_plot",
+      "heading": "火山图：先确认数据字段，再回答“识别组间、条件间或基因组位置上的差异信号。”",
+      "productStories": 1,
+      "storyChapters": 4,
+      "oldStorySections": 0,
+      "storyImages": [
+        {
+          "src": "http://127.0.0.1:8000/outputs/round11_detail_plots/plot_volcano_plot.svg",
+          "complete": true,
+          "width": 760,
+          "height": 500
+        }
+      ],
+      "hasUnknownMarkers": false,
+      "hasSourceProof": 2,
+      "hasDemandOrPrompt": true
+    },
+    {
+      "route": "/open-source/celltypist",
+      "heading": "CellTypist：从开源仓库读懂“单细胞基础”的输入、输出和风险边界",
+      "productStories": 1,
+      "storyChapters": 4,
+      "oldStorySections": 0,
+      "storyImages": [
+        {
+          "src": "http://127.0.0.1:8000/outputs/round20_tool_visuals/068-celltypist.svg",
+          "complete": true,
+          "width": 920,
+          "height": 560
+        }
+      ],
+      "hasUnknownMarkers": false,
+      "hasSourceProof": 2,
+      "hasDemandOrPrompt": true
+    }
+  ],
+  "console_errors_or_warnings": [],
+  "failures": [],
+  "screenshot": "C:\\Users\\HONOR\\Desktop\\AI skill\\medpath-research-education-skills-studio-real\\docs\\round28_product_story_check.png"
+}

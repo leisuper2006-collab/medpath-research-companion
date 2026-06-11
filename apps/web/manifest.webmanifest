@@ -1,0 +1,41 @@
+{
+  "name": "MedPath Research Companion",
+  "short_name": "MedPath",
+  "description": "面向科研新手的基础医学与数智病理科研训练平台原型。",
+  "lang": "zh-CN",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0f766e",
+  "background_color": "#f8fbff",
+  "categories": ["education", "medical", "productivity"],
+  "icons": [
+    {
+      "src": "static/icons/medpath-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "科研新手导航",
+      "short_name": "导航",
+      "url": "./researcher",
+      "description": "从一句话研究兴趣生成入门路线"
+    },
+    {
+      "name": "方法宇宙",
+      "short_name": "方法",
+      "url": "./method-universe",
+      "description": "查找实验、组学、统计、绘图和写作方法"
+    },
+    {
+      "name": "科研小岛",
+      "short_name": "小岛",
+      "url": "./island-3d",
+      "description": "以交互式任务小岛学习科研流程"
+    }
+  ]
+}

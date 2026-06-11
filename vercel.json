@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "buildCommand": "python scripts/build_static_release.py",
+  "outputDirectory": "dist/github-pages-demo",
+  "installCommand": "python -m pip install --upgrade pip && pip install fastapi uvicorn pytest pydantic requests",
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

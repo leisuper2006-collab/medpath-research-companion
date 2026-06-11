@@ -1,0 +1,28 @@
+{
+  "svg": "C:\\Users\\HONOR\\Desktop\\AI skill\\medpath-research-education-skills-studio-real\\outputs\\mobile_app_handoff\\medpath_mobile_app_figma_handoff.svg",
+  "desktop": {
+    "h1": "把科研新手的每一步，做成手机里能跟着走的学习路径",
+    "phone_frames": 3,
+    "scenario_cards": 8,
+    "learning_cards": 6,
+    "has_handoff_board": true,
+    "body_has_mojibake": false,
+    "image": {
+      "src": "http://127.0.0.1:4173/outputs/mobile_app_handoff/medpath_mobile_app_figma_handoff.svg",
+      "complete": true,
+      "width": 1600,
+      "height": 980,
+      "alt": "MedPath手机端Figma交付设计板"
+    }
+  },
+  "mobile": {
+    "h1": "把科研新手的每一步，做成手机里能跟着走的学习路径",
+    "phone_frames": 3,
+    "body_has_mojibake": false
+  },
+  "screenshots": [
+    "C:\\Users\\HONOR\\Desktop\\AI skill\\medpath-research-education-skills-studio-real\\docs\\round59_mobile_app_handoff_verified.png",
+    "C:\\Users\\HONOR\\Desktop\\AI skill\\medpath-research-education-skills-studio-real\\docs\\round59_mobile_app_mobile_view_verified.png"
+  ],
+  "failures": []
+}

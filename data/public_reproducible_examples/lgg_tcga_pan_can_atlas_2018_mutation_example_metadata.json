@@ -1,0 +1,11 @@
+{
+  "title": "LGG TCGA PanCancer Atlas: selected-gene mutation type distribution",
+  "source": "cBioPortal public REST API",
+  "study_id": "lgg_tcga_pan_can_atlas_2018",
+  "molecular_profile_id": "lgg_tcga_pan_can_atlas_2018_mutations",
+  "sample_list_id": "lgg_tcga_pan_can_atlas_2018_all",
+  "source_url": "https://www.cbioportal.org/study/summary?id=lgg_tcga_pan_can_atlas_2018",
+  "genes": ["TP53", "PIK3CA", "IDH1"],
+  "safety_boundary": "Public API summary data teaching re-plot only; not a clinical diagnostic result.",
+  "generated_at": "2026-06-11 06:15:24 CST"
+}

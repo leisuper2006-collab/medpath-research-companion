@@ -1,0 +1,29 @@
+[
+  {
+    "uniqueSampleKey": "SU5TMTk6cGFuZXRfc2hhbmdoYWlfMjAxMw",
+    "uniquePatientKey": "SU5TMTk6cGFuZXRfc2hhbmdoYWlfMjAxMw",
+    "molecularProfileId": "panet_shanghai_2013_mutations",
+    "sampleId": "INS19",
+    "patientId": "INS19",
+    "entrezGeneId": 4851,
+    "studyId": "panet_shanghai_2013",
+    "center": "Shanghai_Jiao_Tong_University",
+    "tumorAltCount": 17,
+    "tumorRefCount": 50,
+    "normalAltCount": 0,
+    "normalRefCount": 67,
+    "startPosition": 139390822,
+    "endPosition": 139390822,
+    "referenceAllele": "G",
+    "proteinChange": "L2457M",
+    "mutationType": "Missense_Mutation",
+    "ncbiBuild": "GRCh37",
+    "variantType": "SNP",
+    "keyword": "NOTCH1 L2457 missense",
+    "chr": "9",
+    "variantAllele": "T",
+    "refseqMrnaId": "NM_017617.3",
+    "proteinPosStart": 2457,
+    "proteinPosEnd": 2457
+  }
+]

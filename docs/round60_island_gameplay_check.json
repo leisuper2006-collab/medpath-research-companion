@@ -1,0 +1,18 @@
+{
+  "state": {
+    "mode": "Three.js",
+    "has_three_canvas": true,
+    "fallback_canvas_hidden": true,
+    "action_buttons": 3,
+    "dialogue_changed": true,
+    "after_dialogue": "科研小向导\n\n模型驿站已解锁：密钥永远只放环境变量，页面最多显示是否已配置。",
+    "hud_text": "任务进度\n2/10\n当前建筑\n模型驿站\n奖励\n获得“模型调度员”徽章，并解锁多模型交叉审校演示。",
+    "panel_has_steps": true,
+    "badge_count": 10,
+    "quest_card_count": 10,
+    "body_has_mojibake": false,
+    "has_safety_boundary": true
+  },
+  "screenshot": "C:\\Users\\HONOR\\Desktop\\AI skill\\medpath-research-education-skills-studio-real\\docs\\round60_island_gameplay_verified.png",
+  "failures": []
+}

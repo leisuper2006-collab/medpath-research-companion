@@ -1,0 +1,12 @@
+{
+  "title": "Sarcoma TCGA Cell 2017: selected-gene mutation type distribution",
+  "zh_title": "软组织肉瘤TCGA Cell 2017",
+  "source": "cBioPortal public REST API",
+  "study_id": "sarc_tcga_pub",
+  "molecular_profile_id": "sarc_tcga_pub_mutations",
+  "sample_list_id": "sarc_tcga_pub_all",
+  "source_url": "https://www.cbioportal.org/study/summary?id=sarc_tcga_pub",
+  "genes": ["TP53", "NF1", "ATRX", "RB1", "MDM2", "CDK4"],
+  "safety_boundary": "Public API summary data teaching re-plot only; not a clinical diagnostic result.",
+  "generated_at": "2026-06-11 07:13:52 CST"
+}

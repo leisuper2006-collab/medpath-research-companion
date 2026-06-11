@@ -1,0 +1,15 @@
+{
+  "name": "medpath-research-education-skills-studio-real",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Clickable MVP for MedPath Research & Education Skills Studio.",
+  "scripts": {
+    "api": "cd apps/api && python -m uvicorn app.main:app --host 127.0.0.1 --port 8000",
+    "web": "cd apps/api && python -m uvicorn app.main:app --host 127.0.0.1 --port 3000",
+    "test:api": "pytest apps/api/tests",
+    "check": "python scripts/run_all_checks.py",
+    "check:release": "python scripts/round12_release_readiness_check.py",
+    "check:publish": "python scripts/round26_github_publish_preflight.py && python scripts/round62_github_pages_ready.py",
+    "build:static": "python scripts/build_static_release.py"
+  }
+}

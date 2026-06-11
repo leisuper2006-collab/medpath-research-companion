@@ -1,0 +1,41 @@
+{
+  "status": "ready_except_external_publish",
+  "checks": {
+    "dist_exists": true,
+    "dist_uses_current_assets": true,
+    "dist_has_no_round61_assets": true,
+    "home_command_center_in_static": true,
+    "three_island_in_static": true,
+    "pages_workflow_present": true,
+    "pages_workflow_uses_current_audit": true,
+    "ci_workflow_present": true,
+    "ci_workflow_uses_current_audit": true,
+    "no_secret_findings": true,
+    "has_git_remote": false,
+    "has_commit": false,
+    "gh_available": false
+  },
+  "dist_missing": [],
+  "secret_findings": [],
+  "git_remote": {
+    "code": 2,
+    "stdout": "",
+    "stderr": "error: No such remote 'origin'"
+  },
+  "git_log": {
+    "code": 128,
+    "stdout": "",
+    "stderr": "fatal: your current branch 'main' does not have any commits yet"
+  },
+  "gh_status": {
+    "code": 127,
+    "stdout": "",
+    "stderr": "[WinError 2] 系统找不到指定的文件。"
+  },
+  "external_blockers": [
+    "当前仓库尚未绑定 GitHub origin 远程地址。",
+    "当前 main 分支尚未创建首次提交。",
+    "本机未发现 gh CLI，无法从本地直接创建仓库或检查 GitHub 登录态。"
+  ],
+  "hard_failures": []
+}

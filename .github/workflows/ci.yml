@@ -1,0 +1,51 @@
+name: MedPath CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: API tests and release checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install API dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install fastapi uvicorn pytest pydantic requests
+
+      - name: Run API tests
+        run: pytest apps/api/tests -q
+
+      - name: Build static demo
+        run: python scripts/build_static_release.py
+
+      - name: Check release readiness
+        run: python scripts/round12_release_readiness_check.py
+
+      - name: Check content uniqueness
+        run: python scripts/round31_content_uniqueness_audit.py
+
+      - name: Check GitHub Pages publish readiness
+        run: |
+          python scripts/round26_github_publish_preflight.py
+          python scripts/round62_github_pages_ready.py
+
+      - name: Upload static demo artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: medpath-github-pages-demo
+          path: dist/github-pages-demo

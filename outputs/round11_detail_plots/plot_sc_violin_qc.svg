@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='760' height='500' viewBox='0 0 760 500'>
+<rect width='760' height='500' rx='26' fill='#fffdf8'/>
+<rect x='34' y='34' width='692' height='412' rx='20' fill='#ffffff' stroke='#d8c7a2' stroke-width='1.4'/>
+<text x='62' y='78' font-family='Arial, sans-serif' font-size='24' font-weight='700' fill='#132237'>单细胞QC小提琴图</text>
+<text x='62' y='106' font-family='Arial, sans-serif' font-size='13' fill='#667085'>单细胞 / Single-cell QC violin plot</text>
+<line x1='90' y1='380' x2='690' y2='380' stroke='#344054'/><line x1='90' y1='380' x2='90' y2='135' stroke='#344054'/><path d='M176 335.0 C140 282.0,160 225.0,210 195 C260 225.0,280 282.0,244 335.0 Z' fill='#58a6ff' opacity='.28' stroke='#58a6ff'/><rect x='186' y='277.5' width='48' height='55' fill='white' stroke='#58a6ff' stroke-width='2'/><line x1='186' y1='301.5' x2='234' y2='301.5' stroke='#58a6ff' stroke-width='2'/><path d='M326 319.0 C290 275.6,310 230.33333333333334,360 195 C410 230.33333333333334,430 275.6,394 319.0 Z' fill='#2fbf71' opacity='.28' stroke='#2fbf71'/><rect x='336' y='269.5' width='48' height='63' fill='white' stroke='#2fbf71' stroke-width='2'/><line x1='336' y1='293.5' x2='384' y2='293.5' stroke='#2fbf71' stroke-width='2'/><path d='M476 303.0 C440 269.2,460 235.66666666666666,510 195 C560 235.66666666666666,580 269.2,544 303.0 Z' fill='#f59f6b' opacity='.28' stroke='#f59f6b'/><rect x='486' y='261.5' width='48' height='71' fill='white' stroke='#f59f6b' stroke-width='2'/><line x1='486' y1='285.5' x2='534' y2='285.5' stroke='#f59f6b' stroke-width='2'/>
+<text x='380' y='476' text-anchor='middle' font-family='Arial, sans-serif' font-size='12' fill='#8a6d3b'>Synthetic teaching visual; replace with audited user data for real research.</text>
+</svg>

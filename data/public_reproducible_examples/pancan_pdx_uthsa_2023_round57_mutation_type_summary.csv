@@ -1,0 +1,12 @@
+"gene","mutationType","mutation_records","total_records","fraction"
+"CTNNB1","Missense_Mutation",6,6,1
+"PTEN","Missense_Mutation",2,4,0.5
+"PTEN","Nonsense_Mutation",2,4,0.5
+"TP53","Frame_Shift_Ins",2,4,0.5
+"TP53","Nonsense_Mutation",2,4,0.5
+"ATM","Nonsense_Mutation",2,2,1
+"GNAS","Missense_Mutation",2,2,1
+"KMT2C","Missense_Mutation",2,2,1
+"KRAS","Missense_Mutation",2,2,1
+"FGFR2","Missense_Mutation",1,1,1
+"FGFR3","Missense_Mutation",1,1,1
