@@ -1,0 +1,224 @@
+.r74-game-loaded .r73-card.span-8:has(.r73-island-stage) {
+  grid-column: span 12;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.r74-game-shell {
+  position: relative;
+  min-height: min(78vh, 760px);
+  height: 740px;
+  overflow: hidden;
+  border-radius: 38px;
+  background: #92c875;
+  border: 1px solid rgba(24, 36, 20, 0.12);
+  box-shadow: 0 30px 90px rgba(32, 55, 32, 0.22);
+  isolation: isolate;
+}
+
+.r74-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: linear-gradient(180deg, #d7f0ff 0%, #aee2d1 36%, #8ec86f 100%);
+}
+
+.r74-hud {
+  position: absolute;
+  inset: 18px 18px auto 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.r74-chip,
+.r74-action {
+  border-radius: 999px;
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(25,35,25,0.12);
+  box-shadow: 0 12px 40px rgba(20,40,20,0.14);
+  backdrop-filter: blur(14px);
+  color: #1d221b;
+  font-weight: 900;
+  padding: 9px 13px;
+  font-size: 13px;
+}
+
+.r74-action {
+  pointer-events: auto;
+  cursor: pointer;
+  border: 0;
+}
+
+.r74-action.dark {
+  color: #fffaf1;
+  background: rgba(23,23,23,0.88);
+}
+
+.r74-dialog {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  width: min(420px, calc(100% - 48px));
+  z-index: 6;
+  border-radius: 30px;
+  padding: 20px;
+  background: rgba(255,255,255,0.90);
+  border: 1px solid rgba(25,35,25,0.12);
+  box-shadow: 0 24px 90px rgba(23,32,23,0.26);
+  backdrop-filter: blur(16px);
+}
+
+.r74-dialog h3 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.r74-dialog p {
+  margin: 0 0 12px;
+  color: #6a6258;
+  line-height: 1.7;
+}
+
+.r74-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.r74-dialog-actions a,
+.r74-dialog-actions button {
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 12px;
+  background: #171717;
+  color: #fffaf1;
+  text-decoration: none;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.r74-dialog-actions button.secondary,
+.r74-dialog-actions a.secondary {
+  background: #ecf2df;
+  color: #1c2419;
+}
+
+.r74-side-panel {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  width: min(340px, calc(100% - 48px));
+  z-index: 6;
+  display: grid;
+  gap: 10px;
+}
+
+.r74-panel-card {
+  border-radius: 24px;
+  padding: 14px;
+  background: rgba(23,23,23,0.84);
+  color: #fffaf1;
+  box-shadow: 0 20px 70px rgba(20,30,20,0.23);
+  backdrop-filter: blur(14px);
+}
+
+.r74-panel-card h4 {
+  margin: 0 0 8px;
+}
+
+.r74-panel-card p {
+  margin: 0;
+  color: rgba(255,255,255,0.70);
+  line-height: 1.55;
+  font-size: 13px;
+}
+
+.r74-shop {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.r74-shop button {
+  border: 0;
+  border-radius: 16px;
+  padding: 10px 6px;
+  background: rgba(255,255,255,0.12);
+  color: #fffaf1;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.r74-tooltip {
+  position: absolute;
+  z-index: 7;
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+  background: rgba(23,23,23,0.86);
+  color: #fffaf1;
+  border-radius: 12px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  display: none;
+}
+
+.r74-game-note {
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  transform: translateX(-50%);
+  z-index: 5;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.78);
+  color: #29301f;
+  font-size: 13px;
+  font-weight: 900;
+  box-shadow: 0 12px 38px rgba(40,60,30,.12);
+}
+
+@media (max-width: 760px) {
+  .r74-game-shell {
+    height: 680px;
+    min-height: 680px;
+    border-radius: 28px;
+  }
+  .r74-hud {
+    inset: 12px 12px auto 12px;
+    align-items: flex-start;
+  }
+  .r74-hud > div {
+    display: grid;
+    gap: 6px;
+  }
+  .r74-dialog {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    width: auto;
+    padding: 16px;
+  }
+  .r74-side-panel {
+    left: 14px;
+    right: 14px;
+    bottom: 210px;
+    width: auto;
+  }
+  .r74-panel-card:nth-child(2) {
+    display: none;
+  }
+  .r74-game-note {
+    top: 72px;
+    max-width: calc(100% - 30px);
+    text-align: center;
+  }
+}

@@ -10,14 +10,16 @@
     <link rel="icon" href="/static/icons/medpath-icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/static/styles.css?v=round71" />
     <link rel="stylesheet" href="/static/round73.css?v=round73" />
+    <link rel="stylesheet" href="/static/round74-game.css?v=round74" />
   </head>
   <body>
     <div id="app"></div>
     <script src="/static/app.js?v=round71"></script>
     <script src="/static/round73.js?v=round73"></script>
+    <script type="module" src="/static/round74-game.js?v=round74"></script>
     <script>
       if ("serviceWorker" in navigator) {
-        const swUrl = window.MEDPATH_STATIC_MODE ? "sw.js?v=round73" : "/sw.js?v=round73";
+        const swUrl = window.MEDPATH_STATIC_MODE ? "sw.js?v=round74" : "/sw.js?v=round74";
         navigator.serviceWorker.register(swUrl).catch(() => {});
       }
     </script>

@@ -1,12 +1,14 @@
-const CACHE_NAME = "medpath-research-companion-v73";
+const CACHE_NAME = "medpath-research-companion-v74";
 const CORE_ASSETS = [
   "./",
   "index.html",
   "manifest.webmanifest",
   "static/styles.css",
   "static/round73.css",
+  "static/round74-game.css",
   "static/app.js",
   "static/round73.js",
+  "static/round74-game.js",
   "static/icons/medpath-icon.svg",
   "static/vendor/three.module.min.js",
   "static-data/method_universe.json",
