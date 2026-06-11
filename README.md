@@ -1,146 +1,104 @@
-# MedPath Research & Education Skills Studio
+# MedPath Research Companion
 
-面向基础医学、数智病理与生命科学科研训练的本地平台原型。它把科研方法库、文章工作流、科研绘图室、数据审查、模型 API 规范化、合成案例、AI Skills 插件、伦理治理、桌宠引导和 3D 科研小岛整合到一个可运行的教学与科研训练界面中。
+公开站点：[https://leisuper2006-collab.github.io/medpath-research-companion/](https://leisuper2006-collab.github.io/medpath-research-companion/)
+
+MedPath Research Companion 是面向科研新手、医学学生、基础医学教师和生命科学研究者的科研学习与 AI Skill 创作平台。当前公开版本已经上线，但从 Round 73 起，本项目进入 **MedPath Research Companion 2.0 全量重构**：不再只做工具目录，而要建设一个兼具专业工作台、方法学习路径、科研绘图、文章流程、开源工具导航、个人主页、社区激励和科研小岛游戏化空间的完整平台原型。
 
 > 医学 AI 输出仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置。所有输出须经教师、导师或专家复核。
 
-## 当前能力
+## 2.0 一句话定位
 
-- 674 条科研方法卡，覆盖基础实验、组学、病理图像、统计建模、机器学习、HPC dry-run 等方向。
-- 24 条基因敲除/基因扰动路线，帮助新手区分 DNA、RNA、蛋白、系统和虚拟扰动层面的方案。
-- 28 类文章工作流，包括 Meta 分析、系统综述、机器学习论文、数字病理论文、教学改革论文等。
-- 100 种科研图谱说明，解释每类图回答什么问题、需要哪些字段、常见错误是什么。
-- 公开或合成教学示例图：方法、图谱、文章和开源工具详情页均提供可审查示例图与来源边界。
-- 研究路径生成器，可把一句自然语言需求拆成方法、工具、图谱、文章流程、数据审查和 Skill 调用链。
-- 数据审查室，在绘图、统计、模型调用前检查字段、来源、伦理、隐私和统计适配。
-- 模型网关页面，支持 provider 模板、mock 输出、请求包规范和安全边界提示。
-- 3D 科研小岛，以游戏化入口帮助新手进入方法、文章、绘图、审查和模型页面。
-- 手机端 App 产品路线页，把移动端科研学习场景拆成任务仪表盘、方法导航、文章流程、数据审查和教师复核。
-- 公开数据复现实例：通过 cBioPortal public REST API 拉取 BRCA TCGA PanCancer Atlas 公开突变摘要，并用 R/ggplot2 生成教学重绘图。
+一个把 **科研方法学习、医学教育案例、AI Skills、开源工具、科研绘图、文章写作、社区激励和游戏化科研小岛** 连接起来的科研成长工作台。
 
-## 本地运行
+## 本轮以后必须遵守的产品判断
 
-后端 API 与前端页面均由本地 FastAPI 服务提供。
+1. 网站不能再只是“病理 + 少量科研工具目录”。病理是主线之一，但平台必须扩展到基础医学、医学 AI、生物信息学、单细胞、空间组学、统计分析、机器学习、科研写作、Meta 分析、科研绘图、开源工具导航、教学案例和伦理治理。
+2. “虚拟敲除/虚拟扰动”不能作为一级大类。它应归入：`科研工作台 -> 生物信息学 -> 单细胞 -> 扰动分析/virtual perturbation`。
+3. 所有文字要更像给科研新手看的产品说明，少用申报书式大词，少用 AI 腔，多用“我想做什么、我需要输入什么、会得到什么、风险在哪里、下一步怎么学”。
+4. 每个最小功能单元都不能写重复模板文案。Skill、方法、工具、文章流程、绘图模板、建筑、任务卡都必须根据真实用途写不同介绍。
+5. 每个核心功能都必须有：示例输入、示例输出、示例图或截图、学习路径、推荐资料、使用边界和风险提示。
+6. 示例图优先使用公开可复现数据、可商用素材或自生成素材。不得伪造真实研究结果，不得使用真实患者隐私。
+7. 主站视觉要参考用户给出的医疗科技 SaaS Dashboard 风格：深色侧边栏、暖白主背景、柔和粉/黄/绿/紫功能色、清晰信息层级、精致但不花哨。
+8. 手机端必须单独设计，不能只是桌面压缩版。移动端应使用底部 Tab：Home、Explore、Island、Community、Profile。
+9. 科研小岛必须重做为游戏化空间：低多边形/2.5D/轻 3D、可点击建筑、建筑绑定功能、对话框、积分、商店、拜访、点赞、排行榜和 Skill 展示。
+10. 每次有可验证更新，都要重新构建并发布到 GitHub Pages。
 
-```powershell
-cd "C:\Users\HONOR\Desktop\AI skill\medpath-research-education-skills-studio-real\apps\api"
-python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
-```
+## 目标信息架构
 
-```powershell
-cd "C:\Users\HONOR\Desktop\AI skill\medpath-research-education-skills-studio-real\apps\api"
-python -m uvicorn app.main:app --host 127.0.0.1 --port 3000
-```
+- Home 首页：今日任务、最近使用、推荐 Skill、推荐案例、推荐工具、进入小岛、我的进度、我的积分。
+- Learn 学习与教学：课程设计、PBL 案例、超微病理导学、病理报告训练、教学评价、教学伦理。
+- Research 科研工作台：文献综述、项目申报、生物信息学、单细胞、空间组学、计算病理、统计建模、机器学习、RAG/知识图谱、数据可视化。
+- Skills 市场：教学 Skills、科研 Skills、治理评价 Skills，每个 Skill 有示例、图标、适用/不适用场景和运行边界。
+- Cases 案例与模板：教学案例、病理案例、合成案例、科研案例、模板库、精选示例、我的案例。
+- Tools 开源工具导航：按学科、方法、数据类型、License、输入输出和新手友好度组织。
+- Plot Studio 科研绘图工作室：火山图、热图、UMAP、森林图、桑基图、雷达图、Gantt、workflow 图等，提供示例数据、代码、图注和 Methods。
+- Method Runner 方法运行器：扰动分析、RAG 索引、单细胞基础分析、计算病理预处理、论文图表审查等可执行流程。
+- Community 社区：动态、精选 Skill、精选案例、精选小岛、热门创作者、点赞、收藏、排行榜、拜访请求。
+- Profile 个人主页：头像、学科标签、我的 Skills、我的案例、我的工具箱、我的小岛、积分、等级、成就、收藏、关注和最近动态。
+- Island 科研小岛：个人科研基地、建筑即功能入口、建筑对话、建筑绑定 Skill、积分商城、好友拜访和排行榜。
+- Settings 设置：模型 API、隐私边界、导出、偏好和安全说明。
 
-访问：
+## 科研小岛 2.0 要求
 
-- 前端：http://127.0.0.1:3000
-- API 健康检查：http://127.0.0.1:8000/api/health
+科研小岛不是装饰页，而是空间化科研入口。建筑代表功能，用户点击建筑后通过对话框进入相应页面或运行任务。
 
-Docker 启动：
+首批建筑至少覆盖：
+
+- 图书馆：文献检索、综述、基金/课题申报。
+- 教学楼：课程设计、PBL、教学评价。
+- 病理室：病理报告训练、超微病理导学。
+- 实验楼：单细胞、扰动分析、虚拟敲除、空间组学。
+- 绘图工坊：Plot Studio。
+- Skill 工坊：DIY Skill、Agent、模板生成。
+- 数据塔：RAG、知识图谱、模型 Provider。
+- 社区中心：好友、拜访、排行榜、点赞。
+- 档案馆：我的案例、我的作品、我的收藏。
+- 商店：积分兑换建筑、皮肤、装饰和徽章。
+
+长期目标是 100+ 建筑/装饰库。MVP 可以先完成 10-20 个建筑，但数据结构必须支持扩展。
+
+## 设计系统硬约束
+
+- 主站：参考医疗科技 SaaS Dashboard，而不是普通卡片堆叠。
+- 色彩：暖白/奶油背景、深色侧边栏、柔和粉紫/黄/绿/蓝作为功能色。
+- 字体：中文优先使用系统黑体、思源黑体、HarmonyOS Sans 或等价字体；英文使用 Inter/Manrope/SF Pro 类风格。
+- 组件：统一圆角、统一间距、轻边框、轻投影、统一图标语言。
+- 禁止：满屏渐变泡泡、无意义大卡片、重复文案、手机端横向溢出、AI 腔长段落。
+
+## 每轮任务前必须对照的检查清单
+
+1. 是否修正了错误分类，尤其是虚拟敲除不再是一级大类。
+2. 是否扩展了专业方向，而不是继续局限于病理。
+3. 是否给每个最小单元写了独特说明，避免重复模板句。
+4. 是否补充了示例输入、示例输出、示例图、学习路径和风险边界。
+5. 是否新增或改进了个人主页、社区、排行榜、点赞、收藏、拜访、积分或成就。
+6. 是否让主站更接近医疗科技 Dashboard 风格。
+7. 是否针对移动端单独优化。
+8. 是否推进科研小岛的建筑交互、对话框、功能跳转和激励机制。
+9. 是否保留医学 AI 安全边界。
+10. 是否避免伪造成果、伪造数据、伪造试点、伪造论文/专利/软著。
+11. 是否完成浏览器验证、截图或至少本地构建验证。
+12. 是否重新发布到 GitHub Pages，或者明确说明未发布的阻塞原因。
+
+## 当前发布流程
+
+构建并发布到 GitHub Pages：
 
 ```powershell
 cd "C:\Users\HONOR\Desktop\AI skill\medpath-research-education-skills-studio-real"
-docker compose up
+powershell -ExecutionPolicy Bypass -File scripts\publish_github_pages.ps1
 ```
 
-## 关键页面
-
-- `/researcher`：科研新手导航。
-- `/journey-builder`：研究路径生成器。
-- `/method-universe`：674 条科研方法卡。
-- `/method-family/gene-perturbation`：基因敲除/扰动方法家族。
-- `/article-workshop`：28 类文章工作流。
-- `/plot-gallery`：100 种科研图谱与示例图。
-- `/data-audit`：数据审查室。
-- `/model-gateway`：模型 API 规范化。
-- `/plugins`：插件中心。
-- `/simulate`：合成教学案例实验室。
-- `/island-3d`：3D 科研小岛。
-- `/mobile-app`：手机端 App 产品路线。
-
-## 静态演示包
-
-生成 GitHub Pages/静态演示包：
+本地预览静态包：
 
 ```powershell
+cd "C:\Users\HONOR\Desktop\AI skill\medpath-research-education-skills-studio-real"
 python scripts\build_static_release.py
 cd dist\github-pages-demo
 python -m http.server 4173
 ```
 
 访问：http://127.0.0.1:4173
-
-说明：`dist/` 默认不进入 Git 提交，可由 CI 或发布脚本重新生成。
-
-## 测试与审计
-
-推荐回归命令：
-
-```powershell
-pytest apps\api\tests -q
-python scripts\round27_static_asset_check.py
-python scripts\round28_product_story_check.py
-$env:MEDPATH_BASE_URL='http://127.0.0.1:4173'; python scripts\round29_journey_blueprint_check.py
-$env:MEDPATH_WEB_URL='http://127.0.0.1:4173'; python scripts\round30_island_quest_upgrade_check.py
-python scripts\round31_content_uniqueness_audit.py
-python scripts\round26_github_publish_preflight.py
-python scripts\round62_github_pages_ready.py
-```
-
-当前已验证：
-
-- API 测试：20 passed。
-- 静态资源、产品详情页、研究路线生成器、3D 科研小岛均通过自动化检查。
-- 内容审计：缺图 0、缺来源 0、明显占位 0、精确重复 0。
-- 发布预检：无明文密钥发现；当前目录尚未绑定 GitHub 远程仓库，因此不能直接推送。
-
-## R/ggplot2 示例图
-
-本项目优先使用 R/ggplot2 生成科研示例图。公开数据复现实例：
-
-```powershell
-& 'C:\Program Files\R\R-4.6.0\bin\Rscript.exe' scripts\round23_reproduce_cbioportal_brca_mutation_plot.R
-```
-
-输出：
-
-- `outputs/public_reproducible_examples/brca_tcga_mutation_type_distribution.svg`
-- `outputs/public_reproducible_examples/brca_tcga_mutation_type_distribution.png`
-- `data/public_reproducible_examples/brca_tcga_pan_can_atlas_2018_mutation_type_summary.csv`
-
-说明文档：
-
-- `docs/public_reproducible_examples/brca_tcga_cbioportal_mutation_plot.md`
-
-该示例使用 cBioPortal 公开 REST API，不下载受控数据，不复制论文原图，不代表真实临床结论。
-
-## 模型 API 与密钥
-
-所有真实 API Key 必须来自环境变量，不能写入代码、文档、日志或截图。
-
-复制 `.env.example` 并在本地自行配置：
-
-```text
-OPENAI_API_KEY=
-DEEPSEEK_API_KEY=
-QWEN_API_KEY=
-ANTHROPIC_API_KEY=
-CSU_CHAT_API_KEY=
-CSU_CHAT_BASE_URL=
-CSU_CHAT_MODEL=
-```
-
-无密钥时平台默认使用 mock 模式。
-
-## 发布状态
-
-当前项目目录已初始化为本地 Git 仓库，但尚未绑定 GitHub 远程地址，也未真实推送到公开仓库。项目已经具备静态发布包构建、GitHub Pages 工作流和发布预检脚本，但真实发布仍需：
-
-1. 提供 GitHub 远程仓库 URL，或在本机安装并登录 `gh`。
-2. 核对 `git status`，完成首次提交。
-3. 再次运行 `npm run check:publish` 或 `python scripts\round62_github_pages_ready.py`，确认没有明文密钥、静态包缺失或发布配置退化。
-4. 推送到远程仓库并启用 Pages 或部署到 Vercel/Cloudflare Pages。
 
 ## 不得公开或不得声称
 
@@ -149,3 +107,7 @@ CSU_CHAT_MODEL=
 - 不声称已完成真实课程试点。
 - 不伪造教师评分、学生满意度、p 值、研究结果、论文、专利或软著。
 - 不把合成教学案例、示例图或 mock 输出写成真实研究结论。
+
+## 持续重构主文档
+
+详细执行目标见：[docs/medpath_2_0_rebuild_master_goal.md](docs/medpath_2_0_rebuild_master_goal.md)。
