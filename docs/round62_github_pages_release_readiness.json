@@ -12,7 +12,7 @@
     "ci_workflow_uses_current_audit": true,
     "no_secret_findings": true,
     "has_git_remote": false,
-    "has_commit": false,
+    "has_commit": true,
     "gh_available": false
   },
   "dist_missing": [],
@@ -23,9 +23,9 @@
     "stderr": "error: No such remote 'origin'"
   },
   "git_log": {
-    "code": 128,
-    "stdout": "",
-    "stderr": "fatal: your current branch 'main' does not have any commits yet"
+    "code": 0,
+    "stdout": "edb8eea Add GitHub Pages publish helper",
+    "stderr": ""
   },
   "gh_status": {
     "code": 127,
@@ -34,7 +34,6 @@
   },
   "external_blockers": [
     "当前仓库尚未绑定 GitHub origin 远程地址。",
-    "当前 main 分支尚未创建首次提交。",
     "本机未发现 gh CLI，无法从本地直接创建仓库或检查 GitHub 登录态。"
   ],
   "hard_failures": []
