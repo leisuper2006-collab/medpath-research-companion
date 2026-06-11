@@ -55,6 +55,56 @@ def secret_hits() -> list[str]:
     return sorted(set(hits))
 
 
+def has_viewport_font_scaling(css: str) -> bool:
+    """Forbid viewport-scaled font sizes while allowing responsive spacing."""
+    return bool(re.search(r"font-size\s*:\s*clamp\(", css, flags=re.IGNORECASE))
+
+
+def oversized_plain_card_radius_hits(css: str) -> list[str]:
+    """Flag large radii only on plain content cards/panels.
+
+    Round 60+ added a pet mentor, 3D island, circular action buttons, and
+    mobile-app mockups. Those intentionally use circles and pills. This gate
+    should prevent oversized ordinary cards, not flatten the whole visual
+    identity.
+    """
+    allow_tokens = (
+        "pill",
+        "badge",
+        "avatar",
+        "pet",
+        "island",
+        "bubble",
+        "fab",
+        "button",
+        "btn",
+        "icon",
+        "phone",
+        "mobile",
+        "mockup",
+        "hero",
+        "orbit",
+        "route-dot",
+        "step-index",
+        "timeline-dot",
+        "compass",
+        "consent",
+        "toggle",
+    )
+    hits: list[str] = []
+    for index, line in enumerate(css.splitlines(), 1):
+        lower = line.lower()
+        if "border-radius" not in lower:
+            continue
+        if any(token in lower for token in allow_tokens):
+            continue
+        if "50%" in lower or "999px" in lower or "inherit" in lower:
+            continue
+        if re.search(r"border-radius:\s*(1[0-9]|[2-9][0-9])px", lower):
+            hits.append(f"L{index}: {line.strip()}")
+    return hits
+
+
 def main() -> None:
     methods = load_json("method_universe.json")
     articles = load_json("article_skill_workflows.json")
@@ -93,8 +143,9 @@ def main() -> None:
 
     checks.append(("研究路径生成器函数存在", "journeyBuilderPage" in app and "renderJourneyPlan" in app, "journeyBuilderPage/renderJourneyPlan"))
     checks.append(("医学AI边界文本存在", "不替代临床诊断" in app, "不替代临床诊断"))
-    checks.append(("CSS无viewport字号缩放", "clamp(" not in css, "clamp() absent"))
-    checks.append(("普通界面圆角不超过8px", not re.search(r"border-radius:\s*(1[0-9]|[2-9][0-9])px", css), "radius check"))
+    radius_hits = oversized_plain_card_radius_hits(css)
+    checks.append(("CSS无viewport字号缩放", not has_viewport_font_scaling(css), "font-size clamp absent"))
+    checks.append(("普通界面圆角不超过8px", not radius_hits, "; ".join(radius_hits[:5]) or "plain card radius check"))
     checks.append(("静态发布包存在", (STATIC_DIST / "index.html").exists(), str(STATIC_DIST / "index.html")))
     checks.append(("GitHub Pages fallback存在", (STATIC_DIST / "404.html").exists(), str(STATIC_DIST / "404.html")))
     checks.append(("静态数据目录存在", (STATIC_DIST / "static-data" / "method_universe.json").exists(), str(STATIC_DIST / "static-data")))

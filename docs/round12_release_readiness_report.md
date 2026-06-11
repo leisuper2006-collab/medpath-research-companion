@@ -22,8 +22,8 @@
 | 前端入口存在：/island-3d | PASS | /island-3d |
 | 研究路径生成器函数存在 | PASS | journeyBuilderPage/renderJourneyPlan |
 | 医学AI边界文本存在 | PASS | 不替代临床诊断 |
-| CSS无viewport字号缩放 | FAIL | clamp() absent |
-| 普通界面圆角不超过8px | FAIL | radius check |
+| CSS无viewport字号缩放 | FAIL | font-size clamp absent |
+| 普通界面圆角不超过8px | FAIL | L883: border-radius: 18px;; L917: border-radius: 14px;; L946: border-radius: 14px;; L1800: border-radius: 28px;; L1834: border-radius: 22px; |
 | 静态发布包存在 | PASS | C:\Users\HONOR\Desktop\AI skill\medpath-research-education-skills-studio-real\dist\github-pages-demo\index.html |
 | GitHub Pages fallback存在 | PASS | C:\Users\HONOR\Desktop\AI skill\medpath-research-education-skills-studio-real\dist\github-pages-demo\404.html |
 | 静态数据目录存在 | PASS | C:\Users\HONOR\Desktop\AI skill\medpath-research-education-skills-studio-real\dist\github-pages-demo\static-data |

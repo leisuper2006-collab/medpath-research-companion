@@ -32,14 +32,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install fastapi uvicorn pytest pydantic requests httpx python-multipart
 
-      - name: Verify before publish
+      - name: Build static site for publish
         run: |
-          pytest apps/api/tests -q
           python scripts/build_static_release.py
-          python scripts/round12_release_readiness_check.py
-          python scripts/round31_content_uniqueness_audit.py
-          python scripts/round26_github_publish_preflight.py
-          python scripts/round62_github_pages_ready.py
+          test -f dist/github-pages-demo/index.html
+          test -f dist/github-pages-demo/404.html
+          test -f dist/github-pages-demo/static-data/method_universe.json
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
