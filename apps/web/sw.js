@@ -1,4 +1,4 @@
-const CACHE_NAME = "medpath-research-companion-v74";
+const CACHE_NAME = "medpath-research-companion-v75";
 const CORE_ASSETS = [
   "./",
   "index.html",

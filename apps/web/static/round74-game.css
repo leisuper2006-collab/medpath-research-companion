@@ -80,10 +80,28 @@
   font-size: 22px;
 }
 
+.r74-dialog-kicker {
+  width: fit-content;
+  margin-bottom: 9px;
+  border-radius: 999px;
+  padding: 5px 9px;
+  background: #f0eadf;
+  color: #766858;
+  font-size: 12px;
+  font-weight: 900;
+}
+
 .r74-dialog p {
   margin: 0 0 12px;
   color: #6a6258;
   line-height: 1.7;
+}
+
+.r74-task-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 7px;
+  margin: 0 0 12px;
 }
 
 .r74-dialog-actions {
@@ -147,7 +165,8 @@
   margin-top: 10px;
 }
 
-.r74-shop button {
+.r74-shop button,
+.r74-building-dock button {
   border: 0;
   border-radius: 16px;
   padding: 10px 6px;
@@ -155,6 +174,48 @@
   color: #fffaf1;
   font-weight: 800;
   cursor: pointer;
+}
+
+.r74-building-dock {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  max-height: 250px;
+  overflow: auto;
+  padding-right: 3px;
+  margin-top: 10px;
+}
+
+.r74-side-panel,
+.r74-dialog,
+.r74-building-dock,
+.r74-shop {
+  scrollbar-width: none;
+}
+
+.r74-side-panel::-webkit-scrollbar,
+.r74-dialog::-webkit-scrollbar,
+.r74-building-dock::-webkit-scrollbar,
+.r74-shop::-webkit-scrollbar {
+  display: none;
+}
+
+.r74-building-dock button {
+  text-align: left;
+  padding: 10px 12px;
+  display: grid;
+  gap: 2px;
+}
+
+.r74-building-dock span {
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.r74-building-dock small {
+  color: rgba(255,255,255,.68);
+  font-size: 11px;
+  line-height: 1.35;
 }
 
 .r74-tooltip {
@@ -187,9 +248,32 @@
 }
 
 @media (max-width: 760px) {
+  body[data-medpath-route="island"] .r73-main {
+    padding-top: 12px;
+  }
+  body[data-medpath-route="island"] .r73-hero {
+    padding: 18px;
+    border-radius: 26px;
+  }
+  body[data-medpath-route="island"] .r73-hero-grid {
+    gap: 12px;
+  }
+  body[data-medpath-route="island"] .r73-hero h1 {
+    font-size: 30px;
+    max-width: 300px;
+  }
+  body[data-medpath-route="island"] .r73-hero p {
+    display: none;
+  }
+  body[data-medpath-route="island"] .r73-hero .r73-panel {
+    display: none;
+  }
+  body[data-medpath-route="island"] .r73-hero .r73-actions {
+    margin-top: 12px;
+  }
   .r74-game-shell {
-    height: 680px;
-    min-height: 680px;
+    height: 820px;
+    min-height: 820px;
     border-radius: 28px;
   }
   .r74-hud {
@@ -203,22 +287,57 @@
   .r74-dialog {
     left: 14px;
     right: 14px;
-    bottom: 14px;
+    bottom: 92px;
     width: auto;
     padding: 16px;
+    max-height: 292px;
+    overflow: auto;
   }
   .r74-side-panel {
     left: 14px;
     right: 14px;
-    bottom: 210px;
+    top: 126px;
+    bottom: auto;
     width: auto;
+    max-height: 222px;
+    overflow: auto;
   }
-  .r74-panel-card:nth-child(2) {
+  .r74-panel-card {
+    padding: 12px;
+  }
+  .r74-panel-card h4 {
+    font-size: 14px;
+  }
+  .r74-panel-card p {
     display: none;
+  }
+  .r74-building-dock {
+    display: flex;
+    overflow-x: auto;
+    max-height: none;
+    padding: 0 0 4px;
+  }
+  .r74-building-dock button {
+    min-width: 130px;
+  }
+  .r74-shop {
+    display: flex;
+    overflow-x: auto;
+  }
+  .r74-shop button {
+    min-width: 84px;
   }
   .r74-game-note {
     top: 72px;
     max-width: calc(100% - 30px);
     text-align: center;
+  }
+  .r74-task-grid {
+    grid-template-columns: 1fr;
+  }
+  .r74-dialog-actions a,
+  .r74-dialog-actions button {
+    font-size: 12px;
+    padding: 8px 10px;
   }
 }

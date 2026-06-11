@@ -591,6 +591,7 @@
     if (!app) return;
     document.body.classList.add("round73-active");
     const active = route();
+    document.body.dataset.medpathRoute = active;
     app.innerHTML = pageFor(active);
     bindRound73();
     window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
