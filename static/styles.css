@@ -5854,3 +5854,810 @@ body:has(.r77-town) .pet-bubble,
   visibility: hidden !important;
   pointer-events: none !important;
 }
+
+/* Round107 ordinary workbench redesign: concise SaaS + ChiPlot-style plot cards. */
+:root {
+  --r107-bg: #f6f1e8;
+  --r107-paper: #fffdf8;
+  --r107-ink: #171717;
+  --r107-muted: #687070;
+  --r107-line: rgba(28, 31, 32, .10);
+  --r107-dark: #101615;
+  --r107-teal: #5fbfac;
+  --r107-coral: #ff876f;
+  --r107-yellow: #f5cf69;
+  --r107-blue: #6c93d8;
+  --r107-violet: #9178de;
+}
+
+body:not(:has(.r77-town)) {
+  background:
+    radial-gradient(circle at 8% 8%, rgba(95,191,172,.15), transparent 24%),
+    radial-gradient(circle at 90% 4%, rgba(255,135,111,.14), transparent 22%),
+    var(--r107-bg);
+  color: var(--r107-ink);
+  letter-spacing: 0;
+}
+
+.r107-layout {
+  background: transparent;
+}
+
+.r107-sidebar {
+  width: 220px;
+  background: #111615 !important;
+  border-right: 0;
+  box-shadow: 18px 0 50px rgba(16, 22, 21, .08);
+  padding: 18px 14px;
+}
+
+.r107-brand {
+  display: grid;
+  gap: 4px;
+  padding: 18px 16px 20px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 24px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.03)),
+    #151d1b;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.r107-brand::before,
+.r107-brand::after,
+.r107-nav-item::before,
+.r107-nav-item::after,
+.nav-item::before,
+.nav-item::after {
+  content: none !important;
+  display: none !important;
+}
+
+.r107-brand strong {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.r107-brand small {
+  color: rgba(255,255,255,.68);
+  font-size: 12px;
+}
+
+.r107-nav-group {
+  display: grid;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.r107-nav-item {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 3px;
+  padding: 11px 13px !important;
+  border: 1px solid transparent !important;
+  border-radius: 16px !important;
+  background: transparent !important;
+  color: rgba(255,255,255,.78) !important;
+  text-decoration: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.r107-nav-item span {
+  font-size: 15px;
+  font-weight: 760;
+}
+
+.r107-nav-item small {
+  color: rgba(255,255,255,.46) !important;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.r107-nav-item:hover,
+.r107-nav-item.active {
+  background: rgba(255,255,255,.09) !important;
+  border-color: rgba(255,255,255,.14) !important;
+  color: #fff !important;
+}
+
+.r107-workspace {
+  min-width: 0;
+}
+
+.r107-topbar {
+  min-height: 64px !important;
+  padding: 12px 26px;
+  background: rgba(246,241,232,.82) !important;
+  border-bottom: 1px solid var(--r107-line) !important;
+  backdrop-filter: blur(22px);
+}
+
+.r107-command {
+  max-width: 740px;
+  border: 1px solid rgba(23,23,23,.10) !important;
+  border-radius: 18px !important;
+  background: rgba(255,255,255,.72) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+.r107-command::before,
+.r107-command .dot {
+  display: none !important;
+}
+
+.r107-command input {
+  padding: 13px 16px !important;
+  color: #222;
+}
+
+.r107-top-actions {
+  gap: 8px !important;
+}
+
+.r107-top-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid rgba(17,22,21,.12);
+  border-radius: 999px;
+  background: rgba(255,255,255,.72);
+  color: #25302f;
+  text-decoration: none;
+  font-weight: 760;
+}
+
+.r107-page {
+  max-width: 100%;
+  padding: 26px !important;
+  background: transparent !important;
+}
+
+.r107-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(320px, .65fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.r107-hero-copy,
+.r107-hero-panel,
+.r107-section {
+  border: 1px solid var(--r107-line);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,253,248,.82));
+  box-shadow: 0 20px 70px rgba(45, 38, 28, .09);
+}
+
+.r107-hero-copy {
+  min-height: 360px;
+  padding: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.r107-hero-copy::after {
+  content: "";
+  position: absolute;
+  inset: auto -6% -24% 48%;
+  height: 260px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 30% 45%, rgba(95,191,172,.40), transparent 33%),
+    radial-gradient(circle at 70% 55%, rgba(255,135,111,.35), transparent 34%);
+  filter: blur(16px);
+  opacity: .72;
+  pointer-events: none;
+}
+
+.r107-eyebrow,
+.r107-section-head span,
+.r107-product-copy span,
+.r107-plot-hero span {
+  color: #0e7c71;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.r107-hero h1 {
+  margin: 14px 0 14px;
+  max-width: 760px;
+  font-size: clamp(38px, 5vw, 72px);
+  line-height: .96;
+  letter-spacing: 0;
+}
+
+.r107-hero p,
+.r107-section-head p {
+  max-width: 760px;
+  color: var(--r107-muted);
+  line-height: 1.75;
+}
+
+.r107-hero-actions,
+.r107-plot-actions,
+.r107-product-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.r107-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.r107-hero-panel {
+  padding: 24px;
+}
+
+.r107-hero-panel > strong {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 18px;
+}
+
+.r107-quick-list {
+  display: grid;
+  gap: 12px;
+}
+
+.r107-quick-list a {
+  display: grid;
+  gap: 4px;
+  padding: 15px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid rgba(23,23,23,.08);
+  color: inherit;
+  text-decoration: none;
+}
+
+.r107-quick-list span {
+  font-weight: 850;
+}
+
+.r107-quick-list small {
+  color: var(--r107-muted);
+  line-height: 1.5;
+}
+
+.r107-section {
+  margin-top: 18px;
+  padding: 24px;
+}
+
+.r107-section-head {
+  margin-bottom: 18px;
+}
+
+.r107-section-head h2 {
+  margin: 6px 0 8px;
+  font-size: clamp(26px, 3vw, 42px);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.r107-product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.r107-product-card {
+  display: grid;
+  grid-template-rows: 138px 1fr auto;
+  min-height: 386px;
+  padding: 12px;
+  border: 1px solid rgba(23,23,23,.10);
+  border-radius: 24px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 12px 34px rgba(38, 33, 25, .07);
+}
+
+.r107-product-preview {
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: #f7f7f2;
+  overflow: hidden;
+}
+
+.r107-product-preview svg {
+  width: 100%;
+  height: 100%;
+}
+
+.r107-product-copy {
+  display: grid;
+  gap: 8px;
+  padding: 14px 4px 10px;
+}
+
+.r107-product-copy h3 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.22;
+}
+
+.r107-product-copy p {
+  margin: 0;
+  color: var(--r107-muted);
+  line-height: 1.58;
+}
+
+.r107-product-copy small {
+  color: #293231;
+  font-weight: 760;
+  line-height: 1.45;
+}
+
+.r107-card-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border-radius: 15px;
+  background: #111615;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 850;
+}
+
+.r107-plot-strip,
+.r107-plot-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.r107-plot-card {
+  display: grid;
+  grid-template-rows: 158px 1fr auto;
+  min-height: 430px;
+  border-radius: 22px;
+  border: 1px solid rgba(23,23,23,.10);
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 12px 34px rgba(40, 34, 28, .08);
+}
+
+.r107-plot-media {
+  background: #f3f5f2;
+}
+
+.r107-plot-media img,
+.r107-plot-media svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.r107-plot-body {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+  padding: 14px;
+}
+
+.r107-plot-title {
+  display: grid;
+  gap: 5px;
+}
+
+.r107-plot-title h3 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.r107-plot-title span {
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(95,191,172,.14);
+  color: #0f766e;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.r107-plot-body p {
+  margin: 0;
+  color: var(--r107-muted);
+  line-height: 1.55;
+  font-size: 14px;
+}
+
+.r107-package-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+}
+
+.r107-package-row b {
+  color: #27302e;
+}
+
+.r107-package-row code,
+.r107-answer-card code {
+  padding: 3px 6px;
+  border-radius: 8px;
+  background: #f2eee4;
+  color: #293231;
+  font-size: 11px;
+}
+
+.r107-plot-body small {
+  color: #424a48;
+  line-height: 1.45;
+}
+
+.r107-plot-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid rgba(23,23,23,.08);
+}
+
+.r107-plot-actions a,
+.r107-plot-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border: 0;
+  background: transparent;
+  color: #111615;
+  text-decoration: none;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.r107-plot-actions button {
+  background: var(--r107-coral);
+  color: #fff;
+}
+
+.r107-path-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.r107-path-card {
+  display: grid;
+  gap: 9px;
+  min-height: 142px;
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(23,23,23,.09);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(95,191,172,.18), transparent 34%),
+    #fff;
+  color: inherit;
+  text-decoration: none;
+}
+
+.r107-path-card strong {
+  font-size: 20px;
+}
+
+.r107-path-card span {
+  color: var(--r107-muted);
+  line-height: 1.6;
+}
+
+.r107-plot-page {
+  display: grid;
+  grid-template-columns: 216px minmax(0, 1fr);
+  gap: 18px;
+  min-height: calc(100vh - 120px);
+}
+
+.r107-plot-rail {
+  position: sticky;
+  top: 82px;
+  align-self: start;
+  display: grid;
+  gap: 8px;
+  padding: 15px;
+  border: 1px solid var(--r107-line);
+  border-radius: 26px;
+  background: rgba(255,255,255,.76);
+  box-shadow: 0 18px 50px rgba(40, 34, 28, .08);
+}
+
+.r107-plot-brand {
+  padding: 12px 10px 14px;
+  color: #0e7c71;
+  font-weight: 950;
+  font-size: 22px;
+}
+
+.r107-plot-rail button {
+  border: 0;
+  border-radius: 14px;
+  padding: 11px 12px;
+  background: transparent;
+  color: #25302f;
+  text-align: left;
+  font-weight: 820;
+  cursor: pointer;
+}
+
+.r107-plot-rail button.active,
+.r107-plot-rail button:hover {
+  background: rgba(95,191,172,.22);
+}
+
+.r107-plot-help {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 18px;
+  background: #111615;
+  color: #fff;
+}
+
+.r107-plot-help p {
+  color: rgba(255,255,255,.72);
+  line-height: 1.55;
+  font-size: 12px;
+}
+
+.r107-plot-main {
+  min-width: 0;
+}
+
+.r107-plot-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, .78fr);
+  gap: 18px;
+  align-items: end;
+  margin-bottom: 18px;
+  padding: 24px;
+  border: 1px solid var(--r107-line);
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(95,191,172,.38), rgba(255,135,111,.28)),
+    #fff;
+}
+
+.r107-plot-hero h1 {
+  margin: 8px 0;
+  font-size: clamp(32px, 4vw, 58px);
+  line-height: .98;
+}
+
+.r107-plot-hero p {
+  max-width: 720px;
+  color: #33413f;
+  line-height: 1.65;
+}
+
+.r107-search-row {
+  display: grid;
+  gap: 10px;
+}
+
+.r107-search-row input,
+.r107-search-row select {
+  min-height: 46px;
+  border: 1px solid rgba(17,22,21,.14);
+  border-radius: 16px;
+  background: rgba(255,255,255,.82);
+  padding: 0 14px;
+  color: #18201e;
+}
+
+.r107-assistant {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1600;
+  width: min(360px, calc(100vw - 32px));
+  pointer-events: none;
+}
+
+.r107-assistant-toggle {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 22px;
+  background: rgba(17,22,21,.92);
+  color: #fff;
+  box-shadow: 0 20px 70px rgba(0,0,0,.22);
+  cursor: pointer;
+}
+
+.r107-bot-face {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #75d3c0, #8aa4ff);
+  color: #111615;
+  font-weight: 950;
+}
+
+.r107-assistant-toggle span:last-child {
+  display: grid;
+  gap: 2px;
+  text-align: left;
+}
+
+.r107-assistant-toggle small {
+  color: rgba(255,255,255,.68);
+}
+
+.r107-assistant-panel {
+  pointer-events: auto;
+  display: none;
+  margin-top: 10px;
+  padding: 16px;
+  border: 1px solid rgba(17,22,21,.12);
+  border-radius: 22px;
+  background: rgba(255,253,248,.96);
+  box-shadow: 0 26px 80px rgba(0,0,0,.20);
+}
+
+.r107-assistant.open .r107-assistant-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.r107-assistant-close {
+  justify-self: end;
+  border: 0;
+  background: transparent;
+  color: var(--r107-muted);
+  cursor: pointer;
+}
+
+.r107-assistant-panel h3 {
+  margin: 0;
+}
+
+.r107-assistant-panel p {
+  margin: 0;
+  color: var(--r107-muted);
+  line-height: 1.55;
+}
+
+.r107-assistant-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.r107-assistant-chips button {
+  border: 1px solid rgba(17,22,21,.10);
+  border-radius: 999px;
+  padding: 7px 9px;
+  background: #fff;
+  color: #24302d;
+  cursor: pointer;
+}
+
+.r107-assistant textarea {
+  min-height: 94px;
+  resize: vertical;
+  border: 1px solid rgba(17,22,21,.14);
+  border-radius: 16px;
+  padding: 11px;
+  background: #fff;
+  color: #17201f;
+}
+
+.r107-assistant-result,
+.r107-answer-card {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 16px;
+  background: #f5f1e8;
+  color: #26302e;
+}
+
+.r107-answer-card p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+@media (max-width: 1480px) {
+  .r107-product-grid,
+  .r107-plot-strip,
+  .r107-plot-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1180px) {
+  .r107-sidebar {
+    width: 190px;
+  }
+  .r107-hero,
+  .r107-plot-hero {
+    grid-template-columns: 1fr;
+  }
+  .r107-product-grid,
+  .r107-plot-strip,
+  .r107-plot-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .r107-path-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .r107-sidebar {
+    display: none !important;
+  }
+  .r107-topbar {
+    padding: 10px 14px;
+  }
+  .r107-page {
+    padding: 14px 14px 82px !important;
+  }
+  .r107-hero-copy {
+    min-height: 0;
+    padding: 28px 22px;
+  }
+  .r107-hero h1 {
+    font-size: 42px;
+  }
+  .r107-product-grid,
+  .r107-plot-strip,
+  .r107-plot-grid,
+  .r107-path-grid {
+    grid-template-columns: 1fr;
+  }
+  .r107-plot-page {
+    grid-template-columns: 1fr;
+  }
+  .r107-plot-rail {
+    position: static;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    overflow-x: auto;
+  }
+  .r107-plot-brand,
+  .r107-plot-help {
+    grid-column: 1 / -1;
+  }
+  .r107-product-card,
+  .r107-plot-card {
+    min-height: 0;
+  }
+  .r107-mobile-dock {
+    background: rgba(17,22,21,.94) !important;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 22px 22px 0 0;
+  }
+  .r107-mobile-dock a {
+    color: rgba(255,255,255,.82) !important;
+  }
+  .r107-assistant {
+    right: 12px;
+    bottom: 74px;
+  }
+}

@@ -5105,6 +5105,476 @@ function initPremiumMotion() {
   attachChapterRail(motionTargets);
 }
 
+/* Round107: ordinary workbench redesign.
+   Goal: make the non-game website feel like a clean research product instead of
+   a long AI directory. The island pages keep their own visual system. */
+
+function round107SafeText() {
+  return "医学 AI 输出仅用于教学与科研训练，不替代临床诊断；真实使用前必须由教师或专家复核。";
+}
+
+function round107ModelConfigured() {
+  try {
+    const keys = ["MEDPATH_MODEL_API_CONFIGURED", "medpath_model_api_configured", "medpath_api_configured", "medpath_provider_configured"];
+    if (window.MEDPATH_MODEL_API_CONFIGURED === true) return true;
+    return keys.some((key) => String(localStorage.getItem(key) || "").toLowerCase() === "true");
+  } catch {
+    return false;
+  }
+}
+
+function round107NavItems() {
+  return [
+    ["/home", "首页", "今天从哪开始"],
+    ["/researcher", "科研导航", "找方法与路线"],
+    ["/plugins", "Skills", "可调用能力"],
+    ["/plot-gallery", "科研绘图", "看图例与代码"],
+    ["/method-universe", "方法库", "按问题选方法"],
+    ["/article-workshop", "文章流程", "从0搭框架"],
+    ["/open-source", "开源工具", "仓库怎么用"],
+    ["/data-audit", "数据审查", "先查字段"],
+    ["/governance", "伦理复核", "风险先拦住"],
+    ["/island", "科研小岛", "游戏化入口"],
+  ];
+}
+
+function routeLinks() {
+  const active = currentRoutePath() === "/" ? "/home" : currentRoutePath();
+  return `<div class="r107-nav-group">
+    ${round107NavItems().map(([href, label, desc]) => `<a href="${href}" data-link class="nav-item r107-nav-item ${active === href || (href !== "/home" && active.startsWith(href)) ? "active" : ""}">
+      <span>${escapeHtml(label)}</span><small>${escapeHtml(desc)}</small>
+    </a>`).join("")}
+  </div>`;
+}
+
+function round107SkillProducts() {
+  return [
+    {
+      title: "科研绘图助手",
+      kicker: "Plot Studio",
+      href: "/plot-gallery",
+      body: "不知道该画什么图时，先看示例，再看字段和 R/Python 包。",
+      result: "输出：示例图、字段要求、代码路线",
+      preview: "scatter",
+      color: "teal",
+    },
+    {
+      title: "文章流程搭建",
+      kicker: "Paper Builder",
+      href: "/article-workshop",
+      body: "Meta 分析、机制研究、AI 医学论文，从材料到图表一步步搭。",
+      result: "输出：章节、图表、审稿风险",
+      preview: "paper",
+      color: "rose",
+    },
+    {
+      title: "方法选择器",
+      kicker: "Method Router",
+      href: "/method-universe",
+      body: "把“我想研究什么”翻译成可执行的方法路线。",
+      result: "输出：方法、输入、误区、学习路径",
+      preview: "network",
+      color: "blue",
+    },
+    {
+      title: "数据体检",
+      kicker: "Data Audit",
+      href: "/data-audit",
+      body: "字段缺不缺、分组清不清、是否适合直接分析，先查再做。",
+      result: "输出：缺失字段、修表建议",
+      preview: "table",
+      color: "amber",
+    },
+    {
+      title: "Skill 工坊",
+      kicker: "Skill Builder",
+      href: "/skill-builder",
+      body: "把常用科研动作做成自己的 AI Skill，之后反复调用。",
+      result: "输出：SKILL.md、示例、复核清单",
+      preview: "skill",
+      color: "violet",
+    },
+  ];
+}
+
+function round107Preview(type = "scatter") {
+  if (type === "scatter") {
+    return `<svg viewBox="0 0 260 150" role="img" aria-label="散点图示例">
+      <rect width="260" height="150" rx="18" fill="#f7fbfa"/>
+      <path d="M32 122 L232 122 M32 122 L32 24" stroke="#d5dfdd" stroke-width="2"/>
+      <path d="M42 114 C84 82 116 88 154 55 C184 29 205 42 226 27" fill="none" stroke="#0f766e" stroke-width="4"/>
+      ${[38,52,70,88,104,121,144,160,178,199,216].map((x, i) => `<circle cx="${x}" cy="${110 - i * 7 + (i % 3) * 10}" r="4.6" fill="${i % 2 ? "#f28c7b" : "#2a9d8f"}"/>`).join("")}
+    </svg>`;
+  }
+  if (type === "paper") {
+    return `<svg viewBox="0 0 260 150" role="img" aria-label="文章流程示例">
+      <rect width="260" height="150" rx="18" fill="#fff8f7"/>
+      ${["问题","数据","图表","初稿"].map((t, i) => `<g transform="translate(${24 + i * 58},34)"><rect width="46" height="70" rx="12" fill="#fff" stroke="#f0b8ae"/><text x="23" y="42" text-anchor="middle" font-size="12" fill="#7a403a">${t}</text></g>`).join("")}
+      <path d="M75 68 H88 M133 68 H146 M191 68 H204" stroke="#f28c7b" stroke-width="3" stroke-linecap="round"/>
+    </svg>`;
+  }
+  if (type === "network") {
+    return `<svg viewBox="0 0 260 150" role="img" aria-label="方法网络示例">
+      <rect width="260" height="150" rx="18" fill="#f5f8ff"/>
+      ${[[60,78],[120,44],[160,92],[205,55],[92,112]].map(([x,y]) => `<circle cx="${x}" cy="${y}" r="18" fill="#fff" stroke="#7aa7ff" stroke-width="3"/>`).join("")}
+      <path d="M76 70 L105 52 M137 53 L145 80 M176 82 L193 64 M75 90 L94 104 M112 104 L144 94" stroke="#4d78d6" stroke-width="3"/>
+    </svg>`;
+  }
+  if (type === "table") {
+    return `<svg viewBox="0 0 260 150" role="img" aria-label="数据表审查示例">
+      <rect width="260" height="150" rx="18" fill="#fffaf0"/>
+      ${[0,1,2,3].map((r) => [0,1,2,3].map((c) => `<rect x="${32 + c * 48}" y="${28 + r * 24}" width="42" height="18" rx="5" fill="${r === 0 ? "#f7c76f" : "#fff"}" stroke="#ead8ae"/>`).join("")).join("")}
+      <circle cx="217" cy="107" r="18" fill="#fff" stroke="#db9f20" stroke-width="3"/><path d="M207 107 l7 7 l14 -18" fill="none" stroke="#db9f20" stroke-width="4" stroke-linecap="round"/>
+    </svg>`;
+  }
+  return `<svg viewBox="0 0 260 150" role="img" aria-label="Skill结构示例">
+    <rect width="260" height="150" rx="18" fill="#f8f5ff"/>
+    <rect x="36" y="30" width="188" height="92" rx="18" fill="#fff" stroke="#c7b9ff"/>
+    <path d="M70 60 H190 M70 80 H165 M70 100 H180" stroke="#7c5cff" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="52" cy="60" r="7" fill="#7c5cff"/><circle cx="52" cy="80" r="7" fill="#7c5cff"/><circle cx="52" cy="100" r="7" fill="#7c5cff"/>
+  </svg>`;
+}
+
+function round107SkillProductCard(card) {
+  return `<article class="r107-product-card ${escapeHtml(card.color)}">
+    <div class="r107-product-preview">${round107Preview(card.preview)}</div>
+    <div class="r107-product-copy">
+      <span>${escapeHtml(card.kicker)}</span>
+      <h3>${escapeHtml(card.title)}</h3>
+      <p>${escapeHtml(card.body)}</p>
+      <small>${escapeHtml(card.result)}</small>
+    </div>
+    <a class="r107-card-action" href="${escapeHtml(card.href)}" data-link>进入</a>
+  </article>`;
+}
+
+function round107PackageHints(plot = {}) {
+  const hay = `${plot.id || ""} ${plot.name || ""} ${plot.zh_name || ""} ${plot.en_name || ""} ${plot.category || ""}`.toLowerCase();
+  if (/volcano|火山/.test(hay)) return { r: ["ggplot2", "EnhancedVolcano"], py: ["matplotlib", "adjustText"], field: "生物/医学" };
+  if (/heatmap|热图/.test(hay)) return { r: ["ComplexHeatmap", "pheatmap"], py: ["seaborn"], field: "生物/工程" };
+  if (/umap|tsne|single|单细胞/.test(hay)) return { r: ["Seurat", "ggplot2"], py: ["scanpy", "umap-learn"], field: "单细胞/空间组学" };
+  if (/forest|meta|森林/.test(hay)) return { r: ["meta", "metafor"], py: ["statsmodels"], field: "医学/社科综述" };
+  if (/survival|kaplan|cox|生存/.test(hay)) return { r: ["survival", "survminer"], py: ["lifelines"], field: "医学/公共卫生" };
+  if (/network|graph|tree|网络|树/.test(hay)) return { r: ["igraph", "ggraph"], py: ["networkx"], field: "网络/人文社科" };
+  if (/map|geo|spatial|地图|空间/.test(hay)) return { r: ["sf", "ggplot2"], py: ["geopandas"], field: "地理/流行病学" };
+  if (/radar|雷达/.test(hay)) return { r: ["fmsb", "ggradar"], py: ["plotly"], field: "评价/工程方案" };
+  if (/gantt|timeline|时间/.test(hay)) return { r: ["ggplot2", "vistime"], py: ["plotly"], field: "项目管理" };
+  if (/box|violin|bar|line|scatter|散点|箱线|小提琴|柱|折线/.test(hay)) return { r: ["ggplot2"], py: ["seaborn"], field: "通用科研" };
+  return { r: ["ggplot2"], py: ["matplotlib"], field: "跨学科" };
+}
+
+function round107PlotPreview(plot = {}, index = 0) {
+  const visual = plot.example_visual || {};
+  const src = visual.url ? assetUrl(visual.url) : "";
+  if (src) return `<img src="${escapeHtml(src)}" alt="${escapeHtml(plot.zh_name || plot.name || "示例图")}" loading="lazy" />`;
+  const palettes = [
+    ["#2a9d8f", "#f28c7b", "#f7c76f"],
+    ["#5271c4", "#8cc7a1", "#f2b8a2"],
+    ["#111827", "#75c7b7", "#f5d06f"],
+  ];
+  const p = palettes[index % palettes.length];
+  return `<svg viewBox="0 0 280 180" role="img" aria-label="科研图示例">
+    <rect width="280" height="180" rx="18" fill="#fafafa"/>
+    <path d="M36 144 L246 144 M36 144 L36 28" stroke="#d8dfdd" stroke-width="2"/>
+    ${[0,1,2].map((g) => `<path d="M48 ${126 - g * 17} C82 ${90 + g * 18} 125 ${95 - g * 14} 160 ${68 + g * 15} C190 ${44 + g * 10} 218 ${70 + g * 12} 240 ${42 + g * 18}" fill="none" stroke="${p[g]}" stroke-width="4" opacity=".92"/>`).join("")}
+    ${Array.from({length: 18}).map((_, i) => `<circle cx="${48 + (i % 9) * 23}" cy="${128 - ((i * 17) % 82)}" r="3.8" fill="${p[i % 3]}" opacity=".82"/>`).join("")}
+  </svg>`;
+}
+
+function round107PlotCard(plot = {}, index = 0) {
+  const hints = round107PackageHints(plot);
+  const title = plot.zh_name || plot.name || plot.en_name || plot.id || "科研图";
+  const question = plot.answers_question || plot.question_answered || plot.plot_product_title || "先判断它回答什么问题，再整理字段。";
+  const columns = (plot.plot_data_contract || plot.what_it_needs || []).map((x) => x.field || x).filter(Boolean).slice(0, 3);
+  return `<article class="r107-plot-card">
+    <div class="r107-plot-media">${round107PlotPreview(plot, index)}</div>
+    <div class="r107-plot-body">
+      <div class="r107-plot-title"><h3>${escapeHtml(title)}</h3><span>${escapeHtml(hints.field)}</span></div>
+      <p>${escapeHtml(question)}</p>
+      <div class="r107-package-row"><b>R</b>${hints.r.map((x) => `<code>${escapeHtml(x)}</code>`).join("")}</div>
+      <div class="r107-package-row"><b>Python</b>${hints.py.map((x) => `<code>${escapeHtml(x)}</code>`).join("")}</div>
+      <small>${columns.length ? `需要字段：${columns.join(" / ")}` : "适合先上传表头做字段审查"}</small>
+    </div>
+    <div class="r107-plot-actions">
+      <a href="${escapeHtml(routePath("/plot-gallery", plot.id || title))}" data-link>看详情</a>
+      <button type="button" onclick="navigate('/plot-studio')">开始</button>
+    </div>
+  </article>`;
+}
+
+function round107PlotFallbackCards() {
+  return [
+    { id: "engineering-response-surface", zh_name: "响应面图", category: "工程实验", answers_question: "两个因素如何共同影响结果？", plot_data_contract: [{field:"factor_a"},{field:"factor_b"},{field:"response"}] },
+    { id: "social-likert", zh_name: "Likert量表图", category: "社科问卷", answers_question: "不同题项的态度分布是否一致？", plot_data_contract: [{field:"question"},{field:"score"},{field:"group"}] },
+    { id: "humanities-network", zh_name: "文本共现网络", category: "数字人文", answers_question: "关键词、人物或概念之间怎样连接？", plot_data_contract: [{field:"source"},{field:"target"},{field:"weight"}] },
+    { id: "quality-control", zh_name: "质量控制图", category: "工程/管理", answers_question: "过程是否稳定，是否出现异常点？", plot_data_contract: [{field:"time"},{field:"value"},{field:"limit"}] },
+    { id: "education-gantt", zh_name: "学习路径甘特图", category: "教育研究", answers_question: "一个研究任务的阶段如何安排？", plot_data_contract: [{field:"task"},{field:"start"},{field:"end"}] },
+  ];
+}
+
+function round107Section(title, subtitle, body = "") {
+  return `<div class="r107-section-head"><span>${escapeHtml(subtitle)}</span><h2>${escapeHtml(title)}</h2>${body ? `<p>${escapeHtml(body)}</p>` : ""}</div>`;
+}
+
+function dashboard() {
+  const demoPlots = (state.plotGallery && state.plotGallery.length ? state.plotGallery : round107PlotFallbackCards()).slice(0, 10);
+  const products = round107SkillProducts();
+  return shell(`
+    <section class="r107-hero">
+      <div class="r107-hero-copy">
+        <span class="r107-eyebrow">Research Companion</span>
+        <h1>别先背工具名。先说你想完成什么。</h1>
+        <p>这里把科研、绘图、文章、数据审查和 AI Skill 做成能点开的任务入口。每个入口都告诉你：用来做什么、输入什么、会得到什么。</p>
+        <div class="r107-hero-actions">
+          <a class="btn" href="/researcher" data-link>按问题找方法</a>
+          <a class="btn ghost" href="/plot-gallery" data-link>先看图长什么样</a>
+          <a class="btn ghost" href="/article-workshop" data-link>搭文章流程</a>
+        </div>
+      </div>
+      <div class="r107-hero-panel">
+        <strong>今天可以从这里开始</strong>
+        <div class="r107-quick-list">
+          <a href="/plot-gallery" data-link><span>我要做图</span><small>火山图、热图、森林图、PCA、社科量表、工程质控图</small></a>
+          <a href="/method-universe" data-link><span>我不知道方法</span><small>按研究问题推荐统计、组学、机器学习或人文社科方法</small></a>
+          <a href="/data-audit" data-link><span>我的表能不能用</span><small>先查字段，再谈模型和出图</small></a>
+        </div>
+      </div>
+    </section>
+    <section class="r107-section">
+      ${round107Section("常用能力", "一行五张卡片", "像产品一样写清楚效果，而不是堆 Skill 名。")}
+      <div class="r107-product-grid">${products.map(round107SkillProductCard).join("")}</div>
+    </section>
+    <section class="r107-section">
+      ${round107Section("先看示例图，再选方法", "科研绘图", "每张卡片都给出示例图、R 包、Python 包和适用学科。医学、生物、工程、社科和人文都能找到入口。")}
+      <div class="r107-plot-strip">${demoPlots.map(round107PlotCard).join("")}</div>
+    </section>
+    <section class="r107-section">
+      ${round107Section("给科研新手的四条路", "学习路径", "不用一次学完全部。先选一个你今天真正要完成的任务。")}
+      <div class="r107-path-grid">
+        ${[
+          ["我要写 Meta 分析", "先定 PICO，再做检索式、筛选表、森林图和偏倚风险。", "/article-workshop"],
+          ["我要做单细胞分析", "从 QC、聚类、注释、差异、通路到扰动预测。", "/method-universe"],
+          ["我要做工程实验图", "从因素设计、响应面、误差条到质量控制图。", "/plot-gallery"],
+          ["我要做人文社科图", "从问卷量表、文本共现、网络图到叙事证据。", "/plot-gallery"],
+        ].map(([t,b,h]) => `<a class="r107-path-card" href="${h}" data-link><strong>${t}</strong><span>${b}</span></a>`).join("")}
+      </div>
+    </section>
+  `);
+}
+
+function plotGalleryPage() {
+  const plots = state.plotGallery && state.plotGallery.length ? state.plotGallery : round107PlotFallbackCards();
+  const categories = [
+    ["all", "全部"],
+    ["医学/生物", "医学/生物"],
+    ["工程", "工程"],
+    ["社科", "社科"],
+    ["人文", "人文"],
+    ["Meta", "Meta分析"],
+    ["单细胞", "单细胞"],
+    ["网络", "网络/地图"],
+  ];
+  const topPlots = plots.slice(0, 80);
+  return shell(`
+    <section class="r107-plot-page">
+      <aside class="r107-plot-rail">
+        <div class="r107-plot-brand">Plot Studio</div>
+        ${categories.map(([value, label], i) => `<button class="${i === 0 ? "active" : ""}" type="button" data-r107-plot-filter="${escapeHtml(value)}">${escapeHtml(label)}</button>`).join("")}
+        <div class="r107-plot-help">
+          <strong>怎么选图？</strong>
+          <p>看图回答的问题，再看你的字段是否够用。拿不准就问右下角助手。</p>
+        </div>
+      </aside>
+      <main class="r107-plot-main">
+        <div class="r107-plot-hero">
+          <div>
+            <span>科研绘图工作室</span>
+            <h1>每张图都要回答一个问题。</h1>
+            <p>卡片直接展示示例图、R/Python 包和适用学科。医学、生物、工程、社科、人文都纳入同一个图谱选择器。</p>
+          </div>
+          <div class="r107-search-row">
+            <input id="plot-search" placeholder="搜索：火山图、PCA、森林图、Likert、响应面、网络图..." />
+            <select id="plot-category"><option value="">全部分类</option>${[...new Set(plots.map((x) => x.category).filter(Boolean))].map((c) => `<option>${escapeHtml(c)}</option>`).join("")}</select>
+          </div>
+        </div>
+        <div id="plot-gallery-list" class="r107-plot-grid">${topPlots.map(round107PlotCard).join("")}</div>
+      </main>
+    </section>
+  `);
+}
+
+function plotGalleryCard(p) {
+  const index = Math.abs(String(p.id || p.zh_name || "").split("").reduce((a, c) => a + c.charCodeAt(0), 0));
+  return round107PlotCard(p, index);
+}
+
+function petBubble() {
+  const configured = round107ModelConfigured();
+  const page = currentRoutePath();
+  const tips = page.includes("plot")
+    ? ["我想比较两组差异，应该画什么？", "我的表只有 group/value，可以画哪些图？", "Meta 分析森林图怎么准备字段？"]
+    : ["我想写一篇 Meta 分析，怎么开始？", "我想做单细胞虚拟扰动，先学什么？", "我有数据但不知道画什么图"];
+  return `<aside class="r107-assistant" aria-label="页面小助手">
+    <button class="r107-assistant-toggle" type="button" data-pet-toggle aria-expanded="false">
+      <span class="r107-bot-face">AI</span>
+      <span><strong>页面助手</strong><small>${configured ? "已检测到模型配置，可接入你的 API" : "未配置模型 API，先用本地规则推荐"}</small></span>
+    </button>
+    <section class="r107-assistant-panel">
+      <button class="r107-assistant-close" type="button" data-pet-close>收起</button>
+      <h3>告诉我你想做什么</h3>
+      <p>${configured ? "配置 API 后，这里可以把需求发送给你的模型；当前页面仍会先做本地推荐。" : "还没有配置模型 API。我先用本地规则给你推荐页面、图形和下一步；想接真实模型，请到模型网关配置。"} </p>
+      <div class="r107-assistant-chips">${tips.map((x) => `<button type="button" data-r107-ask="${escapeHtml(x)}">${escapeHtml(x)}</button>`).join("")}</div>
+      <textarea id="pet-demand-input" placeholder="例如：我有三组样本和表达量，想知道该画什么图。"></textarea>
+      <button class="btn" id="pet-plan-button" type="button">给我推荐</button>
+      <div id="pet-plan-result" class="r107-assistant-result">我会按“推荐页面、适合图形、需要字段、风险提醒”给你拆开。</div>
+    </section>
+  </aside>`;
+}
+
+function round107AssistantAnswer(text = "") {
+  const q = String(text || "").toLowerCase();
+  let target = ["/researcher", "科研导航"];
+  let plots = ["基础散点图", "分组箱线图"];
+  let fields = ["研究问题", "分组字段", "主要指标"];
+  if (q.includes("meta") || q.includes("森林")) {
+    target = ["/article-workshop", "文章流程 / Meta 分析"];
+    plots = ["森林图", "漏斗图", "PRISMA 流程图"];
+    fields = ["study_id", "effect_size", "lower_ci", "upper_ci", "weight"];
+  } else if (q.includes("单细胞") || q.includes("umap") || q.includes("扰动")) {
+    target = ["/method-universe", "单细胞与扰动分析"];
+    plots = ["UMAP", "DotPlot", "Violin", "扰动前后轨迹图"];
+    fields = ["cell_id", "cluster", "gene", "expression", "condition"];
+  } else if (q.includes("工程") || q.includes("响应面") || q.includes("质控")) {
+    target = ["/plot-gallery", "工程绘图"];
+    plots = ["响应面图", "误差条图", "质量控制图", "Pareto 图"];
+    fields = ["factor", "response", "batch", "time"];
+  } else if (q.includes("社科") || q.includes("问卷") || q.includes("量表")) {
+    target = ["/plot-gallery", "社科可视化"];
+    plots = ["Likert 量表图", "堆叠条形图", "网络图"];
+    fields = ["question", "score", "group", "respondent_id"];
+  } else if (q.includes("图") || q.includes("plot") || q.includes("画")) {
+    target = ["/plot-gallery", "科研绘图"];
+    plots = ["散点图", "热图", "PCA/PCoA", "折线图"];
+    fields = ["x", "y", "group", "value"];
+  }
+  return `<div class="r107-answer-card">
+    <strong>建议先去：${escapeHtml(target[1])}</strong>
+    <p>适合看的图：${plots.map((x) => `<code>${escapeHtml(x)}</code>`).join("")}</p>
+    <p>先准备字段：${fields.map((x) => `<code>${escapeHtml(x)}</code>`).join("")}</p>
+    <p class="soft-note">${round107SafeText()}</p>
+    <a class="btn ghost" href="${target[0]}" data-link>打开推荐页面</a>
+  </div>`;
+}
+
+function bindPetMentor() {
+  const root = document.querySelector(".r107-assistant");
+  if (!root) return;
+  const toggle = root.querySelector("[data-pet-toggle]");
+  const close = root.querySelector("[data-pet-close]");
+  const input = el("pet-demand-input");
+  const result = el("pet-plan-result");
+  const open = () => {
+    root.classList.add("open");
+    toggle?.setAttribute("aria-expanded", "true");
+  };
+  const shut = () => {
+    root.classList.remove("open");
+    toggle?.setAttribute("aria-expanded", "false");
+  };
+  toggle?.addEventListener("click", () => root.classList.contains("open") ? shut() : open());
+  close?.addEventListener("click", shut);
+  root.querySelectorAll("[data-r107-ask]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      input.value = btn.dataset.r107Ask || "";
+      result.innerHTML = round107AssistantAnswer(input.value);
+      bindLinks();
+    });
+  });
+  const planButton = el("pet-plan-button");
+  if (planButton) {
+    planButton.onclick = () => {
+      result.innerHTML = round107AssistantAnswer(input?.value || "");
+      bindLinks();
+    };
+  }
+}
+
+function shell(content) {
+  return `
+    <div class="layout r107-layout">
+      <aside class="sidebar r107-sidebar">
+        <a class="brand r107-brand" href="/home" data-link>
+          <strong>MedPath</strong>
+          <small>科研学习工作台</small>
+        </a>
+        ${routeLinks()}
+      </aside>
+      <div class="workspace r107-workspace">
+        <header class="topbar r107-topbar">
+          <div class="command r107-command">
+            <input id="global-search" placeholder="搜索：火山图、Meta分析、单细胞、工程质控、论文流程..." />
+          </div>
+          <div class="top-actions r107-top-actions">
+            <a href="/plot-gallery" data-link>绘图</a>
+            <a href="/plugins" data-link>Skills</a>
+            <a href="/island" data-link>小岛</a>
+          </div>
+        </header>
+        <main class="page page-sheet r107-page">${content}</main>
+        ${petBubble()}
+        <nav class="mobile-dock r107-mobile-dock">
+          <a href="/home" data-link>首页</a>
+          <a href="/researcher" data-link>方法</a>
+          <a href="/plot-gallery" data-link>绘图</a>
+          <a href="/plugins" data-link>Skills</a>
+          <a href="/island" data-link>小岛</a>
+        </nav>
+      </div>
+    </div>`;
+}
+
+function currentPage() {
+  const p = currentRoutePath();
+  if (p === "/" || p === "/home") return dashboard();
+  if (p === "/teacher") return teacherPage();
+  if (p === "/student") return studentPage();
+  if (p === "/researcher") return researcherPage();
+  if (p === "/journey-builder") return journeyBuilderPage();
+  if (p === "/method-universe") return methodUniversePage();
+  if (p.startsWith("/method-universe/")) return methodDetailPage(pathLastSegment(p));
+  if (p === "/method-family/gene-perturbation") return genePerturbationPage();
+  if (p === "/article-workshop") return articleWorkshopPage();
+  if (p.startsWith("/article-workshop/")) return articleWorkshopPage(pathLastSegment(p));
+  if (p === "/plugins") return pluginsPage();
+  if (p.startsWith("/plugins/")) return pluginDetailPage(pathLastSegment(p));
+  if (p.startsWith("/skills/")) return skillDetailPage(pathLastSegment(p));
+  if (p === "/simulate") return simulatePage();
+  if (p === "/simulate/new") return simulateNewPage();
+  if (p.startsWith("/simulate/")) return caseDetailPage(pathLastSegment(p));
+  if (p === "/compare") return comparePage();
+  if (p === "/evidence") return evidencePage();
+  if (p === "/open-source") return openSourcePage();
+  if (p === "/source-library") return sourceLibraryPage();
+  if (p.startsWith("/source-library/")) return publicSourceDetailPage(pathLastSegment(p));
+  if (p.startsWith("/open-source/")) return openSourceDetailPage(pathLastSegment(p));
+  if (p === "/plot-studio") return plotStudioPage();
+  if (p === "/plot-gallery") return plotGalleryPage();
+  if (p.startsWith("/plot-gallery/")) return plotDetailPage(pathLastSegment(p));
+  if (p === "/data-audit") return dataAuditPage();
+  if (p === "/method-runner") return methodRunnerPage();
+  if (p.startsWith("/method-runner/")) return methodRunnerPage(pathLastSegment(p));
+  if (p === "/mobile-app") return mobileAppPage();
+  if (p === "/skill-builder") return skillBuilderPage();
+  if (p === "/runtime") return runtimePage();
+  if (p === "/providers") return providersPage();
+  if (p === "/model-gateway") return modelGatewayPage();
+  if (p === "/governance") return governancePage();
+  if (p === "/island" || p === "/island-builder") return islandPage();
+  if (p === "/island-3d") return island3DPage();
+  if (p === "/settings") return settingsPage();
+  return shell(`<section class="r107-section"><h1>页面不存在</h1><a class="btn" href="/home" data-link>返回首页</a></section>`);
+}
+
 async function render() {
   document.getElementById("app").innerHTML = currentPage();
   await bindPageActions();

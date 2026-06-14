@@ -572,6 +572,216 @@
     `);
   }
 
+  /* Round107 ordinary site replacement inside round73 runtime.
+     round73 owns the ordinary workbench after app.js, so these overrides make
+     the actually visible GitHub Pages version match the new product direction. */
+
+  function r107Routes() {
+    return [
+      ["home", "首页", "今天从哪开始"],
+      ["research", "科研导航", "找方法与路线"],
+      ["skills", "Skills", "可调用能力"],
+      ["plot-studio", "科研绘图", "看图例与代码"],
+      ["method-runner", "文章流程", "从0搭框架"],
+      ["tools", "开源工具", "仓库怎么用"],
+      ["cases", "案例模板", "教学与科研样例"],
+      ["community", "社区", "排行与收藏"],
+      ["profile", "我的主页", "作品与积分"],
+      ["island", "科研小岛", "游戏化入口"],
+    ];
+  }
+
+  function nav(active) {
+    return r107Routes().map(([id, zh, desc]) => `
+      <a href="${link(id)}" class="${active === id ? "active" : ""}">
+        <span>${esc(zh)}<small>${esc(desc)}</small></span>
+      </a>
+    `).join("");
+  }
+
+  function mobileNav(active) {
+    return `<nav class="r73-mobile-nav r107-mobile-dock">${[
+      ["home", "首页"],
+      ["research", "方法"],
+      ["plot-studio", "绘图"],
+      ["skills", "Skills"],
+      ["island", "小岛"],
+    ].map(([id, label]) => `<a href="${link(id)}" class="${active === id ? "active" : ""}"><span>${esc(label)}</span></a>`).join("")}</nav>`;
+  }
+
+  function shell(active, content) {
+    return `
+      <div class="r73-app r107-layout">
+        <aside class="r73-sidebar r107-sidebar">
+          <a class="r73-brand r107-brand" href="${link("home")}">
+            <div><strong>MedPath</strong><span>科研学习工作台</span></div>
+          </a>
+          <nav class="r73-nav r107-nav-group">${nav(active)}</nav>
+          <div class="r73-side-card r107-side-note">
+            <strong>每轮按 README 验收</strong>
+            <p>分类、文案、示例、移动端和发布都要检查。医学 AI 仅用于教学与科研训练。</p>
+          </div>
+        </aside>
+        <main class="r73-main r107-workspace">
+          <header class="r73-topbar r107-topbar">
+            <label class="r73-search r107-command"><input id="r73-search" placeholder="搜索：Meta分析、单细胞、森林图、工程质控、Skill..." /></label>
+            <a class="r73-user-mini r107-user-mini" href="${link("profile")}"><span class="r73-avatar">易</span><span>Lv. 7<br><small>${userState.points} 积分</small></span></a>
+          </header>
+          <section class="r73-page r107-page">${content}</section>
+        </main>
+        ${mobileNav(active)}
+        <button class="r73-pet r107-pet" id="r73-pet" aria-label="页面助手"><span>AI</span></button>
+        <div class="r73-pet-bubble r107-pet-bubble" id="r73-pet-bubble">你可以问：我该画什么图？我该写哪类文章？我该用哪个方法？如果配置了自己的模型 API，后续会改为真实模型回答；未配置时先用本地规则推荐。</div>
+      </div>
+    `;
+  }
+
+  function r107Hero(title, body, primary = ["按问题找方法", "research"], secondary = ["先看示例图", "plot-studio"]) {
+    return `
+      <section class="r107-hero">
+        <div class="r107-hero-copy">
+          <span class="r107-eyebrow">Research Companion</span>
+          <h1>${esc(title)}</h1>
+          <p>${esc(body)}</p>
+          <div class="r107-hero-actions">
+            <a class="btn" href="${link(primary[1])}">${esc(primary[0])}</a>
+            <a class="btn ghost" href="${link(secondary[1])}">${esc(secondary[0])}</a>
+          </div>
+        </div>
+        <aside class="r107-hero-panel">
+          <strong>今天可以这样开始</strong>
+          <div class="r107-quick-list">
+            <a href="${link("method-runner")}"><span>我要写文章</span><small>Meta、综述、机器学习、教改论文，一步步搭流程。</small></a>
+            <a href="${link("plot-studio")}"><span>我要做图</span><small>先看示例，再检查字段，最后选 R 或 Python 包。</small></a>
+            <a href="${link("research")}"><span>我不知道方法</span><small>按研究问题推荐生信、统计、AI、工程和社科路线。</small></a>
+          </div>
+        </aside>
+      </section>`;
+  }
+
+  function r107Section(title, sub, body = "") {
+    return `<div class="r107-section-head"><span>${esc(sub)}</span><h2>${esc(title)}</h2>${body ? `<p>${esc(body)}</p>` : ""}</div>`;
+  }
+
+  function r107Preview(type = "scatter") {
+    if (type === "scatter") {
+      return `<svg viewBox="0 0 260 150"><rect width="260" height="150" rx="18" fill="#f7fbfa"/><path d="M32 122 L232 122 M32 122 L32 24" stroke="#d5dfdd" stroke-width="2"/><path d="M42 114 C84 82 116 88 154 55 C184 29 205 42 226 27" fill="none" stroke="#0f766e" stroke-width="4"/>${[38,52,70,88,104,121,144,160,178,199,216].map((x, i) => `<circle cx="${x}" cy="${110 - i * 7 + (i % 3) * 10}" r="4.6" fill="${i % 2 ? "#f28c7b" : "#2a9d8f"}"/>`).join("")}</svg>`;
+    }
+    if (type === "heatmap") {
+      return `<svg viewBox="0 0 260 150"><rect width="260" height="150" rx="18" fill="#fff8f4"/>${Array.from({length: 36}).map((_, i) => `<rect x="${36 + (i % 9) * 21}" y="${28 + Math.floor(i / 9) * 23}" width="18" height="18" rx="4" fill="${["#5fbfac","#f5cf69","#ff876f","#6c93d8"][i % 4]}" opacity="${.45 + (i % 5) * .1}"/>`).join("")}</svg>`;
+    }
+    if (type === "paper") {
+      return `<svg viewBox="0 0 260 150"><rect width="260" height="150" rx="18" fill="#fff8f7"/>${["问题","数据","图表","初稿"].map((t, i) => `<g transform="translate(${24 + i * 58},34)"><rect width="46" height="70" rx="12" fill="#fff" stroke="#f0b8ae"/><text x="23" y="42" text-anchor="middle" font-size="12" fill="#7a403a">${t}</text></g>`).join("")}<path d="M75 68 H88 M133 68 H146 M191 68 H204" stroke="#f28c7b" stroke-width="3" stroke-linecap="round"/></svg>`;
+    }
+    if (type === "network") {
+      return `<svg viewBox="0 0 260 150"><rect width="260" height="150" rx="18" fill="#f5f8ff"/>${[[60,78],[120,44],[160,92],[205,55],[92,112]].map(([x,y]) => `<circle cx="${x}" cy="${y}" r="18" fill="#fff" stroke="#7aa7ff" stroke-width="3"/>`).join("")}<path d="M76 70 L105 52 M137 53 L145 80 M176 82 L193 64 M75 90 L94 104 M112 104 L144 94" stroke="#4d78d6" stroke-width="3"/></svg>`;
+    }
+    return `<svg viewBox="0 0 260 150"><rect width="260" height="150" rx="18" fill="#fffaf0"/>${[0,1,2,3].map((r) => [0,1,2,3].map((c) => `<rect x="${32 + c * 48}" y="${28 + r * 24}" width="42" height="18" rx="5" fill="${r === 0 ? "#f7c76f" : "#fff"}" stroke="#ead8ae"/>`).join("")).join("")}</svg>`;
+  }
+
+  function r107ProductCard(item) {
+    return `<article class="r107-product-card">
+      <div class="r107-product-preview">${r107Preview(item.preview)}</div>
+      <div class="r107-product-copy"><span>${esc(item.kicker)}</span><h3>${esc(item.title)}</h3><p>${esc(item.body)}</p><small>${esc(item.result)}</small></div>
+      <a class="r107-card-action" href="${link(item.route)}">进入</a>
+    </article>`;
+  }
+
+  function r107PackageHints(plot = {}) {
+    const hay = `${plot.id || ""} ${plot.name || ""} ${plot.zh_name || ""} ${plot.en_name || ""} ${plot.category || ""}`.toLowerCase();
+    if (/volcano|火山/.test(hay)) return { r: ["ggplot2", "EnhancedVolcano"], py: ["matplotlib"], field: "医学/生物" };
+    if (/heatmap|热图/.test(hay)) return { r: ["ComplexHeatmap", "pheatmap"], py: ["seaborn"], field: "生物/工程" };
+    if (/umap|tsne|single|单细胞/.test(hay)) return { r: ["Seurat", "ggplot2"], py: ["scanpy"], field: "单细胞/空间组学" };
+    if (/forest|meta|森林/.test(hay)) return { r: ["meta", "metafor"], py: ["statsmodels"], field: "医学/社科综述" };
+    if (/network|tree|map|网络|地图/.test(hay)) return { r: ["igraph", "sf"], py: ["networkx", "geopandas"], field: "网络/地图/人文" };
+    if (/radar|gantt|timeline|雷达|时间/.test(hay)) return { r: ["ggplot2", "fmsb"], py: ["plotly"], field: "工程/项目管理" };
+    return { r: ["ggplot2"], py: ["seaborn"], field: "跨学科" };
+  }
+
+  function r107PlotCard(plot = {}, index = 0) {
+    const hints = r107PackageHints(plot);
+    const title = plot.zh_name || plot.name || plot.en_name || plot.id || "科研图";
+    const visual = plot.example_visual || {};
+    const src = "";
+    const columns = (plot.plot_data_contract || plot.what_it_needs || []).map((x) => x.field || x).filter(Boolean).slice(0, 3);
+    return `<article class="r107-plot-card">
+      <div class="r107-plot-media">${src ? `<img src="${esc(src)}" alt="${esc(title)}" loading="lazy" />` : r107Preview(index % 3 === 0 ? "scatter" : (index % 3 === 1 ? "heatmap" : "network"))}</div>
+      <div class="r107-plot-body">
+        <div class="r107-plot-title"><h3>${esc(title)}</h3><span>${esc(hints.field)}</span></div>
+        <p>${esc(plot.answers_question || plot.question_answered || "先判断它回答什么问题，再整理字段。")}</p>
+        <div class="r107-package-row"><b>R</b>${hints.r.map((x) => `<code>${esc(x)}</code>`).join("")}</div>
+        <div class="r107-package-row"><b>Python</b>${hints.py.map((x) => `<code>${esc(x)}</code>`).join("")}</div>
+        <small>${columns.length ? `需要字段：${columns.join(" / ")}` : "适合先上传表头做字段审查"}</small>
+      </div>
+      <div class="r107-plot-actions"><a href="${link("plot-studio")}">看详情</a><button type="button">开始</button></div>
+    </article>`;
+  }
+
+  function homePage() {
+    const products = [
+      { title: "科研绘图助手", kicker: "Plot Studio", body: "不知道该画什么图时，先看示例，再看字段和 R/Python 包。", result: "输出：示例图、字段要求、代码路线", route: "plot-studio", preview: "scatter" },
+      { title: "文章流程搭建", kicker: "Paper Builder", body: "Meta 分析、机制研究、AI 医学论文，从材料到图表一步步搭。", result: "输出：章节、图表、审稿风险", route: "method-runner", preview: "paper" },
+      { title: "方法选择器", kicker: "Method Router", body: "把“我想研究什么”翻译成可执行的方法路线。", result: "输出：方法、输入、误区、学习路径", route: "research", preview: "network" },
+      { title: "数据体检", kicker: "Data Audit", body: "字段缺不缺、分组清不清、是否适合直接分析，先查再做。", result: "输出：缺失字段、修表建议", route: "tools", preview: "table" },
+      { title: "Skill 工坊", kicker: "Skill Builder", body: "把常用科研动作做成自己的 AI Skill，之后反复调用。", result: "输出：SKILL.md、示例、复核清单", route: "skills", preview: "network" },
+    ];
+    const plots = (data.plots.length ? data.plots : [
+      { zh_name: "森林图", category: "Meta分析", answers_question: "多项研究的效应方向是否一致？" },
+      { zh_name: "响应面图", category: "工程实验", answers_question: "两个因素如何共同影响结果？" },
+      { zh_name: "Likert量表图", category: "社科问卷", answers_question: "不同题项的态度分布是否一致？" },
+      { zh_name: "UMAP", category: "单细胞", answers_question: "细胞群体是否形成可解释结构？" },
+      { zh_name: "文本共现网络", category: "数字人文", answers_question: "关键词或人物之间怎样连接？" },
+    ]).slice(0, 10);
+    return shell("home", `
+      ${r107Hero("别先背概念，先说你今天想完成什么。", "我们把方法、工具、文章、图、Skill 和小岛入口放到同一个工作台里。科研新手只要选择任务，平台会告诉你需要什么数据、能产出什么、哪里要导师复核。", ["进入科研工作台", "research"], ["切到科研小岛", "island"])}
+      <section class="r107-section">${r107Section("常用能力", "一行五张卡片", "像产品一样写清楚效果，而不是堆 Skill 名。")}<div class="r107-product-grid">${products.map(r107ProductCard).join("")}</div></section>
+      <section class="r107-section">${r107Section("先看示例图，再选方法", "科研绘图", "医学、生物、工程、社科和人文都能找到入口。")}<div class="r107-plot-strip">${plots.map(r107PlotCard).join("")}</div></section>
+      <section class="r107-section">${r107Section("给科研新手的四条路", "学习路径", "不用一次学完全部。先选一个今天真正要完成的任务。")}<div class="r107-path-grid">
+        ${[
+          ["我要写 Meta 分析", "先定 PICO，再做检索式、筛选表、森林图和偏倚风险。", "method-runner"],
+          ["我要做单细胞分析", "从 QC、聚类、注释、差异、通路到扰动预测。", "research"],
+          ["我要做工程实验图", "从因素设计、响应面、误差条到质量控制图。", "plot-studio"],
+          ["我要做人文社科图", "从问卷量表、文本共现、网络图到叙事证据。", "plot-studio"],
+        ].map(([t,b,h]) => `<a class="r107-path-card" href="${link(h)}"><strong>${esc(t)}</strong><span>${esc(b)}</span></a>`).join("")}
+      </div></section>
+    `);
+  }
+
+  function skillsPage() {
+    const cards = skillGroups.flatMap((group) => group.skills.map((s) => ({ group: group.title, id: s[0], title: s[1], body: s[2] }))).slice(0, 15);
+    return shell("skills", `
+      ${r107Hero("Skills 要像产品，不要像目录。", "每张卡片都写清楚：它帮谁解决什么问题、需要什么输入、会产出什么结果。后续这些 Skill 可以放到科研小岛建筑上。", ["去绘图页看示例", "plot-studio"], ["进入小岛", "island"])}
+      <section class="r107-section">${r107Section("Skill 市场", "一行五张", "先展示核心效果，再进入详情。")}<div class="r107-product-grid">
+        ${cards.map((item, i) => r107ProductCard({ title: item.title, kicker: item.group.replace(" Skills", ""), body: item.body, result: `代号：${item.id}`, route: "skills", preview: ["scatter","paper","network","table","heatmap"][i % 5] })).join("")}
+      </div></section>
+    `);
+  }
+
+  function plotPage() {
+    const plots = (data.plots.length ? data.plots : [
+      { zh_name: "散点图", category: "通用科研", answers_question: "两个连续变量是否相关？" },
+      { zh_name: "热图", category: "组学/工程", answers_question: "样本和特征是否有聚类模式？" },
+      { zh_name: "森林图", category: "Meta分析", answers_question: "多项研究效应是否一致？" },
+      { zh_name: "Likert量表图", category: "社科问卷", answers_question: "态度分布如何？" },
+      { zh_name: "响应面图", category: "工程实验", answers_question: "因素组合如何影响结果？" },
+      { zh_name: "UMAP", category: "单细胞", answers_question: "细胞群体结构如何？" },
+    ]).slice(0, 80);
+    const categories = ["全部", "医学/生物", "工程", "社科", "人文", "Meta分析", "单细胞", "网络/地图"];
+    return shell("plot-studio", `
+      <section class="r107-plot-page">
+        <aside class="r107-plot-rail">
+          <div class="r107-plot-brand">Plot Studio</div>
+          ${categories.map((c, i) => `<button class="${i === 0 ? "active" : ""}" type="button">${esc(c)}</button>`).join("")}
+          <div class="r107-plot-help"><strong>怎么选图？</strong><p>先看图回答的问题，再看你的字段是否够用。拿不准就点右下角助手。</p></div>
+        </aside>
+        <main class="r107-plot-main">
+          <div class="r107-plot-hero"><div><span>科研绘图工作室</span><h1>每张图都要回答一个问题。</h1><p>卡片直接展示示例图、R/Python 包和适用学科。医学、生物、工程、社科、人文都纳入同一个图谱选择器。</p></div><div class="r107-search-row"><input placeholder="搜索：火山图、PCA、森林图、Likert、响应面、网络图..." /><select><option>全部分类</option></select></div></div>
+          <div class="r107-plot-grid">${plots.map(r107PlotCard).join("")}</div>
+        </main>
+      </section>
+    `);
+  }
+
   function pageFor(active) {
     if (active === "home") return homePage();
     if (active === "learn") return learnPage();
