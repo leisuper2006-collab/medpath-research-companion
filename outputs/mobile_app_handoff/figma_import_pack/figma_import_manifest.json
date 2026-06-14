@@ -1,0 +1,61 @@
+{
+  "name": "MedPath Mobile App Figma Import Pack",
+  "version": "round63",
+  "source_svg": "medpath_mobile_app_figma_handoff.svg",
+  "tokens": "medpath_mobile_tokens.json",
+  "figma_rebuild_script": "figma_use_rebuild_mobile_app.js",
+  "screens": [
+    {
+      "id": "home",
+      "name": "科研任务首页",
+      "goal": "让科研新手用一句话描述需求，并立即获得方法、图表、文章、工具与审查路线。",
+      "primary_actions": [
+        "生成路线",
+        "看推荐方法",
+        "进入伦理审查"
+      ]
+    },
+    {
+      "id": "journey",
+      "name": "研究路径生成器",
+      "goal": "把基因敲除、Meta分析、单细胞、病理PBL等需求拆成一周可执行路线。",
+      "primary_actions": [
+        "选择 starter",
+        "查看7天路线",
+        "导出任务包"
+      ]
+    },
+    {
+      "id": "method",
+      "name": "方法详情页",
+      "goal": "像产品页一样解释每个方法的用途、输入、输出、失败条件、示例图和学习路径。",
+      "primary_actions": [
+        "查看示例图",
+        "复制模型提示",
+        "进入数据审查"
+      ]
+    },
+    {
+      "id": "plot",
+      "name": "科研图详情页",
+      "goal": "展示该图回答什么问题、需要哪些字段、示例图如何生成、数据不合格时如何修正。",
+      "primary_actions": [
+        "检查字段",
+        "查看R/ggplot2路线",
+        "生成图表任务"
+      ]
+    },
+    {
+      "id": "governance",
+      "name": "伦理复核页",
+      "goal": "在AI输出进入论文、课程或训练材料前检查隐私、伪造引用、临床误导和教师复核。",
+      "primary_actions": [
+        "运行风险审计",
+        "填写教师复核",
+        "导出审计记录"
+      ]
+    }
+  ],
+  "status": "Figma MCP unavailable in current run; local import pack prepared.",
+  "safety_boundary": "Only for teaching and research training; not for clinical diagnosis."
+}

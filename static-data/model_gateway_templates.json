@@ -1,0 +1,126 @@
+{
+  "providers": [
+    {
+      "id": "csu_chat",
+      "name": "CSU Chat / 学校大模型接口",
+      "env": {
+        "api_key": "CSU_CHAT_API_KEY",
+        "base_url": "CSU_CHAT_BASE_URL",
+        "model": "CSU_CHAT_MODEL"
+      },
+      "default_base_url": "由 CSU_CHAT_BASE_URL 环境变量提供",
+      "default_model": "由 CSU_CHAT_MODEL 环境变量提供",
+      "compatible_mode": "OpenAI-compatible when platform supports it",
+      "best_for": ["校内模型调用", "课程材料生成", "多模型审校"],
+      "beginner_note": "适合学校已有模型服务。平台只检测环境变量是否配置，不读取、不显示、不保存 API Key。"
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "env": {
+        "api_key": "OPENAI_API_KEY",
+        "base_url": "OPENAI_BASE_URL",
+        "model": "OPENAI_MODEL"
+      },
+      "default_base_url": "https://api.openai.com/v1",
+      "default_model": "由用户在环境变量或页面中选择",
+      "compatible_mode": "OpenAI API",
+      "best_for": ["结构化输出", "代码生成", "复杂科研流程规划"],
+      "beginner_note": "适合需要稳定结构化输出和工具调用的任务。不要把 Key 写进代码或文档。"
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek",
+      "env": {
+        "api_key": "DEEPSEEK_API_KEY",
+        "base_url": "DEEPSEEK_BASE_URL",
+        "model": "DEEPSEEK_MODEL"
+      },
+      "default_base_url": "由用户配置",
+      "default_model": "由用户配置",
+      "compatible_mode": "OpenAI-compatible",
+      "best_for": ["中文科研写作草稿", "代码解释", "低成本审校"],
+      "beginner_note": "适合中文说明和代码辅助。真实调用前必须确认引用核验和人工复核。"
+    },
+    {
+      "id": "qwen",
+      "name": "Qwen / 通义千问",
+      "env": {
+        "api_key": "QWEN_API_KEY",
+        "base_url": "QWEN_BASE_URL",
+        "model": "QWEN_MODEL"
+      },
+      "default_base_url": "由用户配置",
+      "default_model": "由用户配置",
+      "compatible_mode": "Provider-specific or OpenAI-compatible gateway",
+      "best_for": ["中文课程材料", "表格化输出", "科研任务拆解"],
+      "beginner_note": "适合中文教学场景。需要通过平台网关统一记录任务类型和安全边界。"
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic Claude",
+      "env": {
+        "api_key": "ANTHROPIC_API_KEY",
+        "base_url": "ANTHROPIC_BASE_URL",
+        "model": "ANTHROPIC_MODEL"
+      },
+      "default_base_url": "由用户配置",
+      "default_model": "由用户配置",
+      "compatible_mode": "Anthropic Messages API",
+      "best_for": ["长文档审读", "伦理边界检查", "研究方案批判性审校"],
+      "beginner_note": "适合长文和审稿式反馈。输出仍需教师或专家复核。"
+    },
+    {
+      "id": "local_mock",
+      "name": "Local Mock",
+      "env": {
+        "api_key": "",
+        "base_url": "",
+        "model": ""
+      },
+      "default_base_url": "local",
+      "default_model": "mock-medpath-reviewer",
+      "compatible_mode": "local mock",
+      "best_for": ["无密钥演示", "离线教学", "UI 与流程测试"],
+      "beginner_note": "没有任何密钥时默认使用。它只生成教学演示结果，不代表真实模型能力。"
+    }
+  ],
+  "task_types": [
+    {
+      "id": "case_generation",
+      "zh_name": "合成教学案例生成",
+      "recommended_skills": ["case-simulation-generator", "pathology-case-builder", "ai-ethics-governor"],
+      "output_schema": ["case_title", "learning_objectives", "synthetic_context", "pbl_questions", "teacher_review_checklist", "safety_boundary"],
+      "review_focus": ["是否为合成案例", "是否避免真实患者信息", "病理逻辑是否一致", "是否包含教师复核清单"]
+    },
+    {
+      "id": "article_workflow",
+      "zh_name": "文章全流程搭建",
+      "recommended_skills": ["research-copilot", "medical-kg-rag-builder", "ai-ethics-governor", "skill-eval-harness"],
+      "output_schema": ["research_question", "materials_needed", "workflow_steps", "figure_plan", "statistics_plan", "citation_checklist"],
+      "review_focus": ["是否伪造结果", "是否说明数据来源", "是否列出导师复核点", "是否避免虚假引用"]
+    },
+    {
+      "id": "data_audit",
+      "zh_name": "数据规范审查",
+      "recommended_skills": ["skill-eval-harness", "ai-ethics-governor"],
+      "output_schema": ["data_dictionary_issues", "missingness_checks", "grouping_checks", "privacy_flags", "next_steps"],
+      "review_focus": ["字段是否定义清楚", "是否有隐私风险", "是否能进入统计或绘图流程"]
+    },
+    {
+      "id": "figure_generation",
+      "zh_name": "科研图生成与审查",
+      "recommended_skills": ["research-copilot", "skill-eval-harness"],
+      "output_schema": ["plot_type", "required_columns", "r_code_plan", "quality_checks", "caption_template"],
+      "review_focus": ["图是否回答研究问题", "数据是否规范", "统计标注是否待实测", "是否优先可复现代码"]
+    },
+    {
+      "id": "ethics_review",
+      "zh_name": "医学AI伦理审计",
+      "recommended_skills": ["ai-ethics-governor"],
+      "output_schema": ["risk_flags", "blocked_content", "required_human_review", "safe_rewrite", "audit_log_fields"],
+      "review_focus": ["隐私", "临床误导", "虚假引用", "学术诚信", "人工复核"]
+    }
+  ],
+  "safety_boundary": "医学AI输出仅用于教学与科研训练，不替代临床诊断，不用于真实患者处置；所有结果须经教师或专家复核。"
+}

@@ -1,0 +1,3611 @@
+[
+  {
+    "id": "article-01",
+    "type": "Meta分析",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断Meta分析是否匹配当前材料与研究目的",
+      "补齐PICO问题、数据库检索式、纳排标准",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "PICO问题",
+      "数据库检索式",
+      "纳排标准",
+      "效应量字段",
+      "偏倚风险工具",
+      "PRISMA流程",
+      "森林图与异质性解释"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按Meta分析规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "Meta分析类型与研究材料匹配",
+      "PICO问题、检索式、纳排标准、效应量提取、偏倚风险和森林图均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "Meta分析从0到1：先把PICO问题整理清楚，再生成Meta分析从0到1流程卡",
+    "article_hero_subtitle": "Meta分析从一个可回答的PICO问题开始：先确定人群、干预或暴露、结局和研究类型，再进入检索式、筛选表、偏倚评价、森林图和GRADE证据表。模型API只能帮你整理流程，不能替你生成不存在的研究结果。",
+    "article_reporting_focus": "Meta分析的核心报告重点：PICO问题、检索式、纳排标准、效应量提取、偏倚风险和森林图",
+    "article_story_sections": [
+      {
+        "title": "Meta分析不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。Meta分析至少需要：PICO问题、数据库检索式、纳排标准、效应量字段。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Low-Grade Gliomas (UCSF, Science 2014)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按Meta分析类型与研究材料匹配、PICO问题、检索式、纳排标准、效应量提取、偏倚风险和森林图均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "lgg_ucsf_2014",
+      "title": "Low-Grade Gliomas (UCSF, Science 2014)",
+      "description": "Whole exome sequencing of 23 grade II glioma tumor/normal pairs.",
+      "citation": "Johnson et al. Science 2014",
+      "pmid": "24336570",
+      "cancer_type": "difg",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Science",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Science公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=lgg_ucsf_2014"
+    },
+    "example_visual": {
+      "title": "Meta分析：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-01.svg",
+      "source_note": "独立教学示例图；公开来源线索：Johnson et al. Science 2014。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写Meta分析，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出PICO问题、检索式、纳排标准、效应量提取、偏倚风险和森林图相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "Meta分析的起点不是写摘要，而是把“PICO问题”和“Meta分析从0到1流程卡”先对齐；本页按问题、材料、图表和审查节点搭建零起点路径。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择Meta分析",
+        "body": "只有当研究材料能支撑PICO问题和数据库检索式时，才适合进入Meta分析流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理纳排标准、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“Meta分析：从0到1流程示例”基于Science公开研究来源的公开线索或教学化重绘；读图重点是Meta分析如何从PICO问题走向Meta分析从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "PICO",
+      "数据库检索式",
+      "纳排标准",
+      "效应量字段",
+      "偏倚风险工具",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "Meta分析从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写Meta分析？",
+      "PICO问题、检索式、纳排标准、效应量提取、偏倚风险和森林图是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-02",
+    "type": "系统综述",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断系统综述是否匹配当前材料与研究目的",
+      "补齐主题边界、核心概念表、文献分层矩阵",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "主题边界",
+      "核心概念表",
+      "文献分层矩阵",
+      "争议问题",
+      "机制图草案",
+      "引用核验清单"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按系统综述规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "系统综述类型与研究材料匹配",
+      "问题范围、检索策略、证据表、质量评价和叙述性合成均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "系统综述从0到1：先把主题边界整理清楚，再生成系统综述从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写系统综述的学生：先补齐主题边界，再围绕系统综述类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "系统综述的核心报告重点：问题范围、检索策略、证据表、质量评价和叙述性合成",
+    "article_story_sections": [
+      {
+        "title": "系统综述不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。系统综述至少需要：主题边界、核心概念表、文献分层矩阵、争议问题。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Bladder Cancer (MSK, Cell Reports 2022)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按系统综述类型与研究材料匹配、问题范围、检索策略、证据表、质量评价和叙述性合成均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "paired_bladder_2022",
+      "title": "Bladder Cancer (MSK, Cell Reports 2022)",
+      "description": "Targeted sequencing of 1659 Bladder Cancer tumor/normal samples via MSK-IMPACT.",
+      "citation": "Clinton et al. Cell Reports 2022",
+      "pmid": "36543146",
+      "cancer_type": "bladder",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Cell",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Cell/Cancer Cell公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=paired_bladder_2022"
+    },
+    "example_visual": {
+      "title": "系统综述：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-02.svg",
+      "source_note": "独立教学示例图；公开来源线索：Clinton et al. Cell Reports 2022。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写系统综述，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出问题范围、检索策略、证据表、质量评价和叙述性合成相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "第一次写系统综述时，最容易漏掉材料边界和证据链。本页从主题边界开始，逐步生成系统综述从0到1流程卡和导师复核清单。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择系统综述",
+        "body": "只有当研究材料能支撑主题边界和核心概念表时，才适合进入系统综述流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理文献分层矩阵、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“系统综述：从0到1流程示例”基于Cell/Cancer Cell公开研究来源的公开线索或教学化重绘；读图重点是系统综述如何从主题边界走向系统综述从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "研究问题",
+      "检索策略",
+      "证据表模板",
+      "质量评价工具",
+      "主题分组",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "系统综述从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写系统综述？",
+      "问题范围、检索策略、证据表、质量评价和叙述性合成是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-03",
+    "type": "网状Meta分析",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断网状Meta分析是否匹配当前材料与研究目的",
+      "补齐PICO问题、数据库检索式、纳排标准",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "PICO问题",
+      "数据库检索式",
+      "纳排标准",
+      "效应量字段",
+      "偏倚风险工具",
+      "PRISMA流程",
+      "森林图与异质性解释"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按网状Meta分析规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "网状Meta分析类型与研究材料匹配",
+      "多干预网络、直接/间接证据、一致性、排序概率和敏感性分析均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "网状Meta分析从0到1：先把PICO问题整理清楚，再生成网状Meta分析从0到1流程卡",
+    "article_hero_subtitle": "网状Meta分析适合比较多个干预之间的相对效果：在普通Meta之前先检查网络是否连通、共同比较是否足够、异质性和不一致性是否可解释，再规划网络图、排名图和敏感性分析。",
+    "article_reporting_focus": "网状Meta分析的核心报告重点：多干预网络、直接/间接证据、一致性、排序概率和敏感性分析",
+    "article_story_sections": [
+      {
+        "title": "网状Meta分析不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。网状Meta分析至少需要：PICO问题、数据库检索式、纳排标准、效应量字段。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Ampullary Carcinoma (Baylor College of Medicine, Cell Reports 2016)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按网状Meta分析类型与研究材料匹配、多干预网络、直接/间接证据、一致性、排序概率和敏感性分析均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "ampca_bcm_2016",
+      "title": "Ampullary Carcinoma (Baylor College of Medicine, Cell Reports 2016)",
+      "description": "Exome sequencing analysis of 160 cancers arising in the periampullary region, 62 of these clearly arising from either the bile duct (n = 44) or the duodenum (n = 18) and 98 for which the epithelium of origin could not be clearly defined morphologically (AMPCA).",
+      "citation": "Gingras et al. Cell Rep 2016",
+      "pmid": "26804919",
+      "cancer_type": "ampca",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Cell",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Cell/Cancer Cell公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=ampca_bcm_2016"
+    },
+    "example_visual": {
+      "title": "网状Meta分析：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-03.svg",
+      "source_note": "独立教学示例图；公开来源线索：Gingras et al. Cell Rep 2016。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写网状Meta分析，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出多干预网络、直接/间接证据、一致性、排序概率和敏感性分析相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "网状Meta分析需要先回答“材料够不够、图表怎么排、结论能否被引用支撑”。本页把这些问题拆成可执行Skill步骤。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择网状Meta分析",
+        "body": "只有当研究材料能支撑PICO问题和数据库检索式时，才适合进入网状Meta分析流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理纳排标准、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“网状Meta分析：从0到1流程示例”基于Cell/Cancer Cell公开研究来源的公开线索或教学化重绘；读图重点是网状Meta分析如何从PICO问题走向网状Meta分析从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "干预节点",
+      "比较关系",
+      "结局指标",
+      "一致性假设",
+      "排序指标",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "网状Meta分析从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写网状Meta分析？",
+      "多干预网络、直接/间接证据、一致性、排序概率和敏感性分析是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-04",
+    "type": "诊断试验Meta分析",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断诊断试验Meta分析是否匹配当前材料与研究目的",
+      "补齐PICO问题、数据库检索式、纳排标准",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "PICO问题",
+      "数据库检索式",
+      "纳排标准",
+      "效应量字段",
+      "偏倚风险工具",
+      "PRISMA流程",
+      "森林图与异质性解释"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按诊断试验Meta分析规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "诊断试验Meta分析类型与研究材料匹配",
+      "2×2表、敏感度、特异度、SROC和阈值效应均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "诊断试验Meta分析从0到1：先把PICO问题整理清楚，再生成诊断试验Meta分析从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写诊断试验Meta分析的学生：先补齐PICO问题，再围绕诊断试验Meta分析类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "诊断试验Meta分析的核心报告重点：2×2表、敏感度、特异度、SROC和阈值效应",
+    "article_story_sections": [
+      {
+        "title": "诊断试验Meta分析不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。诊断试验Meta分析至少需要：PICO问题、数据库检索式、纳排标准、效应量字段。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Acute Myeloid Leukemia (TCGA GDC, 2025)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按诊断试验Meta分析类型与研究材料匹配、2×2表、敏感度、特异度、SROC和阈值效应均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "aml_tcga_gdc",
+      "title": "Acute Myeloid Leukemia (TCGA GDC, 2025)",
+      "description": "TCGA Acute Myeloid Leukemia. Source data from NCI GDC and generated in Aug 2025 using Cancer Data Aggregator.",
+      "citation": "待核对正式引用",
+      "pmid": "待核对PMID",
+      "cancer_type": "aml",
+      "reference_genome": "hg38",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "TCGA",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "公开高水平研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=aml_tcga_gdc"
+    },
+    "example_visual": {
+      "title": "诊断试验Meta分析：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-04.svg",
+      "source_note": "独立教学示例图；公开来源线索：待核对正式引用。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写诊断试验Meta分析，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出2×2表、敏感度、特异度、SROC和阈值效应相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "如果你只有一个模糊选题，本页会把诊断试验Meta分析拆为研究问题、PICO问题、诊断试验Meta分析从0到1流程卡、风险边界和待实测指标。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择诊断试验Meta分析",
+        "body": "只有当研究材料能支撑PICO问题和数据库检索式时，才适合进入诊断试验Meta分析流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理纳排标准、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“诊断试验Meta分析：从0到1流程示例”基于公开高水平研究来源的公开线索或教学化重绘；读图重点是诊断试验Meta分析如何从PICO问题走向诊断试验Meta分析从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "TP/FP/FN/TN",
+      "诊断标准",
+      "阈值",
+      "纳排标准",
+      "偏倚工具",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "诊断试验Meta分析从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写诊断试验Meta分析？",
+      "2×2表、敏感度、特异度、SROC和阈值效应是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-05",
+    "type": "队列研究论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断队列研究论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按队列研究论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "队列研究论文类型与研究材料匹配",
+      "暴露、结局、随访、混杂控制和时间顺序均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "队列研究论文从0到1：先把研究问题整理清楚，再生成队列研究论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写队列研究论文的学生：先补齐研究问题，再围绕队列研究论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "队列研究论文的核心报告重点：暴露、结局、随访、混杂控制和时间顺序",
+    "article_story_sections": [
+      {
+        "title": "队列研究论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。队列研究论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Adrenocortical Carcinoma (TCGA GDC, 2025)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按队列研究论文类型与研究材料匹配、暴露、结局、随访、混杂控制和时间顺序均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "acc_tcga_gdc",
+      "title": "Adrenocortical Carcinoma (TCGA GDC, 2025)",
+      "description": "TCGA Adrenocortical Carcinoma. Source data from NCI GDC and generated in Aug 2025 using Cancer Data Aggregator.",
+      "citation": "待核对正式引用",
+      "pmid": "待核对PMID",
+      "cancer_type": "acc",
+      "reference_genome": "hg38",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "TCGA",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "公开高水平研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=acc_tcga_gdc"
+    },
+    "example_visual": {
+      "title": "队列研究论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-05.svg",
+      "source_note": "独立教学示例图；公开来源线索：待核对正式引用。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写队列研究论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出暴露、结局、随访、混杂控制和时间顺序相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "队列研究论文的起点不是写摘要，而是把“研究问题”和“队列研究论文从0到1流程卡”先对齐；本页按问题、材料、图表和审查节点搭建零起点路径。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择队列研究论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入队列研究论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“队列研究论文：从0到1流程示例”基于公开高水平研究来源的公开线索或教学化重绘；读图重点是队列研究论文如何从研究问题走向队列研究论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "暴露定义",
+      "结局定义",
+      "随访时间",
+      "混杂变量",
+      "失访处理",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "队列研究论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写队列研究论文？",
+      "暴露、结局、随访、混杂控制和时间顺序是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-06",
+    "type": "病例对照研究论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断病例对照研究论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按病例对照研究论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "病例对照研究论文类型与研究材料匹配",
+      "病例定义、对照选择、暴露回顾和选择偏倚控制均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "病例对照研究论文从0到1：先把研究问题整理清楚，再生成病例对照研究论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写病例对照研究论文的学生：先补齐研究问题，再围绕病例对照研究论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "病例对照研究论文的核心报告重点：病例定义、对照选择、暴露回顾和选择偏倚控制",
+    "article_story_sections": [
+      {
+        "title": "病例对照研究论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。病例对照研究论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Colorectal Adenocarcinoma (TCGA, Nature 2012)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按病例对照研究论文类型与研究材料匹配、病例定义、对照选择、暴露回顾和选择偏倚控制均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "coadread_tcga_pub",
+      "title": "Colorectal Adenocarcinoma (TCGA, Nature 2012)",
+      "description": "Whole exome sequencing in 224 of the 276 colorectal carcinoma tumor/normal pairs. The Cancer Genome Atlas (TCGA) Colorectal Cancer project.",
+      "citation": "TCGA, Nature 2012",
+      "pmid": "22810696",
+      "cancer_type": "coadread",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Nature",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Nature/Nature Communications公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=coadread_tcga_pub"
+    },
+    "example_visual": {
+      "title": "病例对照研究论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-06.svg",
+      "source_note": "独立教学示例图；公开来源线索：TCGA, Nature 2012。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写病例对照研究论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出病例定义、对照选择、暴露回顾和选择偏倚控制相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "第一次写病例对照研究论文时，最容易漏掉材料边界和证据链。本页从研究问题开始，逐步生成病例对照研究论文从0到1流程卡和导师复核清单。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择病例对照研究论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入病例对照研究论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“病例对照研究论文：从0到1流程示例”基于Nature/Nature Communications公开研究来源的公开线索或教学化重绘；读图重点是病例对照研究论文如何从研究问题走向病例对照研究论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "病例标准",
+      "对照来源",
+      "暴露测量",
+      "匹配变量",
+      "混杂控制",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "病例对照研究论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写病例对照研究论文？",
+      "病例定义、对照选择、暴露回顾和选择偏倚控制是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-07",
+    "type": "横断面研究论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断横断面研究论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按横断面研究论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "横断面研究论文类型与研究材料匹配",
+      "抽样、测量、现况描述和相关性分析均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "横断面研究论文从0到1：先把研究问题整理清楚，再生成横断面研究论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写横断面研究论文的学生：先补齐研究问题，再围绕横断面研究论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "横断面研究论文的核心报告重点：抽样、测量、现况描述和相关性分析",
+    "article_story_sections": [
+      {
+        "title": "横断面研究论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。横断面研究论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Breast Cancer (MSK, Cancer Cell 2018)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按横断面研究论文类型与研究材料匹配、抽样、测量、现况描述和相关性分析均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "breast_msk_2018",
+      "title": "Breast Cancer (MSK, Cancer Cell 2018)",
+      "description": "Targeted Sequencing of tumor/normal sample pairs from 1918 Breast cancers.",
+      "citation": "Razavi et al. Cancer Cell 2018",
+      "pmid": "30205045",
+      "cancer_type": "breast",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Cell",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Cell/Cancer Cell公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=breast_msk_2018"
+    },
+    "example_visual": {
+      "title": "横断面研究论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-07.svg",
+      "source_note": "独立教学示例图；公开来源线索：Razavi et al. Cancer Cell 2018。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写横断面研究论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出抽样、测量、现况描述和相关性分析相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "横断面研究论文需要先回答“材料够不够、图表怎么排、结论能否被引用支撑”。本页把这些问题拆成可执行Skill步骤。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择横断面研究论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入横断面研究论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“横断面研究论文：从0到1流程示例”基于Cell/Cancer Cell公开研究来源的公开线索或教学化重绘；读图重点是横断面研究论文如何从研究问题走向横断面研究论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "抽样框",
+      "调查工具",
+      "变量定义",
+      "权重/分层",
+      "缺失处理",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "横断面研究论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写横断面研究论文？",
+      "抽样、测量、现况描述和相关性分析是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-08",
+    "type": "真实世界研究论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断真实世界研究论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按真实世界研究论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "真实世界研究论文类型与研究材料匹配",
+      "真实数据来源、数据质量、混杂控制和敏感性分析均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "真实世界研究论文从0到1：先把研究问题整理清楚，再生成真实世界研究论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写真实世界研究论文的学生：先补齐研究问题，再围绕真实世界研究论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "真实世界研究论文的核心报告重点：真实数据来源、数据质量、混杂控制和敏感性分析",
+    "article_story_sections": [
+      {
+        "title": "真实世界研究论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。真实世界研究论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Colorectal Adenocarcinoma (TCGA, Nature 2012)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按真实世界研究论文类型与研究材料匹配、真实数据来源、数据质量、混杂控制和敏感性分析均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "coadread_tcga_pub",
+      "title": "Colorectal Adenocarcinoma (TCGA, Nature 2012)",
+      "description": "Whole exome sequencing in 224 of the 276 colorectal carcinoma tumor/normal pairs. The Cancer Genome Atlas (TCGA) Colorectal Cancer project.",
+      "citation": "TCGA, Nature 2012",
+      "pmid": "22810696",
+      "cancer_type": "coadread",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Nature",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Nature/Nature Communications公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=coadread_tcga_pub"
+    },
+    "example_visual": {
+      "title": "真实世界研究论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-08.svg",
+      "source_note": "独立教学示例图；公开来源线索：TCGA, Nature 2012。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写真实世界研究论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出真实数据来源、数据质量、混杂控制和敏感性分析相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "如果你只有一个模糊选题，本页会把真实世界研究论文拆为研究问题、研究问题、真实世界研究论文从0到1流程卡、风险边界和待实测指标。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择真实世界研究论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入真实世界研究论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“真实世界研究论文：从0到1流程示例”基于Nature/Nature Communications公开研究来源的公开线索或教学化重绘；读图重点是真实世界研究论文如何从研究问题走向真实世界研究论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "数据来源",
+      "纳入窗口",
+      "暴露/治疗",
+      "结局",
+      "混杂控制策略",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "真实世界研究论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写真实世界研究论文？",
+      "真实数据来源、数据质量、混杂控制和敏感性分析是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-09",
+    "type": "预测模型论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断预测模型论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按预测模型论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "预测模型论文类型与研究材料匹配",
+      "训练验证、特征、校准、决策曲线和外部验证均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "预测模型论文从0到1：先把研究问题整理清楚，再生成预测模型论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写预测模型论文的学生：先补齐研究问题，再围绕预测模型论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "预测模型论文的核心报告重点：训练验证、特征、校准、决策曲线和外部验证",
+    "article_story_sections": [
+      {
+        "title": "预测模型论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。预测模型论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Head and Neck Squamous Cell Carcinoma (Johns Hopkins, Science 2011)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按预测模型论文类型与研究材料匹配、训练验证、特征、校准、决策曲线和外部验证均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "hnsc_jhu",
+      "title": "Head and Neck Squamous Cell Carcinoma (Johns Hopkins, Science 2011)",
+      "description": "Whole exome sequencing of 32 head and neck squamous cell carcinoma tumor/normal sample pairs.",
+      "citation": "Agrawal et al. Science 2011",
+      "pmid": "21798897",
+      "cancer_type": "hnsc",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Science",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Science公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=hnsc_jhu"
+    },
+    "example_visual": {
+      "title": "预测模型论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-09.svg",
+      "source_note": "独立教学示例图；公开来源线索：Agrawal et al. Science 2011。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写预测模型论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出训练验证、特征、校准、决策曲线和外部验证相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "预测模型论文的起点不是写摘要，而是把“研究问题”和“预测模型论文从0到1流程卡”先对齐；本页按问题、材料、图表和审查节点搭建零起点路径。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择预测模型论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入预测模型论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“预测模型论文：从0到1流程示例”基于Science公开研究来源的公开线索或教学化重绘；读图重点是预测模型论文如何从研究问题走向预测模型论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "结局变量",
+      "候选特征",
+      "训练/验证集",
+      "缺失处理",
+      "模型评价指标",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "预测模型论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写预测模型论文？",
+      "训练验证、特征、校准、决策曲线和外部验证是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-10",
+    "type": "机器学习医学论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断机器学习医学论文是否匹配当前材料与研究目的",
+      "补齐数据来源、训练/验证/外部测试划分、标签定义",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "数据来源",
+      "训练/验证/外部测试划分",
+      "标签定义",
+      "模型结构",
+      "评价指标",
+      "解释性图",
+      "偏倚与泛化风险"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按机器学习医学论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "机器学习医学论文类型与研究材料匹配",
+      "数据拆分、特征工程、模型比较、解释性和泛化验证均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "机器学习医学论文从0到1：先把数据来源整理清楚，再生成机器学习医学论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写机器学习医学论文的学生：先补齐数据来源，再围绕机器学习医学论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "机器学习医学论文的核心报告重点：数据拆分、特征工程、模型比较、解释性和泛化验证",
+    "article_story_sections": [
+      {
+        "title": "机器学习医学论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。机器学习医学论文至少需要：数据来源、训练/验证/外部测试划分、标签定义、模型结构。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Intrahepatic Cholangiocarcinoma (Shanghai, Nat Commun 2014)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按机器学习医学论文类型与研究材料匹配、数据拆分、特征工程、模型比较、解释性和泛化验证均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "ihch_smmu_2014",
+      "title": "Intrahepatic Cholangiocarcinoma (Shanghai, Nat Commun 2014)",
+      "description": "Whole exome sequencing of 103 tumor/normal sample pairs in 103 intrahepatic cholangiocarcinoma patients.",
+      "citation": "Shanshan et al. Nat Commun 2014",
+      "pmid": "25526346",
+      "cancer_type": "ihch",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Nat Commun",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Nature/Nature Communications公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=ihch_smmu_2014"
+    },
+    "example_visual": {
+      "title": "机器学习医学论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-10.svg",
+      "source_note": "独立教学示例图；公开来源线索：Shanshan et al. Nat Commun 2014。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写机器学习医学论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出数据拆分、特征工程、模型比较、解释性和泛化验证相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "第一次写机器学习医学论文时，最容易漏掉材料边界和证据链。本页从数据来源开始，逐步生成机器学习医学论文从0到1流程卡和导师复核清单。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择机器学习医学论文",
+        "body": "只有当研究材料能支撑数据来源和训练/验证/外部测试划分时，才适合进入机器学习医学论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理标签定义、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“机器学习医学论文：从0到1流程示例”基于Nature/Nature Communications公开研究来源的公开线索或教学化重绘；读图重点是机器学习医学论文如何从数据来源走向机器学习医学论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "输入特征",
+      "标签",
+      "数据拆分",
+      "模型清单",
+      "解释性方法",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "机器学习医学论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写机器学习医学论文？",
+      "数据拆分、特征工程、模型比较、解释性和泛化验证是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-11",
+    "type": "深度学习影像论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断深度学习影像论文是否匹配当前材料与研究目的",
+      "补齐数据来源、训练/验证/外部测试划分、标签定义",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "数据来源",
+      "训练/验证/外部测试划分",
+      "标签定义",
+      "模型结构",
+      "评价指标",
+      "解释性图",
+      "偏倚与泛化风险"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按深度学习影像论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "深度学习影像论文类型与研究材料匹配",
+      "图像标注、训练验证拆分、外部验证和可解释热图均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "深度学习影像论文从0到1：先把数据来源整理清楚，再生成深度学习影像论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写深度学习影像论文的学生：先补齐数据来源，再围绕深度学习影像论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "深度学习影像论文的核心报告重点：图像标注、训练验证拆分、外部验证和可解释热图",
+    "article_story_sections": [
+      {
+        "title": "深度学习影像论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。深度学习影像论文至少需要：数据来源、训练/验证/外部测试划分、标签定义、模型结构。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Chronic Lymphocytic Leukemia (Broad, Nature Genetics 2022)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按深度学习影像论文类型与研究材料匹配、图像标注、训练验证拆分、外部验证和可解释热图均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "cll_broad_2022",
+      "title": "Chronic Lymphocytic Leukemia (Broad, Nature Genetics 2022)",
+      "description": "Whole genome and whole exome sequencing of 1,154 samples from 1,148 patients with Chronic Lymphocytic Leukemia and monoclonal B cell lymphocytosis and their matched normals.",
+      "citation": "Knisbacher et al. Nature 2022",
+      "pmid": "35927489",
+      "cancer_type": "cllsll",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Nature",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Nature/Nature Communications公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=cll_broad_2022"
+    },
+    "example_visual": {
+      "title": "深度学习影像论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-11.svg",
+      "source_note": "独立教学示例图；公开来源线索：Knisbacher et al. Nature 2022。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写深度学习影像论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出图像标注、训练验证拆分、外部验证和可解释热图相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "深度学习影像论文需要先回答“材料够不够、图表怎么排、结论能否被引用支撑”。本页把这些问题拆成可执行Skill步骤。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择深度学习影像论文",
+        "body": "只有当研究材料能支撑数据来源和训练/验证/外部测试划分时，才适合进入深度学习影像论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理标签定义、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“深度学习影像论文：从0到1流程示例”基于Nature/Nature Communications公开研究来源的公开线索或教学化重绘；读图重点是深度学习影像论文如何从数据来源走向深度学习影像论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "图像来源",
+      "标注规则",
+      "数据拆分",
+      "网络结构",
+      "外部验证",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "深度学习影像论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写深度学习影像论文？",
+      "图像标注、训练验证拆分、外部验证和可解释热图是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-12",
+    "type": "数字病理论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断数字病理论文是否匹配当前材料与研究目的",
+      "补齐病例或切片来源边界、标注规则、形态学证据链",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "病例或切片来源边界",
+      "标注规则",
+      "形态学证据链",
+      "图像预处理",
+      "报告训练样例",
+      "伦理复核"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按数字病理论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "数字病理论文类型与研究材料匹配",
+      "切片来源、patch策略、标注一致性、弱监督和病理解释均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "数字病理论文从0到1：先把病例或切片来源边界整理清楚，再生成数字病理论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写数字病理论文的学生：先补齐病例或切片来源边界，再围绕数字病理论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "数字病理论文的核心报告重点：切片来源、patch策略、标注一致性、弱监督和病理解释",
+    "article_story_sections": [
+      {
+        "title": "数字病理论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。数字病理论文至少需要：病例或切片来源边界、标注规则、形态学证据链、图像预处理。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Diffuse Glioma (GLASS Consortium, Nature 2019)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按数字病理论文类型与研究材料匹配、切片来源、patch策略、标注一致性、弱监督和病理解释均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "difg_glass_2019",
+      "title": "Diffuse Glioma (GLASS Consortium, Nature 2019)",
+      "description": "Whole genome or whole exome sequencing analysis of temporally separated diffuse glioma tumor/normal pairs from 222 adult patients.",
+      "citation": "Barthel & Johnson et al. Nature 2019",
+      "pmid": "31748746",
+      "cancer_type": "difg",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Nature",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Nature/Nature Communications公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=difg_glass_2019"
+    },
+    "example_visual": {
+      "title": "数字病理论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-12.svg",
+      "source_note": "独立教学示例图；公开来源线索：Barthel & Johnson et al. Nature 2019。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写数字病理论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出切片来源、patch策略、标注一致性、弱监督和病理解释相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "如果你只有一个模糊选题，本页会把数字病理论文拆为研究问题、病例或切片来源边界、数字病理论文从0到1流程卡、风险边界和待实测指标。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择数字病理论文",
+        "body": "只有当研究材料能支撑病例或切片来源边界和标注规则时，才适合进入数字病理论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理形态学证据链、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“数字病理论文：从0到1流程示例”基于Nature/Nature Communications公开研究来源的公开线索或教学化重绘；读图重点是数字病理论文如何从病例或切片来源边界走向数字病理论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "WSI来源",
+      "标注者",
+      "patch大小",
+      "训练验证拆分",
+      "病理复核",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "数字病理论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写数字病理论文？",
+      "切片来源、patch策略、标注一致性、弱监督和病理解释是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-13",
+    "type": "单细胞组学论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断单细胞组学论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按单细胞组学论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "单细胞组学论文类型与研究材料匹配",
+      "质控、聚类、注释、差异状态和功能解释均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "单细胞组学论文从0到1：先把研究问题整理清楚，再生成单细胞组学论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写单细胞组学论文的学生：先补齐研究问题，再围绕单细胞组学论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "单细胞组学论文的核心报告重点：质控、聚类、注释、差异状态和功能解释",
+    "article_story_sections": [
+      {
+        "title": "单细胞组学论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。单细胞组学论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Diffuse Large B-Cell Lymphoma (TCGA, PanCancer Atlas)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按单细胞组学论文类型与研究材料匹配、质控、聚类、注释、差异状态和功能解释均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "dlbc_tcga_pan_can_atlas_2018",
+      "title": "Diffuse Large B-Cell Lymphoma (TCGA, PanCancer Atlas)",
+      "description": "Diffuse Large B-Cell Lymphoma TCGA PanCancer data. The original data is here. The publications are here.",
+      "citation": "TCGA, Cell 2018",
+      "pmid": "29625048,29596782,29622463,29617662,29625055,29625050,29617662,32214244,29625049,29850653,36334560",
+      "cancer_type": "dlbclnos",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Cancer Cell",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Cell/Cancer Cell公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=dlbc_tcga_pan_can_atlas_2018"
+    },
+    "example_visual": {
+      "title": "单细胞组学论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-13.svg",
+      "source_note": "独立教学示例图；公开来源线索：TCGA, Cell 2018。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写单细胞组学论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出质控、聚类、注释、差异状态和功能解释相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "单细胞组学论文的起点不是写摘要，而是把“研究问题”和“单细胞组学论文从0到1流程卡”先对齐；本页按问题、材料、图表和审查节点搭建零起点路径。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择单细胞组学论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入单细胞组学论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“单细胞组学论文：从0到1流程示例”基于Cell/Cancer Cell公开研究来源的公开线索或教学化重绘；读图重点是单细胞组学论文如何从研究问题走向单细胞组学论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "表达矩阵",
+      "metadata",
+      "QC阈值",
+      "marker基因",
+      "批次信息",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "单细胞组学论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写单细胞组学论文？",
+      "质控、聚类、注释、差异状态和功能解释是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-14",
+    "type": "空间转录组论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断空间转录组论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按空间转录组论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "空间转录组论文类型与研究材料匹配",
+      "组织坐标、空间域、细胞通讯和病理区域对应均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "空间转录组论文从0到1：先把研究问题整理清楚，再生成空间转录组论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写空间转录组论文的学生：先补齐研究问题，再围绕空间转录组论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "空间转录组论文的核心报告重点：组织坐标、空间域、细胞通讯和病理区域对应",
+    "article_story_sections": [
+      {
+        "title": "空间转录组论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。空间转录组论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Cancer Cell Line Encyclopedia (Broad, Nat Rev Cancer 2025)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按空间转录组论文类型与研究材料匹配、组织坐标、空间域、细胞通讯和病理区域对应均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "ccle_broad_2025",
+      "title": "Cancer Cell Line Encyclopedia (Broad, Nat Rev Cancer 2025)",
+      "description": "Whole genome and whole exome sequencing of 1,981 pancancer samples from the Cancer Cell Line Encyclopedia (CCLE). CCLE from Broad Institute and Novartis, 2025 (25Q3) update. Data downloaded from the Depmap Portal.",
+      "citation": "Arafeh, Rand et al. Nature Reviews 2025",
+      "pmid": "39468210",
+      "cancer_type": "mixed",
+      "reference_genome": "hg38",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Cell",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Nature/Nature Communications公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=ccle_broad_2025"
+    },
+    "example_visual": {
+      "title": "空间转录组论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-14.svg",
+      "source_note": "独立教学示例图；公开来源线索：Arafeh, Rand et al. Nature Reviews 2025。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写空间转录组论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出组织坐标、空间域、细胞通讯和病理区域对应相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "第一次写空间转录组论文时，最容易漏掉材料边界和证据链。本页从研究问题开始，逐步生成空间转录组论文从0到1流程卡和导师复核清单。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择空间转录组论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入空间转录组论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“空间转录组论文：从0到1流程示例”基于Nature/Nature Communications公开研究来源的公开线索或教学化重绘；读图重点是空间转录组论文如何从研究问题走向空间转录组论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "空间坐标",
+      "组织图像",
+      "表达矩阵",
+      "区域标注",
+      "邻域关系",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "空间转录组论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写空间转录组论文？",
+      "组织坐标、空间域、细胞通讯和病理区域对应是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-15",
+    "type": "多组学整合论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断多组学整合论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按多组学整合论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "多组学整合论文类型与研究材料匹配",
+      "数据对齐、层间关联、整合模型和机制验证均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "多组学整合论文从0到1：先把研究问题整理清楚，再生成多组学整合论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写多组学整合论文的学生：先补齐研究问题，再围绕多组学整合论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "多组学整合论文的核心报告重点：数据对齐、层间关联、整合模型和机制验证",
+    "article_story_sections": [
+      {
+        "title": "多组学整合论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。多组学整合论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Cancer Cell Line Encyclopedia (Genentech, Nat biotech 2014)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按多组学整合论文类型与研究材料匹配、数据对齐、层间关联、整合模型和机制验证均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "ccle_genentech_2014",
+      "title": "Cancer Cell Line Encyclopedia (Genentech, Nat biotech 2014)",
+      "description": "Single-nucleotide polymorphism (SNP) array analysis and RNA sequencing and of 675 mixed human cancer cell lines from the Cancer Cell Line Encyclopedia.",
+      "citation": "Klijn, Christiaan et al. Nature biotechnology 2014",
+      "pmid": "25485619",
+      "cancer_type": "mixed",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Cell",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Nature/Nature Communications公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=ccle_genentech_2014"
+    },
+    "example_visual": {
+      "title": "多组学整合论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-15.svg",
+      "source_note": "独立教学示例图；公开来源线索：Klijn, Christiaan et al. Nature biotechnology 2014。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写多组学整合论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出数据对齐、层间关联、整合模型和机制验证相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "多组学整合论文需要先回答“材料够不够、图表怎么排、结论能否被引用支撑”。本页把这些问题拆成可执行Skill步骤。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择多组学整合论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入多组学整合论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“多组学整合论文：从0到1流程示例”基于Nature/Nature Communications公开研究来源的公开线索或教学化重绘；读图重点是多组学整合论文如何从研究问题走向多组学整合论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "多组学矩阵",
+      "样本匹配",
+      "批次信息",
+      "整合方法",
+      "验证数据",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "多组学整合论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写多组学整合论文？",
+      "数据对齐、层间关联、整合模型和机制验证是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-16",
+    "type": "机制实验论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断机制实验论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按机制实验论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "机制实验论文类型与研究材料匹配",
+      "假设、干预、rescue、因果证据和替代解释排除均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "机制实验论文从0到1：先把研究问题整理清楚，再生成机制实验论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写机制实验论文的学生：先补齐研究问题，再围绕机制实验论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "机制实验论文的核心报告重点：假设、干预、rescue、因果证据和替代解释排除",
+    "article_story_sections": [
+      {
+        "title": "机制实验论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。机制实验论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Endometrial and Ovarian Cancer (MSK, Nature Medicine 2024)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按机制实验论文类型与研究材料匹配、假设、干预、rescue、因果证据和替代解释排除均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "ucec_msk_2024",
+      "title": "Endometrial and Ovarian Cancer (MSK, Nature Medicine 2024)",
+      "description": "Targeted sequencing of 33 endometrial and ovarian tumors and their matched normals via MSK-IMPACT.",
+      "citation": "Friedman, Claire F et al. Nature Medicine 2024",
+      "pmid": "38653864",
+      "cancer_type": "mixed",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Nature",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Nature/Nature Communications公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=ucec_msk_2024"
+    },
+    "example_visual": {
+      "title": "机制实验论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-16.svg",
+      "source_note": "独立教学示例图；公开来源线索：Friedman, Claire F et al. Nature Medicine 2024。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写机制实验论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出假设、干预、rescue、因果证据和替代解释排除相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "如果你只有一个模糊选题，本页会把机制实验论文拆为研究问题、研究问题、机制实验论文从0到1流程卡、风险边界和待实测指标。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择机制实验论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入机制实验论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“机制实验论文：从0到1流程示例”基于Nature/Nature Communications公开研究来源的公开线索或教学化重绘；读图重点是机制实验论文如何从研究问题走向机制实验论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "机制假设",
+      "干预方式",
+      "对照",
+      "rescue设计",
+      "重复数",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "机制实验论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写机制实验论文？",
+      "假设、干预、rescue、因果证据和替代解释排除是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-17",
+    "type": "动物实验论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断动物实验论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按动物实验论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "动物实验论文类型与研究材料匹配",
+      "模型建立、随机化、盲法、样本量和伦理审批均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "动物实验论文从0到1：先把研究问题整理清楚，再生成动物实验论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写动物实验论文的学生：先补齐研究问题，再围绕动物实验论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "动物实验论文的核心报告重点：模型建立、随机化、盲法、样本量和伦理审批",
+    "article_story_sections": [
+      {
+        "title": "动物实验论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。动物实验论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Cancer Cell Line Encyclopedia (Broad, Nat Rev Cancer 2025)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按动物实验论文类型与研究材料匹配、模型建立、随机化、盲法、样本量和伦理审批均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "ccle_broad_2025",
+      "title": "Cancer Cell Line Encyclopedia (Broad, Nat Rev Cancer 2025)",
+      "description": "Whole genome and whole exome sequencing of 1,981 pancancer samples from the Cancer Cell Line Encyclopedia (CCLE). CCLE from Broad Institute and Novartis, 2025 (25Q3) update. Data downloaded from the Depmap Portal.",
+      "citation": "Arafeh, Rand et al. Nature Reviews 2025",
+      "pmid": "39468210",
+      "cancer_type": "mixed",
+      "reference_genome": "hg38",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Cell",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Nature/Nature Communications公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=ccle_broad_2025"
+    },
+    "example_visual": {
+      "title": "动物实验论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-17.svg",
+      "source_note": "独立教学示例图；公开来源线索：Arafeh, Rand et al. Nature Reviews 2025。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写动物实验论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出模型建立、随机化、盲法、样本量和伦理审批相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "动物实验论文的起点不是写摘要，而是把“研究问题”和“动物实验论文从0到1流程卡”先对齐；本页按问题、材料、图表和审查节点搭建零起点路径。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择动物实验论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入动物实验论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“动物实验论文：从0到1流程示例”基于Nature/Nature Communications公开研究来源的公开线索或教学化重绘；读图重点是动物实验论文如何从研究问题走向动物实验论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "动物模型",
+      "随机化",
+      "盲法",
+      "样本量",
+      "伦理审批",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "动物实验论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写动物实验论文？",
+      "模型建立、随机化、盲法、样本量和伦理审批是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-18",
+    "type": "类器官研究论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断类器官研究论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按类器官研究论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "类器官研究论文类型与研究材料匹配",
+      "来源、培养、处理、表型和外推边界均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "类器官研究论文从0到1：先把研究问题整理清楚，再生成类器官研究论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写类器官研究论文的学生：先补齐研究问题，再围绕类器官研究论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "类器官研究论文的核心报告重点：来源、培养、处理、表型和外推边界",
+    "article_story_sections": [
+      {
+        "title": "类器官研究论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。类器官研究论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Insulinoma (Shanghai, Nat Commun 2013)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按类器官研究论文类型与研究材料匹配、来源、培养、处理、表型和外推边界均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "panet_shanghai_2013",
+      "title": "Insulinoma (Shanghai, Nat Commun 2013)",
+      "description": "Whole exome sequencing of 10 benign insulinoma tumor/normal pairs.",
+      "citation": "Cao et al. Nat Commun 2013",
+      "pmid": "24326773",
+      "cancer_type": "panet",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Nat Commun",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Nature/Nature Communications公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=panet_shanghai_2013"
+    },
+    "example_visual": {
+      "title": "类器官研究论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-18.svg",
+      "source_note": "独立教学示例图；公开来源线索：Cao et al. Nat Commun 2013。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写类器官研究论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出来源、培养、处理、表型和外推边界相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "第一次写类器官研究论文时，最容易漏掉材料边界和证据链。本页从研究问题开始，逐步生成类器官研究论文从0到1流程卡和导师复核清单。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择类器官研究论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入类器官研究论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“类器官研究论文：从0到1流程示例”基于Nature/Nature Communications公开研究来源的公开线索或教学化重绘；读图重点是类器官研究论文如何从研究问题走向类器官研究论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "类器官来源",
+      "培养条件",
+      "处理方案",
+      "表型读出",
+      "外推限制",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "类器官研究论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写类器官研究论文？",
+      "来源、培养、处理、表型和外推边界是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-19",
+    "type": "方法学论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断方法学论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按方法学论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "方法学论文类型与研究材料匹配",
+      "适用边界、benchmark、消融实验和开源复现均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "方法学论文从0到1：先把研究问题整理清楚，再生成方法学论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写方法学论文的学生：先补齐研究问题，再围绕方法学论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "方法学论文的核心报告重点：适用边界、benchmark、消融实验和开源复现",
+    "article_story_sections": [
+      {
+        "title": "方法学论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。方法学论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“MAPK on resistance to anti-HER2 therapy for breast cancer (MSK, Nat Commun. 2022)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按方法学论文类型与研究材料匹配、适用边界、benchmark、消融实验和开源复现均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "brca_mapk_hp_msk_2021",
+      "title": "MAPK on resistance to anti-HER2 therapy for breast cancer (MSK, Nat Commun. 2022)",
+      "description": "MSK-IMPACT targeted sequencing of 145 breast tumors with matched normal samples.",
+      "citation": "Alison E et al.  Nat Commun 2022",
+      "pmid": "34795269",
+      "cancer_type": "brca",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Nat Commun",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Nature/Nature Communications公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=brca_mapk_hp_msk_2021"
+    },
+    "example_visual": {
+      "title": "方法学论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-19.svg",
+      "source_note": "独立教学示例图；公开来源线索：Alison E et al.  Nat Commun 2022。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写方法学论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出适用边界、benchmark、消融实验和开源复现相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "方法学论文需要先回答“材料够不够、图表怎么排、结论能否被引用支撑”。本页把这些问题拆成可执行Skill步骤。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择方法学论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入方法学论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“方法学论文：从0到1流程示例”基于Nature/Nature Communications公开研究来源的公开线索或教学化重绘；读图重点是方法学论文如何从研究问题走向方法学论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "方法问题",
+      "基准数据",
+      "比较方法",
+      "评价指标",
+      "代码环境",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "方法学论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写方法学论文？",
+      "适用边界、benchmark、消融实验和开源复现是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-20",
+    "type": "软件工具论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断软件工具论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按软件工具论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "软件工具论文类型与研究材料匹配",
+      "用户需求、架构、案例、文档和可复现安装均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "软件工具论文从0到1：先把研究问题整理清楚，再生成软件工具论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写软件工具论文的学生：先补齐研究问题，再围绕软件工具论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "软件工具论文的核心报告重点：用户需求、架构、案例、文档和可复现安装",
+    "article_story_sections": [
+      {
+        "title": "软件工具论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。软件工具论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Cancer Cell Line Encyclopedia (Novartis/Broad, Nature 2012)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按软件工具论文类型与研究材料匹配、用户需求、架构、案例、文档和可复现安装均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "cellline_ccle_broad",
+      "title": "Cancer Cell Line Encyclopedia (Novartis/Broad, Nature 2012)",
+      "description": "Targeted sequencing of 1020 samples from Cancer Cell Line Encyclopedia from the Broad Institute and Novartis.",
+      "citation": "Barretina et al. Nature 2012",
+      "pmid": "22460905",
+      "cancer_type": "mixed",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Nature",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Nature/Nature Communications公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=cellline_ccle_broad"
+    },
+    "example_visual": {
+      "title": "软件工具论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-20.svg",
+      "source_note": "独立教学示例图；公开来源线索：Barretina et al. Nature 2012。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写软件工具论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出用户需求、架构、案例、文档和可复现安装相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "如果你只有一个模糊选题，本页会把软件工具论文拆为研究问题、研究问题、软件工具论文从0到1流程卡、风险边界和待实测指标。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择软件工具论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入软件工具论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“软件工具论文：从0到1流程示例”基于Nature/Nature Communications公开研究来源的公开线索或教学化重绘；读图重点是软件工具论文如何从研究问题走向软件工具论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "用户场景",
+      "系统架构",
+      "示例数据",
+      "API/界面",
+      "许可协议",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "软件工具论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写软件工具论文？",
+      "用户需求、架构、案例、文档和可复现安装是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-21",
+    "type": "数据库/资源论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断数据库/资源论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按数据库/资源论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "数据库/资源论文类型与研究材料匹配",
+      "数据标准、质量控制、访问方式和持续维护均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "数据库/资源论文从0到1：先把研究问题整理清楚，再生成数据库/资源论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写数据库/资源论文的学生：先补齐研究问题，再围绕数据库/资源论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "数据库/资源论文的核心报告重点：数据标准、质量控制、访问方式和持续维护",
+    "article_story_sections": [
+      {
+        "title": "数据库/资源论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。数据库/资源论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Low-Grade Gliomas (UCSF, Science 2014)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按数据库/资源论文类型与研究材料匹配、数据标准、质量控制、访问方式和持续维护均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "lgg_ucsf_2014",
+      "title": "Low-Grade Gliomas (UCSF, Science 2014)",
+      "description": "Whole exome sequencing of 23 grade II glioma tumor/normal pairs.",
+      "citation": "Johnson et al. Science 2014",
+      "pmid": "24336570",
+      "cancer_type": "difg",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Science",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Science公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=lgg_ucsf_2014"
+    },
+    "example_visual": {
+      "title": "数据库/资源论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-21.svg",
+      "source_note": "独立教学示例图；公开来源线索：Johnson et al. Science 2014。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写数据库/资源论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出数据标准、质量控制、访问方式和持续维护相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "数据库/资源论文的起点不是写摘要，而是把“研究问题”和“数据库/资源论文从0到1流程卡”先对齐；本页按问题、材料、图表和审查节点搭建零起点路径。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择数据库/资源论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入数据库/资源论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“数据库/资源论文：从0到1流程示例”基于Science公开研究来源的公开线索或教学化重绘；读图重点是数据库/资源论文如何从研究问题走向数据库/资源论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "数据范围",
+      "字段标准",
+      "QC规则",
+      "访问接口",
+      "维护计划",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "数据库/资源论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写数据库/资源论文？",
+      "数据标准、质量控制、访问方式和持续维护是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-22",
+    "type": "教学改革论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断教学改革论文是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按教学改革论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "教学改革论文类型与研究材料匹配",
+      "教学问题、干预设计、评价量规和伦理边界均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "教学改革论文从0到1：先把研究问题整理清楚，再生成教学改革论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写教学改革论文的学生：先补齐研究问题，再围绕教学改革论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "教学改革论文的核心报告重点：教学问题、干预设计、评价量规和伦理边界",
+    "article_story_sections": [
+      {
+        "title": "教学改革论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。教学改革论文至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Hepatocellular Adenoma (INSERM, Cancer Cell 2014)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按教学改革论文类型与研究材料匹配、教学问题、干预设计、评价量规和伦理边界均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "liad_inserm_fr_2014",
+      "title": "Hepatocellular Adenoma (INSERM, Cancer Cell 2014)",
+      "description": "Whole-exome sequencing of 46 liver tumor/normal pairs.",
+      "citation": "Pilati et al. Cancer Cell 2014",
+      "pmid": "24735922",
+      "cancer_type": "liad",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Cancer Cell",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Cell/Cancer Cell公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=liad_inserm_fr_2014"
+    },
+    "example_visual": {
+      "title": "教学改革论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-22.svg",
+      "source_note": "独立教学示例图；公开来源线索：Pilati et al. Cancer Cell 2014。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写教学改革论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出教学问题、干预设计、评价量规和伦理边界相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "第一次写教学改革论文时，最容易漏掉材料边界和证据链。本页从研究问题开始，逐步生成教学改革论文从0到1流程卡和导师复核清单。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择教学改革论文",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入教学改革论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“教学改革论文：从0到1流程示例”基于Cell/Cancer Cell公开研究来源的公开线索或教学化重绘；读图重点是教学改革论文如何从研究问题走向教学改革论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "教学对象",
+      "干预措施",
+      "评价指标",
+      "问卷/访谈",
+      "伦理说明",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "教学改革论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写教学改革论文？",
+      "教学问题、干预设计、评价量规和伦理边界是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-23",
+    "type": "案例报告",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断案例报告是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按案例报告规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "案例报告类型与研究材料匹配",
+      "稀有性、时间线、鉴别思路和隐私脱敏均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "案例报告从0到1：先把研究问题整理清楚，再生成案例报告从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写案例报告的学生：先补齐研究问题，再围绕案例报告类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "案例报告的核心报告重点：稀有性、时间线、鉴别思路和隐私脱敏",
+    "article_story_sections": [
+      {
+        "title": "案例报告不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。案例报告至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Breast Invasive Carcinoma (Broad, Nature 2012)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按案例报告类型与研究材料匹配、稀有性、时间线、鉴别思路和隐私脱敏均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "brca_broad",
+      "title": "Breast Invasive Carcinoma (Broad, Nature 2012)",
+      "description": "Whole-exome sequencing of 103 breast cancer tumor/normal sample pairs. Generated by the Broad Institute.",
+      "citation": "Banerji et al. Nature 2012",
+      "pmid": "22722202",
+      "cancer_type": "brca",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Nature",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Nature/Nature Communications公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=brca_broad"
+    },
+    "example_visual": {
+      "title": "案例报告：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-23.svg",
+      "source_note": "独立教学示例图；公开来源线索：Banerji et al. Nature 2012。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写案例报告，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出稀有性、时间线、鉴别思路和隐私脱敏相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "案例报告需要先回答“材料够不够、图表怎么排、结论能否被引用支撑”。本页把这些问题拆成可执行Skill步骤。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择案例报告",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入案例报告流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“案例报告：从0到1流程示例”基于Nature/Nature Communications公开研究来源的公开线索或教学化重绘；读图重点是案例报告如何从研究问题走向案例报告从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "病例时间线",
+      "检查结果",
+      "鉴别诊断",
+      "隐私脱敏",
+      "患者授权",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "案例报告从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写案例报告？",
+      "稀有性、时间线、鉴别思路和隐私脱敏是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-24",
+    "type": "研究方案/Protocol",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断研究方案/Protocol是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按研究方案/Protocol规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "研究方案/Protocol类型与研究材料匹配",
+      "研究问题、方法、样本、伦理和分析计划预注册均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "研究方案/Protocol从0到1：先把研究问题整理清楚，再生成研究方案/Protocol从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写研究方案/Protocol的学生：先补齐研究问题，再围绕研究方案/Protocol类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "研究方案/Protocol的核心报告重点：研究问题、方法、样本、伦理和分析计划预注册",
+    "article_story_sections": [
+      {
+        "title": "研究方案/Protocol不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。研究方案/Protocol至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Colorectal Cancer (CAS Shanghai, Cancer Cell 2020)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按研究方案/Protocol类型与研究材料匹配、研究问题、方法、样本、伦理和分析计划预注册均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "coadread_cass_2020",
+      "title": "Colorectal Cancer (CAS Shanghai, Cancer Cell 2020)",
+      "description": "Whole-exome sequencing of 146 colorectal tumor/normal pairs from a chinese cohort, covering 70 metastatic and 76 non-metastatic colorectal cancer patients.",
+      "citation": "Li et al. Cancer Cell 2020",
+      "pmid": "32888432",
+      "cancer_type": "coadread",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Cancer Cell",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Cell/Cancer Cell公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=coadread_cass_2020"
+    },
+    "example_visual": {
+      "title": "研究方案/Protocol：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-24.svg",
+      "source_note": "独立教学示例图；公开来源线索：Li et al. Cancer Cell 2020。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写研究方案/Protocol，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出研究问题、方法、样本、伦理和分析计划预注册相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "如果你只有一个模糊选题，本页会把研究方案/Protocol拆为研究问题、研究问题、研究方案/Protocol从0到1流程卡、风险边界和待实测指标。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择研究方案/Protocol",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入研究方案/Protocol流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“研究方案/Protocol：从0到1流程示例”基于Cell/Cancer Cell公开研究来源的公开线索或教学化重绘；读图重点是研究方案/Protocol如何从研究问题走向研究方案/Protocol从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "研究问题",
+      "样本来源",
+      "主要结局",
+      "分析计划",
+      "伦理审批",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "研究方案/Protocol从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写研究方案/Protocol？",
+      "研究问题、方法、样本、伦理和分析计划预注册是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-25",
+    "type": "综述论文",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断综述论文是否匹配当前材料与研究目的",
+      "补齐主题边界、核心概念表、文献分层矩阵",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "主题边界",
+      "核心概念表",
+      "文献分层矩阵",
+      "争议问题",
+      "机制图草案",
+      "引用核验清单"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按综述论文规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "综述论文类型与研究材料匹配",
+      "知识框架、争议点、证据等级和未来问题均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "综述论文从0到1：先把主题边界整理清楚，再生成综述论文从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写综述论文的学生：先补齐主题边界，再围绕综述论文类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "综述论文的核心报告重点：知识框架、争议点、证据等级和未来问题",
+    "article_story_sections": [
+      {
+        "title": "综述论文不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。综述论文至少需要：主题边界、核心概念表、文献分层矩阵、争议问题。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Combined Hepatocellular and Intrahepatic Cholangiocarcinoma (Peking University, Cancer Cell 2019)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按综述论文类型与研究材料匹配、知识框架、争议点、证据等级和未来问题均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "hccihch_pku_2019",
+      "title": "Combined Hepatocellular and Intrahepatic Cholangiocarcinoma (Peking University, Cancer Cell 2019)",
+      "description": "Whole-exome sequencing of 121 combined hepatocellular and intrahepatic cholangiocarcinoma (cHCC-ICC) patients with matched normal pairs (whole-genome sequenced samples are not included here).",
+      "citation": "Xue et al. Cancer Cell 2019",
+      "pmid": "31130341",
+      "cancer_type": "hccihch",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Cancer Cell",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Cell/Cancer Cell公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=hccihch_pku_2019"
+    },
+    "example_visual": {
+      "title": "综述论文：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-25.svg",
+      "source_note": "独立教学示例图；公开来源线索：Xue et al. Cancer Cell 2019。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写综述论文，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出知识框架、争议点、证据等级和未来问题相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "综述论文的起点不是写摘要，而是把“主题边界”和“综述论文从0到1流程卡”先对齐；本页按问题、材料、图表和审查节点搭建零起点路径。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择综述论文",
+        "body": "只有当研究材料能支撑主题边界和核心概念表时，才适合进入综述论文流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理文献分层矩阵、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“综述论文：从0到1流程示例”基于Cell/Cancer Cell公开研究来源的公开线索或教学化重绘；读图重点是综述论文如何从主题边界走向综述论文从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "主题范围",
+      "关键概念",
+      "代表性文献",
+      "争议点",
+      "未来方向",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "综述论文从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写综述论文？",
+      "知识框架、争议点、证据等级和未来问题是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-26",
+    "type": "观点/评论文章",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断观点/评论文章是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按观点/评论文章规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "观点/评论文章类型与研究材料匹配",
+      "立场、论据、反方观点和边界声明均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "观点/评论文章从0到1：先把研究问题整理清楚，再生成观点/评论文章从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写观点/评论文章的学生：先补齐研究问题，再围绕观点/评论文章类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "观点/评论文章的核心报告重点：立场、论据、反方观点和边界声明",
+    "article_story_sections": [
+      {
+        "title": "观点/评论文章不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。观点/评论文章至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Acinar Cell Carcinoma of the Pancreas (JHU, J Pathol 2014)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按观点/评论文章类型与研究材料匹配、立场、论据、反方观点和边界声明均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "paac_jhu_2014",
+      "title": "Acinar Cell Carcinoma of the Pancreas (JHU, J Pathol 2014)",
+      "description": "Whole exome sequencing of 23 surgically resected pancreatic carcinomas with acinar differentiation and their matched normals.",
+      "citation": "Jial et al. J Pathol 2014",
+      "pmid": "24293293",
+      "cancer_type": "paac",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Cell",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "公开高水平研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=paac_jhu_2014"
+    },
+    "example_visual": {
+      "title": "观点/评论文章：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-26.svg",
+      "source_note": "独立教学示例图；公开来源线索：Jial et al. J Pathol 2014。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写观点/评论文章，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出立场、论据、反方观点和边界声明相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "第一次写观点/评论文章时，最容易漏掉材料边界和证据链。本页从研究问题开始，逐步生成观点/评论文章从0到1流程卡和导师复核清单。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择观点/评论文章",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入观点/评论文章流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“观点/评论文章：从0到1流程示例”基于公开高水平研究来源的公开线索或教学化重绘；读图重点是观点/评论文章如何从研究问题走向观点/评论文章从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "核心观点",
+      "支撑证据",
+      "反方观点",
+      "适用边界",
+      "政策/伦理背景",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "观点/评论文章从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写观点/评论文章？",
+      "立场、论据、反方观点和边界声明是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-27",
+    "type": "专利交底书",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断专利交底书是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按专利交底书规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "专利交底书类型与研究材料匹配",
+      "技术问题、技术方案、实施例和权利要求雏形均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "专利交底书从0到1：先把研究问题整理清楚，再生成专利交底书从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写专利交底书的学生：先补齐研究问题，再围绕专利交底书类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "专利交底书的核心报告重点：技术问题、技术方案、实施例和权利要求雏形",
+    "article_story_sections": [
+      {
+        "title": "专利交底书不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。专利交底书至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Anaplastic Thyroid Cancers (GATCI, Cell Reports 2024)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按专利交底书类型与研究材料匹配、技术问题、技术方案、实施例和权利要求雏形均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "thyroid_gatci_2024",
+      "title": "Anaplastic Thyroid Cancers (GATCI, Cell Reports 2024)",
+      "description": "Whole-genome or whole-exome sequencing of 190 anaplastic thyroid carcinoma (ATC) and co-occurring differentiated thyroid carcinoma (DTC) samples.",
+      "citation": "Zeng, Peter Y F et al. Cell reports",
+      "pmid": "38412093",
+      "cancer_type": "thyroid",
+      "reference_genome": "hg38",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Cell",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "Cell/Cancer Cell公开研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=thyroid_gatci_2024"
+    },
+    "example_visual": {
+      "title": "专利交底书：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-27.svg",
+      "source_note": "独立教学示例图；公开来源线索：Zeng, Peter Y F et al. Cell reports。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写专利交底书，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出技术问题、技术方案、实施例和权利要求雏形相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "专利交底书需要先回答“材料够不够、图表怎么排、结论能否被引用支撑”。本页把这些问题拆成可执行Skill步骤。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择专利交底书",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入专利交底书流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“专利交底书：从0到1流程示例”基于Cell/Cancer Cell公开研究来源的公开线索或教学化重绘；读图重点是专利交底书如何从研究问题走向专利交底书从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "技术问题",
+      "方案步骤",
+      "实施例",
+      "创新点",
+      "替代方案",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "专利交底书从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写专利交底书？",
+      "技术问题、技术方案、实施例和权利要求雏形是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  },
+  {
+    "id": "article-28",
+    "type": "大创/竞赛项目书",
+    "audience": "科研新手/研究生/青年教师",
+    "zero_to_one_path": [
+      "判断大创/竞赛项目书是否匹配当前材料与研究目的",
+      "补齐研究问题、数据来源、方法流程",
+      "把每张图和每个结论绑定到真实材料或明确的教学模板",
+      "调用模型API前先写清输出格式、禁止伪造数据和引用的规则",
+      "完成导师/教师复核后再进入投稿、答辩或课程展示材料"
+    ],
+    "required_materials": [
+      "研究问题",
+      "数据来源",
+      "方法流程",
+      "图表计划",
+      "质量控制",
+      "引用核验",
+      "导师复核意见"
+    ],
+    "skills_to_call": [
+      "research-copilot",
+      "medical-kg-rag-builder",
+      "ai-ethics-governor",
+      "skill-eval-harness",
+      "teacher-skill-maker"
+    ],
+    "llm_api_prompt_template": "请按大创/竞赛项目书规范，从研究问题开始搭建完整流程，输出研究问题、材料清单、方法、图表、风险边界和写作计划。",
+    "quality_checks": [
+      "大创/竞赛项目书类型与研究材料匹配",
+      "痛点、方案、路线、成果和答辩材料均有真实材料支撑",
+      "图表只展示真实数据或明确标注为模板",
+      "引用、数据来源和伦理说明已核验",
+      "导师/专家复核后再进入投稿或答辩材料"
+    ],
+    "safety_boundary": "仅用于教学与科研训练，不替代临床诊断；真实研究需使用用户自有数据、伦理审批和导师/专家复核。",
+    "status": "workflow-template",
+    "article_product_title": "大创/竞赛项目书从0到1：先把研究问题整理清楚，再生成大创/竞赛项目书从0到1流程卡",
+    "article_hero_subtitle": "面向第一次写大创/竞赛项目书的学生：先补齐研究问题，再围绕大创/竞赛项目书类型与研究材料匹配搭建图表路线，最后接入自己的模型API生成可复核草案。",
+    "article_reporting_focus": "大创/竞赛项目书的核心报告重点：痛点、方案、路线、成果和答辩材料",
+    "article_story_sections": [
+      {
+        "title": "大创/竞赛项目书不是从空白页硬写",
+        "body": "先确认这篇文章要回答的核心问题，再判断材料是否足够。大创/竞赛项目书至少需要：研究问题、数据来源、方法流程、图表计划。",
+        "action": "写出题目、对象、数据来源和主要结局。"
+      },
+      {
+        "title": "把写作拆成可执行任务",
+        "body": "平台会把选题、检索/数据、方法、主图、补充材料和复核拆开，而不是一次性生成看似完整的论文。",
+        "action": "先完成材料清单，再生成段落草稿。"
+      },
+      {
+        "title": "用Skill链控制质量",
+        "body": "建议调用：research-copilot、medical-kg-rag-builder、ai-ethics-governor、skill-eval-harness。每一步都留下输入、输出和人工复核记录，避免模型编造文献、p值或审稿结论。",
+        "action": "把每一步输出交给导师或教师审核。"
+      },
+      {
+        "title": "示例来源只作为路线参考",
+        "body": "公开来源线索为“Atypical Small Cell Lung Cancer (MSK, Cancer Discov 2024)”。它帮助新手理解这种文章常见证据形态，不代表本站已经完成对应研究。",
+        "action": "按大创/竞赛项目书类型与研究材料匹配、痛点、方案、路线、成果和答辩材料均有真实材料支撑、图表只展示真实数据或明确标注为模板、引用、数据来源和伦理说明已核验逐项检查。"
+      }
+    ],
+    "public_source_example": {
+      "id": "asclc_msk_2024",
+      "title": "Atypical Small Cell Lung Cancer (MSK, Cancer Discov 2024)",
+      "description": "Targeted sequencing of 31 atypical small cell lung cancers lacking RB1 and TP53 co-inactivation and their matched normals via MSK-IMPACT, including structural variant analysis via whole-genome sequencing. This data is available under the Creative Commons BY-NC-ND 4.0 license.",
+      "citation": "Rekhtman N et al. Cancer Discov 2024",
+      "pmid": "39185963",
+      "cancer_type": "lung",
+      "reference_genome": "hg19",
+      "sample_count_public_metadata": 1,
+      "source_platform": "cBioPortal public API",
+      "query_keyword": "Cell",
+      "license_note": "仅使用cBioPortal公开研究元数据和引用信息；不下载受控数据，不复制论文原图。",
+      "reuse_boundary": "可用于教学示例来源说明和公开数据检索入口；正式科研需按原数据库与论文许可要求核对。",
+      "tier": "公开高水平研究来源",
+      "url": "https://www.cbioportal.org/study/summary?id=asclc_msk_2024"
+    },
+    "example_visual": {
+      "title": "大创/竞赛项目书：从0到1流程示例",
+      "url": "/outputs/round20_article_visuals/article-28.svg",
+      "source_note": "独立教学示例图；公开来源线索：Rekhtman N et al. Cancer Discov 2024。",
+      "reuse_boundary": "用于学习写作流程和图表计划；没有真实数据时不得生成假结果。"
+    },
+    "model_gateway_prompt_template": "我准备写大创/竞赛项目书，主题是【填写主题】。请从0开始帮我搭建流程：先判断是否适合该文章类型，再列出痛点、方案、路线、成果和答辩材料相关材料、图表计划、Skill调用链、引用核验和导师复核清单；不要编造结果。",
+    "unique_detail_status": "round19-unique-article-workflow",
+    "detail_novice_intro": "如果你只有一个模糊选题，本页会把大创/竞赛项目书拆为研究问题、研究问题、大创/竞赛项目书从0到1流程卡、风险边界和待实测指标。",
+    "detail_scroll_panels": [
+      {
+        "title": "第一幕：为什么选择大创/竞赛项目书",
+        "body": "只有当研究材料能支撑研究问题和数据来源时，才适合进入大创/竞赛项目书流程。否则应先改选题或补材料。"
+      },
+      {
+        "title": "第二幕：证据链先于写作",
+        "body": "写作前先整理方法流程、图表计划和引用核验清单，避免模型生成漂亮但无证据的段落。"
+      },
+      {
+        "title": "第三幕：模型只输出草稿和检查表",
+        "body": "接入用户自己的模型API后，平台输出章节骨架、材料清单和复核问题，不生成虚假结果、p值、审稿意见或投稿承诺。"
+      },
+      {
+        "title": "第四幕：导师复核决定能否进入正式材料",
+        "body": "所有AI生成内容必须标注来源、版本和待复核状态，正式论文仍由研究者承担学术责任。"
+      }
+    ],
+    "detail_source_sentence": "示例图“大创/竞赛项目书：从0到1流程示例”基于公开高水平研究来源的公开线索或教学化重绘；读图重点是大创/竞赛项目书如何从研究问题走向大创/竞赛项目书从0到1流程卡，不等同于真实投稿结果。",
+    "inputs": [
+      "项目痛点",
+      "目标用户",
+      "技术路线",
+      "阶段成果",
+      "展示材料",
+      "目标期刊或报告规范",
+      "导师/专家复核意见"
+    ],
+    "outputs": [
+      "大创/竞赛项目书从0到1流程卡",
+      "材料缺口清单",
+      "图表计划",
+      "模型提示词模板",
+      "投稿前复核表"
+    ],
+    "human_review_checklist": [
+      "当前材料是否真的适合写大创/竞赛项目书？",
+      "痛点、方案、路线、成果和答辩材料是否有真实证据或明确模板边界？",
+      "是否存在模型编造引用、结果或统计量？",
+      "是否需要伦理审批、数据授权或课程组确认？"
+    ]
+  }
+]
