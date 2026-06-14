@@ -25,7 +25,8 @@
   "outputs_copied": [
     "plot",
     "mobile_app_handoff",
-    "public_reproducible_examples"
+    "public_reproducible_examples",
+    "round108_lotus_plots"
   ],
   "safety": "医学 AI 输出仅用于教学与科研训练，不替代临床诊断。"
 }

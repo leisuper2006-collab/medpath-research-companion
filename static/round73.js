@@ -782,6 +782,217 @@
     `);
   }
 
+  /* Round108: KaiTi + summer lotus guofeng workbench.
+     This block intentionally overrides the Round107 ordinary-site pages because
+     round73.js is the visible runtime on GitHub Pages. */
+
+  const r108FigureBase = "outputs/round108_lotus_plots/";
+  const r108FigureFiles = [
+    "single_cell_atlas_panel.svg",
+    "scatter_regression.svg",
+    "heatmap_matrix.svg",
+    "forest_meta.svg",
+    "volcano_plot.svg",
+    "pca_ordination.svg",
+    "likert_stack.svg",
+    "response_surface.svg",
+    "workflow_network.svg",
+  ];
+
+  const r108PlotCatalog = [
+    { title: "单细胞转录组测序", tag: "医学 / 生物", question: "看细胞亚群、标志基因和组成差异。", r: ["Seurat", "ggplot2"], py: ["scanpy"], fields: "表达矩阵 / 分组 / 细胞注释", asset: "single_cell_atlas_panel.svg" },
+    { title: "散点与回归", tag: "通用科研", question: "判断两个连续变量是否相关。", r: ["ggplot2"], py: ["seaborn"], fields: "x / y / 分组", asset: "scatter_regression.svg" },
+    { title: "热图", tag: "组学 / 工程", question: "看样本和特征有没有聚集模式。", r: ["ComplexHeatmap", "pheatmap"], py: ["seaborn"], fields: "样本 / 特征 / 数值", asset: "heatmap_matrix.svg" },
+    { title: "森林图", tag: "Meta / 临床", question: "比较多项研究的效应方向和区间。", r: ["meta", "metafor"], py: ["statsmodels"], fields: "研究名 / 效应值 / 置信区间", asset: "forest_meta.svg" },
+    { title: "火山图", tag: "转录组", question: "同时看差异幅度和显著性。", r: ["ggplot2", "EnhancedVolcano"], py: ["matplotlib"], fields: "log2FC / P值 / 基因名", asset: "volcano_plot.svg" },
+    { title: "PCA 主成分分析", tag: "多变量", question: "看样本整体差异和分组分离。", r: ["ggplot2", "FactoMineR"], py: ["sklearn"], fields: "样本矩阵 / 分组", asset: "pca_ordination.svg" },
+    { title: "Likert 量表图", tag: "社科 / 教育", question: "展示问卷态度分布。", r: ["ggplot2"], py: ["plotly"], fields: "题项 / 选项 / 比例", asset: "likert_stack.svg" },
+    { title: "响应面图", tag: "工程 / 药学", question: "分析两个因素如何共同影响结果。", r: ["ggplot2"], py: ["matplotlib"], fields: "因素A / 因素B / 响应值", asset: "response_surface.svg" },
+    { title: "流程网络图", tag: "人文 / 管理", question: "说明方法、人物或概念之间的关系。", r: ["igraph", "ggraph"], py: ["networkx"], fields: "节点 / 边 / 权重", asset: "workflow_network.svg" },
+  ];
+
+  function r108Routes() {
+    return [
+      ["home", "探索方法"],
+      ["plot-studio", "科研绘图"],
+      ["skills", "Skill 市场"],
+      ["research", "学习路径"],
+      ["tools", "公开工具"],
+      ["community", "社区交流"],
+      ["island", "科研小岛"],
+    ];
+  }
+
+  function nav(active) {
+    return r108Routes().map(([id, label]) => `<a href="${link(id)}" class="${active === id ? "active" : ""}">${esc(label)}</a>`).join("");
+  }
+
+  function mobileNav(active) {
+    return `<nav class="r73-mobile-nav r108-mobile-nav">${[
+      ["home", "首页"],
+      ["plot-studio", "绘图"],
+      ["skills", "技能"],
+      ["community", "社区"],
+      ["island", "小岛"],
+    ].map(([id, label]) => `<a href="${link(id)}" class="${active === id ? "active" : ""}">${esc(label)}</a>`).join("")}</nav>`;
+  }
+
+  function r108Steps(active = 1) {
+    const steps = ["提出问题", "设计研究", "获取数据", "分析验证", "解读结果", "伦理与安全", "分享复现"];
+    return `<div class="r108-step-list">${steps.map((s, i) => `<a class="${i + 1 === active ? "active" : ""}" href="${link(i < 2 ? "home" : i < 4 ? "plot-studio" : i < 5 ? "method-runner" : "community")}"><b>${i + 1}</b><span>${esc(s)}</span></a>`).join("")}</div>`;
+  }
+
+  function shell(active, content) {
+    return `
+      <div class="r73-app r108-shell">
+        <header class="r108-topbar">
+          <a class="r108-logo" href="${link("home")}"><span>荷</span><div><strong>MedPath Research Companion</strong><small>你的生物医学研究学习伙伴</small></div></a>
+          <nav class="r108-topnav">${nav(active)}</nav>
+          <label class="r108-search"><input id="r73-search" placeholder="搜索方法、数据集、图表..." /></label>
+          <a class="r108-avatar" href="${link("profile")}" aria-label="个人主页">易</a>
+        </header>
+        <div class="r108-body">
+          <aside class="r108-left">
+            <a class="r108-overview ${active === "home" ? "active" : ""}" href="${link("home")}">概览</a>
+            ${r108Steps(active === "plot-studio" ? 3 : 1)}
+            <div class="r108-persona"><strong>适合人群</strong><span>本科生、研究生、科研入门者</span><a href="${link("research")}">查看学习路径 →</a></div>
+          </aside>
+          <main class="r108-main">${content}</main>
+        </div>
+        ${mobileNav(active)}
+        <button class="r73-pet r108-pet" id="r73-pet" aria-label="页面助手"><span>问</span></button>
+        <div class="r73-pet-bubble r108-pet-bubble" id="r73-pet-bubble">看不懂方法时，可以问：我想研究某个疾病，应该从哪张图开始？如果配置了自己的模型 API，这里会切换为真实问答；未配置时先用本地规则推荐。</div>
+      </div>
+    `;
+  }
+
+  function r108MethodVisual() {
+    return `<figure class="r108-method-figure">
+      <img src="${r108FigureBase}single_cell_atlas_panel.svg" alt="单细胞亚群解析示例图" loading="lazy" />
+      <figcaption><span>图：单细胞亚群图谱、标志基因与细胞组成（演示数据）</span><a href="${link("plot-studio")}">查看代码示例 ↗</a></figcaption>
+    </figure>`;
+  }
+
+  function r108ChipRow(items) {
+    return `<div class="r108-chip-row">${items.map((x) => `<span>${esc(x)}</span>`).join("")}</div>`;
+  }
+
+  function r108Hero() {
+    return `<section class="r108-hero">
+      <div class="r108-hero-copy">
+        <span class="r108-pill">研究方法</span>
+        <h1>单细胞转录组测序<br/>与细胞亚群解析</h1>
+        <p>从单个细胞的基因表达出发，识别细胞类型、发育轨迹与疾病相关变化。这里先用一张能复跑的示例图，让新手看懂“输入什么、产出什么、下一步怎么做”。</p>
+        <div class="r108-feature-row">
+          <span><b>高分辨率</b><small>发现稀有细胞亚群</small></span>
+          <span><b>多维解析</b><small>表达、轨迹、功能</small></span>
+          <span><b>广泛应用</b><small>肿瘤、免疫、发育</small></span>
+        </div>
+        <div class="r108-actions"><a class="r108-primary" href="${link("plot-studio")}">开始学习这套方法</a><a class="r108-secondary" href="${link("research")}">加入学习路径</a></div>
+      </div>
+      ${r108MethodVisual()}
+    </section>`;
+  }
+
+  function r108AskBox() {
+    return `<section class="r108-ask">
+      <div><h2>从你的研究需求出发</h2><p>告诉我们你的方向或问题，平台会推荐学习路径、图表和需要准备的数据。</p></div>
+      <label><input placeholder="例如：我想研究肿瘤微环境中的免疫细胞异质性，该怎么设计单细胞转录组研究？" /></label>
+      <button type="button">生成我的学习方案</button>
+      ${r108ChipRow(["肿瘤免疫", "神经发育", "疾病机制", "药物反应", "更多场景"])}
+    </section>`;
+  }
+
+  function r108InfoCards() {
+    const cards = [
+      ["学习要点", "从现象到问题的转化；确定研究对象与对照组；明确可测量的结局指标。"],
+      ["公开数据支持（举例）", "可先用公开数据练习流程，真正课题再替换为自己的数据。"],
+      ["安全与合规", "不提供患者隐私数据下载；避免夸大结论；引用规范与学术诚信。"],
+    ];
+    return `<section class="r108-info-grid">${cards.map(([t, b], i) => `<article class="${i === 2 ? "warn" : ""}"><h3>${esc(t)}</h3><p>${esc(b)}</p>${i === 1 ? `<img src="${r108FigureBase}pca_ordination.svg" alt="PCA示例图" loading="lazy" />` : ""}</article>`).join("")}</section>`;
+  }
+
+  function r108ProductCard(item, index = 0) {
+    const asset = r108FigureFiles[index % r108FigureFiles.length];
+    return `<article class="r108-product-card">
+      <div class="r108-product-media"><img src="${r108FigureBase}${asset}" alt="${esc(item.title)}示例" loading="lazy" /></div>
+      <div class="r108-product-copy"><span>${esc(item.kicker)}</span><h3>${esc(item.title)}</h3><p>${esc(item.body)}</p></div>
+      <a href="${link(item.route)}">进入</a>
+    </article>`;
+  }
+
+  function r107ProductCard(item, index = 0) {
+    return r108ProductCard(item, index);
+  }
+
+  function r107PlotCard(plot = {}, index = 0) {
+    const local = r108PlotCatalog[index % r108PlotCatalog.length];
+    const title = local.title;
+    return `<article class="r108-plot-card">
+      <div class="r108-plot-media"><img src="${r108FigureBase}${local.asset}" alt="${esc(title)}示例图" loading="lazy" /></div>
+      <div class="r108-plot-body">
+        <div><span>${esc(local.tag)}</span><h3>${esc(title)}</h3></div>
+        <p>${esc(local.question)}</p>
+        <div class="r108-code-row"><b>R</b>${local.r.map((x) => `<code>${esc(x)}</code>`).join("")}</div>
+        <div class="r108-code-row"><b>Python</b>${local.py.map((x) => `<code>${esc(x)}</code>`).join("")}</div>
+        <small>需要字段：${esc(local.fields)}</small>
+      </div>
+      <div class="r108-plot-actions"><a href="${link("plot-studio")}">看详情</a><button type="button">开始</button></div>
+    </article>`;
+  }
+
+  function homePage() {
+    const products = [
+      { title: "科研绘图", kicker: "Plot Studio", body: "先看真实示例图，再选 R 或 Python 包。", route: "plot-studio" },
+      { title: "文章流程", kicker: "Paper Builder", body: "Meta、机制、AI 医学论文，从问题到图表一步步搭。", route: "method-runner" },
+      { title: "方法导航", kicker: "Method Router", body: "把“我想研究什么”翻译成可执行路线。", route: "research" },
+      { title: "数据体检", kicker: "Data Audit", body: "先查字段、分组和缺失，再决定能不能分析。", route: "tools" },
+      { title: "Skill 工坊", kicker: "Skill Builder", body: "把常用科研动作做成自己的 AI Skill。", route: "skills" },
+    ];
+    return shell("home", `
+      ${r108Hero()}
+      ${r108AskBox()}
+      <section class="r108-section-line"><b>01</b><div><h2>提出问题</h2><p>好的问题，决定研究的价值。先把“我想看看”变成可验证、可复现、可解释的问题。</p></div></section>
+      ${r108InfoCards()}
+      <section class="r108-section">${r107Section("常用能力", "一行五张卡片", "点进去就是完整功能，不再像目录。")}<div class="r108-product-grid">${products.map(r108ProductCard).join("")}</div></section>
+      <section class="r108-section">${r107Section("先看图，再选方法", "真实代码示例", "每张示例图都由本项目 R 脚本生成，附源数据和包名。")}<div class="r108-plot-strip">${r108PlotCatalog.slice(0, 5).map(r107PlotCard).join("")}</div></section>
+    `);
+  }
+
+  function plotPage() {
+    const categories = ["全部", "医学/生物", "工程", "社科", "人文", "Meta分析", "单细胞", "网络/地图"];
+    return shell("plot-studio", `
+      <section class="r108-plot-page">
+        <aside class="r108-plot-rail">
+          <div class="r108-plot-brand">科研绘图</div>
+          ${categories.map((c, i) => `<button class="${i === 0 ? "active" : ""}" type="button">${esc(c)}</button>`).join("")}
+          <div class="r108-plot-help"><strong>怎么选图？</strong><p>先看它回答的问题，再检查你的字段。拿不准就问右下角助手。</p></div>
+        </aside>
+        <main class="r108-plot-main">
+          <div class="r108-plot-hero">
+            <div><span>Plot Studio</span><h1>每张图，都要有代码、字段和用途。</h1><p>医学、生物、工程、社科和人文都纳入同一个图谱选择器。这里展示的图来自本地 R 脚本生成，不是占位图。</p></div>
+            <div class="r108-search-row"><input placeholder="搜索：火山图、PCA、森林图、Likert、响应面、网络图..." /><select><option>全部分类</option></select></div>
+          </div>
+          <div class="r108-plot-grid">${r108PlotCatalog.map(r107PlotCard).join("")}</div>
+        </main>
+      </section>
+    `);
+  }
+
+  function skillsPage() {
+    const cards = [
+      { title: "病理报告反馈", kicker: "教学训练", body: "检查结构、术语、证据链和教师复核点。", route: "skills" },
+      { title: "PBL 案例生成", kicker: "课堂案例", body: "把疾病机制拆成问题链和讨论环节。", route: "skills" },
+      { title: "科研综述助手", kicker: "文章准备", body: "从研究问题到检索、纳排和图表计划。", route: "skills" },
+      { title: "图表审查", kicker: "绘图质控", body: "提醒字段、单位、图注和统计表达问题。", route: "plot-studio" },
+      { title: "伦理审计", kicker: "安全边界", body: "检查隐私、夸大结论和临床误导风险。", route: "skills" },
+    ];
+    return shell("skills", `
+      ${r108Hero()}
+      <section class="r108-section">${r107Section("Skill 市场", "像产品一样使用", "每张卡片只说清楚能帮你完成什么。")}<div class="r108-product-grid">${cards.map(r108ProductCard).join("")}</div></section>
+    `);
+  }
+
   function pageFor(active) {
     if (active === "home") return homePage();
     if (active === "learn") return learnPage();
