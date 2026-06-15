@@ -13,7 +13,7 @@
     ["home", "探索方法"],
     ["plot-studio", "科研绘图"],
     ["skills", "Skill 市场"],
-    ["tools", "公开工具"],
+    ["open-source", "公开工具"],
     ["community", "社区交流"],
     ["providers", "模型接口"],
     ["island", "科研小岛"],
@@ -175,11 +175,11 @@
   };
 
   const recs = [
-    ["生成一个教学案例", "输入课程主题，得到 PBL 情境、问题链和教师复核表。", "例：胃腺癌本科病理 PBL", "cases"],
-    ["找一个科研方法", "按你的数据类型推荐方法、工具、图表和学习路径。", "例：单细胞肿瘤免疫差异", "research"],
-    ["生成一张论文图", "选图型、查字段、拿代码、写图注，适合新手起步。", "例：我有 log2FC 和 pvalue", "plot-studio"],
-    ["创建自己的 Skill", "把常用流程写成可收藏、可发布、可复用的任务卡。", "例：我的森林图复核流程", "skills"],
-    ["进入科研小岛", "用游戏化入口管理常用工具、建筑、积分和社区作品。", "例：把 Plot Studio 放进绘图工坊", "island"],
+    ["生成一个教学案例", "输入课程主题，得到 PBL 情境、问题链和教师复核表。", "例：胃腺癌本科病理 PBL", "输出：合成教学案例 + 课堂提问 + 教师复核清单", "cases"],
+    ["找一个科研方法", "按你的数据类型推荐方法、工具、图表和学习路径。", "例：单细胞肿瘤免疫差异", "输出：方法路线 + 推荐工具 + 适合图型", "researcher"],
+    ["生成一张论文图", "选图型、查字段、拿代码、写图注，适合新手起步。", "例：我有 log2FC 和 pvalue", "输出：示例图 + R/Python 模板 + 图注草案", "plot-studio"],
+    ["创建自己的 Skill", "把常用流程写成可收藏、可发布、可复用的任务卡。", "例：我的森林图复核流程", "输出：Skill 草案 + 运行入口 + 安全边界", "skill-builder"],
+    ["进入科研小岛", "用游戏化入口管理常用工具、建筑、积分和社区作品。", "例：把 Plot Studio 放进绘图工坊", "输出：个人科研空间 + 建筑快捷入口", "island"],
   ];
 
   const posts = [
@@ -203,6 +203,93 @@
     ["文本网络图", "适合传播、人文和访谈编码结果。", "社区"],
   ];
 
+  const openSourceTools = [
+    {
+      id: "seurat",
+      title: "Seurat",
+      domain: "单细胞 / R",
+      license: "GPL-3.0",
+      github: "satijalab/seurat",
+      question: "从单细胞表达矩阵出发，完成质控、聚类、注释和 UMAP 展示。",
+      input: "表达矩阵、metadata、分组信息、marker 基因表。",
+      output: "聚类结果、差异 marker、UMAP、DotPlot、FeaturePlot。",
+      example: "我有 10x 数据，想看肿瘤样本 T 细胞亚群差异。",
+      plot: "umap",
+      packages: "R：Seurat、ggplot2、patchwork",
+    },
+    {
+      id: "scanpy",
+      title: "Scanpy",
+      domain: "单细胞 / Python",
+      license: "BSD-3-Clause",
+      github: "scverse/scanpy",
+      question: "用 Python 完成 AnnData 格式的单细胞分析和可视化。",
+      input: "h5ad、matrix、metadata、gene annotation。",
+      output: "邻接图、聚类、UMAP、marker gene ranking。",
+      example: "我想把公开 PBMC 数据跑一遍基础流程。",
+      plot: "feature_plot",
+      packages: "Python：scanpy、anndata、matplotlib",
+    },
+    {
+      id: "clusterprofiler",
+      title: "clusterProfiler",
+      domain: "富集分析 / R",
+      license: "Artistic-2.0",
+      github: "YuLab-SMU/clusterProfiler",
+      question: "把差异基因变成 GO/KEGG 通路解释。",
+      input: "gene symbol、ENTREZID、logFC、背景基因集。",
+      output: "ORA/GSEA 结果、dotplot、ridgeplot、enrichment curve。",
+      example: "我有一组上调基因，想知道免疫相关通路是否富集。",
+      plot: "enrichment_dotplot",
+      packages: "R：clusterProfiler、enrichplot、org.Hs.eg.db",
+    },
+    {
+      id: "gears",
+      title: "GEARS",
+      domain: "扰动预测 / 单细胞",
+      license: "MIT",
+      github: "snap-stanford/GEARS",
+      question: "预测基因扰动后的表达变化，适合学习 virtual perturbation 概念。",
+      input: "扰动单细胞数据、基因列表、训练/测试 split。",
+      output: "扰动响应预测、基因影响排序、模型评估图。",
+      example: "我想比较敲低某个转录因子后 T 细胞状态可能如何改变。",
+      plot: "network_graph",
+      packages: "Python：PyTorch、scanpy、GEARS 环境",
+    },
+    {
+      id: "metafor",
+      title: "metafor",
+      domain: "Meta 分析 / R",
+      license: "GPL-2/3",
+      github: "wviechtb/metafor",
+      question: "系统综述和 Meta 分析中的效应量合并与异质性评估。",
+      input: "study、effect、standard error、CI、subgroup。",
+      output: "森林图、漏斗图、亚组分析、敏感性分析。",
+      example: "我收集了 12 篇研究，想合并某个风险因素的 OR。",
+      plot: "forest_plot",
+      packages: "R：metafor、meta、ggplot2",
+    },
+    {
+      id: "quarto",
+      title: "Quarto",
+      domain: "复现报告",
+      license: "GPL-2.0",
+      github: "quarto-dev/quarto-cli",
+      question: "把代码、图、解释和方法写成可复现网页或 PDF。",
+      input: "R/Python 代码、Markdown 文本、图表文件。",
+      output: "HTML、PDF、Word、GitHub Pages 报告。",
+      example: "我想把绘图代码和图注打包成老师能检查的报告。",
+      plot: "workflow_diagram",
+      packages: "Quarto CLI、knitr、jupyter",
+    },
+  ];
+
+  const pluginFamilies = [
+    ["teaching", "MedPath Teaching Plugin", "教学场景插件", "课程设计、PBL 案例、超微导学、病理报告反馈。"],
+    ["research", "MedPath Research Plugin", "科研训练插件", "方法推荐、图表生成、文献综述和开源工具导航。"],
+    ["governance", "MedPath Governance Plugin", "治理评价插件", "伦理审计、质量评价、教师复核和 D10 映射。"],
+  ];
+
   function esc(value) {
     return String(value ?? "")
       .replaceAll("&", "&amp;")
@@ -224,9 +311,8 @@
     const p = parts();
     const first = p[0] || "home";
     const redirects = {
-      "open-source": "tools",
-      "researcher": "research",
-      "plugin-hub": "skills",
+      "tools": "open-source",
+      "research": "researcher",
       "method-runner": "method-runner",
       "mobile-app": "mobile-app",
       "comparison-lab": "comparison-lab",
@@ -312,8 +398,8 @@
       <small>0${i + 1}</small>
       <h3>${esc(item[0])}</h3>
       <p>${esc(item[1])}</p>
-      <code>${esc(item[2])}</code>
-      <div class="r110-actions"><a class="r110-button" data-testid="recommend-cta-${i + 1}" href="${path(item[3])}">开始</a></div>
+      <code><strong>输入：</strong>${esc(item[2])}<br><strong>输出：</strong>${esc(item[3])}</code>
+      <div class="r110-actions"><a class="r110-button" data-testid="recommend-cta-${i + 1}" aria-label="进入${esc(item[0])}" href="${path(item[4])}">开始</a></div>
     </article>`;
   }
 
@@ -434,7 +520,13 @@
           <figure class="r110-figure-card"><img src="${imageFor(meta.id)}" alt="${esc(meta.title)} 大图" loading="lazy"><figcaption><span>${full ? "本机 R 生成完整示例" : "缩略示例，完整包待补"}</span><span>教学演示，不代表真实研究结论</span></figcaption></figure>
           <div class="r110-panel"><h3>这个图回答什么问题</h3><p>${esc(meta.use)}。新手先确认横纵轴、分组、样本量和统计含义，再写图注。</p></div>
           <div class="r110-panel"><h3>示例数据字段</h3><table class="r110-table"><thead><tr><th>字段</th><th>状态</th><th>说明</th></tr></thead><tbody>${rows}</tbody></table></div>
-          <div class="r110-panel"><h3>代码与下载</h3><p>完整示例图型提供 PNG/SVG/PDF、source data、R/Python 模板、图注、methods 和 API prompt。</p><div class="r110-actions">${full ? `<a class="r110-outline" href="${fileFor(meta.id, "example_data.csv")}">下载数据</a><a class="r110-outline" href="${fileFor(meta.id, "plot.R")}">R 模板</a><a class="r110-outline" href="${fileFor(meta.id, "plot.py")}">Python 模板</a>` : `<button class="r110-outline" data-mock-action="该图型还在 V0.2 完整化清单中，当前只展示缩略图和字段说明。">查看待补说明</button>`}</div></div>
+          <div class="r110-detail-grid">
+            <article class="r110-panel"><h3>上传数据后怎么生成</h3><p>先检查列名是否包含 ${esc(meta.fields)}；字段通过后，由本地 R/Python runtime 运行模板代码，网页只负责展示图和导出材料。</p></article>
+            <article class="r110-panel"><h3>API 怎么辅助</h3><p>你自己的模型 API 只做字段解释、代码改写、报错解释、图注和 methods 草案，不接收或保存 API Key。</p></article>
+            <article class="r110-panel"><h3>图注模板</h3><p>图：${esc(meta.title)} 用于${esc(meta.use)}。请在真实论文中补充样本量、统计方法、显著性阈值和数据来源。</p></article>
+            <article class="r110-panel"><h3>风险提示</h3><p>示例图只演示方法，不代表真实研究结论；医学相关解释需导师、教师或专家复核。</p></article>
+          </div>
+          <div class="r110-panel"><h3>代码与下载</h3><p>完整示例图型提供 PNG/SVG/PDF、source data、R/Python 模板、图注、methods 和 API prompt。</p><div class="r110-actions">${full ? `<a class="r110-outline" href="${fileFor(meta.id, "example.png")}">下载 PNG</a><a class="r110-outline" href="${fileFor(meta.id, "example.svg")}">下载 SVG</a><a class="r110-outline" href="${fileFor(meta.id, "example.pdf")}">下载 PDF</a><a class="r110-outline" href="${fileFor(meta.id, "example_data.csv")}">下载数据</a><a class="r110-outline" href="${fileFor(meta.id, "plot.R")}">R 模板</a><a class="r110-outline" href="${fileFor(meta.id, "plot.py")}">Python 模板</a><a class="r110-outline" href="${fileFor(meta.id, "caption.md")}">图注</a><a class="r110-outline" href="${fileFor(meta.id, "methods.md")}">Methods</a><a class="r110-outline" href="${fileFor(meta.id, "api_prompt.md")}">API Prompt</a>` : `<button class="r110-outline" data-mock-action="该图型还在 V0.2 完整化清单中，当前只展示缩略图和字段说明。">查看待补说明</button>`}</div></div>
         </main>
         <aside class="r110-panel">
           <h3>新手提示</h3>
@@ -478,6 +570,42 @@
     return shell("skills", `<section class="r110-section">${sectionHead("Skill 市场", "官方 + 社区收藏", "卡片按产品写法展示：解决什么问题、适合谁、如何开始，而不是目录式堆名字。")}<div class="r110-grid-5">${skillCards.map(([t,b,k], i) => `<article class="r110-card"><div class="r110-card-inner"><small>${esc(k)}</small><h3>${esc(t)}</h3><p>${esc(b)}</p></div><div class="r110-card-actions"><a href="${path("plot-run/umap")}">试用</a><button data-mock-action="已收藏 ${esc(t)}，可在开始页选择。">收藏</button></div></article>`).join("")}</div></section>`);
   }
 
+  function skillBuilderPage() {
+    return shell("skill-builder", `
+      <section class="r110-detail r110-builder">
+        <main>
+          ${sectionHead("创建自己的 Skill", "Skill Builder", "把你常做的一件事写成可复用流程：输入、步骤、输出、评价、风险边界都要说清。")}
+          <div class="r110-panel">
+            <h3>三步开始</h3>
+            <div class="r110-detail-grid">
+              ${["写清任务", "补示例", "设置复核"].map((t, i) => `<article class="r110-mini-card"><b>0${i + 1}</b><h4>${esc(t)}</h4><p>${["例如：帮我检查森林图数据字段。", "给一份示例 CSV 和期望输出。", "说明哪些内容必须由老师或导师确认。"][i]}</p></article>`).join("")}
+            </div>
+          </div>
+          <div class="r110-panel">
+            <h3>Skill 草案</h3>
+            <textarea class="r110-textarea" rows="7" placeholder="例：我的 Skill 用于检查 meta 分析森林图。输入 study/effect/ci_low/ci_high，输出字段问题、R 代码、图注和导师复核点。"></textarea>
+            <div class="r110-actions">
+              <button class="r110-button" data-testid="skill-builder-save" data-mock-action="已生成 Skill 草案。静态版不会发布到社区。">生成草案</button>
+              <button class="r110-outline" data-mock-action="已检查安全边界：不保存 API Key，不上传用户数据。">检查边界</button>
+            </div>
+          </div>
+        </main>
+        <aside class="r110-panel">
+          <h3>可以选的模板</h3>
+          <p>绘图复核、字段体检、综述流程、教学案例、伦理审计。</p>
+          <a class="r110-button" href="${path("community")}">看社区收藏榜</a>
+        </aside>
+      </section>`);
+  }
+
+  function pluginHubPage() {
+    return shell("plugin-hub", `
+      <section class="r110-section">
+        ${sectionHead("Plugin Hub", "插件中心", "插件是一组 Skill 的产品化入口：能打开、能试用、能查看安全边界，也能映射到本地 Runtime。")}
+        <div class="r110-grid-3">${pluginFamilies.map(([id, en, zh, desc]) => `<article class="r110-card r110-plugin-card"><div class="r110-card-inner"><small>${esc(en)}</small><h3>${esc(zh)}</h3><p>${esc(desc)}</p><div class="r110-chip-list"><span>本地 mock</span><span>可迁移</span><span>教师复核</span></div></div><div class="r110-card-actions"><button data-testid="plugin-hub-open-${esc(id)}" data-mock-action="${esc(zh)} 已启用为演示状态。">启用</button><a href="${path("skills")}">包含的 Skill</a></div></article>`).join("")}</div>
+      </section>`);
+  }
+
   function communityPage() {
     return shell("community", `
       <section class="r110-forum">
@@ -487,18 +615,89 @@
       </section>`);
   }
 
-  function toolsPage() {
-    const tools = ["PubMed / Europe PMC", "GEO / ArrayExpress", "TCGA / cBioPortal", "Seurat / Scanpy", "R Graph Gallery", "Quarto / GitHub Pages", "OpenTargets", "STRING / Reactome", "Cochrane / PROSPERO", "Hugging Face Spaces"];
-    return shell("tools", `<section class="r110-section">${sectionHead("公开工具导航", "Open Source Navigator", "先看输入、输出、License 和新手难度，再决定要不要安装。")}<div class="r110-grid-5">${tools.map((t, i) => `<article class="r110-card"><div class="r110-card-inner"><small>${i < 4 ? "医学 / 生物" : "通用工具"}</small><h3>${esc(t)}</h3><p>适合查数据、跑分析或做可复现材料。详情页将继续补 GitHub、文档、论文和 License。</p></div><div class="r110-card-actions"><button data-mock-action="${esc(t)} 详情仍在扩展，当前先进入绘图或方法页。">详情</button><a href="${path("research")}">学习</a></div></article>`).join("")}</div></section>`);
+  function openSourcePage() {
+    const id = parts()[1];
+    if (id) return openSourceDetailPage(id);
+    return shell("open-source", `<section class="r110-section">${sectionHead("公开工具导航", "Open Source Navigator", "先看输入、输出、License、示例任务和新手难度，再决定要不要安装。")}<div class="r110-grid-3">${openSourceTools.map((tool) => `<article class="r110-card r110-tool-card"><div class="r110-card-inner"><small>${esc(tool.domain)} · ${esc(tool.license)}</small><h3>${esc(tool.title)}</h3><p>${esc(tool.question)}</p><figure class="r110-thumb"><img src="${imageFor(tool.plot)}" alt="${esc(tool.title)} 示例图" loading="lazy"></figure></div><div class="r110-card-actions"><a data-testid="open-source-detail-${esc(tool.id)}" href="${path(`open-source/${tool.id}`)}">看详情</a><a href="${path(`plot-gallery/${tool.plot}`)}">示例图</a></div></article>`).join("")}</div></section>`);
   }
 
-  function researchPage() {
-    return shell("research", `<section class="r110-section">${sectionHead("探索方法", "Research Workbench", "按研究问题和数据类型进入，而不是把虚拟敲除放成顶层大类。")}<div class="r110-grid-5">${["医学与生物", "生物信息学", "单细胞与空间组学", "计算病理", "工程与材料", "社会科学", "人文传播", "统计建模", "机器学习", "项目申报"].map((t, i) => `<article class="r110-card"><div class="r110-card-inner"><small>方向 ${i + 1}</small><h3>${esc(t)}</h3><p>查看常见问题、推荐图表、可用工具和学习路径。</p></div><div class="r110-card-actions"><a href="${path("plot-studio")}">看图表</a><a href="${path("method-runner")}">看流程</a></div></article>`).join("")}</div></section>`);
+  function openSourceDetailPage(id) {
+    const tool = openSourceTools.find((x) => x.id === id) || openSourceTools[0];
+    return shell("open-source", `
+      <section class="r110-detail">
+        <main>
+          ${sectionHead(tool.title, `${tool.domain} · ${tool.license}`, tool.question)}
+          <figure class="r110-figure-card"><img src="${imageFor(tool.plot)}" alt="${esc(tool.title)} 示例图" loading="lazy"><figcaption><span>示例图：${esc(plotMeta[tool.plot]?.title || tool.plot)}</span><a href="${path(`plot-gallery/${tool.plot}`)}">查看图型说明</a></figcaption></figure>
+          <div class="r110-detail-grid">
+            <article class="r110-panel"><h3>输入什么</h3><p>${esc(tool.input)}</p></article>
+            <article class="r110-panel"><h3>输出什么</h3><p>${esc(tool.output)}</p></article>
+            <article class="r110-panel"><h3>适合新手的任务</h3><p>${esc(tool.example)}</p></article>
+            <article class="r110-panel"><h3>推荐环境</h3><p>${esc(tool.packages)}</p></article>
+          </div>
+          <div class="r110-panel">
+            <h3>从 0 到能跑的学习路径</h3>
+            <ol class="r110-ordered"><li>先用示例数据理解输入字段。</li><li>在本地 Runtime 或原仓库环境安装依赖。</li><li>用本页 Skill 检查字段和参数，不让模型直接替你下科学结论。</li><li>导出图、代码、source data、caption 和 methods。</li></ol>
+          </div>
+        </main>
+        <aside class="r110-panel">
+          <h3>链接与边界</h3>
+          <p>GitHub：${esc(tool.github)}</p>
+          <p>License：${esc(tool.license)}。正式商用或再分发前请人工复核原仓库协议。</p>
+          <button class="r110-button" data-testid="open-source-run-${esc(tool.id)}" data-mock-action="${esc(tool.title)} 已加入本地运行清单。静态站点不会安装依赖。">加入运行清单</button>
+          <a class="r110-outline" href="${path("skill-builder")}">用它生成 Skill 草案</a>
+        </aside>
+      </section>`);
+  }
+
+  function researcherPage() {
+    const tracks = [
+      ["医学与生物", "从疾病问题、样本、指标和图表开始，不先堆模型。", "plot-studio/clinical"],
+      ["单细胞与空间组学", "聚类、注释、空间定位、通讯和扰动分析放在同一条学习线。", "method-runner/virtual-perturbation"],
+      ["计算病理", "从 WSI 切块、掩膜、嵌入到模型解释图。", "plot-studio/pathology"],
+      ["工程与材料", "响应面、参数优化、误差分析和流程图。", "plot-studio/proposal"],
+      ["社会科学与教育", "问卷、Likert、文本网络、教学评价和访谈编码。", "plot-studio/basic"],
+    ];
+    return shell("researcher", `<section class="r110-section">${sectionHead("科研工作站", "Research Workbench", "按研究问题和数据类型进入。虚拟敲除归入单细胞/生物信息学下的扰动分析，而不是顶层大类。")}<div class="r110-grid-5">${tracks.map(([t, b, h], i) => `<article class="r110-card"><div class="r110-card-inner"><small>方向 ${i + 1}</small><h3>${esc(t)}</h3><p>${esc(b)}</p></div><div class="r110-card-actions"><a href="${path(h)}">进入</a><a href="${path("open-source")}">工具</a></div></article>`).join("")}</div></section>`);
   }
 
   function methodRunnerPage() {
-    const types = ["Meta 分析", "系统综述", "单细胞论文", "空间组学论文", "数字病理论文", "机器学习预测模型", "教学改革论文", "生物信息学分析", "工程实验论文", "社会科学问卷"];
-    return shell("method-runner", `<section class="r110-section">${sectionHead("文章全流程", "Method Runner", "选文章类型后，系统给出问题、数据、图表、Skill、伦理和复现清单。")}<div class="r110-grid-5">${types.map((t, i) => `<article class="r110-card"><div class="r110-card-inner"><small>流程 ${i + 1}</small><h3>${esc(t)}</h3><p>从 0 开始搭建研究问题、数据字段、图表组合和写作骨架。</p></div><div class="r110-card-actions"><a href="${path("plot-studio/clinical")}">图表</a><button data-mock-action="${esc(t)} 流程已加入 V0.2 扩展清单。">生成草案</button></div></article>`).join("")}</div></section>`);
+    const types = [
+      ["Meta 分析", "医学 / 临床二级类型", "forest_plot"],
+      ["系统综述", "医学 / 临床二级类型", "prisma_flow"],
+      ["单细胞论文", "组学论文", "umap"],
+      ["空间组学论文", "组学论文", "spatial_feature_plot"],
+      ["数字病理论文", "医学 AI", "attention_heatmap"],
+      ["机器学习预测模型", "通用建模", "roc"],
+      ["教学改革论文", "医学教育", "workflow_diagram"],
+      ["生物信息学分析", "医学与生物", "enrichment_dotplot"],
+      ["工程实验论文", "工程与材料", "gantt"],
+      ["社会科学问卷", "社科与教育", "barplot"],
+    ];
+    return shell("method-runner", `<section class="r110-section">${sectionHead("文章全流程", "Method Runner", "文章类型不是顶层学科，而是进入某个学科后的写作路线。选一个类型，系统给出问题、数据、图表、Skill、伦理和复现清单。")}<div class="r110-grid-5">${types.map(([t, k, plot], i) => `<article class="r110-card"><div class="r110-card-inner"><small>${esc(k)} · 流程 ${i + 1}</small><h3>${esc(t)}</h3><p>从 0 开始搭建研究问题、数据字段、图表组合和写作骨架。</p><figure class="r110-thumb"><img src="${imageFor(plot)}" alt="${esc(t)} 推荐图" loading="lazy"></figure></div><div class="r110-card-actions"><a href="${path(`plot-gallery/${plot}`)}">看图</a><button data-mock-action="${esc(t)} 流程已生成 mock 草案，可接入 API 后细化。">生成草案</button></div></article>`).join("")}</div><div class="r110-panel"><h3>扰动分析入口</h3><p>如果你想做“虚拟敲除”，请进入单细胞/生物信息学下的扰动分析路线，而不是把它当成网站一级栏目。</p><a class="r110-button" href="${path("method-runner/virtual-perturbation")}">进入 virtual perturbation</a></div></section>`);
+  }
+
+  function virtualPerturbationPage() {
+    const methods = [
+      ["GEARS", "组合基因扰动预测", "需要 perturb-seq 或类似扰动数据；适合讲解扰动响应，不直接给临床结论。"],
+      ["scGen", "跨状态表达迁移", "适合学习条件迁移思路；需要注意训练分布边界。"],
+      ["CPA / chemCPA", "药物或条件扰动", "适合药物响应教学；不能替代真实实验。"],
+      ["scTenifoldKnk", "基因敲除网络推断", "适合探索调控网络变化；结果需实验或文献验证。"],
+    ];
+    return shell("method-runner", `
+      <section class="r110-detail">
+        <main>
+          ${sectionHead("Virtual perturbation / 虚拟扰动", "单细胞 → 扰动分析", "它不是网站顶层大类，而是生物信息学和单细胞分析中的一种方法路线。")}
+          <figure class="r110-figure-card"><img src="${imageFor("network_graph")}" alt="虚拟扰动网络示例" loading="lazy"><figcaption><span>示例：扰动响应网络</span><span>教学演示，不代表真实实验结论</span></figcaption></figure>
+          <div class="r110-detail-grid">${methods.map(([t,b,d]) => `<article class="r110-panel"><h3>${esc(t)}</h3><p><strong>${esc(b)}</strong></p><p>${esc(d)}</p></article>`).join("")}</div>
+          <div class="r110-panel"><h3>输入与输出</h3><p>输入：表达矩阵、细胞类型、扰动标签、训练/验证划分、目标基因或条件。输出：预测响应、关键基因排序、可视化图、风险提示和导师复核清单。</p></div>
+        </main>
+        <aside class="r110-panel">
+          <h3>开始之前先确认</h3>
+          <p>需要公开或授权数据；合成演示只用于学习流程。不要把模型预测当成真实实验或临床证据。</p>
+          <button class="r110-button" data-testid="virtual-perturbation-mock-run" data-mock-action="已生成虚拟扰动 mock 工作流：GEARS → 字段检查 → 网络图 → 复核清单。">运行 mock 工作流</button>
+          <a class="r110-outline" href="${path("open-source/gears")}">查看 GEARS 工具</a>
+        </aside>
+      </section>`);
   }
 
   function providersPage() {
@@ -515,7 +714,16 @@
   }
 
   function genericPage(active, title, sub) {
-    return shell(active, `<section class="r110-hero"><div><span class="r110-kicker">${esc(sub)}</span><h1>${esc(title)}</h1><p>这个页面已经接入统一风格和点击反馈。当前为静态演示，真实运行、上传和回传需要本地 Runtime 或后端服务。</p><div class="r110-actions"><a class="r110-button" href="${path("plot-studio")}">看绘图</a><a class="r110-outline" href="${path("community")}">去社区</a></div></div>${plotHeroImage("workflow_diagram")}</section>`);
+    const modules = {
+      "simulation-lab": ["合成教学案例", "选择病种、课程、难度和案例级别，生成 PBL 问题、报告训练和伦理审计。"],
+      "comparison-lab": ["对照比较", "比较传统方式、普通提示词和规范化 Skill 的输出差异，记录教师复核点。"],
+      "evidence-gallery": ["证据画廊", "集中展示示例图、代码、数据表、图注和 methods，方便作业或论文复现。"],
+      governance: ["伦理治理", "检查隐私、虚假引用、临床误导、学术诚信和医学 AI 输出边界。"],
+      "mobile-app": ["手机端方案", "展示面向移动端的新手入口、底部 tab、任务卡和科研小岛轻量入口。"],
+      cases: ["案例与模板", "把教学案例、合成案例、科研案例和文章模板放在一个可收藏的位置。"],
+    };
+    const extra = modules[active] || [title, "当前为静态演示模块，真实上传、模型调用和账号功能需要本地 Runtime 或后端服务。"];
+    return shell(active, `<section class="r110-hero"><div><span class="r110-kicker">${esc(sub)}</span><h1>${esc(title)}</h1><p>${esc(extra[1])} 静态 GitHub Pages 版本只演示流程和 mock 反馈，不保存 API Key，不上传用户数据。</p><div class="r110-actions"><a class="r110-button" href="${path("plot-studio")}">看绘图</a><a class="r110-outline" href="${path("community")}">去社区</a></div></div>${plotHeroImage("workflow_diagram")}</section><section class="r110-section"><div class="r110-grid-3">${["可以做什么", "需要什么输入", "输出什么"].map((t, i) => `<article class="r110-card"><div class="r110-card-inner"><small>${esc(extra[0])}</small><h3>${esc(t)}</h3><p>${["选择模板、查看样例、运行 mock 流程。","课程主题、数据字段、研究问题或示例文件。","结构化结果、复核清单、导出材料和下一步建议。"][i]}</p></div><div class="r110-card-actions"><button data-mock-action="${esc(title)} 的 ${esc(t)} 已收到，当前为静态演示。">试一下</button></div></article>`).join("")}</div></section>`);
   }
 
   function notFoundPage(active) {
@@ -530,14 +738,18 @@
     if (active === "plot-gallery") return plotGalleryPage();
     if (active === "plot-run") return plotRunPage();
     if (active === "skills") return skillsPage();
+    if (active === "skill-builder") return skillBuilderPage();
+    if (active === "plugin-hub") return pluginHubPage();
     if (active === "community") return communityPage();
-    if (active === "tools") return toolsPage();
-    if (active === "research") return researchPage();
+    if (active === "open-source") return openSourcePage();
+    if (active === "researcher") return researcherPage();
+    if (active === "method-runner" && parts()[1] === "virtual-perturbation") return virtualPerturbationPage();
     if (active === "method-runner") return methodRunnerPage();
     if (active === "providers") return providersPage();
     if (active === "runtime") return runtimePage();
     if (active === "profile") return profilePage();
-    if (active === "learn") return stepPage("step-design");
+    if (active === "learn" || active === "teacher") return stepPage("step-design");
+    if (active === "student") return stepPage("step-problem");
     if (active === "cases") return genericPage("cases", "案例与模板", "Cases");
     if (active === "governance") return genericPage("governance", "伦理治理", "Governance");
     if (active === "simulation-lab") return genericPage("simulation-lab", "模拟案例实验室", "Simulation Lab");
@@ -583,6 +795,33 @@
       document.querySelector("[data-carousel-prev]")?.addEventListener("click", () => setIndex(index - 1));
       document.querySelector("[data-carousel-next]")?.addEventListener("click", () => setIndex(index + 1));
       dots.forEach((dot) => dot.addEventListener("click", () => setIndex(Number(dot.dataset.carouselDot || 0))));
+      let dragging = false;
+      let startX = 0;
+      let startScroll = 0;
+      track.addEventListener("pointerdown", (event) => {
+        dragging = true;
+        startX = event.clientX;
+        startScroll = track.scrollLeft;
+        track.setPointerCapture?.(event.pointerId);
+        track.classList.add("dragging");
+      });
+      track.addEventListener("pointermove", (event) => {
+        if (!dragging) return;
+        track.scrollLeft = startScroll - (event.clientX - startX);
+      });
+      const endDrag = (event) => {
+        if (!dragging) return;
+        dragging = false;
+        track.releasePointerCapture?.(event.pointerId);
+        track.classList.remove("dragging");
+        const nearest = cards.reduce((best, card, i) => {
+          const delta = Math.abs(card.offsetLeft - track.scrollLeft);
+          return delta < best.delta ? { i, delta } : best;
+        }, { i: index, delta: Infinity });
+        setIndex(nearest.i);
+      };
+      track.addEventListener("pointerup", endDrag);
+      track.addEventListener("pointercancel", endDrag);
     }
     const search = document.querySelector("[data-testid='global-search']");
     search?.addEventListener("keydown", (event) => {
