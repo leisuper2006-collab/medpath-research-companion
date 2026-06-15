@@ -1,0 +1,11 @@
+"type","group","value"
+"T","Healthy",30
+"B","Healthy",18
+"Mono","Healthy",20
+"NK","Healthy",12
+"Epi","Healthy",10
+"T","Tumor",22
+"B","Tumor",15
+"Mono","Tumor",28
+"NK","Tumor",25
+"Epi","Tumor",20

@@ -1,4 +1,4 @@
-const SW_VERSION = "medpath-no-cache-round106";
+const SW_VERSION = "medpath-no-cache-round110";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(self.skipWaiting());

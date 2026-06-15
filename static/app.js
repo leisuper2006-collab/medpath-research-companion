@@ -5575,7 +5575,17 @@ function currentPage() {
   return shell(`<section class="r107-section"><h1>页面不存在</h1><a class="btn" href="/home" data-link>返回首页</a></section>`);
 }
 
+function round110OwnsNormalWorkbenchPage() {
+  if (!window.MEDPATH_ROUND110_WORKBENCH) return false;
+  const rawRoute = STATIC_MODE
+    ? String(location.hash || "#/home").replace(/^#\/?/, "")
+    : String(location.pathname || "/home").replace(/^\/+/, "");
+  const firstSegment = (rawRoute.split("/")[0] || "home").toLowerCase();
+  return !["island", "island-builder", "island-3d"].includes(firstSegment);
+}
+
 async function render() {
+  if (round110OwnsNormalWorkbenchPage()) return;
   document.getElementById("app").innerHTML = currentPage();
   await bindPageActions();
   initPremiumMotion();
@@ -5599,7 +5609,10 @@ Object.assign(window, {
 });
 
 loadInitialData()
-  .then(render)
+  .then(() => {
+    if (round110OwnsNormalWorkbenchPage()) return;
+    return render();
+  })
   .catch((err) => {
     document.getElementById("app").innerHTML = `<main class="page"><h1>启动失败</h1><pre>${escapeHtml(err.stack || err.message)}</pre></main>`;
   });

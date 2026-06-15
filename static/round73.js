@@ -1413,6 +1413,7 @@
   }
 
   function renderRound73() {
+    if (round110OwnsNormalPage()) return;
     const app = document.getElementById("app");
     if (!app) return;
     document.body.classList.add("round73-active");
@@ -1425,8 +1426,16 @@
 
   let reclaiming = false;
 
+  function round110OwnsNormalPage() {
+    if (!window.MEDPATH_ROUND110_WORKBENCH) return false;
+    const raw = (location.hash || "#/home").replace(/^#\/?/, "");
+    const first = raw.split("/")[0] || "home";
+    return !["island", "island-builder", "island-3d"].includes(first);
+  }
+
   function ensureRound73OwnsApp() {
     const app = document.getElementById("app");
+    if (round110OwnsNormalPage()) return;
     if (!app || reclaiming) return;
     if (!app.querySelector(".r73-app")) {
       reclaiming = true;
