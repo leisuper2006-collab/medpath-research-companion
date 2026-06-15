@@ -993,8 +993,412 @@
     `);
   }
 
+  /* Round109: workflow pages + discipline/article plot taxonomy + forum style community. */
+
+  const r109PlotBase = "outputs/round109_plot_gallery/";
+  const r109ChartFamilies = [
+    ["scatter_basic", "基础散点图", "看两个变量是否一起变化", ["ggplot2"], ["seaborn"], "连续X / 连续Y / 可选分组"],
+    ["scatter_grouped", "分组散点图", "比较不同组的关系是否一致", ["ggplot2"], ["seaborn"], "X / Y / 分组"],
+    ["regression_ci", "回归置信带", "展示趋势和不确定范围", ["ggplot2"], ["statsmodels"], "X / Y / 模型公式"],
+    ["line_trend", "时间趋势图", "追踪指标随时间变化", ["ggplot2"], ["matplotlib"], "时间 / 指标 / 分组"],
+    ["spaghetti_line", "个体轨迹图", "看每个样本的纵向变化", ["ggplot2"], ["seaborn"], "个体ID / 时间 / 指标"],
+    ["bar_grouped", "分组柱状图", "比较类别均值或比例", ["ggplot2"], ["plotnine"], "类别 / 数值 / 分组"],
+    ["bar_stacked", "堆叠柱状图", "展示组成结构", ["ggplot2"], ["plotly"], "类别 / 成分 / 比例"],
+    ["lollipop_rank", "棒棒糖排序图", "更清爽地展示排名", ["ggplot2"], ["matplotlib"], "对象 / 数值 / 排名"],
+    ["dumbbell_compare", "哑铃比较图", "比较前后或两组差异", ["ggplot2"], ["plotly"], "对象 / A值 / B值"],
+    ["boxplot", "箱线图", "展示中位数和离散程度", ["ggplot2"], ["seaborn"], "分组 / 数值"],
+    ["violin", "小提琴图", "看分布形状和组间差异", ["ggplot2"], ["seaborn"], "分组 / 数值"],
+    ["density", "密度曲线图", "比较连续变量分布", ["ggplot2"], ["seaborn"], "数值 / 分组"],
+    ["histogram", "直方图", "检查数据偏态和异常", ["ggplot2"], ["matplotlib"], "数值"],
+    ["heatmap", "热图", "看矩阵中的模式", ["ComplexHeatmap", "ggplot2"], ["seaborn"], "样本 / 特征 / 数值"],
+    ["cluster_heatmap", "聚类热图", "找样本和特征的聚集关系", ["pheatmap", "ComplexHeatmap"], ["seaborn"], "矩阵 / 分组注释"],
+    ["volcano", "火山图", "同时看差异幅度和显著性", ["EnhancedVolcano", "ggplot2"], ["matplotlib"], "log2FC / P值 / 基因名"],
+    ["ma_plot", "MA 图", "检查表达强度和差异的关系", ["limma", "ggplot2"], ["matplotlib"], "均值表达 / logFC"],
+    ["pca", "PCA 图", "看样本整体分离趋势", ["FactoMineR", "ggplot2"], ["sklearn"], "样本矩阵 / 分组"],
+    ["umap_like", "UMAP 类图", "展示降维后的局部结构", ["Seurat", "ggplot2"], ["scanpy"], "降维坐标 / 注释"],
+    ["dotplot", "表达 DotPlot", "同时看表达比例和表达量", ["Seurat", "ggplot2"], ["scanpy"], "基因 / 细胞类型 / 表达"],
+    ["bubble", "气泡图", "用大小编码第三变量", ["ggplot2"], ["plotly"], "X / Y / 大小 / 分组"],
+    ["forest", "森林图", "展示效应量和置信区间", ["meta", "metafor"], ["statsmodels"], "研究名 / 效应值 / 置信区间"],
+    ["funnel", "漏斗图", "初步查看发表偏倚", ["meta", "metafor"], ["statsmodels"], "效应值 / 标准误"],
+    ["survival", "生存曲线", "比较事件发生时间差异", ["survival", "survminer"], ["lifelines"], "时间 / 结局 / 分组"],
+    ["roc", "ROC 曲线", "评估分类模型区分能力", ["pROC"], ["sklearn"], "标签 / 预测概率"],
+    ["calibration", "校准曲线", "检查预测概率是否可信", ["rms", "ggplot2"], ["sklearn"], "预测概率 / 实际结局"],
+    ["nomogram_like", "列线图结构示意", "说明多因素风险评分", ["rms"], ["matplotlib"], "变量 / 系数 / 风险"],
+    ["sankey_like", "桑基流向图", "展示流程或类别流向", ["ggalluvial"], ["plotly"], "来源 / 去向 / 数值"],
+    ["network", "网络关系图", "展示对象之间的连接", ["igraph", "ggraph"], ["networkx"], "节点 / 边 / 权重"],
+    ["timeline", "时间轴图", "梳理事件或研究流程", ["ggplot2"], ["matplotlib"], "事件 / 时间 / 分组"],
+    ["gantt", "甘特图", "展示项目任务安排", ["ggplot2"], ["plotly"], "任务 / 开始 / 结束"],
+    ["radar", "雷达图", "比较多指标画像", ["fmsb", "ggplot2"], ["plotly"], "指标 / 分值"],
+    ["likert", "Likert 量表图", "展示问卷态度分布", ["ggplot2"], ["plotly"], "题项 / 选项 / 比例"],
+    ["venn_like", "Venn 关系图", "看集合交叠关系", ["ggVennDiagram"], ["matplotlib-venn"], "集合 / 元素"],
+    ["map_tile", "地图栅格图", "展示空间分布或区域差异", ["sf", "ggplot2"], ["geopandas"], "区域 / 数值"],
+    ["manhattan", "Manhattan 图", "展示全基因组关联峰", ["qqman"], ["bioinfokit"], "染色体 / 位置 / P值"],
+    ["enrichment_dot", "富集气泡图", "展示通路富集结果", ["clusterProfiler", "ggplot2"], ["gseapy"], "通路 / P值 / 基因数"],
+    ["chord_like", "弦图关系示意", "展示类别之间的双向联系", ["circlize"], ["holoviews"], "类别A / 类别B / 权重"],
+    ["response_surface", "响应面图", "看两个因素共同影响结果", ["rsm", "ggplot2"], ["matplotlib"], "因素A / 因素B / 响应值"],
+    ["waterfall", "瀑布图", "展示个体变化方向和幅度", ["ggplot2"], ["matplotlib"], "样本 / 变化值 / 分组"],
+  ].map(([id, title, use, r, py, fields]) => ({ id, title, use, r, py, fields, asset: `${id}.svg` }));
+
+  const r109Subjects = {
+    medicine: {
+      label: "医学 / 生物",
+      intro: "适合临床研究、组学、生物信息学、数字病理和医学AI。",
+      articles: ["临床队列", "Meta / 系统综述", "生物信息学", "单细胞 / 空间组学", "数字病理 / 医学AI", "教学改革"],
+      examples: ["肿瘤免疫差异", "治疗组与对照组比较", "模型预测质量", "病理报告训练"]
+    },
+    engineering: {
+      label: "工程 / 材料",
+      intro: "适合工艺优化、传感器、材料性能、算法评测和系统可靠性。",
+      articles: ["材料实验", "工艺优化", "传感器研究", "机器学习建模", "系统评测"],
+      examples: ["温度与响应", "多参数优化", "设备稳定性", "模型误差"]
+    },
+    social: {
+      label: "社科 / 教育",
+      intro: "适合问卷、教学评价、行为实验、政策分析和用户研究。",
+      articles: ["问卷研究", "教育评价", "行为实验", "政策分析", "访谈编码"],
+      examples: ["满意度问卷", "课程前后测", "群体差异", "使用意愿"]
+    },
+    humanities: {
+      label: "人文 / 传播",
+      intro: "适合文本、传播路径、历史时间线、语料比较和主题演化。",
+      articles: ["语料分析", "传播研究", "历史时间线", "文本挖掘", "比较研究"],
+      examples: ["主题共现", "概念演化", "事件时间轴", "作者网络"]
+    },
+    general: {
+      label: "通用统计",
+      intro: "适合所有学科的数据检查、统计表达、项目汇报和可复现材料。",
+      articles: ["统计基础", "数据质量", "多变量分析", "可视化报告", "项目管理"],
+      examples: ["数据分布", "组间比较", "变量关系", "进度复现"]
+    },
+  };
+
+  function r109Parts() {
+    return (location.hash || "#/home").replace(/^#\/?/, "").split("/").filter(Boolean).map(decodeURIComponent);
+  }
+
+  function r109PlotUrl(kind, subject, id, article = "") {
+    return `#/${kind}/${encodeURIComponent(subject)}/${encodeURIComponent(id)}${article ? `/${encodeURIComponent(article)}` : ""}`;
+  }
+
+  function r109SelectedPlot() {
+    const parts = r109Parts();
+    const subject = r109Subjects[parts[1]] ? parts[1] : "medicine";
+    const id = parts[2] || r109ChartFamilies[0].id;
+    const chart = r109ChartFamilies.find((x) => x.id === id) || r109ChartFamilies[0];
+    const article = parts[3] || r109Subjects[subject].articles[0];
+    return { subject, chart, article, subjectInfo: r109Subjects[subject] };
+  }
+
+  function r109TopRoutes() {
+    return [
+      ["home", "网站概览"],
+      ["research", "探索方法"],
+      ["plot-studio", "科研绘图"],
+      ["skills", "Skill 市场"],
+      ["tools", "公开工具"],
+      ["community", "社区交流"],
+      ["island", "科研小岛"],
+    ];
+  }
+
+  function nav(active) {
+    const topActive = ["plot-detail", "plot-run"].includes(active) ? "plot-studio" : active;
+    return r109TopRoutes().map(([id, label]) => `<a href="${link(id)}" class="${topActive === id ? "active" : ""}">${esc(label)}</a>`).join("");
+  }
+
+  function r109StepIndex(active) {
+    const map = {
+      "step-problem": 1,
+      "step-design": 2,
+      "step-data": 3,
+      "step-analysis": 4,
+      "step-results": 5,
+      "step-ethics": 6,
+      "step-share": 7,
+    };
+    return map[active] || 0;
+  }
+
+  function r108Steps(active = "home") {
+    const steps = [
+      ["step-problem", "提出问题"],
+      ["step-design", "设计研究"],
+      ["step-data", "获取数据"],
+      ["step-analysis", "分析验证"],
+      ["step-results", "解读结果"],
+      ["step-ethics", "伦理与安全"],
+      ["step-share", "分享复现"],
+    ];
+    const stepIndex = r109StepIndex(active);
+    return `<div class="r108-step-list">${steps.map(([id, label], i) => `<a class="${stepIndex === i + 1 ? "active" : ""}" href="${link(id)}"><b>${i + 1}</b><span>${esc(label)}</span></a>`).join("")}</div>`;
+  }
+
+  function mobileNav(active) {
+    const topActive = ["plot-detail", "plot-run"].includes(active) ? "plot-studio" : active;
+    return `<nav class="r73-mobile-nav r108-mobile-nav r109-mobile-nav">${[
+      ["home", "首页"],
+      ["plot-studio", "绘图"],
+      ["skills", "技能"],
+      ["community", "社区"],
+      ["island", "小岛"],
+    ].map(([id, label]) => `<a href="${link(id)}" class="${topActive === id ? "active" : ""}">${esc(label)}</a>`).join("")}</nav>`;
+  }
+
+  function shell(active, content) {
+    const stepIndex = r109StepIndex(active);
+    return `
+      <div class="r73-app r108-shell r109-shell">
+        <header class="r108-topbar r109-topbar">
+          <a class="r108-logo" href="${link("home")}"><span>荷</span><div><strong>MedPath Research Companion</strong><small>夏日荷风科研学习工作台</small></div></a>
+          <nav class="r108-topnav">${nav(active)}</nav>
+          <label class="r108-search"><input id="r73-search" placeholder="搜索图表、文章类型、数据集、Skill..." /></label>
+          <a class="r108-avatar" href="${link("profile")}" aria-label="个人主页">易</a>
+        </header>
+        <div class="r108-body r109-body">
+          <aside class="r108-left r109-left">
+            <a class="r108-overview ${active === "home" ? "active" : ""}" href="${link("home")}">概览</a>
+            ${r108Steps(active)}
+            <div class="r108-persona"><strong>${stepIndex ? `第 ${stepIndex} 步` : "新手入口"}</strong><span>${stepIndex ? "每一步都有独立页面和下一步建议。" : "按身份、任务或图表进入。"}</span><a href="${link("research")}">查看学习路径 →</a></div>
+          </aside>
+          <main class="r108-main r109-main">${content}</main>
+        </div>
+        ${mobileNav(active)}
+        <button class="r73-pet r108-pet" id="r73-pet" aria-label="页面助手"><span>问</span></button>
+        <div class="r73-pet-bubble r108-pet-bubble" id="r73-pet-bubble">你可以问：我做 Meta 分析该选哪些图？我有单细胞数据该先画什么？如果你配置自己的大模型 API，这里会走你的模型；未配置时先用本地规则推荐。</div>
+      </div>`;
+  }
+
+  function r109Section(title, sub, body = "") {
+    return `<div class="r109-section-head"><span>${esc(sub)}</span><h2>${esc(title)}</h2>${body ? `<p>${esc(body)}</p>` : ""}</div>`;
+  }
+
+  function r109Slide(index, title, body, action, routeName, assetName) {
+    return `<article class="r109-slide" id="overview-${index}">
+      <div><span>0${index}</span><h2>${esc(title)}</h2><p>${esc(body)}</p><a href="${link(routeName)}">${esc(action)} →</a></div>
+      <figure><img src="${assetName}" alt="${esc(title)}示例" loading="lazy" /></figure>
+    </article>`;
+  }
+
+  function homePage() {
+    const slides = [
+      ["从问题出发", "不知道用什么方法时，先把研究对象、数据类型和想回答的问题写出来。", "进入七步工作流", "step-problem", `${r108FigureBase}single_cell_atlas_panel.svg`],
+      ["按学科选图", "医学、生物、工程、社科、人文和通用统计分开看，Meta 分析只是医学/生物下的文章类型之一。", "打开科研绘图", "plot-studio", `${r109PlotBase}forest.svg`],
+      ["用 Skill 起步", "官方 Skill 负责基础流程，收藏 Skill 来自社区创作者，可以复用也可以改成自己的。", "查看 Skill 市场", "skills", `${r109PlotBase}network.svg`],
+      ["去社区找经验", "像贴吧一样搜索帖子、看高收藏 Skill、跟着别人的案例复现。", "进入社区交流", "community", `${r109PlotBase}likert.svg`],
+      ["在小岛里学习", "把常用功能放进科研小岛建筑，完成任务得积分，逐步解锁自己的研究空间。", "进入科研小岛", "island", `${r109PlotBase}gantt.svg`],
+    ];
+    const personas = [
+      ["科研小白", "先走七步工作流：提出问题、拿数据、选图、写解释。", "step-problem"],
+      ["完成作业的学生", "直接看示例图和模板，按字段替换自己的数据。", "plot-studio"],
+      ["老师", "用课程、案例和评价 Skill 做课堂材料。", "skills"],
+      ["写论文的人", "按文章类型生成流程：Meta、单细胞、医学AI、教改。", "method-runner"],
+      ["想做社区创作者", "发布自己的 Skill，被收藏后冲榜。", "community"],
+    ];
+    return shell("home", `
+      <section class="r109-carousel">
+        <div class="r109-carousel-track">${slides.map((s, i) => r109Slide(i + 1, ...s)).join("")}</div>
+        <div class="r109-carousel-controls">
+          ${slides.map((_, i) => `<a href="#overview-${i + 1}" aria-label="切换到第${i + 1}屏"></a>`).join("")}
+        </div>
+      </section>
+      <section class="r109-persona-grid">${personas.map(([t,b,h]) => `<a href="${link(h)}"><strong>${esc(t)}</strong><span>${esc(b)}</span></a>`).join("")}</section>
+      <section class="r109-apple-story">
+        <span>项目是什么</span>
+        <h1>一个给科研新手用的“方法导航 + 图表工作室 + Skill 社区”。</h1>
+        <p>它不要求你一开始就懂所有术语。你可以从“我要完成什么”出发：写作业、画图、找数据、写论文、做教学案例、发布自己的 Skill。页面会给你看真实示例图、需要的字段、常用 R/Python 包和安全边界。</p>
+      </section>
+      <section class="r108-section">${r109Section("五个常用入口", "快捷开始", "每张卡片都对应一个真实页面。")}<div class="r108-product-grid">
+        ${[
+          { title: "科研绘图", kicker: "Plot Studio", body: "按学科和文章类型选图，每类至少 40 种图型。", route: "plot-studio" },
+          { title: "设计研究", kicker: "Study Design", body: "帮你把想法变成研究问题、对象、对照和结局指标。", route: "step-design" },
+          { title: "获取数据", kicker: "Data Finder", body: "公开数据、课程数据、合成示例和授权边界分开。", route: "step-data" },
+          { title: "社区 Skill", kicker: "Skill Board", body: "看别人发布的 Skill，收藏后可在开始页调用。", route: "community" },
+          { title: "分享复现", kicker: "Reproduce", body: "整理代码、数据字典、图注和复现说明。", route: "step-share" },
+        ].map(r108ProductCard).join("")}
+      </div></section>
+    `);
+  }
+
+  function r109StepPage(active) {
+    const config = {
+      "step-problem": ["提出问题", "把兴趣变成可验证问题", "先写疾病/对象、比较组、指标和预期图。不要一上来问“帮我做课题”，要问“我想比较谁和谁、看什么变化”。", ["研究对象", "比较组", "可测指标", "预期图表"], `${r109PlotBase}scatter_basic.svg`],
+      "step-design": ["设计研究", "把问题拆成对象、变量和证据链", "这里帮助你选择研究类型、样本来源、纳排标准、统计路线和伦理边界。适合课程作业、论文开题和教学案例设计。", ["研究类型", "样本与分组", "主要终点", "偏倚控制"], `${r109PlotBase}timeline.svg`],
+      "step-data": ["获取数据", "知道该找什么数据，也知道哪些不能用", "公开数据、脱敏数据、合成教学数据和个人敏感数据必须分开。页面会列出常见数据源、字段清单、下载注意和可复现记录。", ["公开数据库", "字段字典", "授权状态", "隐私边界"], `${r109PlotBase}heatmap.svg`],
+      "step-analysis": ["分析验证", "先做质控，再做统计或建模", "不要拿到数据就跑模型。先检查缺失、异常、分组均衡和字段含义，再决定差异分析、回归、预测模型或网络分析。", ["数据质控", "统计选择", "模型验证", "敏感性分析"], `${r109PlotBase}pca.svg`],
+      "step-results": ["解读结果", "把图翻译成可被老师看懂的话", "结果页会提醒：图说明了什么、不能说明什么、还需要哪些验证。尤其避免把相关性说成因果。", ["图的结论", "限制条件", "替代解释", "下一步实验"], `${r109PlotBase}forest.svg`],
+      "step-ethics": ["伦理与安全", "医学AI输出不能越界", "这里检查患者隐私、虚假引用、临床误导、夸大疗效和学术诚信风险。所有医学AI内容只用于教学与科研训练，不替代临床诊断。", ["隐私", "引用", "临床误导", "教师复核"], `${r109PlotBase}network.svg`],
+      "step-share": ["分享复现", "让别人能看懂、能复跑、能收藏", "把代码、数据说明、图注、参数、版本和风险边界打包。发布到社区后，别人可以收藏你的 Skill，你也可以进入排行榜。", ["代码", "数据字典", "图注", "版本记录"], `${r109PlotBase}gantt.svg`],
+    };
+    const [title, sub, body, tags, img] = config[active] || config["step-problem"];
+    return shell(active, `
+      <section class="r109-method-template">
+        <div class="r109-method-copy"><span>七步工作流</span><h1>${esc(title)}</h1><p>${esc(body)}</p><div class="r109-tagline">${tags.map((x) => `<b>${esc(x)}</b>`).join("")}</div><a class="r108-primary" href="${active === "step-share" ? link("community") : link("plot-studio")}">${active === "step-share" ? "去社区发布" : "继续选择图表"}</a></div>
+        <figure><img src="${img}" alt="${esc(title)}示例图" loading="lazy" /><figcaption>${esc(sub)}：示例图由本机 R 脚本生成。</figcaption></figure>
+      </section>
+      <section class="r108-section">${r109Section("这一页可以做什么", "功能说明", "不是空白步骤，而是给科研小白的具体检查清单。")}<div class="r109-check-grid">
+        ${tags.map((x, i) => `<article><b>0${i + 1}</b><h3>${esc(x)}</h3><p>${esc(["先写清楚输入材料。","检查是否需要人工授权。","选择可复现的图和方法。","生成后请教师或专家复核。"][i] || "记录版本。")}</p></article>`).join("")}
+      </div></section>
+    `);
+  }
+
+  function r109PlotCatalogFor(subject = "medicine", article = "") {
+    const info = r109Subjects[subject] || r109Subjects.medicine;
+    return r109ChartFamilies.map((chart, index) => ({
+      ...chart,
+      subject,
+      article: article || info.articles[index % info.articles.length],
+      tag: `${info.label} / ${article || info.articles[index % info.articles.length]}`,
+      question: `${chart.use}。在${info.examples[index % info.examples.length]}场景里，适合先用它看趋势、差异或证据质量。`,
+    }));
+  }
+
+  function r109PlotCard(item) {
+    return `<article class="r108-plot-card r109-plot-card">
+      <div class="r108-plot-media"><img src="${r109PlotBase}${item.asset}" alt="${esc(item.title)}示例图" loading="lazy" /></div>
+      <div class="r108-plot-body">
+        <div><span>${esc(item.tag)}</span><h3>${esc(item.title)}</h3></div>
+        <p>${esc(item.question)}</p>
+        <div class="r108-code-row"><b>R</b>${item.r.map((x) => `<code>${esc(x)}</code>`).join("")}</div>
+        <div class="r108-code-row"><b>Python</b>${item.py.map((x) => `<code>${esc(x)}</code>`).join("")}</div>
+        <small>需要字段：${esc(item.fields)}</small>
+      </div>
+      <div class="r108-plot-actions"><a href="${r109PlotUrl("plot-detail", item.subject, item.id, item.article)}">看详情</a><a href="${r109PlotUrl("plot-run", item.subject, item.id, item.article)}">开始</a></div>
+    </article>`;
+  }
+
+  function plotPage() {
+    const parts = r109Parts();
+    const subject = r109Subjects[parts[1]] ? parts[1] : "medicine";
+    const info = r109Subjects[subject];
+    const article = parts[2] || "";
+    const plots = r109PlotCatalogFor(subject, article);
+    return shell("plot-studio", `
+      <section class="r108-plot-page r109-plot-page">
+        <aside class="r108-plot-rail r109-plot-rail">
+          <div class="r108-plot-brand">科研绘图</div>
+          <strong class="r109-rail-title">学科分类</strong>
+          ${Object.entries(r109Subjects).map(([key, val]) => `<a class="${subject === key ? "active" : ""}" href="#/plot-studio/${key}">${esc(val.label)}</a>`).join("")}
+          <strong class="r109-rail-title">文章类型</strong>
+          ${info.articles.map((x) => `<a class="${article === x ? "active sub" : "sub"}" href="#/plot-studio/${subject}/${encodeURIComponent(x)}">${esc(x)}</a>`).join("")}
+          <div class="r108-plot-help"><strong>怎么选图？</strong><p>先选学科，再选文章类型。Meta 分析已放到医学/生物的二级分类里。</p></div>
+        </aside>
+        <main class="r108-plot-main">
+          <div class="r108-plot-hero">
+            <div><span>Plot Studio</span><h1>${esc(info.label)}图谱选择器</h1><p>${esc(info.intro)} 当前显示 ${plots.length} 种图，每张都有示例图、字段、R/Python 包和开始入口。</p></div>
+            <div class="r108-search-row"><input placeholder="搜索：火山图、PCA、森林图、Likert、响应面、网络图..." /><select><option>${esc(article || "全部文章类型")}</option></select></div>
+          </div>
+          <div class="r108-plot-grid">${plots.map(r109PlotCard).join("")}</div>
+        </main>
+      </section>`);
+  }
+
+  function plotDetailPage() {
+    const { subject, chart, article, subjectInfo } = r109SelectedPlot();
+    return shell("plot-detail", `
+      <section class="r109-method-template">
+        <div class="r109-method-copy"><span>${esc(subjectInfo.label)} / ${esc(article)}</span><h1>${esc(chart.title)}</h1><p>${esc(chart.use)}。这页使用和首页单细胞模板一致：先看图，再看字段、代码包、适用场景和安全边界。</p><div class="r109-tagline"><b>字段：${esc(chart.fields)}</b><b>R：${esc(chart.r.join(" / "))}</b><b>Python：${esc(chart.py.join(" / "))}</b></div><a class="r108-primary" href="${r109PlotUrl("plot-run", subject, chart.id, article)}">用这个图开始</a></div>
+        <figure><img src="${r109PlotBase}${chart.asset}" alt="${esc(chart.title)}详情图" loading="lazy" /><figcaption>示例图：本机 R 脚本生成，演示数据不代表真实科研结论。</figcaption></figure>
+      </section>
+      <section class="r108-section">${r109Section("怎样读这张图", "新手解释", "先看坐标和分组，再看趋势、差异或不确定性，最后写出不能说明什么。")}<div class="r109-check-grid">
+        <article><b>01</b><h3>输入</h3><p>${esc(chart.fields)}</p></article>
+        <article><b>02</b><h3>输出</h3><p>一张可解释图、R/Python 包建议、图注草稿和复现提示。</p></article>
+        <article><b>03</b><h3>适合</h3><p>${esc(article)}中的结果展示或探索性分析。</p></article>
+        <article><b>04</b><h3>边界</h3><p>医学相关输出仅用于教学与科研训练，不替代临床诊断。</p></article>
+      </div></section>`);
+  }
+
+  function plotRunPage() {
+    const { subject, chart, article, subjectInfo } = r109SelectedPlot();
+    const official = ["官方绘图审查 Skill", "字段体检 Skill", "图注生成 Skill", "伦理边界 Skill"];
+    const favorites = ["Path_Queen 收藏：单细胞图注助手", "BioWalker 收藏：Meta 森林图模板", "小明同学 收藏：作业汇报图包"];
+    return shell("plot-run", `
+      <section class="r109-runner">
+        <div class="r109-runner-main">
+          <span>${esc(subjectInfo.label)} / ${esc(article)}</span>
+          <h1>开始生成：${esc(chart.title)}</h1>
+          <p>这里可以接入用户自己的大模型 API。未配置 API 时，只生成本地模拟建议；不保存明文密钥。</p>
+          <label>你的需求<textarea placeholder="例如：我有两组肿瘤样本的差异基因表，想画火山图并生成图注。"></textarea></label>
+          <label>API Provider<select><option>未配置：本地规则模式</option><option>用户自己的 OpenAI 兼容 API</option><option>学校模型 API</option></select></label>
+          <label>选择 Skill<select><optgroup label="官方 Skill">${official.map((x) => `<option>${esc(x)}</option>`).join("")}</optgroup><optgroup label="我的收藏 Skill">${favorites.map((x) => `<option>${esc(x)}</option>`).join("")}</optgroup></select></label>
+          <button type="button">生成图表流程草案</button>
+        </div>
+        <aside class="r109-runner-side"><img src="${r109PlotBase}${chart.asset}" alt="${esc(chart.title)}示例" /><h3>将输出</h3><ul><li>字段检查</li><li>R/Python 代码框架</li><li>图注草稿</li><li>风险提示</li><li>可发布为社区 Skill</li></ul></aside>
+      </section>`);
+  }
+
+  function skillsPage() {
+    const cards = [
+      ["病理报告反馈", "给学生报告草稿做结构和术语反馈", "官方"],
+      ["PBL 案例生成", "把知识点拆成课堂问题链", "官方"],
+      ["科研综述助手", "从检索式到证据表", "官方"],
+      ["图表审查", "检查字段、图注和统计表达", "官方"],
+      ["伦理审计", "检查隐私、引用和临床误导", "官方"],
+      ["单细胞图注助手", "社区收藏 2,104 次", "社区"],
+      ["Meta 森林图模板", "社区收藏 1,876 次", "社区"],
+      ["问卷 Likert 快速图", "社区收藏 1,420 次", "社区"],
+      ["工程响应面图包", "社区收藏 1,202 次", "社区"],
+      ["人文文本网络图", "社区收藏 934 次", "社区"],
+    ];
+    return shell("skills", `<section class="r108-section">${r109Section("Skill 市场", "官方 + 我的收藏", "官方 Skill 负责稳定流程，社区 Skill 来自他人发布，按收藏量冲榜。")}<div class="r108-product-grid">${cards.map(([t,b,k], i) => r108ProductCard({ title:t, body:b, kicker:k, route:i < 5 ? "plot-run/medicine/" + r109ChartFamilies[i].id : "community" }, i)).join("")}</div></section>`);
+  }
+
+  function communityPage() {
+    const posts = [
+      ["置顶", "新手第一次做 Meta 分析，森林图和漏斗图怎么安排？", "Meta / 系统综述", 328, 86],
+      ["Skill", "我发布了一个单细胞图注 Skill，能自动检查 UMAP 和 DotPlot 字段", "单细胞", 512, 143],
+      ["求助", "老师要求作业有可复现代码，我应该用 R 还是 Python？", "作业", 241, 64],
+      ["经验", "数字病理小论文常见图：热图、ROC、校准曲线、外部验证", "医学AI", 476, 129],
+      ["作品", "我的科研小岛：把绘图、综述和案例生成做成三个建筑", "小岛", 390, 102],
+    ];
+    const skills = [
+      ["单细胞图注助手", "Path_Queen", 2104],
+      ["Meta 森林图模板", "BioWalker", 1876],
+      ["医学AI ROC 审查", "MedScholar", 1662],
+      ["教改问卷 Likert 图", "Teacher_Lab", 1420],
+      ["工程响应面模板", "Researcher_X", 1202],
+    ];
+    return shell("community", `
+      <section class="r109-forum">
+        <div class="r109-forum-main">
+          <div class="r109-forum-head"><h1>社区交流</h1><input placeholder="搜索帖子、Skill、作者、图表..." /><button>发帖 / 发布 Skill</button></div>
+          ${posts.map(([type,title,tag,views,likes]) => `<article class="r109-post"><b>${esc(type)}</b><div><h3>${esc(title)}</h3><p>${esc(tag)} · 浏览 ${views} · 收藏 ${likes}</p></div><a href="${link("skills")}">进入</a></article>`).join("")}
+        </div>
+        <aside class="r109-rank"><h2>Skill 收藏榜</h2>${skills.map(([t,a,n], i) => `<a href="${link("skills")}"><b>${i + 1}</b><span>${esc(t)}<small>${esc(a)} · ${n} 收藏</small></span></a>`).join("")}</aside>
+      </section>`);
+  }
+
+  function researchPage() {
+    return shell("research", `<section class="r108-section">${r109Section("探索方法", "不是左侧七步的重复", "这里按研究目标给出学习路径：组学、生信、统计、医学AI、教学研究、社科人文。")}<div class="r109-check-grid">
+      ${["医学/生物", "工程/材料", "社科/教育", "人文/传播", "通用统计", "医学AI"].map((x, i) => `<article><b>0${i + 1}</b><h3>${esc(x)}</h3><p>先看常见问题、数据形态、推荐图表和可用 Skill。</p><a href="#/plot-studio/${Object.keys(r109Subjects)[i % 5]}">查看图谱 →</a></article>`).join("")}
+    </div></section>`);
+  }
+
+  function toolsPage() {
+    return shell("tools", `<section class="r108-section">${r109Section("公开工具", "工具不是越多越好", "先按任务找：检索、组学、统计、绘图、复现、部署。每个工具都要看输入、输出、License 和是否适合新手。")}<div class="r109-check-grid">
+      ${["PubMed / Europe PMC", "GEO / ArrayExpress", "TCGA / cBioPortal", "Seurat / Scanpy", "R Graph Gallery", "Quarto / GitHub Pages"].map((x, i) => `<article><b>0${i + 1}</b><h3>${esc(x)}</h3><p>用途、入口、常见坑和学习建议会在后续工具详情中展开。</p></article>`).join("")}
+    </div></section>`);
+  }
+
+  function runnerPage() {
+    const types = ["Meta 分析", "系统综述", "单细胞论文", "空间组学论文", "数字病理论文", "机器学习预测模型", "教学改革论文", "病例教学报告", "生物信息学分析", "工程实验论文", "社科问卷论文", "人文文本分析"];
+    return shell("method-runner", `<section class="r108-section">${r109Section("文章全流程", "从0开始搭流程", "选择文章类型后，平台给出问题、数据、图表、Skill、伦理和复现清单。")}<div class="r109-check-grid">${types.map((x, i) => `<article><b>${String(i + 1).padStart(2, "0")}</b><h3>${esc(x)}</h3><p>生成研究问题、材料清单、图表组合和写作骨架。</p><a href="${link("plot-run/medicine/" + r109ChartFamilies[i % r109ChartFamilies.length].id)}">开始搭建 →</a></article>`).join("")}</div></section>`);
+  }
+
+  function learnPage() { return r109StepPage("step-design"); }
+  function casesPage() { return r109StepPage("step-results"); }
+  function profilePage() { return shell("profile", `<section class="r108-section">${r109Section("个人主页", "作品、收藏和小岛", "这里展示我的 Skill、收藏图表、社区帖子、积分和科研小岛入口。")}<div class="r109-check-grid"><article><b>Lv.7</b><h3>易磊</h3><p>收藏 18 个 Skill，发布 3 个案例，小岛积分 1280。</p></article><article><b>Skill</b><h3>我的收藏</h3><p>来自社区交流页，可在图表开始页调用。</p></article><article><b>岛</b><h3>科研小岛</h3><p>把常用功能绑定到建筑。</p></article></div></section>`); }
+
   function pageFor(active) {
     if (active === "home") return homePage();
+    if (active === "step-problem") return r109StepPage("step-problem");
+    if (active === "step-design") return r109StepPage("step-design");
+    if (active === "step-data") return r109StepPage("step-data");
+    if (active === "step-analysis") return r109StepPage("step-analysis");
+    if (active === "step-results") return r109StepPage("step-results");
+    if (active === "step-ethics") return r109StepPage("step-ethics");
+    if (active === "step-share") return r109StepPage("step-share");
+    if (active === "plot-detail") return plotDetailPage();
+    if (active === "plot-run") return plotRunPage();
     if (active === "learn") return learnPage();
     if (active === "research") return researchPage();
     if (active === "skills") return skillsPage();
