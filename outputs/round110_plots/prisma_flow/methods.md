@@ -1,2 +1,2 @@
-# Methods
-使用 R 4.6 与 ggplot2 生成 prisma_flow 示例图。实际研究中需替换为用户数据，并记录数据来源、字段字典和参数。
+Synthetic data were generated locally in R and visualized with ggplot2.
+Users should replace the mock dataset with checked source data before formal use.

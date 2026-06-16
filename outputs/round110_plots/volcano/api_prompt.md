@@ -1,2 +1,4 @@
-# API prompt template
-我有一份数据，想生成 volcano。请检查字段是否满足要求，说明缺失字段，给出 R 和 Python 代码，并生成中文图注与导师复核清单。
+You are helping a student create this plot type.
+Plot type: Volcano plot
+First inspect column names and data types. Do not invent missing variables.
+Return field checks, R/Python code suggestions, a caption draft, and a supervisor review checklist.

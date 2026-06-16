@@ -2,11 +2,17 @@
   window.MEDPATH_ROUND110_WORKBENCH = true;
   const ASSET_BASE = window.MEDPATH_ASSET_BASE || "";
   const fullPlotIds = new Set([
-    "boxplot", "violin", "scatter", "volcano", "heatmap", "enrichment_dotplot",
-    "umap", "feature_plot", "marker_dotplot", "cell_type_proportion", "pseudotime",
-    "cell_cell_communication_bubble", "spatial_feature_plot", "sankey", "network_graph",
-    "upset_plot", "kaplan_meier", "forest_plot", "roc", "prisma_flow",
-    "attention_heatmap", "confusion_matrix", "gantt", "workflow_diagram",
+    "boxplot", "violin", "barplot", "scatter", "line", "histogram", "density", "correlation_heatmap",
+    "volcano", "ma_plot", "heatmap", "gsea_curve", "ora_barplot", "enrichment_dotplot", "ridgeplot_enrichment",
+    "umap", "tsne", "marker_dotplot", "feature_plot", "violin_by_cluster", "cell_type_proportion",
+    "pseudotime", "trajectory", "rna_velocity", "cell_cell_communication_bubble", "ligand_receptor_network",
+    "spatial_feature_plot", "spatial_cluster_map", "spatial_neighborhood_graph", "spatial_ligand_receptor_map",
+    "tissue_region_composition", "circos", "chord_diagram", "sankey", "alluvial", "network_graph",
+    "pathway_network", "multi_omics_heatmap", "upset_plot", "kaplan_meier", "forest_plot", "nomogram",
+    "calibration_curve", "roc", "pr_curve", "decision_curve", "subgroup_forest", "consort_flow", "prisma_flow",
+    "tile_grid", "wsi_tissue_mask", "attention_heatmap", "patch_embedding_umap", "prototype_atlas",
+    "spatial_ecology_map", "confusion_matrix", "class_activation_map", "gantt", "technology_roadmap",
+    "logic_framework", "budget_sankey", "evaluation_radar", "workflow_diagram", "architecture_diagram",
   ]);
 
   const topRoutes = [
@@ -156,6 +162,74 @@
   categories.forEach((cat) => cat.plots.forEach((p) => {
     plotMeta[p[0]] = { id: p[0], title: p[1], use: p[2], fields: p[3], category: cat.id, categoryLabel: cat.label };
   }));
+
+  const disciplineCategories = [
+    {
+      id: "medical",
+      label: "医学与临床",
+      intro: "按医学论文、循证医学、预后模型和临床分组比较组织图型。Meta 分析不再是一级大类，而是医学里的一个研究用途。",
+      subgroups: [
+        { label: "Meta 分析与循证医学", note: "从检索筛选到效应量汇总，适合系统综述、循证作业和毕业论文。", plots: ["forest_plot", "prisma_flow", "consort_flow", "subgroup_forest"] },
+        { label: "预后、诊断与模型评价", note: "用于判断模型区分度、校准度、临床净获益和生存差异。", plots: ["kaplan_meier", "roc", "pr_curve", "calibration_curve", "decision_curve", "nomogram"] },
+        { label: "临床分组与队列描述", note: "先把分布、差异和关联说清楚，再进入复杂模型。", plots: ["boxplot", "violin", "barplot", "scatter"] },
+      ],
+    },
+    {
+      id: "omics",
+      label: "生物信息与组学",
+      intro: "面向转录组、单细胞、多组学和机制解释，按分析环节选择图型。",
+      subgroups: [
+        { label: "差异表达与富集解释", note: "适合 log2FC、p value、基因集和通路结果。", plots: ["volcano", "ma_plot", "heatmap", "gsea_curve", "ora_barplot", "enrichment_dotplot", "ridgeplot_enrichment"] },
+        { label: "单细胞图谱与细胞组成", note: "从降维、marker、特征表达，到样本间细胞比例。", plots: ["umap", "tsne", "marker_dotplot", "feature_plot", "violin_by_cluster", "cell_type_proportion"] },
+        { label: "轨迹、扰动与细胞通讯", note: "用于发育路径、状态方向和配体-受体互作。", plots: ["pseudotime", "trajectory", "rna_velocity", "cell_cell_communication_bubble", "ligand_receptor_network"] },
+      ],
+    },
+    {
+      id: "spatial",
+      label: "空间组学",
+      intro: "把表达、细胞群和互作放回组织坐标里看，适合肿瘤微环境和空间结构分析。",
+      subgroups: [
+        { label: "空间表达与区域分型", note: "展示组织坐标、分区和空间表达热点。", plots: ["spatial_feature_plot", "spatial_cluster_map", "tissue_region_composition"] },
+        { label: "空间邻域与信号互作", note: "回答哪些区域相邻、哪些信号在局部增强。", plots: ["spatial_neighborhood_graph", "spatial_ligand_receptor_map", "spatial_ecology_map"] },
+      ],
+    },
+    {
+      id: "pathology",
+      label: "计算病理与医学AI",
+      intro: "服务数字病理、模型解释和分类评估，让图像 AI 的输入、输出和错误更容易被审查。",
+      subgroups: [
+        { label: "WSI 与 patch 处理", note: "展示切片分块、组织掩膜和 patch 嵌入空间。", plots: ["tile_grid", "wsi_tissue_mask", "patch_embedding_umap", "prototype_atlas"] },
+        { label: "模型解释与性能评估", note: "适合注意力、激活区域、混淆模式和二分类性能。", plots: ["attention_heatmap", "class_activation_map", "confusion_matrix", "roc"] },
+      ],
+    },
+    {
+      id: "engineering",
+      label: "工程、材料与通用科研",
+      intro: "为工程、材料、环境、计算实验等方向准备趋势、网络、流程和多变量展示。",
+      subgroups: [
+        { label: "趋势、分布与相关", note: "适合参数优化、传感器数据、实验重复和变量关联。", plots: ["line", "histogram", "density", "correlation_heatmap", "scatter"] },
+        { label: "网络、流向与集合关系", note: "适合工艺路线、材料组分、系统模块和集合交叉。", plots: ["network_graph", "sankey", "alluvial", "chord_diagram", "circos", "upset_plot"] },
+      ],
+    },
+    {
+      id: "social",
+      label: "社科、教育与问卷",
+      intro: "为教学改革、问卷调查、文本编码和访谈主题准备更轻量的图表入口。",
+      subgroups: [
+        { label: "问卷与分组比较", note: "展示 Likert、分组差异、分布和满意度变化。", plots: ["barplot", "boxplot", "violin", "density"] },
+        { label: "文本主题与关系路径", note: "适合访谈编码、主题网络、流程复盘和转化路径。", plots: ["network_graph", "alluvial", "workflow_diagram"] },
+      ],
+    },
+    {
+      id: "proposal",
+      label: "申报、项目与流程图",
+      intro: "把课题逻辑、进度、经费、平台架构和评价指标画得清楚。",
+      subgroups: [
+        { label: "项目结构与技术路线", note: "适合申请书、开题报告和团队汇报。", plots: ["gantt", "technology_roadmap", "logic_framework", "architecture_diagram", "workflow_diagram"] },
+        { label: "经费、评价与成果流向", note: "把预算、任务、平台和成果的对应关系说清楚。", plots: ["budget_sankey", "evaluation_radar", "sankey"] },
+      ],
+    },
+  ];
 
   const fallbackAssetMap = {
     barplot: "bar_grouped.svg", line: "line_trend.svg", histogram: "histogram.svg", density: "density.svg",
@@ -417,13 +491,13 @@
           <span class="r110-kicker">概览</span>
           <h1>把科研新手的第一步讲清楚</h1>
           <p>你不需要一开始就懂所有术语。先说你想完成什么：找方法、画图、写综述、做教学案例，或者把自己的流程做成 Skill。</p>
-          <div class="r110-pill-row"><span class="r110-pill">夏日荷风</span><span class="r110-pill">真实示例图</span><span class="r110-pill">BYOK / 本地运行</span></div>
+          <div class="r110-pill-row"><span class="r110-pill">真实示例图</span><span class="r110-pill">BYOK / 本地运行</span><span class="r110-pill">科研新手友好</span></div>
           <div class="r110-actions"><a class="r110-button" href="${path("plot-studio")}">先看科研绘图</a><a class="r110-outline" href="${path("step-problem")}">走七步流程</a></div>
         </div>
         ${plotHeroImage("umap")}
       </section>
       <section class="r110-carousel">
-        ${sectionHead("五个常用入口", "RecommendedFive", "桌面端横向滑动，移动端一屏一张多一点；每张卡都能进入真实页面。")}
+        <div class="r110-carousel-intro"><p>常用任务会自动轮播，也可以左右滑动。每张卡都能进入真实页面。</p></div>
         <div class="r110-carousel-track" id="r110-recommend-track">${recs.map(recCard).join("")}</div>
         <div class="r110-carousel-actions">
           <div class="r110-dots">${recs.map((_, i) => `<button class="r110-dot ${i === 0 ? "active" : ""}" data-carousel-dot="${i}" aria-label="切换推荐 ${i + 1}"></button>`).join("")}</div>
@@ -431,8 +505,8 @@
         </div>
       </section>
       <section class="r110-section">
-        ${sectionHead("按身份进入", "新手友好", "如果不知道该点哪里，先选你现在最像哪一类用户。")}
-        <div class="r110-grid-5">${personas.map(([t,b,h]) => `<article class="r110-card"><div class="r110-card-inner"><small>入口</small><h3>${esc(t)}</h3><p>${esc(b)}</p></div><div class="r110-card-actions"><a href="${path(h)}">进入</a><button data-mock-action="已把 ${esc(t)} 加入快捷入口">收藏</button></div></article>`).join("")}</div>
+        ${sectionHead("按身份进入", "先选你现在最像哪一类用户。")}
+        <div class="r110-grid-5 r110-persona-grid">${personas.map(([t,b,h]) => `<article class="r110-card r110-persona-card"><div class="r110-card-inner"><h3>${esc(t)}</h3><p>${esc(b)}</p></div><div class="r110-card-actions r110-lotus-actions"><a class="r110-lotus-button" href="${path(h)}">进入</a><button class="r110-lotus-button ghost" data-mock-action="已把 ${esc(t)} 加入快捷入口">收藏</button></div></article>`).join("")}</div>
       </section>
       <section class="r110-panel">
         <h2>这个项目是什么</h2>
@@ -462,19 +536,27 @@
     `);
   }
 
-  function plotCard(meta) {
-    const status = fullPlotIds.has(meta.id) ? "Round110 完整示例" : "已有缩略图 / 待补完整包";
+  function plotCard(meta, contextLabel = "") {
+    const label = contextLabel || meta.categoryLabel;
     return `<article class="r110-plot-card" data-testid="plot-card-${esc(meta.id)}">
       <img src="${imageFor(meta.id)}" alt="${esc(meta.title)} 示例图" loading="lazy">
-      <div class="r110-plot-body"><small>${esc(meta.categoryLabel)} · ${esc(status)}</small><h3>${esc(meta.title)}</h3><p>${esc(meta.use)}</p><div class="r110-code-tags"><b>R</b><b>Python</b><b>${esc(meta.fields.split(",")[0])}</b></div></div>
+      <div class="r110-plot-body"><small>${esc(label)} · R 代码生成示例</small><h3>${esc(meta.title)}</h3><p>${esc(meta.use)}</p><div class="r110-code-tags"><b>R</b><b>Python</b><b>${esc(meta.fields.split(",")[0])}</b></div></div>
       <div class="r110-plot-actions"><a data-testid="plot-detail-${esc(meta.id)}" href="${path(`plot-gallery/${meta.id}`)}">看详情</a><a data-testid="plot-start-${esc(meta.id)}" href="${path(`plot-run/${meta.id}`)}">开始</a></div>
     </article>`;
   }
 
-  function selectedCategory() {
+  function selectedDiscipline() {
     const p = parts();
-    const cat = categories.find((x) => x.id === p[1]);
-    return cat || categories[0];
+    const alias = {
+      basic: "engineering",
+      de_enrich: "omics",
+      single_cell: "omics",
+      clinical: "medical",
+      multiomics: "omics",
+    };
+    const id = alias[p[1]] || p[1];
+    const cat = disciplineCategories.find((x) => x.id === id);
+    return cat || disciplineCategories[0];
   }
 
   function allPlotCards(cat) {
@@ -482,19 +564,19 @@
   }
 
   function plotStudioPage() {
-    const cat = selectedCategory();
+    const cat = selectedDiscipline();
     return shell("plot-studio", `
       <section class="r110-plot-page">
         <aside class="r110-plot-rail">
-          <strong>图表分类</strong>
-          ${categories.map((c) => `<a class="${c.id === cat.id ? "active" : ""}" href="${path(`plot-studio/${c.id}`)}">${esc(c.label)}</a>`).join("")}
+          <strong>学科分类</strong>
+          ${disciplineCategories.map((c) => `<a class="${c.id === cat.id ? "active" : ""}" href="${path(`plot-studio/${c.id}`)}">${esc(c.label)}</a>`).join("")}
         </aside>
         <main class="r110-plot-main">
           <div class="r110-plot-toolbar">
             <div>${sectionHead(cat.label, "Research Plot Studio", cat.intro)}</div>
-            <select class="r110-select" data-testid="plot-category-select">${categories.map((c) => `<option ${c.id === cat.id ? "selected" : ""}>${esc(c.label)}</option>`).join("")}</select>
+            <select class="r110-select" data-testid="plot-category-select">${disciplineCategories.map((c) => `<option ${c.id === cat.id ? "selected" : ""}>${esc(c.label)}</option>`).join("")}</select>
           </div>
-          <div class="r110-plot-grid">${allPlotCards(cat).map(plotCard).join("")}</div>
+          ${cat.subgroups.map((group) => `<section class="r110-plot-subgroup"><div class="r110-subgroup-head"><h3>${esc(group.label)}</h3><p>${esc(group.note)}</p></div><div class="r110-plot-grid r110-plot-grid-large">${group.plots.map((id) => plotCard(plotMeta[id], group.label)).join("")}</div></section>`).join("")}
         </main>
       </section>`);
   }
@@ -503,7 +585,7 @@
     const completed = Array.from(fullPlotIds).map((id) => plotMeta[id]).filter(Boolean);
     return shell("plot-gallery", `
       <section class="r110-section">
-        ${sectionHead("图谱总览", "Plot Gallery", "这里先展示 24 种已生成完整可复现文件夹的图。其余图型在分类页可见，并标注待补完整示例。")}
+        ${sectionHead("图谱总览", "Plot Gallery", "这里展示本机 R 代码生成的图表示例。每张卡都对应独立数据、R/Python 模板、图注和 methods。")}
         <div class="r110-plot-grid">${completed.map(plotCard).join("")}</div>
       </section>`);
   }
@@ -511,13 +593,12 @@
   function plotDetailPage() {
     const id = parts()[1] || "umap";
     const meta = plotMeta[id] || plotMeta.umap;
-    const full = fullPlotIds.has(meta.id);
     const rows = meta.fields.split(",").map((field, i) => `<tr><td>${esc(field)}</td><td>${i === 0 ? "必需" : "建议"}</td><td>请与上传数据列名对应；不确定时让模型只做字段解释，不直接替你下结论。</td></tr>`).join("");
     return shell("plot-gallery", `
       <section class="r110-detail">
         <main class="r110-tabs">
           <div>${sectionHead(meta.title, meta.categoryLabel, meta.use)}</div>
-          <figure class="r110-figure-card"><img src="${imageFor(meta.id)}" alt="${esc(meta.title)} 大图" loading="lazy"><figcaption><span>${full ? "本机 R 生成完整示例" : "缩略示例，完整包待补"}</span><span>教学演示，不代表真实研究结论</span></figcaption></figure>
+          <figure class="r110-figure-card"><img src="${imageFor(meta.id)}" alt="${esc(meta.title)} 大图" loading="lazy"><figcaption><span>本机 R 生成可复现示例</span><span>教学演示，不代表真实研究结论</span></figcaption></figure>
           <div class="r110-panel"><h3>这个图回答什么问题</h3><p>${esc(meta.use)}。新手先确认横纵轴、分组、样本量和统计含义，再写图注。</p></div>
           <div class="r110-panel"><h3>示例数据字段</h3><table class="r110-table"><thead><tr><th>字段</th><th>状态</th><th>说明</th></tr></thead><tbody>${rows}</tbody></table></div>
           <div class="r110-detail-grid">
@@ -526,7 +607,7 @@
             <article class="r110-panel"><h3>图注模板</h3><p>图：${esc(meta.title)} 用于${esc(meta.use)}。请在真实论文中补充样本量、统计方法、显著性阈值和数据来源。</p></article>
             <article class="r110-panel"><h3>风险提示</h3><p>示例图只演示方法，不代表真实研究结论；医学相关解释需导师、教师或专家复核。</p></article>
           </div>
-          <div class="r110-panel"><h3>代码与下载</h3><p>完整示例图型提供 PNG/SVG/PDF、source data、R/Python 模板、图注、methods 和 API prompt。</p><div class="r110-actions">${full ? `<a class="r110-outline" href="${fileFor(meta.id, "example.png")}">下载 PNG</a><a class="r110-outline" href="${fileFor(meta.id, "example.svg")}">下载 SVG</a><a class="r110-outline" href="${fileFor(meta.id, "example.pdf")}">下载 PDF</a><a class="r110-outline" href="${fileFor(meta.id, "example_data.csv")}">下载数据</a><a class="r110-outline" href="${fileFor(meta.id, "plot.R")}">R 模板</a><a class="r110-outline" href="${fileFor(meta.id, "plot.py")}">Python 模板</a><a class="r110-outline" href="${fileFor(meta.id, "caption.md")}">图注</a><a class="r110-outline" href="${fileFor(meta.id, "methods.md")}">Methods</a><a class="r110-outline" href="${fileFor(meta.id, "api_prompt.md")}">API Prompt</a>` : `<button class="r110-outline" data-mock-action="该图型还在 V0.2 完整化清单中，当前只展示缩略图和字段说明。">查看待补说明</button>`}</div></div>
+          <div class="r110-panel"><h3>代码与下载</h3><p>每个示例图型提供 PNG/SVG/PDF、source data、R/Python 模板、图注、methods 和 API prompt。</p><div class="r110-actions"><a class="r110-outline" href="${fileFor(meta.id, "example.png")}">下载 PNG</a><a class="r110-outline" href="${fileFor(meta.id, "example.svg")}">下载 SVG</a><a class="r110-outline" href="${fileFor(meta.id, "example.pdf")}">下载 PDF</a><a class="r110-outline" href="${fileFor(meta.id, "example_data.csv")}">下载数据</a><a class="r110-outline" href="${fileFor(meta.id, "plot.R")}">R 模板</a><a class="r110-outline" href="${fileFor(meta.id, "plot.py")}">Python 模板</a><a class="r110-outline" href="${fileFor(meta.id, "caption.md")}">图注</a><a class="r110-outline" href="${fileFor(meta.id, "methods.md")}">Methods</a><a class="r110-outline" href="${fileFor(meta.id, "api_prompt.md")}">API Prompt</a></div></div>
         </main>
         <aside class="r110-panel">
           <h3>新手提示</h3>
@@ -787,19 +868,27 @@
       const cards = [...track.querySelectorAll(".r110-rec-card")];
       const dots = [...document.querySelectorAll("[data-carousel-dot]")];
       let index = 0;
+      let paused = false;
       const setIndex = (next) => {
-        index = Math.max(0, Math.min(cards.length - 1, next));
+        index = ((next % cards.length) + cards.length) % cards.length;
         cards[index]?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
         dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
       };
       document.querySelector("[data-carousel-prev]")?.addEventListener("click", () => setIndex(index - 1));
       document.querySelector("[data-carousel-next]")?.addEventListener("click", () => setIndex(index + 1));
       dots.forEach((dot) => dot.addEventListener("click", () => setIndex(Number(dot.dataset.carouselDot || 0))));
+      track.addEventListener("mouseenter", () => { paused = true; });
+      track.addEventListener("mouseleave", () => { paused = false; });
+      const timer = window.setInterval(() => {
+        if (!paused && document.body.dataset.medpathRoute === "home") setIndex(index + 1);
+      }, 4200);
+      window.addEventListener("hashchange", () => window.clearInterval(timer), { once: true });
       let dragging = false;
       let startX = 0;
       let startScroll = 0;
       track.addEventListener("pointerdown", (event) => {
         dragging = true;
+        paused = true;
         startX = event.clientX;
         startScroll = track.scrollLeft;
         track.setPointerCapture?.(event.pointerId);
@@ -812,6 +901,7 @@
       const endDrag = (event) => {
         if (!dragging) return;
         dragging = false;
+        paused = false;
         track.releasePointerCapture?.(event.pointerId);
         track.classList.remove("dragging");
         const nearest = cards.reduce((best, card, i) => {

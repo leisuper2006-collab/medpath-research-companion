@@ -1,2 +1,2 @@
-# Caption
-示例图展示 marker_dotplot 的教学用途。图中数据为合成示例或公开风格演示，不代表真实研究结论。
+Figure. Marker dotplot generated from synthetic teaching data.
+The figure illustrates the expected structure, variables, and visual grammar for this chart type.

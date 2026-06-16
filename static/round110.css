@@ -808,3 +808,191 @@ body.round110-active {
     color: white;
   }
 }
+
+/* Round113 screenshot-driven refinements */
+.r110-left {
+  overflow: hidden auto;
+}
+
+.r110-logo {
+  margin: -22px -18px 24px;
+  padding: 18px;
+  background:
+    radial-gradient(circle at 14% 24%, rgba(255, 255, 255, .78), transparent 32%),
+    linear-gradient(90deg, #fff0a8, #fff9d8 62%, #fff7c2);
+  border-bottom: 1px solid rgba(158, 126, 24, .14);
+}
+
+.r110-carousel {
+  overflow: hidden;
+}
+
+.r110-carousel::before,
+.r110-carousel::after {
+  content: "";
+  position: absolute;
+  top: 28px;
+  bottom: 58px;
+  width: 58px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.r110-carousel::before {
+  left: 0;
+  background: linear-gradient(90deg, #fffdf7, rgba(255, 253, 247, 0));
+}
+
+.r110-carousel::after {
+  right: 0;
+  background: linear-gradient(270deg, #fffdf7, rgba(255, 253, 247, 0));
+}
+
+.r110-carousel-intro {
+  display: flex;
+  justify-content: center;
+  color: #6a7c78;
+  font-size: 15px;
+}
+
+.r110-carousel-track {
+  grid-auto-columns: calc((100% - 36px) / 3);
+  padding: 4px 52px 16px;
+  scrollbar-width: thin;
+  mask-image: linear-gradient(90deg, transparent 0, black 5%, black 95%, transparent 100%);
+}
+
+.r110-rec-card {
+  align-content: center;
+}
+
+.r110-rec-card .r110-actions {
+  justify-content: center;
+}
+
+.r110-grid-5.r110-persona-grid {
+  align-items: stretch;
+}
+
+.r110-persona-card {
+  min-height: 244px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  text-align: center;
+}
+
+.r110-persona-card .r110-card-inner {
+  display: grid;
+  align-content: center;
+  min-height: 164px;
+}
+
+.r110-persona-card h3 {
+  font-size: 25px;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.r110-persona-card p {
+  text-align: center;
+}
+
+.r110-lotus-actions {
+  padding: 12px;
+  gap: 10px;
+  border-top: 0;
+}
+
+.r110-lotus-button {
+  min-height: 44px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(0, 143, 137, .18) !important;
+  background:
+    radial-gradient(circle at 22% 30%, rgba(255, 255, 255, .86), transparent 28%),
+    linear-gradient(135deg, #dff4ed, #bde4d5) !important;
+  color: #007f7a !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 10px 24px rgba(0, 143, 137, .11);
+}
+
+.r110-lotus-button::before {
+  content: "✿";
+  margin-right: 7px;
+  color: #ee8aa0;
+}
+
+.r110-lotus-button.ghost {
+  background:
+    radial-gradient(circle at 22% 30%, rgba(255, 255, 255, .86), transparent 28%),
+    linear-gradient(135deg, #fff4f8, #f8dce8) !important;
+  color: #8b4d67 !important;
+}
+
+.r110-plot-grid {
+  grid-template-columns: repeat(2, minmax(340px, 1fr));
+  gap: 28px;
+}
+
+.r110-plot-card {
+  grid-template-rows: 306px 1fr auto;
+}
+
+.r110-plot-card img {
+  height: 306px;
+}
+
+.r110-plot-body {
+  padding: 18px;
+}
+
+.r110-plot-subgroup {
+  display: grid;
+  gap: 14px;
+}
+
+.r110-subgroup-head {
+  padding: 12px 2px 2px;
+}
+
+.r110-subgroup-head h3 {
+  margin: 0;
+  color: #143330;
+  font-size: 26px;
+}
+
+.r110-subgroup-head p {
+  margin: 6px 0 0;
+  color: #6a7c78;
+}
+
+.r110-plot-grid-large .r110-plot-card {
+  min-height: 454px;
+}
+
+@media (max-width: 1260px) {
+  .r110-carousel-track {
+    grid-auto-columns: calc((100% - 18px) / 2);
+  }
+  .r110-plot-grid {
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 920px) {
+  .r110-carousel-track {
+    grid-auto-columns: 88%;
+    padding-inline: 18px;
+  }
+  .r110-carousel::before,
+  .r110-carousel::after {
+    display: none;
+  }
+  .r110-plot-grid {
+    grid-template-columns: 1fr;
+  }
+  .r110-plot-card {
+    grid-template-rows: 220px 1fr auto;
+  }
+  .r110-plot-card img {
+    height: 220px;
+  }
+}
