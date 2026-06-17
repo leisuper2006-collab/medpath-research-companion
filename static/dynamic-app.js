@@ -257,6 +257,10 @@
     return hash.replace(/^#/, "").split("?")[0] || "/home";
   }
 
+  function isLegacyGameRoute(path) {
+    return path === "/island" || path === "/island-builder" || path.startsWith("/island/");
+  }
+
   function go(path) {
     window.location.hash = path;
   }
@@ -699,9 +703,13 @@ QWEN_API_KEY=...</pre>
   function render() {
     const app = document.getElementById("app");
     if (!app) return;
+    const path = routeOf();
+    if (isLegacyGameRoute(path)) {
+      document.body.classList.remove("medpath-dynamic-only");
+      return;
+    }
     document.body.classList.add("medpath-dynamic");
     window.__MEDPATH_DYNAMIC_RENDERING__ = true;
-    const path = routeOf();
     let html;
     if (path === "/" || path === "/home") html = renderHome();
     else if (path === "/plot-gallery" || path === "/plot-studio") html = renderPlotGallery();
@@ -709,8 +717,6 @@ QWEN_API_KEY=...</pre>
     else if (path.startsWith("/plot-run/")) html = renderPlotRun(path.split("/").pop());
     else if (path === "/skills") html = renderSkills();
     else if (path === "/community") html = renderCommunity();
-    else if (path === "/island") html = renderIsland();
-    else if (path === "/island-builder") html = renderBuilder();
     else if (path === "/method-runner" || path.startsWith("/method-runner/")) html = renderMethodRunner();
     else if (path === "/open-source") html = renderSimplePage("公开数据与开源导航", "这里会按学科、数据类型、License和能否本地运行来整理工具。先看用途，再进原仓库。", "/open-source");
     else if (path === "/profile") html = renderSimplePage("我的主页", "这里汇总你的Skill、案例、收藏、积分、小岛和最近动态。", "/profile");
@@ -846,7 +852,8 @@ QWEN_API_KEY=...</pre>
       window.clearTimeout(guardTimer);
       guardTimer = window.setTimeout(() => {
         const app = document.getElementById("app");
-        if (app && !app.querySelector(".mp-shell")) render();
+        if (!app || isLegacyGameRoute(routeOf())) return;
+        if (app.getAttribute("data-medpath-dynamic-owned") !== VERSION || !app.querySelector(".mp-shell")) render();
       }, 60);
     });
     observer.observe(appNode, { childList: true, subtree: false });

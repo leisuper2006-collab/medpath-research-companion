@@ -30,7 +30,13 @@
       window.MEDPATH_ASSET_BASE = "./";
       window.MEDPATH_ROUND110_WORKBENCH = true;
     </script>
-    <!-- Round115: legacy scripts are intentionally disabled because they re-render old pages after the new dynamic app loads. -->
+    <!-- Legacy island/game scripts stay enabled: the user prefers the previous Research Island experience. -->
+    <script src="static/app.js?v=round112"></script>
+    <script src="static/round73.js?v=round112"></script>
+    <script type="module" src="static/round74-game.js?v=round75"></script>
+    <script src="static/round76-pixel-island.js?v=round85"></script>
+    <script src="static/round103-research-town.js?v=round106"></script>
+    <script src="static/round110.js?v=round112"></script>
     <script src="static/dynamic-app.js?v=round115"></script>
     <script>
       window.MEDPATH_SERVICE_WORKER_DISABLED = true;
