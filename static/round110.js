@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   window.MEDPATH_ROUND110_WORKBENCH = true;
   const ASSET_BASE = window.MEDPATH_ASSET_BASE || "";
   const fullPlotIds = new Set([
@@ -402,7 +402,7 @@
   }
 
   function imageFor(id) {
-    if (fullPlotIds.has(id)) return `${ASSET_BASE}outputs/round110_plots/${id}/example.svg`;
+    if (fullPlotIds.has(id)) return `${ASSET_BASE}outputs/round110_plots/${id}/example.png`;
     return `${ASSET_BASE}outputs/round109_plot_gallery/${fallbackAssetMap[id] || "scatter_basic.svg"}`;
   }
 
@@ -464,7 +464,7 @@
   }
 
   function plotHeroImage(id = "umap") {
-    return `<figure class="r110-figure-card"><img src="${imageFor(id)}" alt="${esc(plotMeta[id]?.title || id)} 示例图" loading="lazy"><figcaption><span>本机 R 生成示例</span><a href="${path(`plot-gallery/${id}`)}">查看图型</a></figcaption></figure>`;
+    return `<figure class="r110-figure-card"><img src="${imageFor(id)}" alt="${esc(plotMeta[id]?.title || id)} 示例图" loading="eager"><figcaption><span>本机 R 生成示例</span><a href="${path(`plot-gallery/${id}`)}">查看图型</a></figcaption></figure>`;
   }
 
   function recCard(item, i) {
@@ -539,7 +539,7 @@
   function plotCard(meta, contextLabel = "") {
     const label = contextLabel || meta.categoryLabel;
     return `<article class="r110-plot-card" data-testid="plot-card-${esc(meta.id)}">
-      <img src="${imageFor(meta.id)}" alt="${esc(meta.title)} 示例图" loading="lazy">
+      <img src="${imageFor(meta.id)}" alt="${esc(meta.title)} 示例图" loading="eager">
       <div class="r110-plot-body"><small>${esc(label)} · R 代码生成示例</small><h3>${esc(meta.title)}</h3><p>${esc(meta.use)}</p><div class="r110-code-tags"><b>R</b><b>Python</b><b>${esc(meta.fields.split(",")[0])}</b></div></div>
       <div class="r110-plot-actions"><a data-testid="plot-detail-${esc(meta.id)}" href="${path(`plot-gallery/${meta.id}`)}">看详情</a><a data-testid="plot-start-${esc(meta.id)}" href="${path(`plot-run/${meta.id}`)}">开始</a></div>
     </article>`;
@@ -598,7 +598,7 @@
       <section class="r110-detail">
         <main class="r110-tabs">
           <div>${sectionHead(meta.title, meta.categoryLabel, meta.use)}</div>
-          <figure class="r110-figure-card"><img src="${imageFor(meta.id)}" alt="${esc(meta.title)} 大图" loading="lazy"><figcaption><span>本机 R 生成可复现示例</span><span>教学演示，不代表真实研究结论</span></figcaption></figure>
+          <figure class="r110-figure-card"><img src="${imageFor(meta.id)}" alt="${esc(meta.title)} 大图" loading="eager"><figcaption><span>本机 R 生成可复现示例</span><span>教学演示，不代表真实研究结论</span></figcaption></figure>
           <div class="r110-panel"><h3>这个图回答什么问题</h3><p>${esc(meta.use)}。新手先确认横纵轴、分组、样本量和统计含义，再写图注。</p></div>
           <div class="r110-panel"><h3>示例数据字段</h3><table class="r110-table"><thead><tr><th>字段</th><th>状态</th><th>说明</th></tr></thead><tbody>${rows}</tbody></table></div>
           <div class="r110-detail-grid">
@@ -699,7 +699,7 @@
   function openSourcePage() {
     const id = parts()[1];
     if (id) return openSourceDetailPage(id);
-    return shell("open-source", `<section class="r110-section">${sectionHead("公开工具导航", "Open Source Navigator", "先看输入、输出、License、示例任务和新手难度，再决定要不要安装。")}<div class="r110-grid-3">${openSourceTools.map((tool) => `<article class="r110-card r110-tool-card"><div class="r110-card-inner"><small>${esc(tool.domain)} · ${esc(tool.license)}</small><h3>${esc(tool.title)}</h3><p>${esc(tool.question)}</p><figure class="r110-thumb"><img src="${imageFor(tool.plot)}" alt="${esc(tool.title)} 示例图" loading="lazy"></figure></div><div class="r110-card-actions"><a data-testid="open-source-detail-${esc(tool.id)}" href="${path(`open-source/${tool.id}`)}">看详情</a><a href="${path(`plot-gallery/${tool.plot}`)}">示例图</a></div></article>`).join("")}</div></section>`);
+    return shell("open-source", `<section class="r110-section">${sectionHead("公开工具导航", "Open Source Navigator", "先看输入、输出、License、示例任务和新手难度，再决定要不要安装。")}<div class="r110-grid-3">${openSourceTools.map((tool) => `<article class="r110-card r110-tool-card"><div class="r110-card-inner"><small>${esc(tool.domain)} · ${esc(tool.license)}</small><h3>${esc(tool.title)}</h3><p>${esc(tool.question)}</p><figure class="r110-thumb"><img src="${imageFor(tool.plot)}" alt="${esc(tool.title)} 示例图" loading="eager"></figure></div><div class="r110-card-actions"><a data-testid="open-source-detail-${esc(tool.id)}" href="${path(`open-source/${tool.id}`)}">看详情</a><a href="${path(`plot-gallery/${tool.plot}`)}">示例图</a></div></article>`).join("")}</div></section>`);
   }
 
   function openSourceDetailPage(id) {
@@ -708,7 +708,7 @@
       <section class="r110-detail">
         <main>
           ${sectionHead(tool.title, `${tool.domain} · ${tool.license}`, tool.question)}
-          <figure class="r110-figure-card"><img src="${imageFor(tool.plot)}" alt="${esc(tool.title)} 示例图" loading="lazy"><figcaption><span>示例图：${esc(plotMeta[tool.plot]?.title || tool.plot)}</span><a href="${path(`plot-gallery/${tool.plot}`)}">查看图型说明</a></figcaption></figure>
+          <figure class="r110-figure-card"><img src="${imageFor(tool.plot)}" alt="${esc(tool.title)} 示例图" loading="eager"><figcaption><span>示例图：${esc(plotMeta[tool.plot]?.title || tool.plot)}</span><a href="${path(`plot-gallery/${tool.plot}`)}">查看图型说明</a></figcaption></figure>
           <div class="r110-detail-grid">
             <article class="r110-panel"><h3>输入什么</h3><p>${esc(tool.input)}</p></article>
             <article class="r110-panel"><h3>输出什么</h3><p>${esc(tool.output)}</p></article>
@@ -754,7 +754,7 @@
       ["工程实验论文", "工程与材料", "gantt"],
       ["社会科学问卷", "社科与教育", "barplot"],
     ];
-    return shell("method-runner", `<section class="r110-section">${sectionHead("文章全流程", "Method Runner", "文章类型不是顶层学科，而是进入某个学科后的写作路线。选一个类型，系统给出问题、数据、图表、Skill、伦理和复现清单。")}<div class="r110-grid-5">${types.map(([t, k, plot], i) => `<article class="r110-card"><div class="r110-card-inner"><small>${esc(k)} · 流程 ${i + 1}</small><h3>${esc(t)}</h3><p>从 0 开始搭建研究问题、数据字段、图表组合和写作骨架。</p><figure class="r110-thumb"><img src="${imageFor(plot)}" alt="${esc(t)} 推荐图" loading="lazy"></figure></div><div class="r110-card-actions"><a href="${path(`plot-gallery/${plot}`)}">看图</a><button data-mock-action="${esc(t)} 流程已生成 mock 草案，可接入 API 后细化。">生成草案</button></div></article>`).join("")}</div><div class="r110-panel"><h3>扰动分析入口</h3><p>如果你想做“虚拟敲除”，请进入单细胞/生物信息学下的扰动分析路线，而不是把它当成网站一级栏目。</p><a class="r110-button" href="${path("method-runner/virtual-perturbation")}">进入 virtual perturbation</a></div></section>`);
+    return shell("method-runner", `<section class="r110-section">${sectionHead("文章全流程", "Method Runner", "文章类型不是顶层学科，而是进入某个学科后的写作路线。选一个类型，系统给出问题、数据、图表、Skill、伦理和复现清单。")}<div class="r110-grid-5">${types.map(([t, k, plot], i) => `<article class="r110-card"><div class="r110-card-inner"><small>${esc(k)} · 流程 ${i + 1}</small><h3>${esc(t)}</h3><p>从 0 开始搭建研究问题、数据字段、图表组合和写作骨架。</p><figure class="r110-thumb"><img src="${imageFor(plot)}" alt="${esc(t)} 推荐图" loading="eager"></figure></div><div class="r110-card-actions"><a href="${path(`plot-gallery/${plot}`)}">看图</a><button data-mock-action="${esc(t)} 流程已生成 mock 草案，可接入 API 后细化。">生成草案</button></div></article>`).join("")}</div><div class="r110-panel"><h3>扰动分析入口</h3><p>如果你想做“虚拟敲除”，请进入单细胞/生物信息学下的扰动分析路线，而不是把它当成网站一级栏目。</p><a class="r110-button" href="${path("method-runner/virtual-perturbation")}">进入 virtual perturbation</a></div></section>`);
   }
 
   function virtualPerturbationPage() {
@@ -768,7 +768,7 @@
       <section class="r110-detail">
         <main>
           ${sectionHead("Virtual perturbation / 虚拟扰动", "单细胞 → 扰动分析", "它不是网站顶层大类，而是生物信息学和单细胞分析中的一种方法路线。")}
-          <figure class="r110-figure-card"><img src="${imageFor("network_graph")}" alt="虚拟扰动网络示例" loading="lazy"><figcaption><span>示例：扰动响应网络</span><span>教学演示，不代表真实实验结论</span></figcaption></figure>
+          <figure class="r110-figure-card"><img src="${imageFor("network_graph")}" alt="虚拟扰动网络示例" loading="eager"><figcaption><span>示例：扰动响应网络</span><span>教学演示，不代表真实实验结论</span></figcaption></figure>
           <div class="r110-detail-grid">${methods.map(([t,b,d]) => `<article class="r110-panel"><h3>${esc(t)}</h3><p><strong>${esc(b)}</strong></p><p>${esc(d)}</p></article>`).join("")}</div>
           <div class="r110-panel"><h3>输入与输出</h3><p>输入：表达矩阵、细胞类型、扰动标签、训练/验证划分、目标基因或条件。输出：预测响应、关键基因排序、可视化图、风险提示和导师复核清单。</p></div>
         </main>
@@ -943,3 +943,4 @@
   window.addEventListener("DOMContentLoaded", () => setTimeout(render, 80));
   window.addEventListener("load", () => setTimeout(render, 160));
 })();
+
