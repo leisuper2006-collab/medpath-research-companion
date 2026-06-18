@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "round116";
+  const VERSION = "round117";
   const PLOT_BASE = "outputs/round110_plots";
 
   const state = {
@@ -99,6 +99,81 @@
     ["BioWalker", "单细胞图太多怎么选？我整理了入门顺序", 2310, "绘图"],
     ["小明同学", "胃癌 PBL 案例模板，老师复核后课堂可用", 3860, "案例"],
     ["MedScholar", "Meta 分析新手别先画森林图，先检查纳排表", 1420, "方法"],
+  ];
+
+  const methodCatalog = [
+    {
+      id: "single-cell-perturbation",
+      title: "单细胞扰动分析",
+      subtitle: "从细胞亚群变化出发，判断某个基因、通路或处理可能带来的状态转移。",
+      audience: "适合有表达矩阵、细胞注释或公开单细胞数据的新手。",
+      inputs: ["表达矩阵", "细胞注释", "处理组或拟扰动目标", "基础质控记录"],
+      steps: ["确认细胞类型和批次", "选择扰动问题", "比较差异表达和细胞比例", "用虚拟扰动模型做探索", "用图表和复核清单解释结果"],
+      outputs: ["UMAP 与 marker 图", "扰动前后细胞状态说明", "候选基因或通路列表", "导师复核问题清单"],
+      plots: ["umap", "marker_dotplot", "cell_type_proportion", "volcano", "pseudotime"],
+      tools: "Seurat、Scanpy、GEARS、scGen、CPA、scTenifoldKnk",
+      risk: "虚拟扰动只能作为探索线索，不能替代真实实验验证。",
+    },
+    {
+      id: "meta-analysis",
+      title: "Meta 分析流程",
+      subtitle: "先把研究问题、检索式、纳排和偏倚做好，再进入森林图和敏感性分析。",
+      audience: "适合准备循证医学作业、综述论文或临床问题整理的人。",
+      inputs: ["PICO 问题", "检索数据库", "纳排标准", "效应量字段", "偏倚评价表"],
+      steps: ["写清 PICO", "制定检索式", "筛选文献", "提取效应量", "评估偏倚", "绘制森林图和漏斗图"],
+      outputs: ["PRISMA 流程", "森林图", "漏斗图", "亚组分析说明", "Methods 模板"],
+      plots: ["prisma_flow", "forest_plot", "funnel_plot", "subgroup_forest", "decision_curve"],
+      tools: "meta、metafor、PRISMA2020、robvis",
+      risk: "不要用图表掩盖纳排不清、结局定义不一致或异质性无法解释的问题。",
+    },
+    {
+      id: "computational-pathology",
+      title: "计算病理入门",
+      subtitle: "把全切片图像拆成可训练、可解释、可复核的 patch 和模型评价材料。",
+      audience: "适合想做病理 AI、WSI 预处理或模型解释的新手。",
+      inputs: ["公开或授权切片", "组织区域标注", "模型任务", "训练和验证划分"],
+      steps: ["确认数据边界", "生成组织掩膜", "切分 patch", "提取特征", "训练或调用模型", "输出热图和错误分析"],
+      outputs: ["WSI 瓦片网格", "组织掩膜", "注意力热图", "混淆矩阵", "教师复核表"],
+      plots: ["tile_grid", "wsi_tissue_mask", "attention_heatmap", "patch_embedding_umap", "confusion_matrix"],
+      tools: "OpenSlide、QuPath、TIAToolbox、PyTorch",
+      risk: "不得使用未授权患者数据，模型热图只用于教学或研究解释。",
+    },
+    {
+      id: "machine-learning-prediction",
+      title: "机器学习预测",
+      subtitle: "从数据划分、特征、模型、验证到可解释图，一步步避免只报一个 AUC。",
+      audience: "适合做临床预测、生物标志物筛选或课程作业的人。",
+      inputs: ["训练集和验证集", "结局变量", "候选特征", "缺失值处理策略"],
+      steps: ["定义结局", "拆分数据", "选择特征", "训练模型", "验证性能", "解释错误和校准"],
+      outputs: ["ROC 和 PR 曲线", "校准曲线", "决策曲线", "混淆矩阵", "模型报告草稿"],
+      plots: ["roc", "pr_curve", "calibration_curve", "decision_curve", "confusion_matrix"],
+      tools: "scikit-learn、tidymodels、pROC、rms、DALEX",
+      risk: "小样本高维数据容易过拟合，必须报告验证策略和不确定性。",
+    },
+    {
+      id: "survey-social-research",
+      title: "问卷与访谈研究",
+      subtitle: "把量表、访谈主题和统计结果组织成能复核的图表与研究叙述。",
+      audience: "适合医学教育、护理、管理、人文社科方向的课程研究。",
+      inputs: ["问卷题项", "分组变量", "量表得分", "访谈编码", "伦理说明"],
+      steps: ["检查题项结构", "清理缺失值", "计算量表得分", "做描述和相关分析", "整理主题和证据片段"],
+      outputs: ["条形图", "相关热图", "密度图", "主题网络", "结果叙述模板"],
+      plots: ["barplot", "correlation_heatmap", "density", "sankey", "network_graph"],
+      tools: "R tidyverse、psych、lavaan、NVivo 导出表",
+      risk: "不能把访谈内容去语境化，也不能暴露受访者身份信息。",
+    },
+    {
+      id: "proposal-roadmap",
+      title: "项目申报路线",
+      subtitle: "把一个想法拆成问题、任务、平台、经费、成果和评价证据。",
+      audience: "适合准备大创、课程项目、教改或基金申请的人。",
+      inputs: ["研究问题", "已有基础", "任务分解", "平台条件", "预期成果"],
+      steps: ["明确问题", "拆工作包", "选择技术路线", "设计评价指标", "映射经费和成果", "形成答辩图表"],
+      outputs: ["逻辑框架", "技术路线", "甘特图", "经费流向", "评价雷达图"],
+      plots: ["logic_framework", "technology_roadmap", "gantt", "budget_sankey", "evaluation_radar"],
+      tools: "Mermaid、DiagrammeR、ggplot2、项目模板",
+      risk: "预期成果要写成拟形成或待实测，不能写成已经完成。",
+    },
   ];
 
   const plotCategories = [
@@ -520,22 +595,70 @@ QWEN_API_KEY=...</pre></div>
   }
 
   function renderMethodRunner() {
-    const methods = [
-      ["单细胞扰动分析", "GEARS、scGen、CPA、scGPT perturbation、scTenifoldKnk", "/plot-gallery"],
-      ["Meta 分析流程", "检索、纳排、偏倚、森林图、漏斗图、亚组分析", "/plot-gallery"],
-      ["计算病理", "WSI 切片、patch、组织掩膜、注意力热图、混淆矩阵", "/plot-gallery"],
-      ["问卷研究", "样本量、量表、相关热图、回归和结构方程提示", "/plot-gallery"],
-      ["机器学习预测", "训练集、验证集、ROC、PR、校准曲线和 DCA", "/plot-gallery"],
-      ["项目申报", "逻辑框架、技术路线、甘特图、预算和评价指标", "/plot-gallery"],
-    ];
     return appShell(`
       <section class="mp-section">
-        <div class="mp-section-head"><div><div class="mp-kicker">Method Runner</div><h1 class="mp-section-title">告诉我你的数据，我帮你选方法</h1><p>医学、生信、工科、人文社科都能走。虚拟敲除被归入“生物信息学 → 单细胞 → 扰动分析”。</p></div></div>
-        <div class="mp-tool-grid">
-          ${methods.map(([title, text, route]) => `<article class="mp-tool-card"><div class="mp-lotus-icon">法</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p><button class="mp-btn" data-route="${route}">查看路线</button></article>`).join("")}
+        <div class="mp-section-head"><div><div class="mp-kicker">Method Runner</div><h1 class="mp-section-title">先说数据和问题，再选方法</h1><p>每张卡都能打开完整路线：适合谁、要什么数据、怎么跑、出什么图、哪里容易踩坑。</p></div></div>
+        <div class="mp-method-grid">
+          ${methodCatalog.map((item) => `<article class="mp-method-card">
+            <div class="mp-method-top"><span class="mp-lotus-icon">法</span><span>${escapeHtml(item.tools.split("、")[0])}</span></div>
+            <h3>${escapeHtml(item.title)}</h3>
+            <p>${escapeHtml(item.subtitle)}</p>
+            <div class="mp-method-plots">${item.plots.slice(0, 3).map((id) => `<img src="${imgPath(id)}" alt="${escapeHtml(getPlot(id).title)}示例图" onerror="this.style.display='none'" />`).join("")}</div>
+            <div class="mp-actions"><a class="mp-btn" href="#/method-runner/${item.id}" data-route="/method-runner/${item.id}">查看路线</a><a class="mp-btn secondary" href="#/plot-gallery/${item.plots[0]}" data-route="/plot-gallery/${item.plots[0]}">看示例图</a></div>
+          </article>`).join("")}
         </div>
       </section>
     `, "/method-runner");
+  }
+
+  function getMethod(id) {
+    return methodCatalog.find((item) => item.id === id) || methodCatalog[0];
+  }
+
+  function renderMethodDetail(id) {
+    const item = getMethod(id);
+    const plotCards = item.plots.map((plotId) => {
+      const plot = getPlot(plotId);
+      return `<button class="mp-mini-plot" data-route="/plot-gallery/${plotId}">
+        <img src="${imgPath(plotId)}" alt="${escapeHtml(plot.title)}示例图" onerror="this.style.display='none'" />
+        <span>${escapeHtml(plot.title)}</span>
+      </button>`;
+    }).join("");
+    return appShell(`
+      <section class="mp-section">
+        <button class="mp-btn secondary" data-route="/method-runner">返回方法库</button>
+        <div class="mp-method-hero">
+          <div>
+            <div class="mp-kicker">方法路线</div>
+            <h1 class="mp-section-title">${escapeHtml(item.title)}</h1>
+            <p>${escapeHtml(item.subtitle)}</p>
+            <div class="mp-method-tags"><span>${escapeHtml(item.audience)}</span><span>${escapeHtml(item.tools)}</span></div>
+            <div class="mp-actions"><button class="mp-btn" data-route="/plot-run/${item.plots[0]}">用示例开始</button><button class="mp-btn secondary" data-toast="已加入我的学习路径">加入学习路径</button></div>
+          </div>
+          <div class="mp-method-preview">${plotCards}</div>
+        </div>
+        <div class="mp-method-columns">
+          <article class="mp-panel"><h3>你需要准备</h3><ul>${item.inputs.map((text) => `<li>${escapeHtml(text)}</li>`).join("")}</ul></article>
+          <article class="mp-panel"><h3>会得到什么</h3><ul>${item.outputs.map((text) => `<li>${escapeHtml(text)}</li>`).join("")}</ul></article>
+          <article class="mp-panel risk"><h3>先说清楚风险</h3><p>${escapeHtml(item.risk)}</p><button class="mp-btn secondary" data-route="/providers">配置 BYOK 助手</button></article>
+        </div>
+        <div class="mp-timeline">
+          ${item.steps.map((step, index) => `<article><span>${index + 1}</span><strong>${escapeHtml(step)}</strong><p>${escapeHtml(methodStepHint(item.id, index))}</p></article>`).join("")}
+        </div>
+      </section>
+    `, "/method-runner");
+  }
+
+  function methodStepHint(methodId, index) {
+    const hints = {
+      "single-cell-perturbation": ["先看质控和注释，不要一上来跑模型。", "把问题写成一个可检验的扰动目标。", "用差异和比例先做基础证据。", "虚拟扰动只给探索线索。", "每个结论都要有图和复核点。"],
+      "meta-analysis": ["PICO 决定后面所有图。", "检索式要能复现。", "纳排记录比图更重要。", "效应量字段必须统一。", "异质性需要解释。", "图表服务结论，不替代判断。"],
+      "computational-pathology": ["先确认授权和脱敏。", "组织掩膜决定后续质量。", "patch 不是越多越好。", "特征要能追溯回切片位置。", "模型输出要能让老师复核。", "错误样例也要留下来。"],
+      "machine-learning-prediction": ["先定义结局和时间窗。", "训练验证不要混。", "特征选择要避免信息泄漏。", "性能不是只看 AUC。", "校准和决策曲线说明可用性。", "报告限制条件。"],
+      "survey-social-research": ["题项和变量先对齐。", "缺失值处理要记录。", "量表计算要可复现。", "描述统计先行。", "主题分析要保留证据片段。"],
+      "proposal-roadmap": ["一句话说清痛点。", "工作包要能验收。", "技术路线要能画出来。", "指标不要写成已完成。", "经费对应任务和成果。", "答辩图表要能一眼看懂。"],
+    };
+    return (hints[methodId] || [])[index] || "把这一步写成可检查的材料。";
   }
 
   function renderOpenSource() {
@@ -640,7 +763,8 @@ QWEN_API_KEY=...</pre></div>
     else if (path.startsWith("/plot-run/")) html = renderPlotRun(path.split("/").pop());
     else if (path === "/skills") html = renderSkills();
     else if (path === "/community") html = renderCommunity();
-    else if (path === "/method-runner" || path.startsWith("/method-runner/")) html = renderMethodRunner();
+    else if (path === "/method-runner") html = renderMethodRunner();
+    else if (path.startsWith("/method-runner/")) html = renderMethodDetail(path.split("/").pop());
     else if (path === "/open-source") html = renderOpenSource();
     else if (path === "/profile") html = renderProfile();
     else if (path === "/providers" || path === "/runtime") html = renderProvidersRuntime();
