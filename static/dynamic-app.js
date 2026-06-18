@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "round117";
+  const VERSION = "round118";
   const PLOT_BASE = "outputs/round110_plots";
 
   const state = {
@@ -84,6 +84,119 @@
     ["ai-ethics-governor", "伦理审计", "检查隐私、误导、假引用和临床风险。"],
     ["skill-eval-harness", "质量评测", "用 rubric 比较传统方式、提示词和 Skill。"],
   ];
+
+  const skillDetails = {
+    "medpath-course-designer": {
+      tag: "老师常用",
+      audience: "备课老师、课程助教、第一次做课程设计的研究生",
+      input: "课程主题、课时、学生基础、考核方式",
+      output: "章节目标、课堂活动、作业题、rubric 和教师复核表",
+      demo: "输入“病理学胃癌章节 2 学时”，输出课堂问题链和形成性评价表。",
+      plots: ["workflow_diagram", "logic_framework", "gantt"],
+      route: "/method-runner/proposal-roadmap",
+      community: "Path_Queen 的课程共创模板被收藏 1,840 次",
+      safety: "不替代教师判断，所有课堂材料发布前需要课程组复核。",
+    },
+    "pathology-case-builder": {
+      tag: "教学案例",
+      audience: "病理学老师、PBL 小组、医学本科生",
+      input: "病种、教学目标、难度、希望训练的诊断思路",
+      output: "合成 PBL 情境、问题链、讨论提纲和教师审核清单",
+      demo: "输入“胃腺癌本科 PBL”，输出合成病例背景和 6 个递进问题。",
+      plots: ["workflow_diagram", "logic_framework", "attention_heatmap"],
+      route: "/method-runner/computational-pathology",
+      community: "胃癌 PBL 案例模板本周收藏 3,860 次",
+      safety: "只生成合成教学案例，不作为真实病例或临床诊断依据。",
+    },
+    "em-pathology-tutor": {
+      tag: "超微导学",
+      audience: "基础医学学生、组织胚胎学和病理学学习者",
+      input: "超微结构名称、相关疾病、学生容易混淆的概念",
+      output: "跨尺度解释、导学问题、常见误区和图文复习卡",
+      demo: "输入“线粒体肿胀和细胞损伤”，输出结构变化到疾病机制的解释。",
+      plots: ["feature_plot", "trajectory", "workflow_diagram"],
+      route: "/method-runner/survey-social-research",
+      community: "超微结构速记卡被 920 位学生加入学习路径",
+      safety: "仅用于教学解释，不把电镜描述写成临床诊断结论。",
+    },
+    "pathology-report-coach": {
+      tag: "报告训练",
+      audience: "病理学课程学生、规培前训练、课程助教",
+      input: "学生病理报告草稿、训练目标、教师给定的参考结构",
+      output: "结构问题、术语问题、证据链问题和教师复核建议",
+      demo: "粘贴一段报告草稿，系统标出描述顺序、术语和证据缺口。",
+      plots: ["confusion_matrix", "workflow_diagram", "logic_framework"],
+      route: "/method-runner/computational-pathology",
+      community: "报告反馈 Skill 在社区 Skill 榜第 1 名",
+      safety: "只反馈学习报告，不给真实患者处置建议。",
+    },
+    "plot-studio-runner": {
+      tag: "绘图工作室",
+      audience: "写论文、做作业、准备汇报图的新手",
+      input: "CSV 字段、图型目标、分组变量、希望生成的图注",
+      output: "示例图、R/Python 代码、caption、methods 和字段审查",
+      demo: "上传 log2FC 和 pvalue 字段，得到火山图代码和图注草稿。",
+      plots: ["volcano", "umap", "forest_plot"],
+      route: "/plot-gallery",
+      community: "社区收藏了 42 个自定义绘图 Skill",
+      safety: "模型只辅助代码和解释，图必须由本地数据真实绘制。",
+    },
+    "method-runner": {
+      tag: "路线推荐",
+      audience: "不知道从哪一步开始的科研新手",
+      input: "一句研究需求、数据类型、学科方向和已有材料",
+      output: "方法路线、适合图型、开源工具、风险提示和学习路径",
+      demo: "输入“我有单细胞矩阵想看免疫差异”，推荐 UMAP、marker 和比例图。",
+      plots: ["umap", "marker_dotplot", "cell_type_proportion"],
+      route: "/method-runner",
+      community: "方法路线被用来生成 120+ 个学习任务",
+      safety: "推荐是学习建议，不替代导师或专业统计审核。",
+    },
+    "literature-review-helper": {
+      tag: "综述起步",
+      audience: "准备综述、课程论文或开题背景的新手",
+      input: "研究问题、关键词、数据库、纳排条件",
+      output: "检索式、证据表、综述结构和需要核验的引用清单",
+      demo: "输入“肿瘤免疫治疗耐药综述”，输出检索词和主题框架。",
+      plots: ["prisma_flow", "forest_plot", "network_graph"],
+      route: "/method-runner/meta-analysis",
+      community: "Meta 入门帖常被新手从这里打开",
+      safety: "不生成伪引用，所有文献都必须人工核验。",
+    },
+    "grant-outline-builder": {
+      tag: "申报框架",
+      audience: "大创、教改、课程项目和基金申请准备者",
+      input: "问题、已有基础、任务、平台和成果设想",
+      output: "研究目标、工作包、技术路线、经费映射和验收指标",
+      demo: "输入“AI Skills 医学教育项目”，输出 5 个工作包和经费逻辑。",
+      plots: ["technology_roadmap", "budget_sankey", "gantt"],
+      route: "/method-runner/proposal-roadmap",
+      community: "申报路线模板被 680 人收藏",
+      safety: "预期成果必须写拟形成、拟评价、待实测。",
+    },
+    "ai-ethics-governor": {
+      tag: "安全边界",
+      audience: "教师、学生团队、平台管理员和 Skill 发布者",
+      input: "AI 输出、案例材料、引用、是否涉及患者或临床场景",
+      output: "隐私风险、临床误导、假引用、学术诚信和复核建议",
+      demo: "粘贴一段案例输出，识别是否含真实患者线索或诊疗建议。",
+      plots: ["workflow_diagram", "logic_framework", "evaluation_radar"],
+      route: "/providers",
+      community: "所有公开 Skill 发布前都要通过伦理边界检查",
+      safety: "医学 AI 输出仅用于教学与科研训练，不替代临床诊断。",
+    },
+    "skill-eval-harness": {
+      tag: "质量评测",
+      audience: "课程团队、社区管理员、Skill 作者",
+      input: "Skill 输出、评价量规、负样本、教师评分字段",
+      output: "质量评分模板、风险项、版本记录和 D10 字段映射",
+      demo: "比较普通提示词和规范化 Skill 的输出，生成待实测评价表。",
+      plots: ["evaluation_radar", "confusion_matrix", "workflow_diagram"],
+      route: "/method-runner/proposal-roadmap",
+      community: "社区 Skill 榜默认按收藏量、复核通过和复现次数排序",
+      safety: "只生成评价模板，不伪造真实教学效果数据。",
+    },
+  };
 
   const toolGroups = [
     ["文献与综述", "PubMed、Europe PMC、OpenAlex、Zotero", "先做检索式，再做纳排和证据表。", "/method-runner"],
@@ -563,32 +676,113 @@ QWEN_API_KEY=...</pre></div>
     `, "/plot-gallery");
   }
 
+  function getSkill(id) {
+    const base = skills.find((item) => item[0] === id) || skills[0];
+    return {
+      id: base[0],
+      name: base[1],
+      desc: base[2],
+      ...(skillDetails[base[0]] || {}),
+    };
+  }
+
+  function skillCard(skill) {
+    const plots = (skill.plots || ["workflow_diagram"]).slice(0, 2);
+    return `<article class="mp-skill-product">
+      <div class="mp-skill-head">
+        <span class="mp-lotus-icon">技</span>
+        <span>${escapeHtml(skill.tag || "Skill")}</span>
+      </div>
+      <h3>${escapeHtml(skill.name)}</h3>
+      <p>${escapeHtml(skill.desc)}</p>
+      <div class="mp-skill-preview">${plots.map((id) => `<img src="${imgPath(id)}" alt="${escapeHtml(getPlot(id).title)}示例图" onerror="this.style.display='none'" />`).join("")}</div>
+      <dl>
+        <div><dt>适合</dt><dd>${escapeHtml(skill.audience || "科研学习者")}</dd></div>
+        <div><dt>产出</dt><dd>${escapeHtml(skill.output || "可复核材料")}</dd></div>
+      </dl>
+      <div class="mp-actions"><a class="mp-btn" href="#/skills/${skill.id}" data-route="/skills/${skill.id}">看详情</a><button class="mp-btn secondary" data-toast="${escapeHtml(skill.name)} 已收藏到我的 Skill">收藏</button></div>
+    </article>`;
+  }
+
   function renderSkills() {
+    const items = skills.map(([id]) => getSkill(id));
     return appShell(`
       <section class="mp-section">
         <div class="mp-section-head">
-          <div><div class="mp-kicker">Skill Market</div><h1 class="mp-section-title">像挑工具一样挑 Skill</h1><p>卡片只说能帮你做什么，不再写成目录。</p></div>
+          <div><div class="mp-kicker">Skill Market</div><h1 class="mp-section-title">像挑工具一样挑 Skill</h1><p>先看它能帮你完成什么，再打开示例、代码、风险边界和社区收藏。</p></div>
           <button class="mp-btn" data-toast="Skill 创建器已打开：mock 演示">创建我的 Skill</button>
         </div>
+        <div class="mp-skill-strip">
+          <span>官方 Skill</span><span>社区收藏 Skill</span><span>教师复核</span><span>可发布到小岛建筑</span>
+        </div>
         <div class="mp-skill-grid">
-          ${skills.map(([id, name, desc]) => `<article class="mp-card"><div class="mp-lotus-icon">技</div><h3>${escapeHtml(name)}</h3><p>${escapeHtml(desc)}</p><div class="mp-actions"><button class="mp-btn" data-toast="${escapeHtml(name)} 已进入试用">打开</button><button class="mp-btn secondary" data-toast="${escapeHtml(name)} 已收藏">收藏</button></div></article>`).join("")}
+          ${items.map(skillCard).join("")}
+        </div>
+      </section>
+    `, "/skills");
+  }
+
+  function renderSkillDetail(id) {
+    const skill = getSkill(id);
+    const plotCards = (skill.plots || ["workflow_diagram"]).map((plotId) => {
+      const plot = getPlot(plotId);
+      return `<a class="mp-mini-plot" href="#/plot-gallery/${plotId}" data-route="/plot-gallery/${plotId}">
+        <img src="${imgPath(plotId)}" alt="${escapeHtml(plot.title)}示例图" onerror="this.style.display='none'" />
+        <span>${escapeHtml(plot.title)}</span>
+      </a>`;
+    }).join("");
+    return appShell(`
+      <section class="mp-section">
+        <button class="mp-btn secondary" data-route="/skills">返回 Skill 市场</button>
+        <div class="mp-skill-detail">
+          <div>
+            <div class="mp-kicker">${escapeHtml(skill.tag || "Skill")}</div>
+            <h1 class="mp-section-title">${escapeHtml(skill.name)}</h1>
+            <p>${escapeHtml(skill.desc)}</p>
+            <div class="mp-method-tags"><span>${escapeHtml(skill.audience)}</span><span>${escapeHtml(skill.community)}</span></div>
+            <div class="mp-actions"><button class="mp-btn" data-toast="已打开本地 mock 试用面板">试用这个 Skill</button><button class="mp-btn secondary" data-toast="已加入我的收藏 Skill">收藏</button></div>
+          </div>
+          <div class="mp-method-preview">${plotCards}</div>
+        </div>
+        <div class="mp-skill-flow">
+          <article class="mp-panel"><h3>你要输入什么</h3><p>${escapeHtml(skill.input)}</p></article>
+          <article class="mp-panel"><h3>会得到什么</h3><p>${escapeHtml(skill.output)}</p></article>
+          <article class="mp-panel"><h3>例子</h3><p>${escapeHtml(skill.demo)}</p></article>
+          <article class="mp-panel risk"><h3>安全边界</h3><p>${escapeHtml(skill.safety)}</p></article>
+        </div>
+        <div class="mp-community-cta">
+          <div><strong>想把它放进科研小岛？</strong><span>收藏后可以绑定到建筑。游戏页保持原来的像素小岛体验，本页只提供入口。</span></div>
+          <div class="mp-actions"><button class="mp-btn" data-route="/island-builder">去自主建造</button><button class="mp-btn secondary" data-route="/community">看社区同款</button></div>
         </div>
       </section>
     `, "/skills");
   }
 
   function renderCommunity() {
+    const leaderboard = skills.map(([id]) => getSkill(id)).slice().sort((a, b) => (b.community || "").length - (a.community || "").length).slice(0, 5);
     return appShell(`
       <section class="mp-section">
         <div class="mp-section-head">
           <div><div class="mp-kicker">Community</div><h1 class="mp-section-title">像论坛一样找帖子、找 Skill、看榜单</h1><p>先做可点击的社区 MVP：搜索、点赞、收藏、排行榜、拜访小岛。</p></div>
           <button class="mp-btn" data-toast="发布弹窗：mock 演示">发布帖子</button>
         </div>
-        <div class="mp-content-grid">
-          <div class="mp-community-list">
-            ${posts.map(([author, title, likes, tag], i) => `<article class="mp-post"><span class="mp-lotus-icon">${i + 1}</span><div><strong>${escapeHtml(title)}</strong><p>${escapeHtml(author)} · ${escapeHtml(tag)} · ${likes.toLocaleString()} 收藏</p></div><div class="mp-actions"><button class="mp-btn secondary" data-toast="已点赞">点赞</button><button class="mp-btn" data-toast="已申请拜访 TA 的小岛">拜访</button></div></article>`).join("")}
+        <div class="mp-forum-search">
+          <input aria-label="搜索社区帖子和 Skill" placeholder="搜帖子、Skill、图型或作者，例如：森林图、报告反馈、PBL..." />
+          <button class="mp-btn" data-toast="搜索为静态 mock：真实社区接入后会返回帖子和 Skill">搜索</button>
+        </div>
+        <div class="mp-community-grid">
+          <div class="mp-forum-feed">
+            <div class="mp-forum-tabs"><button class="is-active">最新帖子</button><button>高收藏 Skill</button><button>小岛拜访</button></div>
+            ${posts.map(([author, title, likes, tag], i) => {
+              const linkedSkill = getSkill(skills[i % skills.length][0]);
+              return `<article class="mp-post">
+                <span class="mp-lotus-icon">${i + 1}</span>
+                <div><strong>${escapeHtml(title)}</strong><p>${escapeHtml(author)} · ${escapeHtml(tag)} · ${likes.toLocaleString()} 收藏</p><small>关联 Skill：${escapeHtml(linkedSkill.name)}</small></div>
+                <div class="mp-actions"><button class="mp-btn secondary" data-toast="已点赞">点赞</button><a class="mp-btn" href="#/skills/${linkedSkill.id}" data-route="/skills/${linkedSkill.id}">打开 Skill</a></div>
+              </article>`;
+            }).join("")}
           </div>
-          <aside class="mp-panel"><h3>本周排行榜</h3><p>1. 病理报告批改 Skill</p><p>2. 单细胞入门图谱</p><p>3. 胃癌 PBL 案例模板</p><p>4. Meta 分析森林图复核</p></aside>
+          <aside class="mp-panel mp-leaderboard"><h3>本周 Skill 榜</h3>${leaderboard.map((skill, i) => `<a href="#/skills/${skill.id}" data-route="/skills/${skill.id}"><span>${i + 1}</span><strong>${escapeHtml(skill.name)}</strong><small>${escapeHtml(skill.tag)}</small></a>`).join("")}<button class="mp-btn secondary" data-route="/island">拜访热门小岛</button></aside>
         </div>
       </section>
     `, "/community");
@@ -762,6 +956,7 @@ QWEN_API_KEY=...</pre></div>
     else if (path.startsWith("/plot-gallery/")) html = renderPlotDetail(path.split("/").pop());
     else if (path.startsWith("/plot-run/")) html = renderPlotRun(path.split("/").pop());
     else if (path === "/skills") html = renderSkills();
+    else if (path.startsWith("/skills/")) html = renderSkillDetail(path.split("/").pop());
     else if (path === "/community") html = renderCommunity();
     else if (path === "/method-runner") html = renderMethodRunner();
     else if (path.startsWith("/method-runner/")) html = renderMethodDetail(path.split("/").pop());

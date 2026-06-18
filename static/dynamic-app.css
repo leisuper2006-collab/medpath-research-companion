@@ -414,6 +414,108 @@ body.medpath-dynamic *::after {
   gap: 16px;
 }
 
+.mp-skill-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -4px 0 18px;
+}
+
+.mp-skill-strip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 13px;
+  border-radius: 999px;
+  background: rgba(223, 243, 238, .78);
+  color: var(--mp-leaf);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.mp-skill-product {
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.94), rgba(248, 253, 250, .92)),
+    radial-gradient(circle at 12% 0%, rgba(244, 206, 114, .22), transparent 9rem);
+  border: 1px solid var(--mp-line);
+  box-shadow: var(--mp-shadow);
+}
+
+.mp-skill-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--mp-muted);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.mp-skill-product h3 {
+  margin: 2px 0 0;
+  font-family: var(--mp-kaiti);
+  font-size: clamp(24px, 2vw, 31px);
+  color: var(--mp-ink);
+}
+
+.mp-skill-product p {
+  min-height: 56px;
+  margin: 0;
+  color: var(--mp-muted);
+  line-height: 1.65;
+}
+
+.mp-skill-preview {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.mp-skill-preview img {
+  width: 100%;
+  aspect-ratio: 1.28 / 1;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid var(--mp-line);
+  background: #fff;
+}
+
+.mp-skill-product dl {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.mp-skill-product dl div {
+  border-radius: 16px;
+  padding: 10px 12px;
+  background: rgba(238, 248, 245, .78);
+}
+
+.mp-skill-product dt {
+  margin-bottom: 4px;
+  color: var(--mp-leaf);
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.mp-skill-product dd {
+  margin: 0;
+  color: #315b55;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.mp-skill-product .mp-actions {
+  margin-top: auto;
+}
+
 .mp-persona {
   display: flex;
   flex-direction: column;
@@ -1026,6 +1128,56 @@ body.medpath-dynamic *::after {
   margin-top: 18px;
 }
 
+.mp-skill-detail {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(420px, 1.08fr);
+  gap: 24px;
+  align-items: start;
+  margin-top: 18px;
+  padding: 32px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(244, 206, 114, .28), transparent 22rem),
+    linear-gradient(135deg, rgba(255,255,255,.94), rgba(238, 248, 245, .9));
+  border: 1px solid var(--mp-line);
+  box-shadow: var(--mp-shadow);
+}
+
+.mp-skill-detail p {
+  color: var(--mp-muted);
+  line-height: 1.75;
+}
+
+.mp-skill-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.mp-community-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 18px;
+  padding: 20px 22px;
+  border-radius: 26px;
+  background: rgba(255,255,255,.86);
+  border: 1px solid var(--mp-line);
+  box-shadow: 0 14px 40px rgba(20, 91, 84, .08);
+}
+
+.mp-community-cta strong,
+.mp-community-cta span {
+  display: block;
+}
+
+.mp-community-cta span {
+  margin-top: 5px;
+  color: var(--mp-muted);
+}
+
 .mp-tool-card {
   min-height: 260px;
   padding: 22px;
@@ -1092,15 +1244,113 @@ body.medpath-dynamic *::after {
   box-shadow: inset 0 0 0 3px rgba(255,255,255,.66), 0 18px 34px rgba(0, 91, 86, .2);
 }
 
-.mp-community-list {
+.mp-community-list,
+.mp-community-grid {
   display: grid;
   grid-template-columns: 1.1fr .9fr;
   gap: 18px;
 }
 
 .mp-post {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
   padding: 18px;
   margin-bottom: 14px;
+  border-radius: 24px;
+  background: rgba(255,255,255,.86);
+  border: 1px solid var(--mp-line);
+  box-shadow: 0 12px 30px rgba(20, 91, 84, .07);
+}
+
+.mp-post strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.mp-post p,
+.mp-post small {
+  display: block;
+  margin: 0;
+  color: var(--mp-muted);
+}
+
+.mp-forum-search {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.82);
+  border: 1px solid var(--mp-line);
+  box-shadow: 0 14px 36px rgba(20, 91, 84, .08);
+}
+
+.mp-forum-search input {
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  padding: 0 14px;
+  color: var(--mp-ink);
+  font: inherit;
+  outline: none;
+}
+
+.mp-forum-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.mp-forum-tabs button {
+  min-height: 34px;
+  border-radius: 999px;
+  border: 1px solid var(--mp-line);
+  background: white;
+  color: var(--mp-muted);
+  padding: 0 13px;
+  font-weight: 800;
+}
+
+.mp-forum-tabs button.is-active {
+  background: var(--mp-leaf);
+  border-color: var(--mp-leaf);
+  color: white;
+}
+
+.mp-leaderboard {
+  position: sticky;
+  top: 96px;
+}
+
+.mp-leaderboard a {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  padding: 12px 0;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--mp-line);
+}
+
+.mp-leaderboard a span {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--mp-leaf-2);
+  color: var(--mp-leaf);
+  font-weight: 900;
+}
+
+.mp-leaderboard a small {
+  grid-column: 2;
+  color: var(--mp-muted);
 }
 
 .mp-toast {
@@ -1129,13 +1379,16 @@ body.medpath-dynamic *::after {
   .mp-detail,
   .mp-content-grid,
   .mp-method-hero,
+  .mp-skill-detail,
   .mp-builder-grid,
-  .mp-community-list { grid-template-columns: 1fr; }
+  .mp-community-list,
+  .mp-community-grid { grid-template-columns: 1fr; }
   .mp-persona-grid,
   .mp-skill-grid,
   .mp-tool-grid,
   .mp-method-grid,
   .mp-method-columns,
+  .mp-skill-flow,
   .mp-provider-grid,
   .mp-profile-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mp-plot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1158,14 +1411,23 @@ body.medpath-dynamic *::after {
   .mp-hero h1 { font-size: 42px; }
   .mp-carousel-track { grid-auto-columns: 88%; }
   .mp-persona-grid,
+  .mp-skill-grid,
   .mp-plot-grid,
   .mp-tool-grid,
   .mp-method-grid,
   .mp-method-columns,
+  .mp-skill-flow,
   .mp-provider-grid,
   .mp-profile-stats { grid-template-columns: 1fr; }
   .mp-method-hero { padding: 20px; grid-template-columns: 1fr; }
+  .mp-skill-detail { padding: 20px; grid-template-columns: 1fr; }
   .mp-method-preview { grid-template-columns: 1fr; }
+  .mp-skill-product { min-height: auto; }
+  .mp-post { grid-template-columns: 44px minmax(0, 1fr); }
+  .mp-post .mp-actions { grid-column: 1 / -1; }
+  .mp-forum-search { border-radius: 24px; grid-template-columns: 1fr; }
+  .mp-community-cta { display: block; }
+  .mp-community-cta .mp-actions { margin-top: 14px; }
   .mp-timeline article { grid-template-columns: 38px minmax(0, 1fr); }
   .mp-timeline article p { grid-column: 2; }
   .mp-profile-hero { grid-template-columns: 1fr; }
