@@ -347,16 +347,19 @@ body.medpath-dynamic *::after {
 .mp-carousel {
   position: relative;
   overflow: hidden;
+  --mp-carousel-fade: linear-gradient(90deg, transparent 0, #000 42px, #000 calc(100% - 42px), transparent 100%);
+  -webkit-mask-image: var(--mp-carousel-fade);
+  mask-image: var(--mp-carousel-fade);
 }
 
 .mp-carousel-track {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(320px, 32%);
+  grid-auto-columns: calc((100% - 36px) / 3);
   gap: 18px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 8px 0 14px;
+  padding: 8px 0 18px;
 }
 
 .mp-carousel-track::-webkit-scrollbar {
@@ -376,6 +379,13 @@ body.medpath-dynamic *::after {
   background: rgba(255, 255, 255, .9);
   border: 1px solid var(--mp-line);
   box-shadow: var(--mp-shadow);
+}
+
+.mp-entry-card .mp-btn {
+  display: flex;
+  width: max-content;
+  margin: 18px auto 0;
+  min-width: 84px;
 }
 
 .mp-entry-card h3 {
@@ -549,6 +559,7 @@ body.medpath-dynamic *::after {
 
 .mp-persona .mp-actions {
   margin-top: auto;
+  justify-content: center;
 }
 
 .mp-persona-mark {
@@ -566,6 +577,33 @@ body.medpath-dynamic *::after {
   font-size: 20px;
   font-weight: 900;
   box-shadow: 0 8px 14px rgba(20, 91, 84, .08);
+}
+
+.mp-persona .mp-btn {
+  min-height: 38px;
+  padding: 0 18px;
+}
+
+.mp-persona .mp-btn.lotus {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,.55), transparent 28px),
+    linear-gradient(135deg, #f6b7cd, #e889a7 62%, #d87495);
+  color: #552033;
+}
+
+.mp-persona .mp-btn.lotus::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  margin-right: 7px;
+  border-radius: 80% 20% 80% 20%;
+  background: rgba(255, 255, 255, .72);
+  transform: rotate(45deg);
+  box-shadow:
+    7px 0 0 rgba(255, 255, 255, .42),
+    3px 6px 0 rgba(255, 255, 255, .34);
 }
 
 .mp-lotus-icon {
