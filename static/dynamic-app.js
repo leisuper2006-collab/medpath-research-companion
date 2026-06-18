@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "round121";
+  const VERSION = "round122";
   const PLOT_BASE = "outputs/round110_plots";
 
   const state = {
@@ -421,6 +421,10 @@
     return `${PLOT_BASE}/${plotId}/example.png`;
   }
 
+  function thumbPath(plotId) {
+    return `${PLOT_BASE}/${plotId}/thumb.png`;
+  }
+
   function getPlot(plotId) {
     const item = plotInfo[plotId] || [plotId.replace(/_/g, " "), "展示数据结构和研究问题之间的关系。", "R / Python"];
     return { id: plotId, title: item[0], desc: item[1], pkg: item[2] };
@@ -557,7 +561,7 @@
     return `
       <article class="mp-plot-card">
         <div class="mp-plot-thumb">
-          <img src="${imgPath(id)}" alt="${escapeHtml(plot.title)}示例图" onerror="this.src='${imgPath("scatter")}'" />
+          <img src="${thumbPath(id)}" alt="${escapeHtml(plot.title)}示例图" onerror="this.onerror=()=>{this.onerror=null;this.src='${imgPath("scatter")}'};this.src='${imgPath(id)}'" />
         </div>
         <div class="body">
           <small>${escapeHtml(plot.pkg)}</small>
