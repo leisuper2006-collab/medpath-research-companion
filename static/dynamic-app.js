@@ -1,13 +1,13 @@
 (function () {
   "use strict";
 
-  const VERSION = "round119";
+  const VERSION = "round120";
   const PLOT_BASE = "outputs/round110_plots";
 
   const state = {
     carouselIndex: 0,
-    activeDiscipline: "biology",
-    activeSubcat: "single_cell",
+    activeDiscipline: "medical",
+    activeSubcat: "meta",
   };
   let carouselTimer = null;
 
@@ -531,7 +531,7 @@
         <div class="mp-persona-grid">
           ${personas.map(([name, text, route]) => `
             <article class="mp-persona">
-              <div class="mp-lotus-icon">莲</div>
+              <div class="mp-persona-mark">${escapeHtml(name.slice(0, 2))}</div>
               <h3>${escapeHtml(name)}</h3>
               <p>${escapeHtml(text)}</p>
               <div class="mp-actions"><button class="mp-btn lotus" data-route="${route}">进入</button><button class="mp-btn secondary" data-toast="已收藏这个入口">收藏</button></div>
@@ -556,7 +556,9 @@
     const plot = getPlot(id);
     return `
       <article class="mp-plot-card">
-        <img src="${imgPath(id)}" alt="${escapeHtml(plot.title)}示例图" onerror="this.src='${imgPath("scatter")}'" />
+        <div class="mp-plot-thumb">
+          <img src="${imgPath(id)}" alt="${escapeHtml(plot.title)}示例图" loading="lazy" onerror="this.src='${imgPath("scatter")}'" />
+        </div>
         <div class="body">
           <small>${escapeHtml(plot.pkg)}</small>
           <h3>${escapeHtml(plot.title)}</h3>
@@ -631,7 +633,10 @@
             </div>
             <div class="mp-actions"><button class="mp-btn" data-route="/plot-run/${id}">用这个图开始</button><button class="mp-btn secondary" data-toast="示例数据已加入下载队列">下载示例数据</button></div>
           </div>
-          <img src="${imgPath(id)}" alt="${escapeHtml(plot.title)}示例大图" onerror="this.src='${imgPath("scatter")}'" />
+          <figure class="mp-plot-detail-figure">
+            <img src="${imgPath(id)}" alt="${escapeHtml(plot.title)}示例大图" onerror="this.src='${imgPath("scatter")}'" />
+            <figcaption>示例图由项目内置虚拟数据和对应绘图脚本生成，用于说明图型结构和字段要求。</figcaption>
+          </figure>
         </div>
         <div class="mp-content-grid" style="margin-top:18px">
           <div class="mp-panel"><h3>R 代码模板</h3><pre class="mp-code">library(ggplot2)
@@ -669,7 +674,10 @@ DEEPSEEK_API_KEY=...
 QWEN_API_KEY=...</pre></div>
         </div>
         <div class="mp-detail" style="margin-top:18px">
-          <img src="${imgPath(id)}" alt="${escapeHtml(plot.title)}结果预览" onerror="this.src='${imgPath("scatter")}'" />
+          <figure class="mp-plot-detail-figure compact">
+            <img src="${imgPath(id)}" alt="${escapeHtml(plot.title)}结果预览" onerror="this.src='${imgPath("scatter")}'" />
+            <figcaption>当前为 mock 预览；真实运行时由本地 R/Python runtime 出图。</figcaption>
+          </figure>
           <div><h3>运行结果预览</h3><p>当前为 mock 预览。真实运行时会输出：图、代码、source data、caption、methods、字段审查和导师复核清单。</p><div class="mp-actions"><button class="mp-btn" data-toast="mock 运行完成：已生成图注和复核清单。">运行本地绘图</button><button class="mp-btn secondary" data-toast="ZIP 导出为演示状态">导出 ZIP</button></div></div>
         </div>
       </section>
@@ -794,7 +802,7 @@ QWEN_API_KEY=...</pre></div>
         <div class="mp-section-head"><div><div class="mp-kicker">Method Runner</div><h1 class="mp-section-title">先说数据和问题，再选方法</h1><p>每张卡都能打开完整路线：适合谁、要什么数据、怎么跑、出什么图、哪里容易踩坑。</p></div></div>
         <div class="mp-method-grid">
           ${methodCatalog.map((item) => `<article class="mp-method-card">
-            <div class="mp-method-top"><span class="mp-lotus-icon">法</span><span>${escapeHtml(item.tools.split("、")[0])}</span></div>
+            <div class="mp-method-top"><span class="mp-method-badge">方法</span><span>${escapeHtml(item.tools.split("、")[0])}</span></div>
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.subtitle)}</p>
             <div class="mp-method-plots">${item.plots.slice(0, 3).map((id) => `<img src="${imgPath(id)}" alt="${escapeHtml(getPlot(id).title)}示例图" onerror="this.style.display='none'" />`).join("")}</div>
@@ -863,7 +871,7 @@ QWEN_API_KEY=...</pre></div>
           <button class="mp-btn" data-toast="已生成工具筛选草案：mock 演示">帮我筛工具</button>
         </div>
         <div class="mp-tool-grid">
-          ${toolGroups.map(([title, tools, desc, route]) => `<article class="mp-tool-card"><div class="mp-lotus-icon">研</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(desc)}</p><div class="mp-tool-stack">${tools.split("、").map((tool) => `<span>${escapeHtml(tool)}</span>`).join("")}</div><div class="mp-actions"><button class="mp-btn" data-route="${route}">看方法</button><button class="mp-btn secondary" data-toast="已加入你的工具箱：${escapeHtml(title)}">收藏</button></div></article>`).join("")}
+          ${toolGroups.map(([title, tools, desc, route]) => `<article class="mp-tool-card"><div class="mp-tool-eyebrow">开源路线</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(desc)}</p><div class="mp-tool-stack">${tools.split("、").map((tool) => `<span>${escapeHtml(tool)}</span>`).join("")}</div><div class="mp-actions"><button class="mp-btn" data-route="${route}">看方法</button><button class="mp-btn secondary" data-toast="已加入你的工具箱：${escapeHtml(title)}">收藏</button></div></article>`).join("")}
         </div>
         <div class="mp-detail" style="margin-top:22px">
           <div><h2 class="mp-section-title">新手怎么用这一页</h2><p>如果你还不知道该用哪个仓库，先写一句话：“我有什么数据，想回答什么问题”。平台会把它拆成检索、安装、输入格式、示例结果、风险提示和复现材料。</p><div class="mp-panel"><strong>例子</strong><p>“我有单细胞表达矩阵，想看免疫细胞亚群差异。”系统会推荐 Seurat/Scanpy 入门流程、UMAP、marker dotplot、细胞比例图，并提示先做质控和注释。</p></div></div>
@@ -886,7 +894,7 @@ QWEN_API_KEY=...</pre></div>
         <div class="mp-profile-stats"><div class="mp-mini-card"><strong>12</strong><span>收藏 Skill</span></div><div class="mp-mini-card"><strong>28</strong><span>保存图谱</span></div><div class="mp-mini-card"><strong>860</strong><span>科研积分</span></div><div class="mp-mini-card"><strong>4</strong><span>发布案例</span></div></div>
         <div class="mp-content-grid" style="margin-top:22px">
           <div class="mp-panel"><h3>我的路径</h3><p>推荐继续学习：单细胞转录组测序与细胞亚群解析。</p><button class="mp-btn" data-route="/plot-gallery">继续学习</button></div>
-          <div class="mp-community-list">${recent.map(([tag, title, route]) => `<article class="mp-post"><span class="mp-lotus-icon">存</span><div><strong>${escapeHtml(title)}</strong><p>${escapeHtml(tag)}</p></div><button class="mp-btn secondary" data-route="${route}">打开</button></article>`).join("")}</div>
+          <div class="mp-community-list">${recent.map(([tag, title, route], index) => `<article class="mp-post"><span class="mp-post-rank">${index + 1}</span><div><strong>${escapeHtml(title)}</strong><p>${escapeHtml(tag)}</p></div><button class="mp-btn secondary" data-route="${route}">打开</button></article>`).join("")}</div>
         </div>
       </section>
     `, "/profile");

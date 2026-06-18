@@ -551,6 +551,23 @@ body.medpath-dynamic *::after {
   margin-top: auto;
 }
 
+.mp-persona-mark {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(244, 206, 114, .7), rgba(223, 243, 238, .94)),
+    #fffef8;
+  color: #006f67;
+  border: 1px solid rgba(0, 143, 134, .22);
+  font-family: var(--mp-kaiti);
+  font-size: 20px;
+  font-weight: 900;
+  box-shadow: 0 8px 14px rgba(20, 91, 84, .08);
+}
+
 .mp-lotus-icon {
   width: 52px;
   height: 52px;
@@ -617,20 +634,33 @@ body.medpath-dynamic *::after {
 
 .mp-plot-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  gap: 22px;
 }
 
 .mp-plot-card {
   overflow: hidden;
 }
 
-.mp-plot-card img {
+.mp-plot-thumb {
+  display: grid;
+  place-items: center;
+  min-height: 286px;
+  padding: 14px;
+  background:
+    radial-gradient(circle at 72% 16%, rgba(244, 206, 114, .18), transparent 38%),
+    linear-gradient(180deg, #fffef8, #f5fbf8);
+  border-bottom: 1px solid var(--mp-line);
+}
+
+.mp-plot-thumb img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 258px;
   object-fit: contain;
   background: #fff;
-  border-bottom: 1px solid var(--mp-line);
+  border: 1px solid rgba(0, 105, 95, .12);
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(20, 91, 84, .08);
 }
 
 .mp-plot-card .body {
@@ -660,6 +690,39 @@ body.medpath-dynamic *::after {
   border-radius: 16px;
   background: white;
   border: 1px solid var(--mp-line);
+}
+
+.mp-plot-detail-figure {
+  margin: 0;
+  padding: 14px;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 78% 8%, rgba(232, 137, 167, .14), transparent 30%),
+    #fffef8;
+  border: 1px solid var(--mp-line);
+  box-shadow: 0 10px 22px rgba(20, 91, 84, .08);
+}
+
+.mp-plot-detail-figure img {
+  display: block;
+  width: 100%;
+  min-height: 320px;
+  max-height: 560px;
+  object-fit: contain;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(0, 105, 95, .14);
+}
+
+.mp-plot-detail-figure.compact img {
+  min-height: 260px;
+}
+
+.mp-plot-detail-figure figcaption {
+  margin-top: 10px;
+  color: var(--mp-muted);
+  font-size: 13px;
+  line-height: 1.55;
 }
 
 .mp-code {
@@ -979,6 +1042,25 @@ body.medpath-dynamic *::after {
   color: var(--mp-muted);
   font-size: 12px;
   font-weight: 800;
+}
+
+.mp-method-badge,
+.mp-tool-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(0, 143, 134, .10);
+  color: var(--mp-leaf);
+  border: 1px solid rgba(0, 143, 134, .18);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.mp-tool-eyebrow {
+  width: max-content;
+  margin-bottom: 12px;
 }
 
 .mp-method-card h3 {
