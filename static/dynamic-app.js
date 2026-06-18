@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "round123";
+  const VERSION = "round124";
   const PLOT_BASE = "outputs/round110_plots";
 
   const state = {
@@ -430,6 +430,561 @@
     return { id: plotId, title: item[0], desc: item[1], pkg: item[2] };
   }
 
+  const plotTemplates = {
+    boxplot: {
+      question: "比较不同组别的数值分布、中位数和离散程度，适合先看组间差异是否值得继续检验。",
+      fields: ["sample_id", "group", "value"],
+      rPackage: "ggplot2 / ggpubr",
+      pyPackage: "seaborn / scipy",
+      r: [
+        'library(ggplot2)',
+        'library(ggpubr)',
+        'dat <- read.csv("example_data.csv")',
+        'ggplot(dat, aes(x = group, y = value, fill = group)) +',
+        '  geom_boxplot(width = 0.55, outlier.shape = 21, alpha = 0.82) +',
+        '  geom_jitter(width = 0.12, size = 1.8, alpha = 0.65) +',
+        '  stat_compare_means(method = "wilcox.test") +',
+        '  theme_classic(base_size = 12)'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, seaborn as sns, matplotlib.pyplot as plt',
+        'dat = pd.read_csv("example_data.csv")',
+        'sns.set_theme(style="whitegrid")',
+        'ax = sns.boxplot(data=dat, x="group", y="value", palette="Set2")',
+        'sns.stripplot(data=dat, x="group", y="value", color="0.25", size=3, alpha=.55, ax=ax)',
+        'ax.set(xlabel="", ylabel="Value")',
+        'plt.tight_layout(); plt.savefig("boxplot.png", dpi=300)'
+      ].join("\n"),
+      caption: "箱线图展示不同组别的数值分布，点为单个样本，箱体表示四分位区间。",
+      methods: "使用ggplot2/ggpubr或seaborn绘制箱线图，并叠加样本散点；统计检验需在确认分布和研究设计后选择。"
+    },
+    violin: {
+      question: "观察每组数据的分布形态，适合表达组内异质性，而不只是均值差异。",
+      fields: ["sample_id", "group", "value"],
+      rPackage: "ggplot2 / ggdist",
+      pyPackage: "seaborn",
+      r: [
+        'library(ggplot2)',
+        'dat <- read.csv("example_data.csv")',
+        'ggplot(dat, aes(group, value, fill = group)) +',
+        '  geom_violin(trim = FALSE, alpha = 0.75) +',
+        '  geom_boxplot(width = .12, outlier.shape = NA, alpha = .85) +',
+        '  theme_classic(base_size = 12)'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, seaborn as sns, matplotlib.pyplot as plt',
+        'dat = pd.read_csv("example_data.csv")',
+        'sns.violinplot(data=dat, x="group", y="value", inner="box", cut=0)',
+        'plt.tight_layout(); plt.savefig("violin.png", dpi=300)'
+      ].join("\n"),
+      caption: "小提琴图展示各组数据密度分布，内部箱体辅助显示中位数和四分位区间。",
+      methods: "使用小提琴图展示连续变量在不同组别中的分布，避免只用柱状图掩盖样本离散程度。"
+    },
+    scatter: {
+      question: "判断两个连续变量是否存在相关趋势、离群点或非线性关系。",
+      fields: ["sample_id", "x_value", "y_value", "group"],
+      rPackage: "ggplot2 / ggpubr",
+      pyPackage: "seaborn / scipy",
+      r: [
+        'library(ggplot2)',
+        'dat <- read.csv("example_data.csv")',
+        'ggplot(dat, aes(x_value, y_value, color = group)) +',
+        '  geom_point(size = 2, alpha = .75) +',
+        '  geom_smooth(method = "lm", se = TRUE, color = "grey35") +',
+        '  theme_classic(base_size = 12)'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, seaborn as sns, matplotlib.pyplot as plt',
+        'dat = pd.read_csv("example_data.csv")',
+        'sns.lmplot(data=dat, x="x_value", y="y_value", hue="group", height=4, aspect=1.2)',
+        'plt.savefig("scatter.png", dpi=300)'
+      ].join("\n"),
+      caption: "散点图展示两个连续变量的关系，回归线用于辅助观察趋势。",
+      methods: "绘制散点和线性拟合趋势，相关性检验需按变量分布选择Pearson或Spearman。"
+    },
+    volcano: {
+      question: "在差异表达结果中同时看变化幅度和显著性，快速定位候选基因或分子。",
+      fields: ["gene", "log2FC", "pvalue", "padj"],
+      rPackage: "EnhancedVolcano / ggplot2",
+      pyPackage: "bioinfokit / matplotlib",
+      r: [
+        'library(EnhancedVolcano)',
+        'dat <- read.csv("example_data.csv")',
+        'EnhancedVolcano(dat,',
+        '  lab = dat$gene, x = "log2FC", y = "padj",',
+        '  pCutoff = 0.05, FCcutoff = 1, pointSize = 2.0, labSize = 3.0)'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, numpy as np, matplotlib.pyplot as plt',
+        'dat = pd.read_csv("example_data.csv")',
+        'dat["neg_log10_padj"] = -np.log10(dat["padj"].clip(lower=1e-300))',
+        'colors = np.where((dat.log2FC.abs() >= 1) & (dat.padj < .05), "#d65f5f", "#9aa5a6")',
+        'plt.scatter(dat.log2FC, dat.neg_log10_padj, c=colors, s=18, alpha=.75)',
+        'plt.axvline(1, ls="--", c="grey"); plt.axvline(-1, ls="--", c="grey")',
+        'plt.axhline(-np.log10(.05), ls="--", c="grey")',
+        'plt.xlabel("log2FC"); plt.ylabel("-log10 adjusted p")',
+        'plt.tight_layout(); plt.savefig("volcano.png", dpi=300)'
+      ].join("\n"),
+      caption: "火山图展示差异分子的变化倍数和显著性，红色点为示例阈值下的候选分子。",
+      methods: "差异分析结果按log2FC和校正P值绘制火山图；阈值应结合研究设计和多重检验校正说明。"
+    },
+    heatmap: {
+      question: "展示样本和特征之间的整体模式，适合看聚类、分组一致性和异常样本。",
+      fields: ["feature_id", "sample_id", "value", "group"],
+      rPackage: "ComplexHeatmap / pheatmap",
+      pyPackage: "seaborn.clustermap",
+      r: [
+        'library(ComplexHeatmap)',
+        'mat <- as.matrix(read.csv("matrix.csv", row.names = 1))',
+        'Heatmap(scale(t(mat)), name = "z-score",',
+        '  cluster_rows = TRUE, cluster_columns = TRUE)'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, seaborn as sns, matplotlib.pyplot as plt',
+        'mat = pd.read_csv("matrix.csv", index_col=0)',
+        'sns.clustermap(mat.T, z_score=1, cmap="vlag", figsize=(7,6))',
+        'plt.savefig("heatmap.png", dpi=300)'
+      ].join("\n"),
+      caption: "热图展示特征在样本间的相对变化，行列聚类用于观察模式相似性。",
+      methods: "对表达矩阵进行标准化后绘制聚类热图；需要说明筛选特征、标准化方式和聚类距离。"
+    },
+    enrichment_dotplot: {
+      question: "比较富集通路的显著性、基因比例和基因数量，适合解释差异基因的功能方向。",
+      fields: ["term", "gene_ratio", "count", "p_adjust", "category"],
+      rPackage: "clusterProfiler / enrichplot",
+      pyPackage: "plotnine / matplotlib",
+      r: [
+        'library(clusterProfiler)',
+        'library(enrichplot)',
+        'ego <- readRDS("enrichment_result.rds")',
+        'dotplot(ego, showCategory = 15) + theme_minimal(base_size = 12)'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, numpy as np, matplotlib.pyplot as plt',
+        'dat = pd.read_csv("enrichment.csv")',
+        'size = dat["count"] * 18',
+        'color = -np.log10(dat["p_adjust"])',
+        'plt.scatter(dat["gene_ratio"], dat["term"], s=size, c=color, cmap="viridis")',
+        'plt.colorbar(label="-log10 adjusted p")',
+        'plt.xlabel("Gene ratio"); plt.tight_layout(); plt.savefig("enrichment_dotplot.png", dpi=300)'
+      ].join("\n"),
+      caption: "富集点图同时展示通路显著性、基因比例和命中基因数量。",
+      methods: "使用clusterProfiler完成富集分析并绘制dotplot；背景基因集和校正方法需在Methods中说明。"
+    },
+    umap: {
+      question: "把高维单细胞表达矩阵投影到二维空间，观察细胞亚群和批次结构。",
+      fields: ["cell_id", "UMAP_1", "UMAP_2", "cell_type", "sample_group"],
+      rPackage: "Seurat / ggplot2",
+      pyPackage: "scanpy",
+      r: [
+        'library(Seurat)',
+        'obj <- readRDS("seurat_object.rds")',
+        'DimPlot(obj, reduction = "umap", group.by = "cell_type", label = TRUE) +',
+        '  NoLegend()'
+      ].join("\n"),
+      python: [
+        'import scanpy as sc',
+        'adata = sc.read_h5ad("adata.h5ad")',
+        'sc.pl.umap(adata, color="cell_type", frameon=False, save="_cell_type.png")'
+      ].join("\n"),
+      caption: "UMAP展示单细胞转录组数据中的细胞亚群结构，颜色为示例细胞类型标注。",
+      methods: "单细胞数据经质控、归一化、降维和聚类后使用UMAP展示；需要报告关键参数和细胞注释依据。"
+    },
+    feature_plot: {
+      question: "在UMAP或空间坐标上查看一个基因、蛋白或评分的表达位置。",
+      fields: ["cell_id", "UMAP_1", "UMAP_2", "feature_value"],
+      rPackage: "Seurat::FeaturePlot",
+      pyPackage: "scanpy.pl.umap",
+      r: [
+        'library(Seurat)',
+        'obj <- readRDS("seurat_object.rds")',
+        'FeaturePlot(obj, features = c("IL7R"), reduction = "umap", cols = c("grey90", "#5b2a86"))'
+      ].join("\n"),
+      python: [
+        'import scanpy as sc',
+        'adata = sc.read_h5ad("adata.h5ad")',
+        'sc.pl.umap(adata, color=["IL7R"], cmap="Purples", frameon=False, save="_feature.png")'
+      ].join("\n"),
+      caption: "Feature plot展示目标基因在细胞嵌入空间中的表达分布。",
+      methods: "在降维坐标上叠加目标特征表达量，用于初步观察细胞类型或状态特异性。"
+    },
+    marker_dotplot: {
+      question: "比较不同细胞群中marker基因的表达强度和表达比例，适合细胞注释。",
+      fields: ["cell_type", "gene", "avg_expression", "pct_expression"],
+      rPackage: "Seurat::DotPlot",
+      pyPackage: "scanpy.pl.dotplot",
+      r: [
+        'library(Seurat)',
+        'markers <- c("IL7R", "GNLY", "MS4A1", "LYZ")',
+        'DotPlot(obj, features = markers, group.by = "cell_type") + RotatedAxis()'
+      ].join("\n"),
+      python: [
+        'import scanpy as sc',
+        'markers = ["IL7R", "GNLY", "MS4A1", "LYZ"]',
+        'sc.pl.dotplot(adata, markers, groupby="cell_type", standard_scale="var", save="_markers.png")'
+      ].join("\n"),
+      caption: "Marker dotplot用颜色表示平均表达，用点大小表示表达细胞比例。",
+      methods: "按细胞群汇总marker基因表达，用于辅助细胞类型注释；marker选择需结合文献和专家复核。"
+    },
+    cell_type_proportion: {
+      question: "比较不同样本或分组中的细胞类型组成差异。",
+      fields: ["sample_id", "group", "cell_type", "proportion"],
+      rPackage: "ggplot2",
+      pyPackage: "seaborn / pandas",
+      r: [
+        'library(ggplot2)',
+        'dat <- read.csv("cell_type_proportion.csv")',
+        'ggplot(dat, aes(sample_id, proportion, fill = cell_type)) +',
+        '  geom_col(width = .82) + facet_grid(. ~ group, scales = "free_x", space = "free_x") +',
+        '  theme_classic(base_size = 12)'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, matplotlib.pyplot as plt',
+        'dat = pd.read_csv("cell_type_proportion.csv")',
+        'wide = dat.pivot_table(index="sample_id", columns="cell_type", values="proportion", fill_value=0)',
+        'wide.plot(kind="bar", stacked=True, width=.85)',
+        'plt.ylabel("Proportion"); plt.tight_layout(); plt.savefig("cell_type_proportion.png", dpi=300)'
+      ].join("\n"),
+      caption: "堆叠柱图展示不同样本的细胞类型组成比例。",
+      methods: "按样本统计细胞类型比例并可按分组比较；解释时需注意样本量和组织取样差异。"
+    },
+    pseudotime: {
+      question: "展示细胞状态从一个阶段到另一个阶段的连续变化线索。",
+      fields: ["cell_id", "dim1", "dim2", "pseudotime", "branch"],
+      rPackage: "monocle3 / slingshot",
+      pyPackage: "scanpy / scvelo",
+      r: [
+        'library(monocle3)',
+        'cds <- readRDS("monocle3_cds.rds")',
+        'plot_cells(cds, color_cells_by = "pseudotime", label_groups_by_cluster = FALSE)'
+      ].join("\n"),
+      python: [
+        'import scanpy as sc',
+        'adata = sc.read_h5ad("adata_pseudotime.h5ad")',
+        'sc.pl.umap(adata, color="dpt_pseudotime", cmap="viridis", frameon=False, save="_pseudotime.png")'
+      ].join("\n"),
+      caption: "拟时序图展示细胞状态变化的连续趋势，颜色表示示例拟时序值。",
+      methods: "用拟时序算法推断细胞状态轨迹；结果是探索线索，需要结合marker、时间点或实验验证解释。"
+    },
+    spatial_feature_plot: {
+      question: "在组织空间坐标上展示基因表达或细胞状态，适合解释空间异质性。",
+      fields: ["spot_id", "x", "y", "feature_value", "region"],
+      rPackage: "Seurat / SpatialFeaturePlot",
+      pyPackage: "scanpy / squidpy",
+      r: [
+        'library(Seurat)',
+        'obj <- readRDS("spatial_object.rds")',
+        'SpatialFeaturePlot(obj, features = "COL1A1", alpha = c(.15, 1))'
+      ].join("\n"),
+      python: [
+        'import scanpy as sc, squidpy as sq',
+        'adata = sc.read_h5ad("spatial.h5ad")',
+        'sq.pl.spatial_scatter(adata, color="COL1A1", shape=None, save="_spatial_feature.png")'
+      ].join("\n"),
+      caption: "空间特征图展示目标特征在组织位置上的分布。",
+      methods: "在空间坐标上可视化表达或评分，用于观察组织区域差异；空间结果需结合切片质量和区域标注复核。"
+    },
+    sankey: {
+      question: "展示样本、任务、经费或细胞状态之间的流向关系。",
+      fields: ["source", "target", "value", "group"],
+      rPackage: "networkD3 / ggalluvial",
+      pyPackage: "plotly",
+      r: [
+        'library(ggalluvial)',
+        'dat <- read.csv("flow.csv")',
+        'ggplot(dat, aes(axis1 = source, axis2 = target, y = value)) +',
+        '  geom_alluvium(aes(fill = group), width = .2) +',
+        '  geom_stratum(width = .2, fill = "grey95", color = "grey50") +',
+        '  theme_void()'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, plotly.graph_objects as go',
+        'dat = pd.read_csv("flow.csv")',
+        '# map labels to ids, then build go.Sankey(...)',
+        'fig = go.Figure(data=[go.Sankey(node=dict(label=[]), link=dict(source=[], target=[], value=[]))])',
+        'fig.write_html("sankey.html")'
+      ].join("\n"),
+      caption: "桑基图展示不同节点之间的流向和相对规模。",
+      methods: "按source-target-value格式组织流向数据，图中宽度表示流量大小。"
+    },
+    network_graph: {
+      question: "展示基因、通路、细胞或工具之间的关系结构。",
+      fields: ["source", "target", "weight", "node_type"],
+      rPackage: "igraph / ggraph",
+      pyPackage: "networkx",
+      r: [
+        'library(igraph); library(ggraph)',
+        'edges <- read.csv("edges.csv")',
+        'g <- graph_from_data_frame(edges, directed = FALSE)',
+        'ggraph(g, layout = "fr") +',
+        '  geom_edge_link(aes(width = weight), alpha = .35) +',
+        '  geom_node_point(size = 4, color = "#008f86") +',
+        '  geom_node_text(aes(label = name), repel = TRUE) + theme_void()'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, networkx as nx, matplotlib.pyplot as plt',
+        'edges = pd.read_csv("edges.csv")',
+        'G = nx.from_pandas_edgelist(edges, "source", "target", ["weight"])',
+        'pos = nx.spring_layout(G, seed=42)',
+        'nx.draw_networkx(G, pos, node_size=520, font_size=8, edge_color="#9bb")',
+        'plt.axis("off"); plt.tight_layout(); plt.savefig("network.png", dpi=300)'
+      ].join("\n"),
+      caption: "网络图展示节点之间的关系，边宽可表示关系强度。",
+      methods: "用igraph/ggraph或networkx绘制关系网络；需要说明边的定义和过滤阈值。"
+    },
+    upset_plot: {
+      question: "比较多个集合之间的交集，比维恩图更适合三组以上集合。",
+      fields: ["item_id", "set_a", "set_b", "set_c"],
+      rPackage: "ComplexUpset / UpSetR",
+      pyPackage: "upsetplot",
+      r: [
+        'library(ComplexUpset)',
+        'dat <- read.csv("sets.csv")',
+        'upset(dat, intersect = c("set_a", "set_b", "set_c"))'
+      ].join("\n"),
+      python: [
+        'import pandas as pd',
+        'from upsetplot import from_indicators, plot',
+        'dat = pd.read_csv("sets.csv")',
+        'up = from_indicators(["set_a", "set_b", "set_c"], data=dat)',
+        'plot(up); plt.savefig("upset.png", dpi=300)'
+      ].join("\n"),
+      caption: "UpSet图展示多个集合的交集规模和组合关系。",
+      methods: "将每个元素是否属于各集合编码为布尔字段，再绘制UpSet图展示交集结构。"
+    },
+    kaplan_meier: {
+      question: "比较不同组别的生存概率随时间变化的差异。",
+      fields: ["patient_id", "time", "event", "group"],
+      rPackage: "survival / survminer",
+      pyPackage: "lifelines",
+      r: [
+        'library(survival); library(survminer)',
+        'dat <- read.csv("survival.csv")',
+        'fit <- survfit(Surv(time, event) ~ group, data = dat)',
+        'ggsurvplot(fit, data = dat, risk.table = TRUE, pval = TRUE)'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, matplotlib.pyplot as plt',
+        'from lifelines import KaplanMeierFitter',
+        'dat = pd.read_csv("survival.csv")',
+        'for name, grp in dat.groupby("group"):',
+        '    kmf = KaplanMeierFitter().fit(grp["time"], grp["event"], label=name)',
+        '    kmf.plot_survival_function(ci_show=True)',
+        'plt.tight_layout(); plt.savefig("kaplan_meier.png", dpi=300)'
+      ].join("\n"),
+      caption: "Kaplan-Meier曲线展示不同组别的生存概率变化。",
+      methods: "用Surv(time,event)定义结局并按组拟合生存曲线；需说明删失、随访时间和分组依据。"
+    },
+    forest_plot: {
+      question: "汇总多个研究或亚组的效应量及置信区间，适合Meta分析和亚组结果展示。",
+      fields: ["study", "effect", "ci_low", "ci_high", "weight"],
+      rPackage: "meta / forestplot",
+      pyPackage: "matplotlib / pandas",
+      r: [
+        'library(meta)',
+        'dat <- read.csv("meta_effects.csv")',
+        'm <- metagen(TE = effect, seTE = se, studlab = study, data = dat, sm = "SMD")',
+        'forest(m, leftcols = c("studlab"), rightcols = c("effect", "ci"))'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, matplotlib.pyplot as plt',
+        'dat = pd.read_csv("meta_effects.csv")',
+        'y = range(len(dat))',
+        'plt.errorbar(dat["effect"], y, xerr=[dat["effect"]-dat["ci_low"], dat["ci_high"]-dat["effect"]], fmt="o")',
+        'plt.yticks(y, dat["study"]); plt.axvline(0, color="grey", ls="--")',
+        'plt.xlabel("Effect size"); plt.tight_layout(); plt.savefig("forest_plot.png", dpi=300)'
+      ].join("\n"),
+      caption: "森林图展示各研究效应量及置信区间，点大小可表示权重。",
+      methods: "提取每项研究效应量和标准误后进行Meta分析；异质性和模型选择需要单独报告。"
+    },
+    roc: {
+      question: "评估分类模型在不同阈值下区分阳性与阴性的能力。",
+      fields: ["sample_id", "label", "score"],
+      rPackage: "pROC",
+      pyPackage: "scikit-learn",
+      r: [
+        'library(pROC)',
+        'dat <- read.csv("prediction.csv")',
+        'roc_obj <- roc(dat$label, dat$score)',
+        'plot(roc_obj, print.auc = TRUE, col = "#008f86")'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, matplotlib.pyplot as plt',
+        'from sklearn.metrics import roc_curve, auc',
+        'dat = pd.read_csv("prediction.csv")',
+        'fpr, tpr, _ = roc_curve(dat["label"], dat["score"])',
+        'plt.plot(fpr, tpr, label=f"AUC={auc(fpr,tpr):.2f}")',
+        'plt.plot([0,1], [0,1], "--", color="grey"); plt.legend()',
+        'plt.tight_layout(); plt.savefig("roc.png", dpi=300)'
+      ].join("\n"),
+      caption: "ROC曲线展示模型在不同阈值下的灵敏度和特异度权衡。",
+      methods: "使用真实标签和预测分数计算ROC与AUC；需报告验证集来源和置信区间。"
+    },
+    prisma_flow: {
+      question: "展示系统综述或Meta分析中文献筛选过程，帮助审稿人判断纳排透明度。",
+      fields: ["stage", "count", "reason"],
+      rPackage: "PRISMA2020 / DiagrammeR",
+      pyPackage: "graphviz",
+      r: [
+        'library(PRISMA2020)',
+        '# Fill PRISMA item counts from screening records',
+        'prisma_flowdiagram(...)'
+      ].join("\n"),
+      python: [
+        'from graphviz import Digraph',
+        'g = Digraph("PRISMA")',
+        'g.node("id", "Records identified")',
+        'g.node("screen", "Records screened")',
+        'g.node("include", "Studies included")',
+        'g.edges([("id", "screen"), ("screen", "include")])',
+        'g.render("prisma_flow", format="png", cleanup=True)'
+      ].join("\n"),
+      caption: "PRISMA流程图展示文献识别、筛选、排除和最终纳入过程。",
+      methods: "依据PRISMA 2020报告指南记录每一步文献数量和排除原因，图中数字不得虚构。"
+    },
+    attention_heatmap: {
+      question: "展示计算病理模型关注的图像区域，辅助解释模型预测依据。",
+      fields: ["tile_id", "x", "y", "attention_score"],
+      rPackage: "ggplot2 / EBImage",
+      pyPackage: "OpenSlide / matplotlib",
+      r: [
+        'library(ggplot2)',
+        'dat <- read.csv("tile_attention.csv")',
+        'ggplot(dat, aes(x, y, fill = attention_score)) +',
+        '  geom_tile() + scale_y_reverse() + coord_equal() +',
+        '  scale_fill_viridis_c() + theme_void()'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, matplotlib.pyplot as plt',
+        'dat = pd.read_csv("tile_attention.csv")',
+        'plt.scatter(dat["x"], dat["y"], c=dat["attention_score"], cmap="magma", s=18)',
+        'plt.gca().invert_yaxis(); plt.axis("equal"); plt.colorbar(label="attention")',
+        'plt.tight_layout(); plt.savefig("attention_heatmap.png", dpi=300)'
+      ].join("\n"),
+      caption: "注意力热图展示模型在图像或patch层面的关注强度。",
+      methods: "将patch级注意力分数映射回切片坐标；该图仅用于模型解释和教学，不作为诊断依据。"
+    },
+    confusion_matrix: {
+      question: "查看分类模型哪些类别容易被混淆，帮助定位模型错误。",
+      fields: ["sample_id", "true_label", "pred_label"],
+      rPackage: "caret / ggplot2",
+      pyPackage: "scikit-learn / seaborn",
+      r: [
+        'library(caret)',
+        'dat <- read.csv("classification.csv")',
+        'confusionMatrix(as.factor(dat$pred_label), as.factor(dat$true_label))'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, seaborn as sns, matplotlib.pyplot as plt',
+        'from sklearn.metrics import confusion_matrix',
+        'dat = pd.read_csv("classification.csv")',
+        'cm = confusion_matrix(dat["true_label"], dat["pred_label"])',
+        'sns.heatmap(cm, annot=True, fmt="d", cmap="YlGnBu")',
+        'plt.tight_layout(); plt.savefig("confusion_matrix.png", dpi=300)'
+      ].join("\n"),
+      caption: "混淆矩阵展示真实类别与预测类别的对应关系。",
+      methods: "根据真实标签和预测标签计算混淆矩阵，结合类别样本量解释错误模式。"
+    },
+    gantt: {
+      question: "把课题任务、时间和里程碑放在同一张图里，适合申报书和项目管理。",
+      fields: ["task", "start", "end", "work_package"],
+      rPackage: "ggplot2 / vistime",
+      pyPackage: "plotly.timeline",
+      r: [
+        'library(ggplot2)',
+        'dat <- read.csv("gantt.csv")',
+        'dat$start <- as.Date(dat$start); dat$end <- as.Date(dat$end)',
+        'ggplot(dat, aes(x = start, xend = end, y = task, yend = task, color = work_package)) +',
+        '  geom_segment(linewidth = 7, lineend = "round") + theme_minimal(base_size = 12)'
+      ].join("\n"),
+      python: [
+        'import pandas as pd, plotly.express as px',
+        'dat = pd.read_csv("gantt.csv")',
+        'fig = px.timeline(dat, x_start="start", x_end="end", y="task", color="work_package")',
+        'fig.update_yaxes(autorange="reversed")',
+        'fig.write_html("gantt.html")'
+      ].join("\n"),
+      caption: "甘特图展示各任务的时间安排和工作包归属。",
+      methods: "按任务开始和结束时间绘制横向时间轴，里程碑需与实际计划一致。"
+    },
+    workflow_diagram: {
+      question: "说明一个方法或平台从输入到输出的步骤和责任边界。",
+      fields: ["step_id", "step_name", "input", "output", "owner"],
+      rPackage: "DiagrammeR / mermaid",
+      pyPackage: "graphviz",
+      r: [
+        'library(DiagrammeR)',
+        'grViz("digraph {',
+        '  input -> check_fields -> run_code -> caption -> review',
+        '}")'
+      ].join("\n"),
+      python: [
+        'from graphviz import Digraph',
+        'g = Digraph("workflow")',
+        'for node in ["Input", "Field check", "Run code", "Caption", "Review"]:',
+        '    g.node(node)',
+        'g.edges([("Input","Field check"),("Field check","Run code"),("Run code","Caption"),("Caption","Review")])',
+        'g.render("workflow", format="png", cleanup=True)'
+      ].join("\n"),
+      caption: "工作流图展示任务从输入、检查、运行到复核的全过程。",
+      methods: "将流程拆成节点和有向边，节点名称应对应真实任务和责任人。"
+    }
+  };
+
+  const templateAliases = {
+    density: "violin",
+    histogram: "boxplot",
+    correlation_heatmap: "heatmap",
+    ma_plot: "volcano",
+    gsea_curve: "enrichment_dotplot",
+    ora_barplot: "enrichment_dotplot",
+    ridgeplot_enrichment: "enrichment_dotplot",
+    tsne: "umap",
+    violin_by_cluster: "violin",
+    trajectory: "pseudotime",
+    rna_velocity: "pseudotime",
+    communication_bubble: "marker_dotplot",
+    ligand_receptor_network: "network_graph",
+    spatial_cluster_map: "spatial_feature_plot",
+    spatial_neighborhood_graph: "network_graph",
+    spatial_lr_map: "spatial_feature_plot",
+    tissue_region_composition: "cell_type_proportion",
+    circos: "sankey",
+    chord_diagram: "sankey",
+    alluvial: "sankey",
+    pathway_network: "network_graph",
+    multiomics_heatmap: "heatmap",
+    funnel_plot: "forest_plot",
+    nomogram: "workflow_diagram",
+    calibration_curve: "roc",
+    pr_curve: "roc",
+    decision_curve: "roc",
+    subgroup_forest: "forest_plot",
+    consort_flow: "prisma_flow",
+    tile_grid: "attention_heatmap",
+    wsi_tissue_mask: "attention_heatmap",
+    patch_embedding_umap: "umap",
+    prototype_atlas: "attention_heatmap",
+    class_activation_map: "attention_heatmap",
+    technology_roadmap: "workflow_diagram",
+    logic_framework: "workflow_diagram",
+    budget_sankey: "sankey",
+    evaluation_radar: "gantt",
+    architecture_diagram: "workflow_diagram",
+    barplot: "boxplot",
+  };
+
+  function getPlotTemplate(plotId) {
+    const key = plotTemplates[plotId] ? plotId : templateAliases[plotId];
+    const base = key && plotTemplates[key] ? plotTemplates[key] : plotTemplates.boxplot;
+    const plot = getPlot(plotId);
+    return {
+      ...base,
+      rPackage: base.rPackage || plot.pkg,
+      pyPackage: base.pyPackage || "matplotlib / pandas",
+    };
+  }
+
   function allPlotIds() {
     return Array.from(new Set(plotCategories.flatMap((cat) => cat.subs.flatMap((sub) => sub[3]))));
   }
@@ -622,6 +1177,8 @@
 
   function renderPlotDetail(id) {
     const plot = getPlot(id);
+    const template = getPlotTemplate(id);
+    const requiredFields = template.fields.join(", ");
     return appShell(`
       <section class="mp-section">
         <button class="mp-btn secondary" data-route="/plot-gallery">← 返回图谱</button>
@@ -630,10 +1187,10 @@
             <div class="mp-kicker">图型详情</div>
             <h1 class="mp-section-title">${escapeHtml(plot.title)}</h1>
             <p>${escapeHtml(plot.desc)}</p>
-            <div class="mp-panel"><strong>这个图回答什么问题？</strong><p>它适合把数据结构、组间差异或模型表现用一张图讲清楚。新手先确认研究问题，再检查字段，最后才改配色和图注。</p></div>
+            <div class="mp-panel"><strong>这个图回答什么问题？</strong><p>${escapeHtml(template.question)}</p></div>
             <div class="mp-content-grid" style="grid-template-columns:1fr 1fr">
-              <div class="mp-card"><strong>必需字段</strong><p>样本 ID、分组、数值、坐标或效应量字段。不同图型会在开始页给出更细检查。</p></div>
-              <div class="mp-card"><strong>推荐包</strong><p>${escapeHtml(plot.pkg)}。默认优先 R/ggplot2，需要交互或算法时补 Python。</p></div>
+              <div class="mp-card"><strong>必需字段</strong><p>${escapeHtml(requiredFields)}</p></div>
+              <div class="mp-card"><strong>推荐包</strong><p>R：${escapeHtml(template.rPackage)}；Python：${escapeHtml(template.pyPackage)}。</p></div>
             </div>
             <div class="mp-actions"><button class="mp-btn" data-route="/plot-run/${id}">用这个图开始</button><button class="mp-btn secondary" data-toast="示例数据已加入下载队列">下载示例数据</button></div>
           </div>
@@ -643,16 +1200,10 @@
           </figure>
         </div>
         <div class="mp-content-grid" style="margin-top:18px">
-          <div class="mp-panel"><h3>R 代码模板</h3><pre class="mp-code">library(ggplot2)
-dat &lt;- read.csv("example_data.csv")
-ggplot(dat, aes(x = group, y = value, fill = group)) +
-  geom_boxplot(width = .55, alpha = .78) +
-  theme_minimal(base_family = "sans")</pre></div>
-          <div class="mp-panel"><h3>Python 代码模板</h3><pre class="mp-code">import pandas as pd
-import seaborn as sns
-dat = pd.read_csv("example_data.csv")
-sns.set_theme(style="whitegrid")
-sns.boxplot(data=dat, x="group", y="value")</pre></div>
+          <div class="mp-panel"><h3>R 代码模板</h3><pre class="mp-code">${escapeHtml(template.r)}</pre></div>
+          <div class="mp-panel"><h3>Python 代码模板</h3><pre class="mp-code">${escapeHtml(template.python)}</pre></div>
+          <div class="mp-panel"><h3>图注草案</h3><p>${escapeHtml(template.caption)}</p></div>
+          <div class="mp-panel"><h3>Methods 写法</h3><p>${escapeHtml(template.methods)}</p></div>
         </div>
       </section>
     `, "/plot-gallery");
@@ -660,6 +1211,8 @@ sns.boxplot(data=dat, x="group", y="value")</pre></div>
 
   function renderPlotRun(id) {
     const plot = getPlot(id);
+    const template = getPlotTemplate(id);
+    const requiredFields = template.fields.join(", ");
     return appShell(`
       <section class="mp-section">
         <div class="mp-section-head">
@@ -672,7 +1225,7 @@ sns.boxplot(data=dat, x="group", y="value")</pre></div>
         </div>
         <div class="mp-content-grid">
           <div class="mp-panel"><h3>1. 选择 Skill</h3><label><input type="radio" name="skill-choice" checked> 官方 Skill：Plot Studio Runner</label><br><label><input type="radio" name="skill-choice"> 我的收藏 Skill：社区高赞图注复核流程</label><p>收藏 Skill 来自社区发布，按收藏量、复现次数和安全审计排序。</p></div>
-          <div class="mp-panel"><h3>2. 数据与字段</h3><textarea style="width:100%;min-height:130px;border-radius:18px;border:1px solid var(--mp-line);padding:14px" placeholder="粘贴字段名，例如 sample, group, value, pvalue, log2FC..."></textarea><div class="mp-actions"><button class="mp-btn" data-toast="字段检查通过：这是 mock 演示，本地 Runtime 会做真实检查。">检查字段</button><button class="mp-btn secondary" data-toast="已加载示例数据">使用示例数据</button></div></div>
+          <div class="mp-panel"><h3>2. 数据与字段</h3><p><b>当前图需要：</b>${escapeHtml(requiredFields)}</p><textarea style="width:100%;min-height:130px;border-radius:18px;border:1px solid var(--mp-line);padding:14px" placeholder="粘贴字段名：${escapeHtml(requiredFields)}"></textarea><div class="mp-actions"><button class="mp-btn" data-toast="字段检查通过：这是 mock 演示，本地 Runtime 会做真实检查。">检查字段</button><button class="mp-btn secondary" data-toast="已加载示例数据">使用示例数据</button></div></div>
           <div class="mp-panel"><h3>3. 模型 API</h3><p><b>状态：</b>前端不读取真实 Key。请在本地 Runtime 的 .env.local 里配置，网页只显示 configured true/false。</p><pre class="mp-code">OPENAI_API_KEY=...
 DEEPSEEK_API_KEY=...
 QWEN_API_KEY=...</pre></div>
@@ -682,7 +1235,7 @@ QWEN_API_KEY=...</pre></div>
             <img src="${thumbPath(id)}" alt="${escapeHtml(plot.title)}结果预览" onerror="this.onerror=null;this.src='${imgPath(id)}'" />
             <figcaption>当前为 mock 预览；真实运行时由本地 R/Python runtime 出图。</figcaption>
           </figure>
-          <div><h3>运行结果预览</h3><p>当前为 mock 预览。真实运行时会输出：图、代码、source data、caption、methods、字段审查和导师复核清单。</p><div class="mp-actions"><button class="mp-btn" data-toast="mock 运行完成：已生成图注和复核清单。">运行本地绘图</button><button class="mp-btn secondary" data-toast="ZIP 导出为演示状态">导出 ZIP</button></div></div>
+          <div><h3>运行结果预览</h3><p>当前为 mock 预览。真实运行时会输出：图、代码、source data、caption、methods、字段审查和导师复核清单。</p><pre class="mp-code">${escapeHtml(template.r.split("\n").slice(0, 6).join("\n"))}</pre><div class="mp-actions"><button class="mp-btn" data-toast="mock 运行完成：已生成图注和复核清单。">运行本地绘图</button><button class="mp-btn secondary" data-toast="ZIP 导出为演示状态">导出 ZIP</button></div></div>
         </div>
       </section>
     `, "/plot-gallery");
