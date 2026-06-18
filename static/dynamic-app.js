@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "round122";
+  const VERSION = "round123";
   const PLOT_BASE = "outputs/round110_plots";
 
   const state = {
@@ -638,8 +638,8 @@
             <div class="mp-actions"><button class="mp-btn" data-route="/plot-run/${id}">用这个图开始</button><button class="mp-btn secondary" data-toast="示例数据已加入下载队列">下载示例数据</button></div>
           </div>
           <figure class="mp-plot-detail-figure">
-            <img src="${imgPath(id)}" alt="${escapeHtml(plot.title)}示例大图" onerror="this.src='${imgPath("scatter")}'" />
-            <figcaption>示例图由项目内置虚拟数据和对应绘图脚本生成，用于说明图型结构和字段要求。</figcaption>
+            <img src="${thumbPath(id)}" alt="${escapeHtml(plot.title)}示例大图" onerror="this.onerror=null;this.src='${imgPath(id)}'" />
+            <figcaption>示例图由项目内置虚拟数据和对应绘图脚本生成，用于说明图型结构和字段要求。<a href="${imgPath(id)}" target="_blank" rel="noreferrer">查看高清图</a></figcaption>
           </figure>
         </div>
         <div class="mp-content-grid" style="margin-top:18px">
@@ -679,7 +679,7 @@ QWEN_API_KEY=...</pre></div>
         </div>
         <div class="mp-detail" style="margin-top:18px">
           <figure class="mp-plot-detail-figure compact">
-            <img src="${imgPath(id)}" alt="${escapeHtml(plot.title)}结果预览" onerror="this.src='${imgPath("scatter")}'" />
+            <img src="${thumbPath(id)}" alt="${escapeHtml(plot.title)}结果预览" onerror="this.onerror=null;this.src='${imgPath(id)}'" />
             <figcaption>当前为 mock 预览；真实运行时由本地 R/Python runtime 出图。</figcaption>
           </figure>
           <div><h3>运行结果预览</h3><p>当前为 mock 预览。真实运行时会输出：图、代码、source data、caption、methods、字段审查和导师复核清单。</p><div class="mp-actions"><button class="mp-btn" data-toast="mock 运行完成：已生成图注和复核清单。">运行本地绘图</button><button class="mp-btn secondary" data-toast="ZIP 导出为演示状态">导出 ZIP</button></div></div>
