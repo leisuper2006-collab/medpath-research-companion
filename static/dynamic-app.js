@@ -651,6 +651,19 @@ QWEN_API_KEY=...</pre></div>
     window.__MEDPATH_DYNAMIC_RENDERING__ = false;
   }
 
+  function ordinaryRouteNeedsRender() {
+    const app = document.getElementById("app");
+    if (!app || isLegacyGameRoute(routeOf())) return false;
+    const text = app.textContent || "";
+    if (app.getAttribute("data-medpath-dynamic-owned") !== VERSION) return true;
+    if (!app.querySelector(".mp-shell")) return true;
+    if (!text.includes("MedPath Research Companion")) return true;
+    if (routeOf() === "/home" && !text.includes("把科研新手的第一步")) return true;
+    if (routeOf() === "/open-source" && !text.includes("先问用途，再进仓库")) return true;
+    if ((routeOf() === "/providers" || routeOf() === "/runtime") && !text.includes("密钥留在你自己的电脑里")) return true;
+    return false;
+  }
+
   function bindEvents() {
     document.querySelectorAll("[data-route]").forEach((el) => {
       el.addEventListener("click", (event) => {
@@ -756,6 +769,8 @@ QWEN_API_KEY=...</pre></div>
     setTimeout(render, 80);
     setTimeout(render, 420);
     setTimeout(render, 1200);
+    setTimeout(render, 2400);
+    setTimeout(render, 4200);
   });
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", render);
@@ -772,11 +787,18 @@ QWEN_API_KEY=...</pre></div>
       guardTimer = window.setTimeout(() => {
         const app = document.getElementById("app");
         if (!app || isLegacyGameRoute(routeOf())) return;
-        if (app.getAttribute("data-medpath-dynamic-owned") !== VERSION || !app.querySelector(".mp-shell")) render();
+        if (ordinaryRouteNeedsRender()) render();
       }, 60);
     });
     observer.observe(appNode, { childList: true, subtree: false });
   }
+
+  let watchdogTicks = 0;
+  const watchdog = window.setInterval(() => {
+    watchdogTicks += 1;
+    if (ordinaryRouteNeedsRender()) render();
+    if (watchdogTicks > 12) window.clearInterval(watchdog);
+  }, 900);
 
   window.MedPathDynamicApp = { version: VERSION, render, allPlotIds, plotCategories };
 })();
