@@ -815,6 +815,85 @@ body.medpath-dynamic {
   font-size: 13px;
 }
 
+.mp-tool-grid,
+.mp-provider-grid,
+.mp-profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.mp-profile-stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.mp-tool-card {
+  min-height: 260px;
+  padding: 22px;
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.92), rgba(248, 253, 250, .92)),
+    radial-gradient(circle at 90% 10%, rgba(232, 137, 167, .18), transparent 10rem);
+  border: 1px solid var(--mp-line);
+  box-shadow: var(--mp-shadow);
+}
+
+.mp-tool-card h3,
+.mp-provider-grid h3 {
+  margin: 14px 0 8px;
+  font-family: var(--mp-kaiti);
+  font-size: 28px;
+}
+
+.mp-tool-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.mp-tool-stack span,
+.mp-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--mp-leaf-2);
+  color: var(--mp-leaf);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.mp-profile-hero {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) auto;
+  gap: 22px;
+  align-items: center;
+  padding: 26px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 8% 10%, rgba(244, 206, 114, .26), transparent 18rem),
+    linear-gradient(135deg, rgba(255,255,255,.94), rgba(235, 249, 244, .9));
+  border: 1px solid var(--mp-line);
+  box-shadow: var(--mp-shadow);
+}
+
+.mp-avatar {
+  width: 86px;
+  height: 86px;
+  border-radius: 28px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #f8c7d7, #008f86);
+  color: white;
+  font-family: var(--mp-kaiti);
+  font-size: 42px;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 3px rgba(255,255,255,.66), 0 18px 34px rgba(0, 91, 86, .2);
+}
+
 .mp-community-list {
   display: grid;
   grid-template-columns: 1.1fr .9fr;
@@ -854,7 +933,10 @@ body.medpath-dynamic {
   .mp-builder-grid,
   .mp-community-list { grid-template-columns: 1fr; }
   .mp-persona-grid,
-  .mp-skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mp-skill-grid,
+  .mp-tool-grid,
+  .mp-provider-grid,
+  .mp-profile-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mp-plot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mp-island { min-height: 760px; }
   .mp-island-map { inset: 250px 18px 72px 18px; }
@@ -868,7 +950,11 @@ body.medpath-dynamic {
   .mp-hero h1 { font-size: 42px; }
   .mp-carousel-track { grid-auto-columns: 88%; }
   .mp-persona-grid,
-  .mp-plot-grid { grid-template-columns: 1fr; }
+  .mp-plot-grid,
+  .mp-tool-grid,
+  .mp-provider-grid,
+  .mp-profile-stats { grid-template-columns: 1fr; }
+  .mp-profile-hero { grid-template-columns: 1fr; }
   .mp-quick-panel { grid-template-columns: 1fr; }
   .mp-sidebar { padding: 14px; }
   .mp-brand { grid-template-columns: 42px 1fr; }
