@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "round120";
+  const VERSION = "round121";
   const PLOT_BASE = "outputs/round110_plots";
 
   const state = {
@@ -557,7 +557,7 @@
     return `
       <article class="mp-plot-card">
         <div class="mp-plot-thumb">
-          <img src="${imgPath(id)}" alt="${escapeHtml(plot.title)}示例图" loading="lazy" onerror="this.src='${imgPath("scatter")}'" />
+          <img src="${imgPath(id)}" alt="${escapeHtml(plot.title)}示例图" onerror="this.src='${imgPath("scatter")}'" />
         </div>
         <div class="body">
           <small>${escapeHtml(plot.pkg)}</small>
