@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "round118";
+  const VERSION = "round119";
   const PLOT_BASE = "outputs/round110_plots";
 
   const state = {
@@ -690,8 +690,8 @@ QWEN_API_KEY=...</pre></div>
     const plots = (skill.plots || ["workflow_diagram"]).slice(0, 2);
     return `<article class="mp-skill-product">
       <div class="mp-skill-head">
-        <span class="mp-lotus-icon">技</span>
-        <span>${escapeHtml(skill.tag || "Skill")}</span>
+        <span class="mp-skill-type">${escapeHtml(skill.tag || "Skill")}</span>
+        <span>可试用</span>
       </div>
       <h3>${escapeHtml(skill.name)}</h3>
       <p>${escapeHtml(skill.desc)}</p>
@@ -709,7 +709,7 @@ QWEN_API_KEY=...</pre></div>
     return appShell(`
       <section class="mp-section">
         <div class="mp-section-head">
-          <div><div class="mp-kicker">Skill Market</div><h1 class="mp-section-title">像挑工具一样挑 Skill</h1><p>先看它能帮你完成什么，再打开示例、代码、风险边界和社区收藏。</p></div>
+          <div><div class="mp-kicker">Skill 市场</div><h1 class="mp-section-title">选一个能完成任务的 Skill</h1><p>每张卡只说三件事：适合谁、能产出什么、点开后怎么试用。</p></div>
           <button class="mp-btn" data-toast="Skill 创建器已打开：mock 演示">创建我的 Skill</button>
         </div>
         <div class="mp-skill-strip">
@@ -763,7 +763,7 @@ QWEN_API_KEY=...</pre></div>
     return appShell(`
       <section class="mp-section">
         <div class="mp-section-head">
-          <div><div class="mp-kicker">Community</div><h1 class="mp-section-title">像论坛一样找帖子、找 Skill、看榜单</h1><p>先做可点击的社区 MVP：搜索、点赞、收藏、排行榜、拜访小岛。</p></div>
+          <div><div class="mp-kicker">社区交流</div><h1 class="mp-section-title">找帖子、找 Skill、看榜单</h1><p>这里先做可点击的社区雏形：搜索、点赞、收藏、排行榜和拜访小岛入口。</p></div>
           <button class="mp-btn" data-toast="发布弹窗：mock 演示">发布帖子</button>
         </div>
         <div class="mp-forum-search">
@@ -776,7 +776,7 @@ QWEN_API_KEY=...</pre></div>
             ${posts.map(([author, title, likes, tag], i) => {
               const linkedSkill = getSkill(skills[i % skills.length][0]);
               return `<article class="mp-post">
-                <span class="mp-lotus-icon">${i + 1}</span>
+                <span class="mp-post-rank">${i + 1}</span>
                 <div><strong>${escapeHtml(title)}</strong><p>${escapeHtml(author)} · ${escapeHtml(tag)} · ${likes.toLocaleString()} 收藏</p><small>关联 Skill：${escapeHtml(linkedSkill.name)}</small></div>
                 <div class="mp-actions"><button class="mp-btn secondary" data-toast="已点赞">点赞</button><a class="mp-btn" href="#/skills/${linkedSkill.id}" data-route="/skills/${linkedSkill.id}">打开 Skill</a></div>
               </article>`;
