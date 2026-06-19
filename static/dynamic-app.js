@@ -1147,7 +1147,7 @@
             <h2 class="mp-section-title">五个常用入口</h2>
             <p>桌面端横向滑动，移动端一屏一张多一点；每张卡都能进入真实页面。</p>
           </div>
-          <div class="mp-actions"><button class="mp-btn secondary" data-carousel="prev">←</button><button class="mp-btn secondary" data-carousel="next">→</button></div>
+          <div class="mp-actions"><button class="mp-btn secondary" data-carousel="prev" aria-label="上一张推荐">←</button><button class="mp-btn secondary" data-carousel="next" aria-label="下一张推荐">→</button></div>
         </div>
         <div class="mp-carousel">
           <div class="mp-carousel-track" data-carousel-track>
@@ -1724,12 +1724,24 @@ QWEN_API_KEY=...</pre></div>
         render();
       });
     });
-    document.querySelectorAll("[data-carousel]").forEach((el) => {
-      el.addEventListener("click", () => moveCarousel(el.getAttribute("data-carousel") === "next" ? 1 : -1));
-    });
-    document.querySelectorAll("[data-carousel-dot]").forEach((el) => {
-      el.addEventListener("click", () => setCarousel(Number(el.getAttribute("data-carousel-dot"))));
-    });
+    const carouselPolishEnabled = window.MEDPATH_CAROUSEL_POLISH ||
+      Boolean(document.querySelector('script[src*="round132-carousel-polish"]'));
+    if (!carouselPolishEnabled) {
+      document.querySelectorAll("[data-carousel]").forEach((el) => {
+        el.addEventListener("click", () => {
+          window.clearInterval(carouselTimer);
+          moveCarousel(el.getAttribute("data-carousel") === "next" ? 1 : -1);
+          startCarouselAuto();
+        });
+      });
+      document.querySelectorAll("[data-carousel-dot]").forEach((el) => {
+        el.addEventListener("click", () => {
+          window.clearInterval(carouselTimer);
+          setCarousel(Number(el.getAttribute("data-carousel-dot")));
+          startCarouselAuto();
+        });
+      });
+    }
     const assistant = document.querySelector("[data-assistant]");
     if (assistant) {
       const panel = assistant.querySelector(".mp-assistant-panel");
@@ -1737,8 +1749,10 @@ QWEN_API_KEY=...</pre></div>
       assistant.querySelector("[data-assistant-close]")?.addEventListener("click", () => panel.hidden = true);
       assistant.querySelector("[data-assistant-send]")?.addEventListener("click", () => answerAssistant(assistant));
     }
-    setCarousel(state.carouselIndex, false);
-    startCarouselAuto();
+    if (!carouselPolishEnabled) {
+      setCarousel(state.carouselIndex, false);
+      startCarouselAuto();
+    }
   }
 
   function answerAssistant(assistant) {
@@ -1769,11 +1783,28 @@ QWEN_API_KEY=...</pre></div>
   function setCarousel(index, scroll = true) {
     state.carouselIndex = Math.max(0, Math.min(recommended.length - 1, index));
     const track = document.querySelector("[data-carousel-track]");
-    const card = track?.querySelector(".mp-entry-card");
-    if (track && card && scroll) {
-      track.scrollTo({ left: card.offsetWidth * state.carouselIndex, behavior: "smooth" });
+    const cards = track ? [...track.querySelectorAll(".mp-entry-card")] : [];
+    const target = cards[state.carouselIndex];
+    if (track && target && scroll) {
+      const styles = window.getComputedStyle(track);
+      const gap = Number.parseFloat(styles.columnGap || styles.gap || "18") || 18;
+      const cardWidth = cards[0]?.getBoundingClientRect().width || target.getBoundingClientRect().width || 1;
+      const step = cardWidth + gap;
+      const visibleCards = Math.max(1, Math.floor((track.clientWidth + gap) / step));
+      const maxShift = Math.max(0, (cards.length - visibleCards) * step);
+      const left = Math.min(state.carouselIndex * step, maxShift);
+      track.style.setProperty("--mp-carousel-x", `${left}px`);
+      track.style.transform = `translateX(-${left}px)`;
+      track.scrollLeft = left;
+      if (typeof track.scrollTo === "function") {
+        track.scrollTo({ left, behavior: "smooth" });
+      }
+    } else if (track && !scroll) {
+      track.style.setProperty("--mp-carousel-x", "0px");
+      track.style.transform = "translateX(0)";
     }
     document.querySelectorAll(".mp-dot").forEach((dot, i) => dot.classList.toggle("is-active", i === state.carouselIndex));
+    cards.forEach((card, i) => card.classList.toggle("is-current", i === state.carouselIndex));
   }
 
   function startCarouselAuto() {
@@ -1788,6 +1819,34 @@ QWEN_API_KEY=...</pre></div>
       track.dataset.autoBound = "true";
       track.addEventListener("mouseenter", () => window.clearInterval(carouselTimer));
       track.addEventListener("mouseleave", startCarouselAuto);
+      track.addEventListener("focusin", () => window.clearInterval(carouselTimer));
+      track.addEventListener("focusout", startCarouselAuto);
+      track.addEventListener("touchstart", (event) => {
+        window.clearInterval(carouselTimer);
+        track.dataset.touchX = String(event.touches?.[0]?.clientX || 0);
+      }, { passive: true });
+      track.addEventListener("touchend", (event) => {
+        const startX = Number(track.dataset.touchX || 0);
+        const endX = Number(event.changedTouches?.[0]?.clientX || startX);
+        const delta = endX - startX;
+        if (Math.abs(delta) > 34) moveCarousel(delta < 0 ? 1 : -1);
+        startCarouselAuto();
+      }, { passive: true });
+      track.addEventListener("scroll", () => {
+        const cards = [...track.querySelectorAll(".mp-entry-card")];
+        if (!cards.length) return;
+        const center = track.scrollLeft + track.clientWidth / 2;
+        const nearest = cards.reduce((best, card, i) => {
+          const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          const distance = Math.abs(cardCenter - center);
+          return distance < best.distance ? { i, distance } : best;
+        }, { i: state.carouselIndex, distance: Infinity });
+        if (nearest.i !== state.carouselIndex) {
+          state.carouselIndex = nearest.i;
+          document.querySelectorAll(".mp-dot").forEach((dot, i) => dot.classList.toggle("is-active", i === state.carouselIndex));
+          cards.forEach((card, i) => card.classList.toggle("is-current", i === state.carouselIndex));
+        }
+      }, { passive: true });
     }
   }
 

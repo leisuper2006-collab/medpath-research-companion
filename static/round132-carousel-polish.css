@@ -1,0 +1,47 @@
+.mp-carousel-track {
+  overflow-x: hidden;
+  transition: transform .38s cubic-bezier(.22, .8, .24, 1);
+  will-change: transform;
+}
+
+.mp-entry-card {
+  transition: transform .28s ease, opacity .28s ease, border-color .28s ease, box-shadow .28s ease;
+}
+
+.mp-entry-card:not(.is-current) {
+  opacity: .88;
+  transform: translateY(0) scale(.985);
+}
+
+.mp-entry-card.is-current {
+  opacity: 1;
+  border-color: rgba(0, 143, 134, .32);
+  box-shadow: 0 22px 46px rgba(0, 95, 87, .15);
+  transform: translateY(-4px) scale(1);
+}
+
+.mp-dot {
+  transition: width .2s ease, background .2s ease, transform .2s ease;
+}
+
+.mp-dot.is-active {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 720px) {
+  .mp-carousel {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .mp-carousel-track {
+    overflow-x: auto;
+    overflow-y: visible;
+    padding-inline: 0;
+    scrollbar-width: none;
+  }
+
+  .mp-carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+}
