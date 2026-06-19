@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "round126";
+  const VERSION = "round127";
   const PLOT_BASE = "outputs/round110_plots";
 
   const state = {
@@ -1198,7 +1198,10 @@
           <img src="${thumbPath(id)}" alt="${escapeHtml(plot.title)}示例图" onerror="this.onerror=()=>{this.onerror=null;this.src='${imgPath("scatter")}'};this.src='${imgPath(id)}'" />
         </div>
         <div class="body">
-          <small>${escapeHtml(plot.pkg)}</small>
+          <div class="mp-plot-meta">
+            <span>${escapeHtml(plot.pkg)}</span>
+            <span>示例图 / 代码 / 图注</span>
+          </div>
           <h3>${escapeHtml(plot.title)}</h3>
           <p>${escapeHtml(plot.desc)}</p>
           <div class="mp-actions">
@@ -1228,11 +1231,12 @@
         <div class="mp-content-grid">
           <aside class="mp-taxonomy">
             <h3>学科分类</h3>
-            ${plotCategories.map((item) => `<button class="${item.id === state.activeDiscipline ? "is-active" : ""}" data-discipline="${item.id}">${escapeHtml(item.name)}</button>`).join("")}
+            <p>先选你的研究领域，再选二级任务。</p>
+            ${plotCategories.map((item) => `<button class="${item.id === state.activeDiscipline ? "is-active" : ""}" data-discipline="${item.id}"><span>${escapeHtml(item.name)}</span><small>${item.subs.length} 个二级方向</small></button>`).join("")}
           </aside>
           <div>
             <div class="mp-subcats">
-              ${cat.subs.map((item) => `<button class="${item[0] === sub[0] ? "is-active" : ""}" data-subcat="${item[0]}">${escapeHtml(item[1])}</button>`).join("")}
+              ${cat.subs.map((item) => `<button class="${item[0] === sub[0] ? "is-active" : ""}" data-subcat="${item[0]}"><strong>${escapeHtml(item[1])}</strong><span>${item[3].length} 种图</span></button>`).join("")}
             </div>
             <div class="mp-panel" style="margin:14px 0">
               <strong>${escapeHtml(sub[1])}</strong>
