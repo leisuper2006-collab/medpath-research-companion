@@ -1317,6 +1317,20 @@ body.medpath-dynamic *::after {
   box-shadow: var(--mp-shadow);
 }
 
+.mp-tool-grid .mp-tool-card:not(.mp-tool-card-rich) {
+  display: none;
+}
+
+.mp-tool-card-rich {
+  display: flex;
+  flex-direction: column;
+  min-height: 285px;
+}
+
+.mp-tool-card-rich .mp-actions {
+  margin-top: auto;
+}
+
 .mp-tool-card h3,
 .mp-provider-grid h3 {
   margin: 14px 0 8px;

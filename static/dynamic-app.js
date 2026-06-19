@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "round125";
+  const VERSION = "round126";
   const PLOT_BASE = "outputs/round110_plots";
 
   const state = {
@@ -206,6 +206,85 @@
     ["计算病理", "OpenSlide、QuPath、TIAToolbox、PyTorch", "切片切块、组织掩膜、特征嵌入和注意力热图。", "/plot-gallery"],
     ["科研写作", "论文结构、图注、Methods、复现材料", "把结果转成审稿人看得懂的叙述。", "/skills"],
   ];
+
+  const openSourceCatalog = [
+    {
+      id: "literature-review",
+      title: "文献检索与综述",
+      subtitle: "适合从一个问题开始，整理检索式、证据表、综述结构和引用核验。",
+      tools: ["PubMed", "Europe PMC", "OpenAlex", "Zotero", "Rayyan"],
+      input: "研究问题、关键词、纳排标准、目标数据库",
+      output: "检索式、文献池、证据表、PRISMA草案、综述提纲",
+      example: "我想做肿瘤免疫治疗耐药综述，帮我先拆检索词和证据表字段。",
+      risk: "模型不能伪造引用。所有文献题录、DOI、PMID和结论都要回到数据库核验。",
+      route: "/method-runner/meta-analysis",
+      plots: ["prisma_flow", "forest_plot", "network_graph"]
+    },
+    {
+      id: "single-cell-spatial",
+      title: "单细胞与空间组学",
+      subtitle: "适合表达矩阵、细胞注释、空间点位和细胞通讯等数据。",
+      tools: ["Seurat", "Scanpy", "Squidpy", "CellChat", "Monocle3", "scVelo"],
+      input: "表达矩阵、细胞元数据、样本分组、空间坐标或组织区域",
+      output: "质控路线、UMAP、marker图、比例图、拟时序、空间特征图",
+      example: "我有单细胞矩阵和细胞注释，想比较肿瘤组和对照组免疫细胞差异。",
+      risk: "细胞注释和轨迹推断是探索性结果，不能只凭一张图下结论。",
+      route: "/method-runner/single-cell-perturbation",
+      plots: ["umap", "marker_dotplot", "spatial_feature_plot"]
+    },
+    {
+      id: "meta-analysis",
+      title: "Meta分析与循证图表",
+      subtitle: "适合医学、护理、公共卫生和教育研究中的系统综述与Meta分析。",
+      tools: ["meta", "metafor", "PRISMA2020", "robvis", "RevMan"],
+      input: "PICO问题、纳排表、效应量、标准误、偏倚风险表",
+      output: "森林图、漏斗图、亚组分析、敏感性分析、PRISMA流程",
+      example: "我想比较两种教学干预对考试成绩的影响，如何准备森林图数据？",
+      risk: "纳排不清、效应量混用或异质性解释不足时，森林图会误导读者。",
+      route: "/method-runner/meta-analysis",
+      plots: ["forest_plot", "funnel_plot", "prisma_flow"]
+    },
+    {
+      id: "machine-learning",
+      title: "机器学习预测",
+      subtitle: "适合分类、回归、风险评分、模型解释和验证集评估。",
+      tools: ["scikit-learn", "tidymodels", "pROC", "rms", "DALEX", "SHAP"],
+      input: "训练集、验证集、结局变量、候选特征、缺失值处理记录",
+      output: "ROC、PR曲线、校准曲线、决策曲线、混淆矩阵和模型报告",
+      example: "我有临床表格数据，想预测复发风险并画ROC和校准曲线。",
+      risk: "不要只报AUC。必须说明数据划分、过拟合控制和外部验证边界。",
+      route: "/method-runner/machine-learning-prediction",
+      plots: ["roc", "calibration_curve", "confusion_matrix"]
+    },
+    {
+      id: "computational-pathology",
+      title: "计算病理与图像分析",
+      subtitle: "适合WSI切片、patch、组织掩膜、注意力热图和模型错误分析。",
+      tools: ["OpenSlide", "QuPath", "TIAToolbox", "PyTorch", "OpenCV"],
+      input: "公开或授权切片、组织区域、patch大小、模型任务和标注边界",
+      output: "tile网格、组织掩膜、注意力热图、patch UMAP、混淆矩阵",
+      example: "我想把公开病理切片切成patch，并展示模型关注区域。",
+      risk: "不得使用未授权患者图像；模型热图仅用于教学和研究解释，不替代诊断。",
+      route: "/method-runner/computational-pathology",
+      plots: ["tile_grid", "attention_heatmap", "patch_embedding_umap"]
+    },
+    {
+      id: "research-writing",
+      title: "科研写作与复现材料",
+      subtitle: "适合把结果整理成图注、Methods、补充材料和可复现清单。",
+      tools: ["Quarto", "R Markdown", "Jupyter", "Zotero", "GitHub Actions"],
+      input: "图、代码、数据字段、分析步骤、目标期刊或课程要求",
+      output: "图注、Methods、复现包结构、审稿人检查清单和Skill草案",
+      example: "我已经有火山图和富集图，帮我写图注和Methods的初稿。",
+      risk: "写作助手只能整理表达，不能编造结果、统计量、引用或实验过程。",
+      route: "/skills",
+      plots: ["workflow_diagram", "logic_framework", "gantt"]
+    }
+  ];
+
+  function getOpenSourceItem(id) {
+    return openSourceCatalog.find((item) => item.id === id) || openSourceCatalog[0];
+  }
 
   const posts = [
     ["Path_Queen", "我做了一个“病理报告批改 Skill”，适合本科训练", 2740, "Skill"],
@@ -1421,6 +1500,7 @@ QWEN_API_KEY=...</pre></div>
   }
 
   function renderOpenSource() {
+    const catalogCards = openSourceCatalog.map((item) => `<article class="mp-tool-card mp-tool-card-rich"><div class="mp-tool-eyebrow">开源路线</div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.subtitle)}</p><div class="mp-tool-stack">${item.tools.map((tool) => `<span>${escapeHtml(tool)}</span>`).join("")}</div><div class="mp-actions"><button class="mp-btn" data-route="/open-source/${item.id}">看详情</button><button class="mp-btn secondary" data-route="${item.route}">进方法</button><button class="mp-btn secondary" data-toast="已加入你的工具箱：${escapeHtml(item.title)}">收藏</button></div></article>`).join("");
     return appShell(`
       <section class="mp-section">
         <div class="mp-section-head">
@@ -1428,11 +1508,52 @@ QWEN_API_KEY=...</pre></div>
           <button class="mp-btn" data-toast="已生成工具筛选草案：mock 演示">帮我筛工具</button>
         </div>
         <div class="mp-tool-grid">
+          ${catalogCards}
           ${toolGroups.map(([title, tools, desc, route]) => `<article class="mp-tool-card"><div class="mp-tool-eyebrow">开源路线</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(desc)}</p><div class="mp-tool-stack">${tools.split("、").map((tool) => `<span>${escapeHtml(tool)}</span>`).join("")}</div><div class="mp-actions"><button class="mp-btn" data-route="${route}">看方法</button><button class="mp-btn secondary" data-toast="已加入你的工具箱：${escapeHtml(title)}">收藏</button></div></article>`).join("")}
         </div>
         <div class="mp-detail" style="margin-top:22px">
           <div><h2 class="mp-section-title">新手怎么用这一页</h2><p>如果你还不知道该用哪个仓库，先写一句话：“我有什么数据，想回答什么问题”。平台会把它拆成检索、安装、输入格式、示例结果、风险提示和复现材料。</p><div class="mp-panel"><strong>例子</strong><p>“我有单细胞表达矩阵，想看免疫细胞亚群差异。”系统会推荐 Seurat/Scanpy 入门流程、UMAP、marker dotplot、细胞比例图，并提示先做质控和注释。</p></div></div>
           <img src="${imgPath("network_graph")}" alt="开源工具关系示例图" onerror="this.src='${imgPath("workflow_diagram")}'" />
+        </div>
+      </section>
+    `, "/open-source");
+  }
+
+  function renderOpenSourceDetail(id) {
+    const item = getOpenSourceItem(id);
+    const plotLinks = item.plots.map((plotId) => {
+      const plot = getPlot(plotId);
+      return `<a class="mp-mini-plot" href="#/plot-gallery/${plotId}" data-route="/plot-gallery/${plotId}">
+        <img src="${thumbPath(plotId)}" alt="${escapeHtml(plot.title)}示例图" onerror="this.src='${imgPath(plotId)}'" />
+        <span>${escapeHtml(plot.title)}</span>
+      </a>`;
+    }).join("");
+    return appShell(`
+      <section class="mp-section">
+        <button class="mp-btn secondary" data-route="/open-source">← 返回开源工具</button>
+        <div class="mp-method-hero" style="margin-top:18px">
+          <div>
+            <div class="mp-kicker">Open Source Route</div>
+            <h1 class="mp-section-title">${escapeHtml(item.title)}</h1>
+            <p>${escapeHtml(item.subtitle)}</p>
+            <div class="mp-method-tags">${item.tools.map((tool) => `<span>${escapeHtml(tool)}</span>`).join("")}</div>
+            <div class="mp-actions"><button class="mp-btn" data-route="${item.route}">按这个方向进入方法页</button><button class="mp-btn secondary" data-toast="已把 ${escapeHtml(item.title)} 加入你的工具箱">收藏路线</button></div>
+          </div>
+          <div class="mp-method-preview">${plotLinks}</div>
+        </div>
+        <div class="mp-content-grid" style="margin-top:18px">
+          <article class="mp-panel"><h3>你需要准备什么</h3><p>${escapeHtml(item.input)}</p></article>
+          <article class="mp-panel"><h3>能得到什么</h3><p>${escapeHtml(item.output)}</p></article>
+          <article class="mp-panel"><h3>示例任务</h3><p>${escapeHtml(item.example)}</p></article>
+          <article class="mp-panel"><h3>风险和边界</h3><p>${escapeHtml(item.risk)}</p></article>
+        </div>
+        <div class="mp-detail" style="margin-top:22px">
+          <div>
+            <h2 class="mp-section-title">怎么转成自己的 Skill？</h2>
+            <p>把“输入数据、运行步骤、输出图表、检查点、风险边界”写成一个固定流程，就可以作为你的收藏 Skill 发布到社区。别人收藏后可以复用，但真实运行仍需要自己的数据、环境和 API 配置。</p>
+            <div class="mp-panel"><strong>仓库信息说明</strong><p>这里列出的是常用开源工具路线。具体安装方式、许可证、版本兼容和引用格式必须以对应官方仓库或文档为准；本站不复制第三方代码，也不保存用户 API Key。</p></div>
+          </div>
+          <img src="${imgPath(item.plots[0] || "workflow_diagram")}" alt="${escapeHtml(item.title)}示例图" onerror="this.src='${imgPath("workflow_diagram")}'" />
         </div>
       </section>
     `, "/open-source");
@@ -1525,6 +1646,7 @@ QWEN_API_KEY=...</pre></div>
     else if (path === "/community") html = renderCommunity();
     else if (path === "/method-runner") html = renderMethodRunner();
     else if (path.startsWith("/method-runner/")) html = renderMethodDetail(path.split("/").pop());
+    else if (path.startsWith("/open-source/")) html = renderOpenSourceDetail(path.split("/").pop());
     else if (path === "/open-source") html = renderOpenSource();
     else if (path === "/profile") html = renderProfile();
     else if (path === "/providers" || path === "/runtime") html = renderProvidersRuntime();
