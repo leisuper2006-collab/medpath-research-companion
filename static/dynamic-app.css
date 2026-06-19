@@ -1469,6 +1469,105 @@ body.medpath-dynamic *::after {
   box-shadow: inset 0 0 0 3px rgba(255,255,255,.66), 0 10px 22px rgba(0, 91, 86, .16);
 }
 
+.mp-badge-row,
+.mp-topic-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.mp-badge-row span,
+.mp-topic-row button {
+  border: 1px solid rgba(0, 143, 134, .16);
+  border-radius: 999px;
+  background: rgba(223, 243, 238, .78);
+  color: var(--mp-leaf);
+  min-height: 30px;
+  padding: 0 12px;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.mp-topic-row {
+  margin: 0 0 18px;
+}
+
+.mp-topic-row button {
+  cursor: pointer;
+}
+
+.mp-featured-skill-row,
+.mp-profile-work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.mp-featured-skill,
+.mp-profile-work {
+  padding: 18px;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 86% 12%, rgba(232, 137, 167, .14), transparent 32%),
+    rgba(255, 255, 255, .9);
+  border: 1px solid var(--mp-line);
+  box-shadow: 0 8px 18px rgba(20, 91, 84, .06);
+}
+
+.mp-featured-skill span,
+.mp-profile-work span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(255, 249, 229, .92);
+  color: #8a6c16;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.mp-featured-skill strong,
+.mp-profile-work h3 {
+  display: block;
+  margin: 12px 0 8px;
+  font-family: var(--mp-kaiti);
+  font-size: 24px;
+  color: var(--mp-ink);
+}
+
+.mp-featured-skill p,
+.mp-profile-work p {
+  color: var(--mp-muted);
+  line-height: 1.65;
+  min-height: 48px;
+}
+
+.mp-profile-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 16px;
+}
+
+.mp-profile-tabs button {
+  border: 1px solid var(--mp-line);
+  border-radius: 999px;
+  background: white;
+  color: var(--mp-muted);
+  min-height: 36px;
+  padding: 0 15px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.mp-profile-tabs button.is-active {
+  background: var(--mp-leaf);
+  color: white;
+}
+
 .mp-community-list,
 .mp-community-grid {
   display: grid;
@@ -1585,6 +1684,37 @@ body.medpath-dynamic *::after {
 }
 
 .mp-leaderboard a small {
+  grid-column: 2;
+  color: var(--mp-muted);
+}
+
+.mp-island-link {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 1px solid var(--mp-line);
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mp-island-link span {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 249, 229, .96);
+  color: #8a6c16;
+  font-weight: 900;
+}
+
+.mp-island-link small {
   grid-column: 2;
   color: var(--mp-muted);
 }

@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "round127";
+  const VERSION = "round128";
   const PLOT_BASE = "outputs/round110_plots";
 
   const state = {
@@ -1408,29 +1408,46 @@ QWEN_API_KEY=...</pre></div>
 
   function renderCommunity() {
     const leaderboard = skills.map(([id]) => getSkill(id)).slice().sort((a, b) => (b.community || "").length - (a.community || "").length).slice(0, 5);
+    const topics = ["新手求助", "Skill 发布", "图表复现", "课程作业", "Meta 分析", "单细胞", "病理案例"];
+    const featuredSkills = ["plot-studio-runner", "pathology-report-coach", "literature-review-helper"].map(getSkill);
+    const islandVisits = [
+      ["Path_Queen", "病理报告训练岛", "42 人申请拜访"],
+      ["BioWalker", "单细胞图谱岛", "31 人收藏路线"],
+      ["MedScholar", "循证医学作业岛", "18 个公开模板"],
+    ];
     return appShell(`
       <section class="mp-section">
         <div class="mp-section-head">
-          <div><div class="mp-kicker">社区交流</div><h1 class="mp-section-title">找帖子、找 Skill、看榜单</h1><p>这里先做可点击的社区雏形：搜索、点赞、收藏、排行榜和拜访小岛入口。</p></div>
-          <button class="mp-btn" data-toast="发布弹窗：mock 演示">发布帖子</button>
+          <div><div class="mp-kicker">社区交流</div><h1 class="mp-section-title">像逛贴吧一样找经验，也能收藏别人的 Skill</h1><p>先搜问题，再看帖子、Skill、图谱和小岛。现在是静态社区演示，真实账号、评论和私信接入后会变成可发布社区。</p></div>
+          <button class="mp-btn" data-toast="发布面板：可选择发帖子、发 Skill、发案例，当前为 mock">发布内容</button>
         </div>
         <div class="mp-forum-search">
           <input aria-label="搜索社区帖子和 Skill" placeholder="搜帖子、Skill、图型或作者，例如：森林图、报告反馈、PBL..." />
           <button class="mp-btn" data-toast="搜索为静态 mock：真实社区接入后会返回帖子和 Skill">搜索</button>
         </div>
+        <div class="mp-topic-row">${topics.map((topic) => `<button data-toast="已筛选话题：${escapeHtml(topic)}">${escapeHtml(topic)}</button>`).join("")}</div>
+        <div class="mp-featured-skill-row">
+          ${featuredSkills.map((skill) => `<article class="mp-featured-skill"><span>${escapeHtml(skill.tag || "Skill")}</span><strong>${escapeHtml(skill.name)}</strong><p>${escapeHtml(skill.demo || skill.desc)}</p><div class="mp-actions"><button class="mp-btn secondary" data-route="/skills/${skill.id}">打开</button><button class="mp-btn secondary" data-toast="${escapeHtml(skill.name)} 已收藏">收藏</button></div></article>`).join("")}
+        </div>
         <div class="mp-community-grid">
           <div class="mp-forum-feed">
-            <div class="mp-forum-tabs"><button class="is-active">最新帖子</button><button>高收藏 Skill</button><button>小岛拜访</button></div>
+            <div class="mp-forum-tabs"><button class="is-active">最新帖子</button><button data-toast="切换到高收藏 Skill：mock">高收藏 Skill</button><button data-toast="切换到小岛拜访：mock">小岛拜访</button><button data-toast="切换到新手问答：mock">新手问答</button></div>
             ${posts.map(([author, title, likes, tag], i) => {
               const linkedSkill = getSkill(skills[i % skills.length][0]);
               return `<article class="mp-post">
                 <span class="mp-post-rank">${i + 1}</span>
-                <div><strong>${escapeHtml(title)}</strong><p>${escapeHtml(author)} · ${escapeHtml(tag)} · ${likes.toLocaleString()} 收藏</p><small>关联 Skill：${escapeHtml(linkedSkill.name)}</small></div>
-                <div class="mp-actions"><button class="mp-btn secondary" data-toast="已点赞">点赞</button><a class="mp-btn" href="#/skills/${linkedSkill.id}" data-route="/skills/${linkedSkill.id}">打开 Skill</a></div>
+                <div><strong>${escapeHtml(title)}</strong><p>${escapeHtml(author)} · ${escapeHtml(tag)} · ${likes.toLocaleString()} 收藏 · ${Math.max(12, Math.round(likes / 86))} 回复</p><small>关联 Skill：${escapeHtml(linkedSkill.name)}；适合先收藏，再按自己的数据改。</small></div>
+                <div class="mp-actions"><button class="mp-btn secondary" data-toast="已点赞">点赞</button><button class="mp-btn secondary" data-toast="已收藏到我的主页">收藏</button><a class="mp-btn" href="#/skills/${linkedSkill.id}" data-route="/skills/${linkedSkill.id}">打开 Skill</a></div>
               </article>`;
             }).join("")}
           </div>
-          <aside class="mp-panel mp-leaderboard"><h3>本周 Skill 榜</h3>${leaderboard.map((skill, i) => `<a href="#/skills/${skill.id}" data-route="/skills/${skill.id}"><span>${i + 1}</span><strong>${escapeHtml(skill.name)}</strong><small>${escapeHtml(skill.tag)}</small></a>`).join("")}<button class="mp-btn secondary" data-route="/island">拜访热门小岛</button></aside>
+          <aside class="mp-panel mp-leaderboard">
+            <h3>本周 Skill 榜</h3>
+            ${leaderboard.map((skill, i) => `<a href="#/skills/${skill.id}" data-route="/skills/${skill.id}"><span>${i + 1}</span><strong>${escapeHtml(skill.name)}</strong><small>${escapeHtml(skill.tag)} · ${1200 - i * 170} 收藏</small></a>`).join("")}
+            <h3 style="margin-top:18px">热门小岛</h3>
+            ${islandVisits.map(([name, island, meta], i) => `<button class="mp-island-link" data-route="/island"><span>${i + 1}</span><strong>${escapeHtml(island)}</strong><small>${escapeHtml(name)} · ${escapeHtml(meta)}</small></button>`).join("")}
+            <button class="mp-btn secondary" data-route="/profile">看我的收藏</button>
+          </aside>
         </div>
       </section>
     `, "/community");
@@ -1570,13 +1587,23 @@ QWEN_API_KEY=...</pre></div>
       ["小岛入口", "我的科研小岛", "/island"],
       ["社区互动", "Meta 分析森林图复核帖", "/community"],
     ];
+    const works = [
+      ["我的 Skill", "病理报告训练反馈", "已收藏 128 次", "/skills/pathology-report-coach"],
+      ["我的案例", "胃癌 PBL 合成案例", "教师待复核", "/method-runner/computational-pathology"],
+      ["我的图谱", "单细胞 UMAP 学习图", "含 R/Python 模板", "/plot-gallery/umap"],
+    ];
+    const badges = ["图谱入门", "Skill 收藏家", "案例共创", "小岛访客"];
     return appShell(`
       <section class="mp-section">
-        <div class="mp-profile-hero"><div class="mp-avatar">易</div><div><div class="mp-kicker">My Research Desk</div><h1 class="mp-section-title">我的主页</h1><p>这里记录你的常用图、收藏 Skill、学习路径、小岛建筑和社区发布。现在是本地演示状态，真实账号、关注和云同步需要后端接入后启用。</p></div><button class="mp-btn" data-toast="个人资料编辑为 mock 演示">编辑主页</button></div>
+        <div class="mp-profile-hero"><div class="mp-avatar">易</div><div><div class="mp-kicker">My Research Desk</div><h1 class="mp-section-title">我的主页</h1><p>把常用图、收藏 Skill、学习路径、社区发布和科研小岛放在一个地方。当前为本地演示，真实账号、关注和云同步需要后端接入后启用。</p><div class="mp-badge-row">${badges.map((b) => `<span>${escapeHtml(b)}</span>`).join("")}</div></div><button class="mp-btn" data-toast="个人资料编辑为 mock 演示">编辑主页</button></div>
         <div class="mp-profile-stats"><div class="mp-mini-card"><strong>12</strong><span>收藏 Skill</span></div><div class="mp-mini-card"><strong>28</strong><span>保存图谱</span></div><div class="mp-mini-card"><strong>860</strong><span>科研积分</span></div><div class="mp-mini-card"><strong>4</strong><span>发布案例</span></div></div>
+        <div class="mp-profile-tabs"><button class="is-active">作品</button><button data-toast="切换收藏：mock">收藏</button><button data-toast="切换学习路径：mock">学习路径</button><button data-toast="切换小岛：mock">小岛</button></div>
+        <div class="mp-profile-work-grid">
+          ${works.map(([tag, title, meta, route]) => `<article class="mp-profile-work"><span>${escapeHtml(tag)}</span><h3>${escapeHtml(title)}</h3><p>${escapeHtml(meta)}</p><div class="mp-actions"><button class="mp-btn" data-route="${route}">打开</button><button class="mp-btn secondary" data-toast="已加入置顶">置顶</button></div></article>`).join("")}
+        </div>
         <div class="mp-content-grid" style="margin-top:22px">
-          <div class="mp-panel"><h3>我的路径</h3><p>推荐继续学习：单细胞转录组测序与细胞亚群解析。</p><button class="mp-btn" data-route="/plot-gallery">继续学习</button></div>
-          <div class="mp-community-list">${recent.map(([tag, title, route], index) => `<article class="mp-post"><span class="mp-post-rank">${index + 1}</span><div><strong>${escapeHtml(title)}</strong><p>${escapeHtml(tag)}</p></div><button class="mp-btn secondary" data-route="${route}">打开</button></article>`).join("")}</div>
+          <div class="mp-panel"><h3>今天继续什么？</h3><p>建议从“单细胞转录组测序与细胞亚群解析”继续，下一步是看 marker dotplot 和 feature plot 的区别。</p><button class="mp-btn" data-route="/plot-gallery">继续学习</button></div>
+          <div class="mp-community-list">${recent.map(([tag, title, route], index) => `<article class="mp-post"><span class="mp-post-rank">${index + 1}</span><div><strong>${escapeHtml(title)}</strong><p>${escapeHtml(tag)} · 刚刚更新</p></div><button class="mp-btn secondary" data-route="${route}">打开</button></article>`).join("")}</div>
         </div>
       </section>
     `, "/profile");
