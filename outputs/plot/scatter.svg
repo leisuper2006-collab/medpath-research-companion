@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="520" height="300" viewBox="0 0 520 300">
-<rect width="520" height="300" fill="#ffffff"/>
-<text x="24" y="28" font-family="Arial" font-size="18" font-weight="700" fill="#0f172a">scatter demo figure</text>
-<polyline fill="none" stroke="#0f766e" stroke-width="3" points="64,199 88,196 112,191 136,184 160,175 184,164 208,151 232,136 256,119 280,100 304,199 328,176 352,151"/><circle cx="64" cy="199" r="4" fill="#0f766e"/><circle cx="88" cy="196" r="4" fill="#0f766e"/><circle cx="112" cy="191" r="4" fill="#0f766e"/><circle cx="136" cy="184" r="4" fill="#0f766e"/><circle cx="160" cy="175" r="4" fill="#0f766e"/><circle cx="184" cy="164" r="4" fill="#0f766e"/><circle cx="208" cy="151" r="4" fill="#0f766e"/><circle cx="232" cy="136" r="4" fill="#0f766e"/><circle cx="256" cy="119" r="4" fill="#0f766e"/><circle cx="280" cy="100" r="4" fill="#0f766e"/><circle cx="304" cy="199" r="4" fill="#0f766e"/><circle cx="328" cy="176" r="4" fill="#0f766e"/><circle cx="352" cy="151" r="4" fill="#0f766e"/>
-<text x="24" y="280" font-family="Arial" font-size="12" fill="#7c2d12">示例数据 / 用户自有数据；不用于临床分析</text>
-</svg>

@@ -1,6 +1,0 @@
-﻿Three.js r165
-Source: https://github.com/mrdoob/three.js
-Downloaded from: https://unpkg.com/three@0.165.0/build/three.module.min.js
-License: MIT
-
-This vendored module is used only for the local MedPath 3D research island prototype.

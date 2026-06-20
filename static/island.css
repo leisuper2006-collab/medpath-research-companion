@@ -1,4 +1,0 @@
-/* Keep game pages visually isolated from the workbench theme. */
-body:not(.round110-active) .r110-shell {
-  display: none;
-}
