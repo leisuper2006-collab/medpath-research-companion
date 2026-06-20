@@ -123,8 +123,8 @@
     return String(value ?? "").replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
   }
 
-  function img(id) {
-    return `${BASE}/${id}/example.png`;
+  function img(id, size = "thumb") {
+    return `${BASE}/${id}/${size === "example" ? "example.png" : "thumb.png"}`;
   }
 
   function titleize(id) {
@@ -191,7 +191,7 @@
   function card(p) {
     return `
       <article class="r143-card">
-        <figure class="r143-thumb"><img src="${esc(img(p.id))}" alt="${esc(p.title)} 示例图" loading="lazy" /></figure>
+        <figure class="r143-thumb"><img src="${esc(img(p.id, "thumb"))}" data-full-src="${esc(img(p.id, "example"))}" alt="${esc(p.title)} 示例图" loading="eager" onerror="this.onerror=null;this.src=this.dataset.fullSrc" /></figure>
         <div class="r143-card-body">
           <small>${esc(currentDiscipline().name)} · ${esc(p.label)}</small>
           <h3>${esc(p.title)}</h3>
@@ -219,7 +219,7 @@
             <a class="r143-btn lotus" href="#/providers">配置自己的模型 API</a>
           </div>
         </div>
-        <figure class="r143-feature"><img src="${esc(img(hero.id))}" alt="${esc(hero.title)} 精选示例图"></figure>
+        <figure class="r143-feature"><img src="${esc(img(hero.id, "example"))}" alt="${esc(hero.title)} 精选示例图"></figure>
       </section>
       <section class="r143-control">
         <aside class="r143-panel">
