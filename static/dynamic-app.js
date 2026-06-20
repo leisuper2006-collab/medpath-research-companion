@@ -1673,6 +1673,10 @@ QWEN_API_KEY=...</pre></div>
       window.__MEDPATH_DYNAMIC_RENDERING__ = false;
       return;
     }
+    else if (window.MEDPATH_ROUND143_PLOT_GALLERY && path === "/plot-gallery") {
+      window.__MEDPATH_DYNAMIC_RENDERING__ = false;
+      return;
+    }
     else if (window.MEDPATH_ROUND142_PLOT_FLOW && (path.startsWith("/plot-gallery/") || path.startsWith("/plot-run/"))) {
       window.__MEDPATH_DYNAMIC_RENDERING__ = false;
       return;
@@ -1699,6 +1703,7 @@ QWEN_API_KEY=...</pre></div>
   function ordinaryRouteNeedsRender() {
     const app = document.getElementById("app");
     if (!app || isLegacyGameRoute(routeOf())) return false;
+    if (window.MEDPATH_ROUND143_PLOT_GALLERY && routeOf() === "/plot-gallery") return false;
     if (window.MEDPATH_ROUND142_PLOT_FLOW && (routeOf().startsWith("/plot-gallery/") || routeOf().startsWith("/plot-run/"))) return false;
     const text = app.textContent || "";
     if (app.getAttribute("data-medpath-dynamic-owned") !== VERSION) return true;

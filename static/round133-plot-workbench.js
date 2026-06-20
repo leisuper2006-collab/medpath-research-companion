@@ -400,7 +400,7 @@ dat = pd.read_csv("example_data.csv")
       document.body.classList.remove("medpath-r133-plot");
       return false;
     }
-    if (window.MEDPATH_ROUND142_PLOT_FLOW && (path.startsWith("/plot-gallery/") || path.startsWith("/plot-run/"))) {
+    if ((window.MEDPATH_ROUND143_PLOT_GALLERY && path === "/plot-gallery") || (window.MEDPATH_ROUND142_PLOT_FLOW && (path.startsWith("/plot-gallery/") || path.startsWith("/plot-run/")))) {
       document.body.classList.remove("medpath-r133-plot");
       return false;
     }
@@ -480,9 +480,10 @@ dat = pd.read_csv("example_data.csv")
         const path = route();
         const app = document.getElementById("app");
         const isPlotRoute = path === "/plot-gallery" || path.startsWith("/plot-gallery/") || path.startsWith("/plot-run/");
+        const isRound143Route = window.MEDPATH_ROUND143_PLOT_GALLERY && path === "/plot-gallery";
         const isRound142Route = window.MEDPATH_ROUND142_PLOT_FLOW && (path.startsWith("/plot-gallery/") || path.startsWith("/plot-run/"));
         const wasOverwritten = app && app.getAttribute("data-round133-owned") === VERSION && !app.querySelector(".r133-shell");
-        if (isPlotRoute && !isRound142Route && (app?.getAttribute("data-round133-owned") !== VERSION || wasOverwritten)) {
+        if (isPlotRoute && !isRound142Route && !isRound143Route && (app?.getAttribute("data-round133-owned") !== VERSION || wasOverwritten)) {
           render();
         }
       });
