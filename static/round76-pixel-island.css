@@ -1,0 +1,717 @@
+.r76-game-active .r73-card.span-8:has(.r73-island-stage) {
+  grid-column: span 12;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.r76-town-root {
+  position: relative;
+  min-height: 780px;
+  height: min(82vh, 820px);
+  overflow: hidden;
+  border: 1px solid rgba(19, 24, 34, 0.14);
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 26% 16%, rgba(255, 255, 255, 0.72), transparent 26%),
+    linear-gradient(135deg, #d6f1ff 0%, #e4f6cc 46%, #f9e7c4 100%);
+  box-shadow: 0 34px 110px rgba(23, 35, 44, 0.22);
+  color: #161a1f;
+  isolation: isolate;
+}
+
+.r76-town-root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.11) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.10) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mix-blend-mode: soft-light;
+  opacity: 0.48;
+  z-index: 2;
+}
+
+.r76-stage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  background: #7fbf64;
+  cursor: crosshair;
+}
+
+.r76-topbar {
+  position: absolute;
+  inset: 16px 18px auto 18px;
+  z-index: 6;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  pointer-events: none;
+}
+
+.r76-player-card,
+.r76-day-card,
+.r76-status-card {
+  pointer-events: auto;
+  border: 3px solid rgba(9, 11, 14, 0.88);
+  border-radius: 20px;
+  background: rgba(22, 23, 27, 0.84);
+  color: #fffaf2;
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(10px);
+}
+
+.r76-player-card {
+  width: min(420px, 48vw);
+  padding: 10px 14px;
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.r76-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background:
+    linear-gradient(#f4c49b 0 45%, #7b533c 45% 60%, #3f78a9 60% 100%);
+  border: 3px solid #fff8e9;
+  image-rendering: pixelated;
+  box-shadow: inset 0 -8px rgba(0, 0, 0, 0.10);
+}
+
+.r76-name-line {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 950;
+}
+
+.r76-name-line span {
+  color: #97f06e;
+  font-size: 13px;
+}
+
+.r76-bars {
+  display: grid;
+  gap: 5px;
+  margin-top: 7px;
+}
+
+.r76-bar {
+  display: grid;
+  grid-template-columns: 22px 1fr 34px;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.r76-bar i {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  overflow: hidden;
+}
+
+.r76-bar i::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: var(--w, 70%);
+  border-radius: inherit;
+  background: var(--c, #70e15e);
+}
+
+.r76-status-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  font-weight: 950;
+}
+
+.r76-status-card b {
+  color: #ffe374;
+}
+
+.r76-day-card {
+  min-width: 110px;
+  padding: 10px 14px;
+  text-align: right;
+  font-weight: 950;
+}
+
+.r76-day-card small {
+  display: block;
+  margin-top: 3px;
+  color: rgba(255,255,255,0.74);
+}
+
+.r76-left-panel {
+  position: absolute;
+  left: 18px;
+  top: 112px;
+  z-index: 6;
+  width: min(390px, 42vw);
+  max-height: calc(100% - 154px);
+  overflow: hidden;
+  pointer-events: auto;
+  border-radius: 24px;
+  border: 4px solid #111318;
+  background: rgba(245, 247, 240, 0.88);
+  box-shadow: 0 22px 62px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+.r76-agent-memory {
+  display: grid;
+  gap: 8px;
+  padding: 0 12px 12px;
+  max-height: 330px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.r76-agent-memory::-webkit-scrollbar {
+  display: none;
+}
+
+.r76-memory-card {
+  border-radius: 15px;
+  padding: 10px;
+  background: rgba(255,255,255,0.84);
+  color: #222;
+  box-shadow: inset 0 -3px rgba(0,0,0,0.06);
+}
+
+.r76-memory-card b,
+.r76-memory-card small {
+  display: block;
+}
+
+.r76-memory-card small {
+  margin-top: 4px;
+  color: #5d626b;
+  line-height: 1.45;
+}
+
+.r76-panel-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 10px;
+}
+
+.r76-panel-tabs button,
+.r76-dialog-actions button,
+.r76-dialog-actions a,
+.r76-tool button,
+.r76-bottom-card,
+.r76-right-rail button {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.r76-panel-tabs button {
+  border-radius: 999px;
+  padding: 9px;
+  font-weight: 950;
+  color: #222;
+  background: #dfe1dc;
+}
+
+.r76-panel-tabs button.active {
+  background: #111318;
+  color: #fffaf2;
+}
+
+.r76-leader-list {
+  display: grid;
+  gap: 8px;
+  max-height: 330px;
+  overflow: auto;
+  padding: 0 12px 12px;
+  scrollbar-width: none;
+}
+
+.r76-leader-list::-webkit-scrollbar,
+.r76-building-drawer::-webkit-scrollbar,
+.r76-hotbar::-webkit-scrollbar {
+  display: none;
+}
+
+.r76-leader {
+  display: grid;
+  grid-template-columns: 42px 42px 1fr 34px;
+  align-items: center;
+  gap: 9px;
+  border-radius: 15px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #222;
+  box-shadow: inset 0 -3px rgba(0,0,0,0.06);
+}
+
+.r76-rank {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  color: #132013;
+  background: #83ef62;
+  font-weight: 950;
+}
+
+.r76-mini-face {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  border: 2px solid rgba(0,0,0,0.18);
+  background: linear-gradient(var(--hair), var(--hair) 30%, #f6c49b 31% 62%, var(--cloth) 63%);
+}
+
+.r76-leader strong,
+.r76-leader small {
+  display: block;
+}
+
+.r76-leader small {
+  color: #5b5f67;
+  margin-top: 2px;
+}
+
+.r76-leader button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #111318;
+  color: #fff;
+}
+
+.r76-resource-bag {
+  padding: 12px;
+  background: rgba(17, 19, 24, 0.86);
+  color: #fffaf2;
+}
+
+.r76-resource {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.r76-resource:last-child { border-bottom: 0; }
+
+.r76-resource span {
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  background: var(--c);
+  box-shadow: inset 0 -5px rgba(0,0,0,0.16);
+}
+
+.r76-right-rail {
+  position: absolute;
+  right: 18px;
+  top: 116px;
+  z-index: 6;
+  display: grid;
+  gap: 10px;
+}
+
+.r76-right-rail button {
+  width: 46px;
+  height: 46px;
+  border: 3px solid #111318;
+  border-radius: 13px;
+  background: rgba(255,255,255,0.88);
+  color: #111318;
+  font-size: 21px;
+  font-weight: 950;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+}
+
+.r76-hotbar {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 7;
+  display: flex;
+  gap: 10px;
+  width: min(520px, calc(100% - 36px));
+  overflow-x: auto;
+  padding: 10px;
+  border-radius: 22px;
+  background: rgba(18, 19, 23, 0.72);
+  box-shadow: 0 18px 54px rgba(0,0,0,0.26);
+  backdrop-filter: blur(10px);
+  scrollbar-width: none;
+}
+
+.r76-bottom-card {
+  min-width: 94px;
+  border-radius: 17px;
+  padding: 10px 9px;
+  color: #222;
+  background: rgba(247,247,241,0.9);
+  text-align: center;
+  box-shadow: inset 0 -4px rgba(0,0,0,0.08);
+}
+
+.r76-bottom-card .r76-mini-face {
+  margin: 0 auto 6px;
+}
+
+.r76-bottom-card small {
+  display: block;
+  color: #63666d;
+  font-weight: 850;
+}
+
+.r76-dialog {
+  position: absolute;
+  left: 430px;
+  bottom: 22px;
+  z-index: 8;
+  width: min(470px, calc(100% - 970px));
+  min-width: 360px;
+  border-radius: 22px;
+  border: 4px solid #111318;
+  background: rgba(255, 252, 242, 0.94);
+  box-shadow: 0 22px 70px rgba(0,0,0,0.28);
+  overflow: hidden;
+}
+
+.r76-dialog header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  color: #fffaf2;
+  background: #111318;
+}
+
+.r76-dialog header strong {
+  font-size: 17px;
+}
+
+.r76-dialog header span {
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: #1c241c;
+  background: #91ed6f;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.r76-dialog-body {
+  padding: 14px;
+}
+
+.r76-dialog-body p {
+  margin: 0 0 10px;
+  color: #3d4148;
+  line-height: 1.68;
+}
+
+.r76-quest-list {
+  display: grid;
+  gap: 7px;
+  margin: 10px 0;
+}
+
+.r76-quest-list button {
+  border: 2px solid rgba(17, 19, 24, 0.14);
+  border-radius: 13px;
+  padding: 9px 10px;
+  background: #f4f1e9;
+  color: #23262c;
+  text-align: left;
+  font-weight: 850;
+}
+
+.r76-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.r76-dialog-actions a,
+.r76-dialog-actions button {
+  border-radius: 999px;
+  padding: 9px 12px;
+  background: #111318;
+  color: #fffaf2;
+  text-decoration: none;
+  font-weight: 950;
+}
+
+.r76-dialog-actions button.secondary {
+  background: #e5efd9;
+  color: #1b2419;
+}
+
+.r76-floating-note {
+  position: absolute;
+  z-index: 9;
+  left: 50%;
+  top: 86px;
+  transform: translateX(-50%);
+  max-width: min(680px, calc(100% - 40px));
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(17,19,24,.78);
+  color: #fffaf2;
+  font-size: 13px;
+  font-weight: 850;
+  text-align: center;
+  box-shadow: 0 14px 36px rgba(0,0,0,.22);
+}
+
+.r76-building-drawer {
+  position: absolute;
+  z-index: 10;
+  inset: auto 18px 96px auto;
+  width: min(620px, calc(100% - 36px));
+  max-height: 360px;
+  overflow: auto;
+  display: none;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  padding: 12px;
+  border-radius: 24px;
+  border: 4px solid #111318;
+  background: rgba(255, 252, 242, 0.96);
+  box-shadow: 0 28px 86px rgba(0,0,0,.3);
+  scrollbar-width: none;
+}
+
+.r76-building-drawer.is-open {
+  display: grid;
+}
+
+.r76-catalog-card {
+  border: 2px solid rgba(17, 19, 24, 0.12);
+  border-radius: 15px;
+  padding: 10px;
+  background: #f8f3e9;
+}
+
+.r76-catalog-card b,
+.r76-catalog-card small {
+  display: block;
+}
+
+.r76-catalog-card small {
+  margin-top: 4px;
+  color: #656971;
+  line-height: 1.45;
+}
+
+.r76-tool {
+  position: absolute;
+  right: 18px;
+  bottom: 102px;
+  z-index: 7;
+  display: flex;
+  gap: 8px;
+}
+
+.r76-tool button {
+  border-radius: 999px;
+  padding: 9px 13px;
+  background: rgba(255, 252, 242, .92);
+  color: #111318;
+  border: 3px solid #111318;
+  font-weight: 950;
+}
+
+.r76-sim-strip {
+  position: absolute;
+  z-index: 7;
+  left: 430px;
+  top: 112px;
+  width: min(450px, calc(100% - 620px));
+  display: grid;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.r76-sim-line {
+  width: fit-content;
+  max-width: 100%;
+  border-radius: 999px;
+  padding: 7px 11px;
+  background: rgba(255,255,255,0.78);
+  border: 2px solid rgba(17,19,24,0.16);
+  color: #23262c;
+  font-size: 12px;
+  font-weight: 850;
+  box-shadow: 0 9px 26px rgba(0,0,0,0.14);
+}
+
+@media (max-width: 820px) {
+  body[data-medpath-route="island"] .r73-hero {
+    display: none;
+  }
+
+  body[data-medpath-route="island"] .r73-main {
+    padding-top: 8px;
+  }
+
+  .r76-town-root {
+    height: 820px;
+    min-height: 820px;
+    margin-inline: -6px;
+    border-radius: 0;
+  }
+
+  .r76-topbar {
+    inset: 10px 10px auto 10px;
+  }
+
+  .r76-player-card {
+    width: min(280px, 68vw);
+    grid-template-columns: 44px 1fr;
+    padding: 8px 10px;
+  }
+
+  .r76-avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+  .r76-name-line {
+    font-size: 13px;
+  }
+
+  .r76-bar {
+    grid-template-columns: 18px 1fr 28px;
+    font-size: 10px;
+  }
+
+  .r76-status-card {
+    position: absolute;
+    top: 74px;
+    left: 0;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .r76-day-card {
+    min-width: 74px;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .r76-left-panel {
+    left: 10px;
+    top: 122px;
+    width: min(304px, calc(100vw - 74px));
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateX(-16px);
+    transition: max-height .18s ease, opacity .18s ease, transform .18s ease;
+    pointer-events: none;
+  }
+
+  .r76-left-panel.is-open-mobile {
+    max-height: 372px;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .r76-sim-strip {
+    display: none;
+  }
+
+  .r76-leader-list {
+    max-height: 238px;
+  }
+
+  .r76-resource-bag {
+    display: none;
+  }
+
+  .r76-right-rail {
+    right: 10px;
+    top: 128px;
+  }
+
+  .r76-right-rail button {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+
+  .r76-dialog {
+    left: 10px;
+    right: 10px;
+    bottom: 92px;
+    width: auto;
+    min-width: 0;
+    max-height: 224px;
+    overflow: auto;
+  }
+
+  .r76-dialog header strong {
+    font-size: 15px;
+  }
+
+  .r76-dialog-body p {
+    font-size: 13px;
+  }
+
+  .r76-hotbar {
+    right: 10px;
+    left: 10px;
+    bottom: 10px;
+    width: auto;
+  }
+
+  .r76-bottom-card {
+    min-width: 78px;
+    padding: 8px;
+  }
+
+  .r76-floating-note {
+    top: 92px;
+    font-size: 12px;
+  }
+
+  .r76-tool {
+    right: 10px;
+    bottom: 78px;
+  }
+
+  .r76-tool button {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+
+  .r76-building-drawer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    inset: auto 10px 86px 10px;
+    width: auto;
+    max-height: 330px;
+  }
+}

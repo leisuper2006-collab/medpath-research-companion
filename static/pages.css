@@ -1,0 +1,67 @@
+/* Page-level additions for the route/detail fixes. */
+body.round110-active .r110-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+body.round110-active .r110-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+body.round110-active .r110-mini-card {
+  border: 1px solid var(--mp-line);
+  border-radius: 20px;
+  padding: 16px;
+  background: rgba(255, 253, 247, .72);
+}
+
+body.round110-active .r110-mini-card b {
+  color: var(--mp-teal);
+}
+
+body.round110-active .r110-mini-card h4 {
+  margin: 8px 0;
+  color: var(--mp-ink);
+}
+
+body.round110-active .r110-thumb {
+  margin: 14px 0 0;
+  border: 1px solid var(--mp-line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+}
+
+body.round110-active .r110-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  background: #fff;
+}
+
+body.round110-active .r110-ordered {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--mp-muted);
+  line-height: 1.85;
+}
+
+body.round110-active .r110-builder .r110-textarea {
+  min-height: 180px;
+  padding: 14px;
+  line-height: 1.7;
+}
+
+body.round110-active .r110-plugin-card,
+body.round110-active .r110-tool-card {
+  min-height: 100%;
+}
+
+body.round110-active .r110-carousel-track.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}

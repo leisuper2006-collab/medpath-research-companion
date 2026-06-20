@@ -1,0 +1,25 @@
+{
+  "version": "round70",
+  "palette": {
+    "ink": "#102033",
+    "muted": "#475569",
+    "teal": "#0f766e",
+    "blue": "#255aa8",
+    "amber": "#d08b2d",
+    "coral": "#be5b47",
+    "violet": "#7c3aed",
+    "paper": "#fbfcff"
+  },
+  "radii": {
+    "phone": 38,
+    "card": 22,
+    "button": 18
+  },
+  "type": {
+    "family": "Microsoft YaHei / PingFang SC / Inter",
+    "title": 24,
+    "body": 14,
+    "label": 13
+  },
+  "safety_boundary": "仅用于教学与科研训练，不替代临床诊断，须经教师或专家复核。"
+}

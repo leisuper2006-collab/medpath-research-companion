@@ -1,0 +1,15 @@
+/* Round112 design tokens: summer-lotus-medical-dashboard. */
+body.round110-active {
+  --mp-bg: #fffdf7;
+  --mp-panel: rgba(255, 255, 255, .82);
+  --mp-ink: #102c29;
+  --mp-muted: #63766f;
+  --mp-teal: #008f89;
+  --mp-lotus: #f5a89a;
+  --mp-leaf: #7fb069;
+  --mp-sun: #f4c95d;
+  --mp-water: #75b8d8;
+  --mp-line: rgba(25, 90, 83, .14);
+  --mp-shadow: 0 18px 46px rgba(30, 74, 68, .08);
+  --mp-radius: 24px;
+}

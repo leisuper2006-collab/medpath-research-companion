@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='705.60pt' height='432.00pt' viewBox='0 0 705.60 432.00'>
+<g class='svglite'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw3MDUuNjB8MC4wMHw0MzIuMDA='>
+    <rect x='0.00' y='0.00' width='705.60' height='432.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw3MDUuNjB8MC4wMHw0MzIuMDA=)'>
+<rect x='0.00' y='0.00' width='705.60' height='432.00' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+</g>
+<defs>
+  <clipPath id='cpNDEuNzJ8NzAwLjEyfDM5LjMwfDMyMC4yNg=='>
+    <rect x='41.72' y='39.30' width='658.40' height='280.96' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpNDEuNzJ8NzAwLjEyfDM5LjMwfDMyMC4yNg==)'>
+<polyline points='41.72,320.26 41.72,39.30 ' style='stroke-width: 0.75; stroke: #E2E8F0; stroke-linecap: butt;' />
+<polyline points='281.21,320.26 281.21,39.30 ' style='stroke-width: 0.75; stroke: #E2E8F0; stroke-linecap: butt;' />
+<polyline points='520.70,320.26 520.70,39.30 ' style='stroke-width: 0.75; stroke: #E2E8F0; stroke-linecap: butt;' />
+<rect x='159.07' y='71.23' width='397.55' height='89.40' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #8B5CF6;' />
+<rect x='58.49' y='71.23' width='100.58' height='89.40' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EF4444;' />
+<rect x='575.78' y='71.23' width='33.53' height='89.40' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #3B82F6;' />
+<rect x='561.41' y='71.23' width='14.37' height='89.40' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #14B8A6;' />
+<rect x='41.72' y='71.23' width='11.97' height='89.40' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #06B6D4;' />
+<rect x='556.62' y='71.23' width='4.79' height='89.40' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F97316;' />
+<rect x='53.70' y='71.23' width='4.79' height='89.40' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #84CC16;' />
+<rect x='44.12' y='198.93' width='234.70' height='89.40' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #8B5CF6;' />
+<rect x='41.72' y='198.93' width='2.39' height='89.40' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #84CC16;' />
+<text x='280.58' y='246.78' style='font-size: 8.82px;fill: #243447; font-family: "Arial";' textLength='9.81px' lengthAdjust='spacingAndGlyphs'>99</text>
+<text x='611.96' y='119.08' style='font-size: 8.82px;fill: #243447; font-family: "Arial";' textLength='14.72px' lengthAdjust='spacingAndGlyphs'>237</text>
+</g>
+<g clip-path='url(#cpMC4wMHw3MDUuNjB8MC4wMHw0MzIuMDA=)'>
+<text x='36.79' y='246.78' text-anchor='end' style='font-size: 8.80px;fill: #334155; font-family: "Arial";' textLength='31.31px' lengthAdjust='spacingAndGlyphs'>PIK3CA</text>
+<text x='36.79' y='119.07' text-anchor='end' style='font-size: 8.80px;fill: #334155; font-family: "Arial";' textLength='21.03px' lengthAdjust='spacingAndGlyphs'>TP53</text>
+<text x='41.72' y='331.49' text-anchor='middle' style='font-size: 8.80px;fill: #334155; font-family: "Arial";' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='281.21' y='331.49' text-anchor='middle' style='font-size: 8.80px;fill: #334155; font-family: "Arial";' textLength='14.67px' lengthAdjust='spacingAndGlyphs'>100</text>
+<text x='520.70' y='331.49' text-anchor='middle' style='font-size: 8.80px;fill: #334155; font-family: "Arial";' textLength='14.67px' lengthAdjust='spacingAndGlyphs'>200</text>
+<text x='370.92' y='349.18' text-anchor='middle' style='font-size: 11.00px;fill: #334155; font-family: "Arial";' textLength='202.50px' lengthAdjust='spacingAndGlyphs'>Mutation records in selected public profile</text>
+<text x='155.93' y='391.90' style='font-size: 11.00px; font-weight: bold; font-family: "Arial";' textLength='71.50px' lengthAdjust='spacingAndGlyphs'>Mutation type</text>
+<rect x='233.16' y='368.20' width='16.77' height='16.77' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #3B82F6;' />
+<rect x='233.16' y='390.96' width='16.77' height='16.77' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #14B8A6;' />
+<rect x='322.78' y='368.20' width='16.77' height='16.77' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F97316;' />
+<rect x='322.78' y='390.96' width='16.77' height='16.77' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #8B5CF6;' />
+<rect x='421.48' y='368.20' width='16.77' height='16.77' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EF4444;' />
+<rect x='421.48' y='390.96' width='16.77' height='16.77' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #84CC16;' />
+<rect x='522.47' y='368.20' width='16.77' height='16.77' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #06B6D4;' />
+<text x='255.67' y='379.51' style='font-size: 8.20px; font-family: "Arial";' textLength='61.38px' lengthAdjust='spacingAndGlyphs'>Frame_Shift_Del</text>
+<text x='255.67' y='402.27' style='font-size: 8.20px; font-family: "Arial";' textLength='60.03px' lengthAdjust='spacingAndGlyphs'>Frame_Shift_Ins</text>
+<text x='345.28' y='379.51' style='font-size: 8.20px; font-family: "Arial";' textLength='51.81px' lengthAdjust='spacingAndGlyphs'>In_Frame_Del</text>
+<text x='345.28' y='402.27' style='font-size: 8.20px; font-family: "Arial";' textLength='70.47px' lengthAdjust='spacingAndGlyphs'>Missense_Mutation</text>
+<text x='443.99' y='379.51' style='font-size: 8.20px; font-family: "Arial";' textLength='72.75px' lengthAdjust='spacingAndGlyphs'>Nonsense_Mutation</text>
+<text x='443.99' y='402.27' style='font-size: 8.20px; font-family: "Arial";' textLength='52.73px' lengthAdjust='spacingAndGlyphs'>Splice_Region</text>
+<text x='544.98' y='379.51' style='font-size: 8.20px; font-family: "Arial";' textLength='40.94px' lengthAdjust='spacingAndGlyphs'>Splice_Site</text>
+<text x='41.72' y='31.68' style='font-size: 10.20px;fill: #475569; font-family: "Arial";' textLength='409.03px' lengthAdjust='spacingAndGlyphs'>cBioPortal public API teaching re-plot; counts are mutation records, not clinical conclusions</text>
+<text x='41.72' y='15.86' style='font-size: 14.50px; font-weight: bold;fill: #102033; font-family: "Arial";' textLength='491.48px' lengthAdjust='spacingAndGlyphs'>BLCA TCGA PanCancer Atlas: selected-gene mutation type distribution</text>
+<text x='41.72' y='424.80' style='font-size: 8.20px;fill: #64748B; font-family: "Arial";' textLength='414.11px' lengthAdjust='spacingAndGlyphs'>Source: cBioPortal public REST API, blca_tcga_pan_can_atlas_2018. Teaching use only; not for clinical diagnosis.</text>
+</g>
+</g>
+</svg>

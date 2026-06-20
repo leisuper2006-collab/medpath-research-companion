@@ -1,0 +1,46 @@
+﻿/* Round 131: mobile workbench polish, keep Research Island untouched. */
+@media (max-width: 640px) {
+  .mp-nav,
+  .mp-tabs {
+    scrollbar-width: none;
+  }
+  .mp-nav::-webkit-scrollbar,
+  .mp-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .mp-section-head {
+    display: block;
+  }
+  .mp-section-head > .mp-btn {
+    margin-top: 14px;
+    width: fit-content;
+    max-width: 100%;
+    white-space: nowrap;
+    writing-mode: horizontal-tb;
+    word-break: keep-all;
+  }
+  .mp-actions .mp-btn {
+    white-space: nowrap;
+    writing-mode: horizontal-tb;
+    word-break: keep-all;
+    max-width: 100%;
+  }
+  .mp-assistant {
+    right: 14px;
+    bottom: 14px;
+  }
+  .mp-assistant-button {
+    width: 52px;
+    height: 52px;
+    padding: 7px;
+    justify-content: center;
+    border-radius: 18px;
+  }
+  .mp-assistant-button span:not(.mp-robot) {
+    display: none;
+  }
+  .mp-robot {
+    width: 32px;
+    height: 32px;
+  }
+}

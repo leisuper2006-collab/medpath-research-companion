@@ -1,0 +1,34 @@
+{
+  "name": "MedPath Research Companion static demo",
+  "mode": "static-demo",
+  "data_files": [
+    "plugins.json",
+    "skills.json",
+    "synthetic_cases.json",
+    "comparison_demos.json",
+    "providers.json",
+    "public_example_sources.json",
+    "public_source_visual_examples.json",
+    "model_gateway_templates.json",
+    "method_cards.json",
+    "open_source_catalog.json",
+    "method_learning_guides.json",
+    "method_universe.json",
+    "gene_perturbation_methods.json",
+    "article_skill_workflows.json",
+    "plot_gallery_taxonomy.json",
+    "data_audit_rules.json",
+    "research_island_buildings.json",
+    "pet_dialogues.json"
+  ],
+  "outputs_mode": "slim-whitelist",
+  "outputs_copied": [
+    "plot",
+    "mobile_app_handoff",
+    "public_reproducible_examples",
+    "round108_lotus_plots",
+    "round109_plot_gallery",
+    "round110_plots"
+  ],
+  "safety": "医学 AI 输出仅用于教学与科研训练，不替代临床诊断。"
+}

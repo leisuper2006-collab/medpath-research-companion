@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="460" viewBox="0 0 820 460">
+<rect width="820" height="460" rx="28" fill="#fffaf0"/>
+<rect x="34" y="34" width="752" height="392" rx="24" fill="#ffffff" stroke="#d7c7a6" stroke-width="2"/>
+<text x="74" y="88" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#182033">火山图</text>
+<text x="74" y="122" font-family="Arial, sans-serif" font-size="15" fill="#667085">差异分析 / synthetic teaching schematic</text>
+<line x1="104" y1="340" x2="714" y2="340" stroke="#344054" stroke-width="2"/>
+<line x1="104" y1="340" x2="104" y2="150" stroke="#344054" stroke-width="2"/>
+<path d="M130 302 C210 250, 244 286, 306 230 S430 170, 506 212 S634 182, 690 132" fill="none" stroke="#0f766e" stroke-width="5" stroke-linecap="round"/>
+<circle cx="166" cy="283" r="10" fill="#2563eb"/><circle cx="306" cy="230" r="10" fill="#0f766e"/><circle cx="506" cy="212" r="10" fill="#f59e0b"/><circle cx="690" cy="132" r="10" fill="#ef4444"/>
+<rect x="126" y="372" width="568" height="30" rx="15" fill="#f2f4f7"/>
+<text x="410" y="393" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#475467">required fields: feature_id / group / estimate / p_value / adjusted_p_value</text>
+<text x="410" y="438" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#7a5f2b">Synthetic teaching figure only; replace with auditable user data for real research.</text>
+</svg>

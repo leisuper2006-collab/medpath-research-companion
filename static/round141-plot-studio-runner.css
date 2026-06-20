@@ -1,0 +1,563 @@
+body.medpath-r141-plot-studio {
+  background:
+    radial-gradient(circle at 10% 4%, rgba(234, 190, 72, .20), transparent 28rem),
+    radial-gradient(circle at 88% 12%, rgba(112, 187, 171, .16), transparent 30rem),
+    linear-gradient(180deg, #fffdf3 0%, #f6fbf5 46%, #eef8f4 100%);
+  color: #0b2925;
+}
+
+.r141-shell {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+}
+
+.r141-side {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  padding: 18px 14px;
+  background: linear-gradient(180deg, #082e2b, #062522);
+  color: #f2fff9;
+  box-shadow: 8px 0 32px rgba(0, 56, 48, .16);
+  z-index: 5;
+}
+
+.r141-brand {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .08);
+}
+
+.r141-logo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 15px;
+  background:
+    radial-gradient(circle at 36% 28%, #fff5b8 0 16%, transparent 17%),
+    linear-gradient(135deg, #88d9c1, #008e86);
+  color: white;
+  font: 800 22px KaiTi, STKaiti, serif;
+}
+
+.r141-brand strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.r141-brand span {
+  display: block;
+  margin-top: 3px;
+  color: rgba(242, 255, 249, .66);
+  font-size: 12px;
+}
+
+.r141-side nav {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.r141-side a {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 15px;
+  color: rgba(242, 255, 249, .78);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.r141-side a small {
+  color: rgba(242, 255, 249, .52);
+  white-space: nowrap;
+}
+
+.r141-side a:hover,
+.r141-side a.is-active {
+  background: rgba(255, 255, 255, .12);
+  color: white;
+}
+
+.r141-main {
+  min-width: 0;
+}
+
+.r141-top {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: 1fr minmax(240px, 360px) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 26px;
+  background: rgba(255, 253, 243, .86);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(0, 111, 96, .12);
+}
+
+.r141-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.r141-tabs a,
+.r141-btn,
+.r141-pill {
+  border: 1px solid rgba(0, 111, 96, .18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .78);
+  color: #315f59;
+  text-decoration: none;
+}
+
+.r141-tabs a {
+  padding: 8px 13px;
+  font-size: 13px;
+}
+
+.r141-tabs a.is-active,
+.r141-tabs a:hover {
+  background: #008f86;
+  color: white;
+}
+
+.r141-search {
+  width: 100%;
+  border: 1px solid rgba(0, 111, 96, .18);
+  border-radius: 999px;
+  padding: 10px 15px;
+  background: #fff;
+  outline: none;
+}
+
+.r141-page {
+  padding: 26px;
+}
+
+.r141-hero {
+  display: grid;
+  grid-template-columns: minmax(330px, .9fr) minmax(420px, 1.1fr);
+  gap: 24px;
+  padding: 28px;
+  border: 1px solid rgba(0, 111, 96, .15);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 4% 12%, rgba(240, 200, 86, .48), transparent 32%),
+    linear-gradient(100deg, #fff7cf 0%, #fffdf3 38%, #f8fffb 100%);
+  box-shadow: 0 24px 58px rgba(0, 78, 68, .10);
+}
+
+.r141-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(0, 143, 134, .10);
+  color: #008f86;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.r141-title {
+  margin: 14px 0 12px;
+  max-width: 780px;
+  color: #092d29;
+  font: 800 clamp(34px, 4.5vw, 60px)/1.08 KaiTi, STKaiti, "Microsoft YaHei", sans-serif;
+  letter-spacing: .02em;
+}
+
+.r141-lead {
+  max-width: 72ch;
+  margin: 0;
+  color: #486965;
+  line-height: 1.78;
+  font-size: 15px;
+}
+
+.r141-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.r141-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 8px 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.r141-btn.primary {
+  border-color: transparent;
+  background: #008f86;
+  color: white;
+  box-shadow: 0 14px 24px rgba(0, 143, 134, .20);
+}
+
+.r141-btn.lotus {
+  border-color: rgba(224, 121, 156, .36);
+  background:
+    radial-gradient(circle at 16% 28%, rgba(255, 255, 255, .82), transparent 24%),
+    linear-gradient(135deg, rgba(255, 244, 247, .98), rgba(230, 136, 166, .18));
+  color: #7d3151;
+}
+
+.r141-preview-card,
+.r141-panel,
+.r141-stepper,
+.r141-assistant-card {
+  border: 1px solid rgba(0, 111, 96, .14);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, .88);
+  box-shadow: 0 16px 38px rgba(0, 78, 68, .08);
+}
+
+.r141-preview-card {
+  overflow: hidden;
+  align-self: stretch;
+}
+
+.r141-preview-card img,
+.r141-result-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 390px;
+  object-fit: contain;
+  background: white;
+}
+
+.r141-preview-card figcaption,
+.r141-result-figure figcaption {
+  padding: 12px 16px;
+  color: #607a75;
+  border-top: 1px solid rgba(0, 111, 96, .10);
+  font-size: 13px;
+}
+
+.r141-workbench {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr) 330px;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.r141-stepper {
+  position: sticky;
+  top: 88px;
+  align-self: start;
+  padding: 14px;
+}
+
+.r141-stepper h2,
+.r141-panel h2,
+.r141-panel h3,
+.r141-assistant-card h3 {
+  margin: 0 0 10px;
+  color: #0b3c37;
+}
+
+.r141-steps {
+  display: grid;
+  gap: 8px;
+}
+
+.r141-step {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 9px;
+  align-items: start;
+  padding: 9px;
+  border-radius: 16px;
+  color: #54716c;
+}
+
+.r141-step b {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #e8f5f1;
+  color: #008f86;
+}
+
+.r141-step.is-done {
+  background: #e7f7f2;
+  color: #0c5f58;
+}
+
+.r141-step.is-active {
+  background: #fff3cc;
+  color: #533f05;
+}
+
+.r141-center {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.r141-plot-strip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.r141-plot-option {
+  min-height: 104px;
+  border: 1px solid rgba(0, 111, 96, .14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .86);
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+}
+
+.r141-plot-option img {
+  display: block;
+  width: 100%;
+  height: 64px;
+  object-fit: contain;
+  background: white;
+}
+
+.r141-plot-option span {
+  display: block;
+  padding: 7px 8px;
+  color: #214d48;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.r141-plot-option.is-active {
+  outline: 3px solid rgba(0, 143, 134, .22);
+  border-color: rgba(0, 143, 134, .54);
+}
+
+.r141-stage-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.03fr) minmax(280px, .97fr);
+  gap: 16px;
+}
+
+.r141-panel {
+  padding: 16px;
+}
+
+.r141-field-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.r141-pill {
+  display: inline-flex;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #006d66;
+}
+
+.r141-textarea {
+  width: 100%;
+  min-height: 124px;
+  border: 1px solid rgba(0, 111, 96, .16);
+  border-radius: 18px;
+  padding: 13px;
+  color: #163f3a;
+  background: #fbfffc;
+  resize: vertical;
+}
+
+.r141-file {
+  display: grid;
+  gap: 8px;
+  padding: 13px;
+  border: 1px dashed rgba(0, 111, 96, .25);
+  border-radius: 18px;
+  background: #f7fffb;
+  color: #54716c;
+}
+
+.r141-status {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.r141-status li {
+  list-style: none;
+  padding: 9px 11px;
+  border-radius: 14px;
+  background: #f1f7f4;
+  color: #49635f;
+}
+
+.r141-status li.ok {
+  background: #e6f8ef;
+  color: #08744f;
+}
+
+.r141-status li.warn {
+  background: #fff2d7;
+  color: #745112;
+}
+
+.r141-result-figure {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(0, 111, 96, .14);
+  border-radius: 22px;
+  background: white;
+}
+
+.r141-code-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.r141-code {
+  overflow: auto;
+  max-height: 320px;
+  padding: 14px;
+  border-radius: 18px;
+  background: #092724;
+  color: #e8fff8;
+  font: 12px/1.58 Consolas, "SFMono-Regular", monospace;
+}
+
+.r141-right {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.r141-assistant-card {
+  padding: 16px;
+}
+
+.r141-mini-input {
+  width: 100%;
+  border: 1px solid rgba(0, 111, 96, .16);
+  border-radius: 16px;
+  padding: 11px 12px;
+  background: #fbfffc;
+}
+
+.r141-checklist {
+  display: grid;
+  gap: 8px;
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.r141-checklist li {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 8px;
+  color: #526d68;
+  line-height: 1.45;
+}
+
+.r141-checklist li::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: #8bd8c3;
+}
+
+.r141-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 60;
+  transform: translateX(-50%);
+  max-width: min(560px, calc(100vw - 32px));
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: #092724;
+  color: white;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, .24);
+}
+
+@media (max-width: 1220px) {
+  .r141-workbench {
+    grid-template-columns: 1fr;
+  }
+  .r141-stepper {
+    position: static;
+  }
+  .r141-steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .r141-right {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .r141-shell {
+    grid-template-columns: 1fr;
+  }
+  .r141-side {
+    position: static;
+    height: auto;
+    padding: 12px;
+  }
+  .r141-side nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .r141-side a {
+    min-width: 116px;
+  }
+  .r141-top {
+    position: static;
+    grid-template-columns: 1fr;
+    padding: 12px 14px;
+  }
+  .r141-page {
+    padding: 14px;
+  }
+  .r141-hero,
+  .r141-stage-grid,
+  .r141-right {
+    grid-template-columns: 1fr;
+  }
+  .r141-title {
+    font-size: 34px;
+  }
+  .r141-plot-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .r141-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
