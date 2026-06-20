@@ -816,8 +816,11 @@
     if (stepRoutes.some(([id]) => id === active)) return stepPage(active);
     if (active === "plot-studio" && window.MEDPATH_ROUND141_PLOT_STUDIO) return "";
     if (active === "plot-studio") return plotStudioPage();
+    if (active === "plot-gallery" && !parts()[1] && window.MEDPATH_ROUND143_PLOT_GALLERY) return "";
+    if (active === "plot-gallery" && parts()[1] && window.MEDPATH_ROUND142_PLOT_FLOW) return "";
     if (active === "plot-gallery" && parts()[1]) return plotDetailPage();
     if (active === "plot-gallery") return plotGalleryPage();
+    if (active === "plot-run" && window.MEDPATH_ROUND142_PLOT_FLOW) return "";
     if (active === "plot-run") return plotRunPage();
     if (active === "skills") return skillsPage();
     if (active === "skill-builder") return skillBuilderPage();
@@ -933,9 +936,11 @@
     const app = document.getElementById("app");
     if (!app) return;
     const active = currentRoute();
+    const html = pageFor(active);
+    if (html === "") return;
     document.body.classList.add("round110-active");
     document.body.dataset.medpathRoute = active;
-    app.innerHTML = pageFor(active);
+    app.innerHTML = html;
     bind();
     window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
   }
