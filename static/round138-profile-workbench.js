@@ -97,6 +97,35 @@
     location.hash = path;
   }
 
+  function runAssistant() {
+    const value = document.querySelector("[data-r138-question]")?.value?.trim();
+    const lower = value?.toLowerCase() || "";
+    const wantsPlot = /plot|figure|graph|umap|meta|forest/.test(lower)
+      || value?.includes("\u56fe")
+      || value?.includes("\u753b")
+      || value?.includes("\u7ed8\u56fe")
+      || value?.includes("\u53ef\u89c6\u5316")
+      || value?.includes("\u5355\u7ec6\u80de");
+    const wantsCommunity = /skill|community|post/.test(lower)
+      || value?.includes("\u793e\u533a")
+      || value?.includes("\u5e16\u5b50")
+      || value?.includes("\u6536\u85cf");
+    const wantsIsland = value?.includes("\u5c0f\u5c9b")
+      || value?.includes("\u5efa\u7b51")
+      || value?.includes("\u6e38\u620f");
+    if (!value) {
+      toast("先写一句你现在想做什么。");
+    } else if (wantsPlot) {
+      go("/plot-gallery");
+    } else if (wantsCommunity) {
+      go("/community");
+    } else if (wantsIsland) {
+      go("/island");
+    } else {
+      go("/method-runner");
+    }
+  }
+
   function toast(text) {
     document.querySelector(".r138-toast")?.remove();
     const el = document.createElement("div");
@@ -259,6 +288,11 @@
     document.body.classList.add("medpath-r138-profile");
     app.setAttribute("data-round138-owned", VERSION);
     app.innerHTML = renderProfile();
+    app.querySelector("[data-r138-ask]")?.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      runAssistant();
+    });
   }
 
   function bind() {
@@ -281,32 +315,8 @@
         return;
       }
       if (event.target.closest("[data-r138-ask]")) {
-        const value = document.querySelector("[data-r138-question]")?.value?.trim();
-        const lower = value?.toLowerCase() || "";
-        const wantsPlot = /plot|figure|graph|umap|meta|forest/.test(lower)
-          || value?.includes("\u56fe")
-          || value?.includes("\u753b")
-          || value?.includes("\u7ed8\u56fe")
-          || value?.includes("\u53ef\u89c6\u5316")
-          || value?.includes("\u5355\u7ec6\u80de");
-        const wantsCommunity = /skill|community|post/.test(lower)
-          || value?.includes("\u793e\u533a")
-          || value?.includes("\u5e16\u5b50")
-          || value?.includes("\u6536\u85cf");
-        const wantsIsland = value?.includes("\u5c0f\u5c9b")
-          || value?.includes("\u5efa\u7b51")
-          || value?.includes("\u6e38\u620f");
-        if (!value) {
-          toast("先写一句你现在想做什么。");
-        } else if (wantsPlot) {
-          go("/plot-gallery");
-        } else if (wantsCommunity) {
-          go("/community");
-        } else if (wantsIsland) {
-          go("/island");
-        } else {
-          go("/method-runner");
-        }
+        event.preventDefault();
+        runAssistant();
       }
     });
 
